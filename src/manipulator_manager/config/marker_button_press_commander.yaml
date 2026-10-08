@@ -1,0 +1,78 @@
+marker_button_press_commander:
+  ros__parameters:
+    # =========================================================
+    # Input / command / result topics
+    # =========================================================
+    marker_topic: /object_3d_marker
+    cmd_topic: /marker_button_press_commander/cmd
+    result_topic: /marker_button_press_commander/result
+    state_topic: /marker_button_press_commander/state
+
+    move_action_name: /move_action
+
+    # =========================================================
+    # MoveIt planning target
+    # =========================================================
+    planning_group: arm
+    ee_link: ee_link
+    target_frame: link1
+
+    # =========================================================
+    # Marker validity
+    # =========================================================
+    marker_timeout_sec: 3.0
+
+    # =========================================================
+    # Position tolerance
+    # =========================================================
+    position_tolerance_m: 0.005
+
+    # =========================================================
+    # Basic motion options
+    # =========================================================
+    max_velocity_scaling: 0.2
+    max_acceleration_scaling: 0.2
+    allowed_planning_time_sec: 3.0
+    num_planning_attempts: 5
+
+    plan_only: false
+
+    # =========================================================
+    # Offset mode
+    # =========================================================
+    default_offset_mode: outside
+
+    outside_offset_x: 0.050
+    outside_offset_y: 0.000
+    outside_offset_z: 0.000
+
+    inside_offset_x: 0.025
+    inside_offset_y: -0.015
+    inside_offset_z: 0.005
+
+    # =========================================================
+    # Button press tuning
+    # =========================================================
+    button_offset_x: 0.000
+    button_offset_y: 0.000
+    button_offset_z: 0.000
+
+    # =========================================================
+    # End-effector orientation
+    # =========================================================
+    goal_qx: 0.0
+    goal_qy: 0.0
+    goal_qz: 0.0
+    goal_qw: 1.0
+
+    ori_tol_x: 3.14
+    ori_tol_y: 3.14
+    ori_tol_z: 3.14
+
+    # =========================================================
+    # Replanning
+    # =========================================================
+    replan: true
+    replan_attempts: 1
+    replan_delay_sec: 1.0
+    wait_for_server_sec: 2.0

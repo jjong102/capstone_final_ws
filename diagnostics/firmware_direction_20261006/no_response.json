@@ -1,0 +1,97 @@
+[
+  {
+    "pid": 18,
+    "name": "PID_18",
+    "baseline_hex": "00"
+  },
+  {
+    "pid": 23,
+    "name": "PID_23",
+    "baseline_hex": "00"
+  },
+  {
+    "pid": 29,
+    "name": "PID_29",
+    "baseline_hex": "00"
+  },
+  {
+    "pid": 68,
+    "name": "PID_68",
+    "baseline_hex": "0a"
+  },
+  {
+    "pid": 72,
+    "name": "PID_72",
+    "baseline_hex": "00"
+  },
+  {
+    "pid": 73,
+    "name": "PID_73",
+    "baseline_hex": "01"
+  },
+  {
+    "pid": 74,
+    "name": "PID_LIMIT_STOP_COND",
+    "baseline_hex": "00"
+  },
+  {
+    "pid": 108,
+    "name": "PID_108",
+    "baseline_hex": "64 00"
+  },
+  {
+    "pid": 111,
+    "name": "PID_111",
+    "baseline_hex": "64 00"
+  },
+  {
+    "pid": 113,
+    "name": "PID_113",
+    "baseline_hex": "64 00"
+  },
+  {
+    "pid": 115,
+    "name": "PID_115",
+    "baseline_hex": "64 00"
+  },
+  {
+    "pid": 116,
+    "name": "PID_116",
+    "baseline_hex": "64 00"
+  },
+  {
+    "pid": 117,
+    "name": "PID_117",
+    "baseline_hex": "00 00"
+  },
+  {
+    "pid": 119,
+    "name": "PID_119",
+    "baseline_hex": "00 00"
+  },
+  {
+    "pid": 121,
+    "name": "PID_121",
+    "baseline_hex": "90 01"
+  },
+  {
+    "pid": 123,
+    "name": "PID_123",
+    "baseline_hex": "00 10"
+  },
+  {
+    "pid": 136,
+    "name": "PID_136",
+    "baseline_hex": "00 00"
+  },
+  {
+    "pid": 161,
+    "name": "PID_161",
+    "baseline_hex": "01 00"
+  },
+  {
+    "pid": 179,
+    "name": "PID_179",
+    "baseline_hex": "64 00"
+  }
+]

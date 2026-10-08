@@ -1,0 +1,11 @@
+{
+  "repository": "EliseEgkart/capstone_final_ws",
+  "branch": "master",
+  "commit": "98fb5d50f10252ab45dbb7c68ed4a9b536729670",
+  "paths": [
+    "src/serial_test/serial_test/test_node_main.py",
+    "src/serial_test/serial_test/motor_driver.py",
+    "src/serial_test/launch/serial_test.launch.py",
+    "src/serial_test/setup.py"
+  ]
+}

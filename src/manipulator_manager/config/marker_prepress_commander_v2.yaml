@@ -1,0 +1,127 @@
+marker_prepress_commander_v2:
+  ros__parameters:
+    marker_topic: /object_3d_marker
+    cmd_topic: /marker_prepress_commander_v2/cmd
+    result_topic: /marker_prepress_commander_v2/result
+    state_topic: /marker_prepress_commander_v2/state
+    move_action_name: /move_action
+
+    planning_group: arm
+    ee_link: ee_link
+    goal_frame: link1
+
+    marker_timeout_sec: 3.0
+    marker_collect_sec: 0.7
+    preferred_marker_samples: 5
+    min_marker_samples: 1
+    marker_buffer_size: 20
+    allow_recent_marker: false
+    collect_tick_sec: 0.05
+
+    position_tolerance_m: 0.001
+    max_velocity_scaling: 0.15
+    max_acceleration_scaling: 0.15
+    allowed_planning_time_sec: 3.0
+    num_planning_attempts: 5
+
+    plan_only: false
+
+    use_orientation_constraint: true
+    goal_qx: 0.0
+    goal_qy: 0.0
+    goal_qz: 0.0
+    goal_qw: 1.0
+    ori_tol_x: 3.14
+    ori_tol_y: 3.14
+    ori_tol_z: 3.14
+
+    replan: true
+    replan_attempts: 1
+    replan_delay_sec: 1.0
+    wait_for_server_sec: 2.0
+
+    # Keep false while tuning pre-contact alignment. When true, the node reuses
+    # the stored radial vector from pre-contact and does not recollect markers.
+    enable_press: True
+    press_hold_sec: 0.2
+    release_after_press: true
+    press_max_velocity_scaling: 0.08
+    press_max_acceleration_scaling: 0.08
+
+    profile_names:
+      - outside_front
+      - inside_b1_front
+      - inside_b1_right
+      - inside_front
+      - inside_right
+
+    # The default approach mode is radial_from_frame:
+    #   1. read marker/offset in camera_link
+    #   2. transform it to link1
+    #   3. stand off along the link1 radial direction from the robot toward the button
+    # This fits the 4-DOF arm better than a fixed camera x/y axis offset.
+    outside_front_approach_frame: camera_link
+    outside_front_approach_axis: "x"
+    outside_front_approach_sign: -1.0
+    outside_front_standoff_m: 0.035
+    outside_front_offset_x: 0.005
+    outside_front_offset_y: 0.003
+    outside_front_offset_z: 0.015
+    outside_front_approach_mode: radial_from_frame
+    outside_front_radial_frame: link1
+    outside_front_radial_plane: "xy"
+    outside_front_radial_min_norm_m: 0.05
+    outside_front_press_travel_m: 0.045
+
+    # B1 is calibrated separately so 3F can keep its own center offset.
+    inside_b1_front_approach_frame: camera_link
+    inside_b1_front_approach_axis: "x"
+    inside_b1_front_approach_sign: -1.0
+    inside_b1_front_standoff_m: 0.035
+    inside_b1_front_offset_x: 0.002
+    inside_b1_front_offset_y: 0.003
+    inside_b1_front_offset_z: 0.011
+    inside_b1_front_approach_mode: radial_from_frame
+    inside_b1_front_radial_frame: link1
+    inside_b1_front_radial_plane: "xy"
+    inside_b1_front_radial_min_norm_m: 0.05
+    inside_b1_front_press_travel_m: 0.045
+
+    inside_b1_right_approach_frame: camera_link
+    inside_b1_right_approach_axis: "y"
+    inside_b1_right_approach_sign: -1.0
+    inside_b1_right_standoff_m: 0.035
+    inside_b1_right_offset_x: 0.0
+    inside_b1_right_offset_y: 0.0
+    inside_b1_right_offset_z: 0.010
+    inside_b1_right_approach_mode: radial_from_frame
+    inside_b1_right_radial_frame: link1
+    inside_b1_right_radial_plane: "xy"
+    inside_b1_right_radial_min_norm_m: 0.05
+    inside_b1_right_press_travel_m: 0.055
+
+    inside_front_approach_frame: camera_link
+    inside_front_approach_axis: "x"
+    inside_front_approach_sign: -1.0
+    inside_front_standoff_m: 0.035
+    inside_front_offset_x: 0.0
+    inside_front_offset_y: 0.0
+    inside_front_offset_z: 0.0
+    inside_front_approach_mode: radial_from_frame
+    inside_front_radial_frame: link1
+    inside_front_radial_plane: "xy"
+    inside_front_radial_min_norm_m: 0.05
+    inside_front_press_travel_m: 0.045
+
+    inside_right_approach_frame: camera_link
+    inside_right_approach_axis: "y"
+    inside_right_approach_sign: -1.0
+    inside_right_standoff_m: 0.035
+    inside_right_offset_x: 0.0
+    inside_right_offset_y: 0.0
+    inside_right_offset_z: 0.0
+    inside_right_approach_mode: radial_from_frame
+    inside_right_radial_frame: link1
+    inside_right_radial_plane: "xy"
+    inside_right_radial_min_norm_m: 0.05
+    inside_right_press_travel_m: 0.055

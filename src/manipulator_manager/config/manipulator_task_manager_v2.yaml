@@ -1,0 +1,48 @@
+manipulator_task_manager_v2:
+  ros__parameters:
+    task_cmd_topic: /manipulator_task_cmd
+    task_result_topic: /manipulator_task_result
+    task_state_topic: /manipulator_task_state
+    task_error_topic: /manipulator_task_error
+
+    arm_flag_topic: /arm_pose_commander_v2/flag
+    arm_done_topic: /arm_pose_commander_v2/done
+
+    prepress_cmd_topic: /marker_prepress_commander_v2/cmd
+    prepress_result_topic: /marker_prepress_commander_v2/result
+
+    perception_target_topic: /manipulator_perception/target_button
+    perception_outside_down: OUTSIDE_DOWN
+    perception_inside_b1: INSIDE_B1
+    perception_inside_3f: INSIDE_3F
+
+    mcu_cmd_topic: /mcu/cmd
+    mcu_result_topic: /mcu/result
+    mcu_unload_cmd: UNLOAD
+    mcu_unload_done: UNLOAD_DONE
+    mcu_unload_failed: UNLOAD_FAILED
+    mcu_cancel_cmd: CANCEL
+    cmd_pos_flag_topic: /manipulator_hardware/cmd_pos_flag
+    unload_prepare_cmd_pos_flag: 3
+    unload_cmd_pos_flag: 2
+    publish_legacy_mcu_unload_cmd: false
+
+    unload_wait_for_result: true
+    unload_assume_done_delay_sec: 5.0
+
+    return_home_after_prepress: true
+    return_home_after_unload: false
+    complete_button_on_prepress_failure: true
+    publish_button_done_on_prepress_start: false
+    # Negative means latch forever: the same completed button command only
+    # republishes DONE and never starts arm motion again until another command/reset.
+    button_done_dedup_sec: -1.0
+
+    marker_settle_sec: 3.0
+    outside_align_timeout_sec: 12.0
+    inside_align_timeout_sec: 12.0
+    prepress_timeout_sec: 25.0
+    home_timeout_sec: 12.0
+    unload_timeout_sec: 25.0
+    fsm_tick_sec: 0.05
+    auto_reset_after_failure: true

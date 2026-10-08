@@ -1,0 +1,1886 @@
+{
+  "time": "2026-10-06T17:46:37.329423+09:00",
+  "read_only": true,
+  "rows": [
+    {
+      "key": "1",
+      "pid": 1,
+      "index": null,
+      "name": "PID_VER",
+      "value": "72",
+      "hex": "48",
+      "actual_hex": "4b",
+      "matches": false
+    },
+    {
+      "key": "8",
+      "pid": 8,
+      "index": null,
+      "name": "PID_BACKWARD_RATIO",
+      "value": "40",
+      "hex": "28",
+      "actual_hex": "28",
+      "matches": true
+    },
+    {
+      "key": "9",
+      "pid": 9,
+      "index": null,
+      "name": "PID_PULSE_IN_TYPE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "16",
+      "pid": 16,
+      "index": null,
+      "name": "PID_INV_SIGN_CMD",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "17",
+      "pid": 17,
+      "index": null,
+      "name": "PID_USE_LIMIT_SW",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "18",
+      "pid": 18,
+      "index": null,
+      "name": "PID_18",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "19",
+      "pid": 19,
+      "index": null,
+      "name": "PID_INV_ALARM",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "21",
+      "pid": 21,
+      "index": null,
+      "name": "PID_HALL_TYPE",
+      "value": "10",
+      "hex": "0a",
+      "actual_hex": "0a",
+      "matches": true
+    },
+    {
+      "key": "22",
+      "pid": 22,
+      "index": null,
+      "name": "PID_INV_SIGN_OUT",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "23",
+      "pid": 23,
+      "index": null,
+      "name": "PID_23",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "24",
+      "pid": 24,
+      "index": null,
+      "name": "PID_STOP_STATUS",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "25",
+      "pid": 25,
+      "index": null,
+      "name": "PID_INPUT_TYPE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "26",
+      "pid": 26,
+      "index": null,
+      "name": "PID_POS_SEN_TYPE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "27",
+      "pid": 27,
+      "index": null,
+      "name": "PID_27",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "28",
+      "pid": 28,
+      "index": null,
+      "name": "PID_STOP_STATUS2",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "29",
+      "pid": 29,
+      "index": null,
+      "name": "PID_29",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "32",
+      "pid": 32,
+      "index": null,
+      "name": "PID_SAVE_POSI",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "34",
+      "pid": 34,
+      "index": null,
+      "name": "PID_CTRL_STATUS",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "36",
+      "pid": 36,
+      "index": null,
+      "name": "PID_START_INV_SIGN",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "37",
+      "pid": 37,
+      "index": null,
+      "name": "PID_RUN_INV_SIGN",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "38",
+      "pid": 38,
+      "index": null,
+      "name": "PID_REGENERATION",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "39",
+      "pid": 39,
+      "index": null,
+      "name": "PID_CTRL_STATUS2",
+      "value": "33",
+      "hex": "21",
+      "actual_hex": "00",
+      "matches": false
+    },
+    {
+      "key": "40",
+      "pid": 40,
+      "index": null,
+      "name": "PID_LIMIT_STOP_COND",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "41",
+      "pid": 41,
+      "index": null,
+      "name": "PID_TQ_LIMIT_SW",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "42",
+      "pid": 42,
+      "index": null,
+      "name": "PID_POSI_INPUT_MODE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "43",
+      "pid": 43,
+      "index": null,
+      "name": "PID_SINE_CTRL",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "44",
+      "pid": 44,
+      "index": null,
+      "name": "PID_TQ_CTRL",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "45",
+      "pid": 45,
+      "index": null,
+      "name": "PID_BLUETOOTH",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "46",
+      "pid": 46,
+      "index": null,
+      "name": "PID_USE_EPOSI",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "48",
+      "pid": 48,
+      "index": null,
+      "name": "PID_DI",
+      "value": "104",
+      "hex": "68",
+      "actual_hex": "68",
+      "matches": true
+    },
+    {
+      "key": "49",
+      "pid": 49,
+      "index": null,
+      "name": "PID_IN_POSITION_OK",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "03",
+      "matches": false
+    },
+    {
+      "key": "50",
+      "pid": 50,
+      "index": null,
+      "name": "PID_USE_SIGNED_POS",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "51",
+      "pid": 51,
+      "index": null,
+      "name": "PID_OVERLOAD_ALARM_ON",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "52",
+      "pid": 52,
+      "index": null,
+      "name": "PID_DIP_INV",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "53",
+      "pid": 53,
+      "index": null,
+      "name": "PID_DIP_OPEN",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "54",
+      "pid": 54,
+      "index": null,
+      "name": "PID_DIP_CHG",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "55",
+      "pid": 55,
+      "index": null,
+      "name": "PID_RECT_SINE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "56",
+      "pid": 56,
+      "index": null,
+      "name": "PID_TURN_RATIO",
+      "value": "30",
+      "hex": "1e",
+      "actual_hex": "1e",
+      "matches": true
+    },
+    {
+      "key": "57",
+      "pid": 57,
+      "index": null,
+      "name": "PID_MAX_SS_TIME",
+      "value": "15",
+      "hex": "0f",
+      "actual_hex": "0f",
+      "matches": true
+    },
+    {
+      "key": "58",
+      "pid": 58,
+      "index": null,
+      "name": "PID_DIR_INV_SIGN",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "60",
+      "pid": 60,
+      "index": null,
+      "name": "PID_LATE_ALARM",
+      "value": "33",
+      "hex": "21",
+      "actual_hex": "83",
+      "matches": false
+    },
+    {
+      "key": "61",
+      "pid": 61,
+      "index": null,
+      "name": "PID_SPEED_OUT_TYPE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "62",
+      "pid": 62,
+      "index": null,
+      "name": "PID_USE_MAX_TQ",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "63",
+      "pid": 63,
+      "index": null,
+      "name": "PID_USE_CLUTCH",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "64",
+      "pid": 64,
+      "index": null,
+      "name": "PID_INV_POS_SEN",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "65",
+      "pid": 65,
+      "index": null,
+      "name": "PID_HALL2_TYPE",
+      "value": "10",
+      "hex": "0a",
+      "actual_hex": "0a",
+      "matches": true
+    },
+    {
+      "key": "66",
+      "pid": 66,
+      "index": null,
+      "name": "PID_TQ_RATIO",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "68",
+      "pid": 68,
+      "index": null,
+      "name": "PID_68",
+      "value": "10",
+      "hex": "0a",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "71",
+      "pid": 71,
+      "index": null,
+      "name": "PID_USE_ENC_PHASE",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "72",
+      "pid": 72,
+      "index": null,
+      "name": "PID_72",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "73",
+      "pid": 73,
+      "index": null,
+      "name": "PID_73",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "74",
+      "pid": 74,
+      "index": null,
+      "name": "PID_LIMIT_STOP_COND",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "75",
+      "pid": 75,
+      "index": null,
+      "name": "PID_COMPLEX_DIR",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "76",
+      "pid": 76,
+      "index": null,
+      "name": "PID_USE_EMER_SW",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "78",
+      "pid": 78,
+      "index": null,
+      "name": "PID_UI_COM",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "01",
+      "matches": false
+    },
+    {
+      "key": "79",
+      "pid": 79,
+      "index": null,
+      "name": "PID_MOT_TYPE",
+      "value": "3",
+      "hex": "03",
+      "actual_hex": "03",
+      "matches": true
+    },
+    {
+      "key": "80",
+      "pid": 80,
+      "index": null,
+      "name": "PID_ENC_INV_DIR",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "81",
+      "pid": 81,
+      "index": null,
+      "name": "PID_FAULT_TYPE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "82",
+      "pid": 82,
+      "index": null,
+      "name": "PID_SYNC_TYPE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "83",
+      "pid": 83,
+      "index": null,
+      "name": "PID_TWIN_ALARM_ON",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "84",
+      "pid": 84,
+      "index": null,
+      "name": "PID_NO_MODBUS",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "86",
+      "pid": 86,
+      "index": null,
+      "name": "PID_USE_RC_LIMIT_SW",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "87",
+      "pid": 87,
+      "index": null,
+      "name": "PID_INIT_SET_OK",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "89",
+      "pid": 89,
+      "index": null,
+      "name": "PID_STOP_ALL_BY_LSW",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "90",
+      "pid": 90,
+      "index": null,
+      "name": "PID_INT_SPEED_INV_SIGN",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "91",
+      "pid": 91,
+      "index": null,
+      "name": "PID_91",
+      "value": "10",
+      "hex": "0a",
+      "actual_hex": "0a",
+      "matches": true
+    },
+    {
+      "key": "92",
+      "pid": 92,
+      "index": null,
+      "name": "PID_STALL_ALARM_ON",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "93",
+      "pid": 93,
+      "index": null,
+      "name": "PID_93",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "101",
+      "pid": 101,
+      "index": null,
+      "name": "PID_ALARM_TQ",
+      "value": "112",
+      "hex": "70 00",
+      "actual_hex": "70 00",
+      "matches": true
+    },
+    {
+      "key": "102",
+      "pid": 102,
+      "index": null,
+      "name": "PID_ALARM_TQ_DELAY",
+      "value": "400",
+      "hex": "90 01",
+      "actual_hex": "90 01",
+      "matches": true
+    },
+    {
+      "key": "103",
+      "pid": 103,
+      "index": null,
+      "name": "PID_CLUTCH_STOP_DELAY",
+      "value": "500",
+      "hex": "f4 01",
+      "actual_hex": "f4 01",
+      "matches": true
+    },
+    {
+      "key": "104",
+      "pid": 104,
+      "index": null,
+      "name": "PID_MAX_OUT",
+      "value": "1023",
+      "hex": "ff 03",
+      "actual_hex": "ff 03",
+      "matches": true
+    },
+    {
+      "key": "105",
+      "pid": 105,
+      "index": null,
+      "name": "PID_105",
+      "value": "50",
+      "hex": "32 00",
+      "actual_hex": "32 00",
+      "matches": true
+    },
+    {
+      "key": "108",
+      "pid": 108,
+      "index": null,
+      "name": "PID_108",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "109",
+      "pid": 109,
+      "index": null,
+      "name": "PID_SLOW_START2",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "111",
+      "pid": 111,
+      "index": null,
+      "name": "PID_111",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "112",
+      "pid": 112,
+      "index": null,
+      "name": "PID_SLOW_DOWN2",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "113",
+      "pid": 113,
+      "index": null,
+      "name": "PID_113",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "114",
+      "pid": 114,
+      "index": null,
+      "name": "PID_POSI_SS2",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "115",
+      "pid": 115,
+      "index": null,
+      "name": "PID_115",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "116",
+      "pid": 116,
+      "index": null,
+      "name": "PID_116",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "117",
+      "pid": 117,
+      "index": null,
+      "name": "PID_117",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "118",
+      "pid": 118,
+      "index": null,
+      "name": "PID_TAR_VEL2",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "119",
+      "pid": 119,
+      "index": null,
+      "name": "PID_119",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "120",
+      "pid": 120,
+      "index": null,
+      "name": "PID_IN_POSITION2",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "121",
+      "pid": 121,
+      "index": null,
+      "name": "PID_121",
+      "value": "400",
+      "hex": "90 01",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "122",
+      "pid": 122,
+      "index": null,
+      "name": "PID_MAX_RPM2",
+      "value": "400",
+      "hex": "90 01",
+      "actual_hex": "90 01",
+      "matches": true
+    },
+    {
+      "key": "123",
+      "pid": 123,
+      "index": null,
+      "name": "PID_123",
+      "value": "4096",
+      "hex": "00 10",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "124",
+      "pid": 124,
+      "index": null,
+      "name": "PID_MIN_SSSD",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "133",
+      "pid": 133,
+      "index": null,
+      "name": "PID_ID",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "136",
+      "pid": 136,
+      "index": null,
+      "name": "PID_136",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "137",
+      "pid": 137,
+      "index": null,
+      "name": "PID_ECAN_BITRATE",
+      "value": "1",
+      "hex": "01",
+      "actual_hex": "01",
+      "matches": true
+    },
+    {
+      "key": "138",
+      "pid": 138,
+      "index": null,
+      "name": "PID_INT_RPM_DATA",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "139",
+      "pid": 139,
+      "index": null,
+      "name": "PID_TQ_DATA",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "143",
+      "pid": 143,
+      "index": null,
+      "name": "PID_VOLT_IN",
+      "value": "281",
+      "hex": "19 01",
+      "actual_hex": "1b 01",
+      "matches": false
+    },
+    {
+      "key": "145",
+      "pid": 145,
+      "index": null,
+      "name": "PID_145",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "149",
+      "pid": 149,
+      "index": null,
+      "name": "PID_RETURN_TYPE",
+      "value": "0",
+      "hex": "00",
+      "actual_hex": "00",
+      "matches": true
+    },
+    {
+      "key": "153",
+      "pid": 153,
+      "index": null,
+      "name": "PID_SLOW_START",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "154",
+      "pid": 154,
+      "index": null,
+      "name": "PID_SLOW_DOWN",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "155",
+      "pid": 155,
+      "index": null,
+      "name": "PID_TAR_VEL",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "156",
+      "pid": 156,
+      "index": null,
+      "name": "PID_ENC_PPR",
+      "value": "4096",
+      "hex": "00 10",
+      "actual_hex": "00 10",
+      "matches": true
+    },
+    {
+      "key": "157",
+      "pid": 157,
+      "index": null,
+      "name": "PID_LOW_SPEED_LIMIT",
+      "value": "5",
+      "hex": "05 00",
+      "actual_hex": "05 00",
+      "matches": true
+    },
+    {
+      "key": "158",
+      "pid": 158,
+      "index": null,
+      "name": "PID_HIGH_SPEED_LIMIT",
+      "value": "1000",
+      "hex": "e8 03",
+      "actual_hex": "e8 03",
+      "matches": true
+    },
+    {
+      "key": "159",
+      "pid": 159,
+      "index": null,
+      "name": "PID_QUICK_SLOW_DOWN",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "161",
+      "pid": 161,
+      "index": null,
+      "name": "PID_161",
+      "value": "1",
+      "hex": "01 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "162",
+      "pid": 162,
+      "index": null,
+      "name": "PID_DEAD_ZONE",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "166",
+      "pid": 166,
+      "index": null,
+      "name": "PID_REF_RPM",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "167",
+      "pid": 167,
+      "index": null,
+      "name": "PID_PV_GAIN",
+      "value": "20",
+      "hex": "14 00",
+      "actual_hex": "14 00",
+      "matches": true
+    },
+    {
+      "key": "168",
+      "pid": 168,
+      "index": null,
+      "name": "PID_P_GAIN",
+      "value": "6000",
+      "hex": "70 17",
+      "actual_hex": "70 17",
+      "matches": true
+    },
+    {
+      "key": "169",
+      "pid": 169,
+      "index": null,
+      "name": "PID_I_GAIN",
+      "value": "6000",
+      "hex": "70 17",
+      "actual_hex": "70 17",
+      "matches": true
+    },
+    {
+      "key": "170",
+      "pid": 170,
+      "index": null,
+      "name": "PID_ENC_PPR2",
+      "value": "4096",
+      "hex": "00 10",
+      "actual_hex": "00 10",
+      "matches": true
+    },
+    {
+      "key": "171",
+      "pid": 171,
+      "index": null,
+      "name": "PID_IN_POSITION",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "172",
+      "pid": 172,
+      "index": null,
+      "name": "PID_LOW_POT_LIMIT",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "173",
+      "pid": 173,
+      "index": null,
+      "name": "PID_HIGH_POT_LIMIT",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "176",
+      "pid": 176,
+      "index": null,
+      "name": "PID_TAR_POSI_VEL",
+      "value": "1110",
+      "hex": "56 04",
+      "actual_hex": "56 04",
+      "matches": true
+    },
+    {
+      "key": "177",
+      "pid": 177,
+      "index": null,
+      "name": "PID_PNT_VEL_DATA",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 07 00 21",
+      "actual_hex": "00 00 00 00 01 01 00",
+      "matches": false
+    },
+    {
+      "key": "178",
+      "pid": 178,
+      "index": null,
+      "name": "PID_POSI_SS",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "179",
+      "pid": 179,
+      "index": null,
+      "name": "PID_179",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": null,
+      "matches": false
+    },
+    {
+      "key": "180",
+      "pid": 180,
+      "index": null,
+      "name": "PID_COM_TAR_SPEED",
+      "value": "1000",
+      "hex": "e8 03",
+      "actual_hex": "e8 03",
+      "matches": true
+    },
+    {
+      "key": "181",
+      "pid": 181,
+      "index": null,
+      "name": "PID_CW_MAX_RPM",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "182",
+      "pid": 182,
+      "index": null,
+      "name": "PID_CCW_MAX_RPM",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "183",
+      "pid": 183,
+      "index": null,
+      "name": "PID_FUNC_CMD_TYPE",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "185",
+      "pid": 185,
+      "index": null,
+      "name": "PID_COM_WATCH_DELAY",
+      "value": "0",
+      "hex": "00 00",
+      "actual_hex": "00 00",
+      "matches": true
+    },
+    {
+      "key": "187",
+      "pid": 187,
+      "index": null,
+      "name": "PID_TQ_LIMIT_SW_VAL",
+      "value": "58",
+      "hex": "3a 00",
+      "actual_hex": "3a 00",
+      "matches": true
+    },
+    {
+      "key": "190",
+      "pid": 190,
+      "index": null,
+      "name": "PID_MAX_OPEN_OUT",
+      "value": "100",
+      "hex": "64 00",
+      "actual_hex": "64 00",
+      "matches": true
+    },
+    {
+      "key": "191",
+      "pid": 191,
+      "index": null,
+      "name": "PID_TOUR_DATA",
+      "value": "1000, 10",
+      "hex": "e8 03 0a 00",
+      "actual_hex": "e8 03 0a 00",
+      "matches": true
+    },
+    {
+      "key": "193",
+      "pid": 193,
+      "index": null,
+      "name": "PID_MAIN_DATA",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 07 00 00 00 00 00 00 00 00 00 00 1f 00",
+      "actual_hex": "00 00 00 00 01 00 00 02 00 00 04 00 00 00 00 24 00",
+      "matches": false
+    },
+    {
+      "key": "194",
+      "pid": 194,
+      "index": null,
+      "name": "PID_IO_MONITOR",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 68 00 00 00 04 00 00 19 01 0a 0a 66",
+      "actual_hex": "00 00 00 00 00 68 00 00 00 01 00 00 1b 01 0a 0a 66",
+      "matches": false
+    },
+    {
+      "key": "195",
+      "pid": 195,
+      "index": null,
+      "name": "PID_TAR_POSI",
+      "value": "0",
+      "hex": "00 00 00 00",
+      "actual_hex": "00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "196",
+      "pid": 196,
+      "index": null,
+      "name": "PID_MONITOR",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 00 00 00 00 00 00 68",
+      "actual_hex": "00 00 00 00 02 00 00 04 00 00 00 68",
+      "matches": false
+    },
+    {
+      "key": "197",
+      "pid": 197,
+      "index": null,
+      "name": "PID_POSI_DATA",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 00 00 00",
+      "actual_hex": "04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "199",
+      "pid": 199,
+      "index": null,
+      "name": "PID_INC_TAR_POSI",
+      "value": "0",
+      "hex": "00 00 00 00",
+      "actual_hex": "00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "200",
+      "pid": 200,
+      "index": null,
+      "name": "PID_MAIN_DATA2",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 00 00 00 00 21 00 00 00 00 00 1f 00",
+      "actual_hex": "00 00 00 00 01 00 00 f4 ff 00 b7 00 00 00 00 24 00",
+      "matches": false
+    },
+    {
+      "key": "201",
+      "pid": 201,
+      "index": null,
+      "name": "PID_MONITOR2",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 00 21 00 00 00 00 68",
+      "actual_hex": "00 00 00 00 f4 ff 00 b7 00 00 00 08",
+      "matches": false
+    },
+    {
+      "key": "202",
+      "pid": 202,
+      "index": null,
+      "name": "PID_IO_MONITOR2",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 21 68 00 00 00 07 00 00 19 01 0a 0a 66",
+      "actual_hex": "00 00 00 00 00 08 00 00 00 03 00 00 1b 01 0a 0a 66",
+      "matches": false
+    },
+    {
+      "key": "203",
+      "pid": 203,
+      "index": null,
+      "name": "PID_GAIN",
+      "value": "위치P=20, 속도P=6000, 속도I=6000",
+      "hex": "14 00 70 17 70 17",
+      "actual_hex": "14 00 70 17 70 17",
+      "matches": true
+    },
+    {
+      "key": "204",
+      "pid": 204,
+      "index": null,
+      "name": "PID_POSI_VEL_DATA",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 00 00",
+      "actual_hex": "00 00 00 04 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "205",
+      "pid": 205,
+      "index": null,
+      "name": "PID_TYPE",
+      "value": "MD200T-V7.2e-H100-E",
+      "hex": "4d 44 32 30 30 54 2d 56 37 2e 32 65 2d 48 31 30 30 2d 45",
+      "actual_hex": "4d 44 32 30 30 54 2d 56 37 2e 35 35 2d 48 31 30 30 2d 45",
+      "matches": false
+    },
+    {
+      "key": "210",
+      "pid": 210,
+      "index": null,
+      "name": "PID_PNT_MAIN_DATA",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 21 00 00 00 00",
+      "actual_hex": "00 00 00 00 00 04 00 00 00 00 00 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "211",
+      "pid": 211,
+      "index": null,
+      "name": "PID_MAX_LOAD",
+      "value": "118",
+      "hex": "76 00",
+      "actual_hex": "76 00",
+      "matches": true
+    },
+    {
+      "key": "216",
+      "pid": 216,
+      "index": null,
+      "name": "PID_PNT_MONITOR",
+      "value": "HEX 원본 참조",
+      "hex": "00 00 00 00 00 00 00 00 00 21 00 00 00 00",
+      "actual_hex": "00 00 00 04 00 00 00 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "221",
+      "pid": 221,
+      "index": null,
+      "name": "PID_MAX_RPM",
+      "value": "400",
+      "hex": "90 01",
+      "actual_hex": "90 01",
+      "matches": true
+    },
+    {
+      "key": "222",
+      "pid": 222,
+      "index": null,
+      "name": "PID_SPEED_LIMIT",
+      "value": "최저=5, 최고=1000",
+      "hex": "05 00 e8 03",
+      "actual_hex": "05 00 e8 03",
+      "matches": true
+    },
+    {
+      "key": "223",
+      "pid": 223,
+      "index": null,
+      "name": "PID_MIN_RPM",
+      "value": "1",
+      "hex": "01 00",
+      "actual_hex": "01 00",
+      "matches": true
+    },
+    {
+      "key": "228",
+      "pid": 228,
+      "index": null,
+      "name": "PID_MIN_LIMIT_POS",
+      "value": "0",
+      "hex": "00 00 00 00",
+      "actual_hex": "00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "229",
+      "pid": 229,
+      "index": null,
+      "name": "PID_ALARM_LOG",
+      "value": "HEX 원본 참조",
+      "hex": "21 00 00 00 01 00 14 00 05 09 00 00",
+      "actual_hex": "83 01 00 00 02 00 00 00 00 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "230",
+      "pid": 230,
+      "index": null,
+      "name": "PID_REF_POSI",
+      "value": "0",
+      "hex": "00 00 00 00",
+      "actual_hex": "fd ff ff ff",
+      "matches": false
+    },
+    {
+      "key": "231",
+      "pid": 231,
+      "index": null,
+      "name": "PID_POSI_MIN_LIMIT",
+      "value": "-1023",
+      "hex": "01 fc ff ff",
+      "actual_hex": "01 fc ff ff",
+      "matches": true
+    },
+    {
+      "key": "232",
+      "pid": 232,
+      "index": null,
+      "name": "PID_POSI_CEN",
+      "value": "0",
+      "hex": "00 00 00 00",
+      "actual_hex": "00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "233",
+      "pid": 233,
+      "index": null,
+      "name": "PID_POSI_MAX_LIMIT",
+      "value": "1023",
+      "hex": "ff 03 00 00",
+      "actual_hex": "ff 03 00 00",
+      "matches": true
+    },
+    {
+      "key": "234",
+      "pid": 234,
+      "index": null,
+      "name": "PID_TIME",
+      "value": "0",
+      "hex": "00 00 00 00",
+      "actual_hex": "79 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "235",
+      "pid": 235,
+      "index": null,
+      "name": "PID_TQ_GAIN",
+      "value": "P=10, I=20",
+      "hex": "0a 00 14 00",
+      "actual_hex": "0a 00 14 00",
+      "matches": true
+    },
+    {
+      "key": "239",
+      "pid": 239,
+      "index": null,
+      "name": "PID_FUNC_SPEED",
+      "value": "1000, 10",
+      "hex": "e8 03 0a 00",
+      "actual_hex": "e8 03 0a 00",
+      "matches": true
+    },
+    {
+      "key": "240",
+      "pid": 240,
+      "index": null,
+      "name": "PID_MAX_LIMIT_POS",
+      "value": "0",
+      "hex": "00 00 00 00",
+      "actual_hex": "00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "241",
+      "pid": 241,
+      "index": null,
+      "name": "PID_PNT_IO_MONITOR",
+      "value": "HEX 원본 참조",
+      "hex": "68 68 04 07 00 00 00 00 19 01 0a 66 00",
+      "actual_hex": "68 08 01 03 00 00 00 00 1b 01 0a 66 00",
+      "matches": false
+    },
+    {
+      "key": "249",
+      "pid": 249,
+      "index": null,
+      "name": "PID_INIT_SET_RPM",
+      "value": "300",
+      "hex": "2c 01",
+      "actual_hex": "2c 01",
+      "matches": true
+    },
+    {
+      "key": "250",
+      "pid": 250,
+      "index": null,
+      "name": "PID_FUNC_POSI",
+      "value": "1500, 240",
+      "hex": "dc 05 f0 00",
+      "actual_hex": "dc 05 f0 00",
+      "matches": true
+    },
+    {
+      "key": "225[1]",
+      "pid": 225,
+      "index": 1,
+      "name": "PID_STEP_INPUT",
+      "value": "57 rpm",
+      "hex": "01 39 00",
+      "actual_hex": "01 39 00",
+      "matches": true
+    },
+    {
+      "key": "225[2]",
+      "pid": 225,
+      "index": 2,
+      "name": "PID_STEP_INPUT",
+      "value": "114 rpm",
+      "hex": "02 72 00",
+      "actual_hex": "02 72 00",
+      "matches": true
+    },
+    {
+      "key": "225[3]",
+      "pid": 225,
+      "index": 3,
+      "name": "PID_STEP_INPUT",
+      "value": "171 rpm",
+      "hex": "03 ab 00",
+      "actual_hex": "03 ab 00",
+      "matches": true
+    },
+    {
+      "key": "225[4]",
+      "pid": 225,
+      "index": 4,
+      "name": "PID_STEP_INPUT",
+      "value": "228 rpm",
+      "hex": "04 e4 00",
+      "actual_hex": "04 e4 00",
+      "matches": true
+    },
+    {
+      "key": "225[5]",
+      "pid": 225,
+      "index": 5,
+      "name": "PID_STEP_INPUT",
+      "value": "285 rpm",
+      "hex": "05 1d 01",
+      "actual_hex": "05 1d 01",
+      "matches": true
+    },
+    {
+      "key": "225[6]",
+      "pid": 225,
+      "index": 6,
+      "name": "PID_STEP_INPUT",
+      "value": "342 rpm",
+      "hex": "06 56 01",
+      "actual_hex": "06 56 01",
+      "matches": true
+    },
+    {
+      "key": "225[7]",
+      "pid": 225,
+      "index": 7,
+      "name": "PID_STEP_INPUT",
+      "value": "400 rpm",
+      "hex": "07 90 01",
+      "actual_hex": "07 90 01",
+      "matches": true
+    },
+    {
+      "key": "226[1]",
+      "pid": 226,
+      "index": 1,
+      "name": "PID_CURVE_PT",
+      "value": "x=0, y=0",
+      "hex": "01 00 00 00 00",
+      "actual_hex": "01 00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "226[2]",
+      "pid": 226,
+      "index": 2,
+      "name": "PID_CURVE_PT",
+      "value": "x=0, y=0",
+      "hex": "02 00 00 00 00",
+      "actual_hex": "02 00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "226[3]",
+      "pid": 226,
+      "index": 3,
+      "name": "PID_CURVE_PT",
+      "value": "x=0, y=0",
+      "hex": "03 00 00 00 00",
+      "actual_hex": "03 00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "226[4]",
+      "pid": 226,
+      "index": 4,
+      "name": "PID_CURVE_PT",
+      "value": "x=0, y=0",
+      "hex": "04 00 00 00 00",
+      "actual_hex": "04 00 00 00 00",
+      "matches": true
+    },
+    {
+      "key": "227[1]",
+      "pid": 227,
+      "index": 1,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "01 00 00 00 00 00 00 00 00",
+      "actual_hex": "01 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[2]",
+      "pid": 227,
+      "index": 2,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "02 00 00 00 00 00 00 00 00",
+      "actual_hex": "02 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[3]",
+      "pid": 227,
+      "index": 3,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "03 00 00 00 00 00 00 00 00",
+      "actual_hex": "03 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[4]",
+      "pid": 227,
+      "index": 4,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "04 00 00 00 00 00 00 00 00",
+      "actual_hex": "04 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[5]",
+      "pid": 227,
+      "index": 5,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "05 00 00 00 00 00 00 00 00",
+      "actual_hex": "05 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[6]",
+      "pid": 227,
+      "index": 6,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "06 00 00 00 00 00 00 00 00",
+      "actual_hex": "06 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[7]",
+      "pid": 227,
+      "index": 7,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "07 00 00 00 00 00 00 00 00",
+      "actual_hex": "07 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[8]",
+      "pid": 227,
+      "index": 8,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "08 00 00 00 00 00 00 00 00",
+      "actual_hex": "08 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[9]",
+      "pid": 227,
+      "index": 9,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "09 00 00 00 00 00 00 00 00",
+      "actual_hex": "09 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[10]",
+      "pid": 227,
+      "index": 10,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "0a 00 00 00 00 00 00 00 00",
+      "actual_hex": "0a 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[11]",
+      "pid": 227,
+      "index": 11,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "0b 00 00 00 00 00 00 00 00",
+      "actual_hex": "0b 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[12]",
+      "pid": 227,
+      "index": 12,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "0c 00 00 00 00 00 00 00 00",
+      "actual_hex": "0c 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[13]",
+      "pid": 227,
+      "index": 13,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "0d 00 00 00 00 00 00 00 00",
+      "actual_hex": "0d 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[14]",
+      "pid": 227,
+      "index": 14,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "0e 00 00 00 00 00 00 00 00",
+      "actual_hex": "0e 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[15]",
+      "pid": 227,
+      "index": 15,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "0f 00 00 00 00 00 00 00 00",
+      "actual_hex": "0f 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[16]",
+      "pid": 227,
+      "index": 16,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "10 00 00 00 00 00 00 00 00",
+      "actual_hex": "10 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[17]",
+      "pid": 227,
+      "index": 17,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "11 00 00 00 00 00 00 00 00",
+      "actual_hex": "11 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[18]",
+      "pid": 227,
+      "index": 18,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "12 00 00 00 00 00 00 00 00",
+      "actual_hex": "12 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[19]",
+      "pid": 227,
+      "index": 19,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "13 00 00 00 00 00 00 00 00",
+      "actual_hex": "13 04 00 00 00 b7 00 00 00",
+      "matches": false
+    },
+    {
+      "key": "227[20]",
+      "pid": 227,
+      "index": 20,
+      "name": "PID_PRESET_DATA",
+      "value": "M1=0, M2=0",
+      "hex": "14 00 00 00 00 00 00 00 00",
+      "actual_hex": "14 04 00 00 00 b7 00 00 00",
+      "matches": false
+    }
+  ]
+}
