@@ -59,6 +59,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     autostart = LaunchConfiguration('autostart')
     log_level = LaunchConfiguration('log_level')
+    use_rviz = LaunchConfiguration('use_rviz')
 
     declare_map_arg = DeclareLaunchArgument(
         'map',
@@ -112,6 +113,11 @@ def generate_launch_description():
         declare_use_sim_time_arg,
         declare_autostart_arg,
         declare_log_level_arg,
+        DeclareLaunchArgument(
+            'use_rviz',
+            default_value='false',
+            description='Run RViz on this machine; leave false for laptop RViz'
+        ),
 
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(serial_launch)
@@ -164,6 +170,7 @@ def generate_launch_description():
                 IncludeLaunchDescription(
                     PythonLaunchDescriptionSource(navigation_launch),
                     launch_arguments={
+                        'use_rviz': use_rviz,
                         'params_file': params_file,
                         'use_sim_time': use_sim_time,
                         'autostart': autostart,

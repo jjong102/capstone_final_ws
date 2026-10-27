@@ -15,6 +15,7 @@
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
 
   <exec_depend>amr_msgs</exec_depend>
   <exec_depend>aruco_interfaces</exec_depend>

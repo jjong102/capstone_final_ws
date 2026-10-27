@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CycloneDDS xmlns="https://cdds.io/config">
+  <Domain id="any">
+    <General>
+      <Interfaces>
+        <NetworkInterface name="eno1" />
+        <NetworkInterface name="wlP1p1s0" presence_required="false" />
+      </Interfaces>
+      <AllowMulticast>false</AllowMulticast>
+    </General>
+    <Discovery>
+      <ParticipantIndex>auto</ParticipantIndex>
+      <MaxAutoParticipantIndex>50</MaxAutoParticipantIndex>
+      <Peers>
+        <!-- 같은 젯슨의 노드끼리 발견. 멀티캐스트를 끈 상태라 자기 주소가 필요합니다. -->
+        <Peer Address="192.168.10.2" />
+        <Peer Address="192.168.10.1" />
+        <Peer Address="10.96.151.196" />
+        <Peer Address="10.96.147.234" />
+      </Peers>
+    </Discovery>
+  </Domain>
+</CycloneDDS>

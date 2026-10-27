@@ -41,6 +41,16 @@ def generate_launch_description():
     )
     ld.add_action(node_robot_state_publisher)
 
+    # Publish wheel joint positions so robot_state_publisher can create wheel TFs.
+    node_joint_state_publisher = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher',
+        output='screen',
+        parameters=[params]
+    )
+    ld.add_action(node_joint_state_publisher)
+
     # Add rviz node
     # node_rviz = Node(
     #     package='rviz2',

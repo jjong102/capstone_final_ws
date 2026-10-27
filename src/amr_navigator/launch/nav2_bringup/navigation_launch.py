@@ -256,6 +256,7 @@ def generate_launch_description():
      # Add rviz node
     pkg_path = os.path.join(get_package_share_directory('amr_navigator'))
     node_rviz = Node(
+        condition=IfCondition(LaunchConfiguration('use_rviz')),
         package='rviz2',
         executable='rviz2',
         name='rviz2',
@@ -268,6 +269,10 @@ def generate_launch_description():
     # Set environment variables
     ld.add_action(stdout_linebuf_envvar)
 
+    ld.add_action(DeclareLaunchArgument(
+        'use_rviz', default_value='true',
+        description='Run RViz on the machine executing this launch file'
+    ))
     ld.add_action(node_rviz)
 
     # Declare the launch options

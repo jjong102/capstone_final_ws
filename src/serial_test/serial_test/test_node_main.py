@@ -33,6 +33,13 @@ class Nodelet(Node):
         self.odom_pub = self.create_publisher(Odometry, '/wheel/odometry', 10)
         self.sub_joy = self.create_subscription(Joy, '/joy', self.joy_callback, 100)
         self.sub_cmd_vel = self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 100)
+        # Opt-in supervision for third_impact; legacy launch defaults are unchanged.
+        self.command_timeout = float(self.declare_parameter('command_timeout', 0.0).value)
+        self.reset_on_stop = bool(self.declare_parameter('reset_on_stop', False).value)
+        self.last_velocity_command = time.monotonic()
+        mode_qos = QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL)
+        self.manual_control_pub = self.create_publisher(Bool, '/third_impact/manual_control', mode_qos)
+        self.create_timer(0.2, self.publish_control_mode)
         self.stm_pub = self.create_publisher(String, '/stm_command', 10)
 
         self.amr_data_distance = self.create_publisher(String, '/amr_data_distance', 10)
@@ -65,7 +72,7 @@ class Nodelet(Node):
         self.loopcnt = 0
 
         self.firstloop = True
-        self.JOY_CONTROL = False
+        self.JOY_CONTROL = bool(self.declare_parameter('initial_manual', False).value)
 
         # Motor driver class
         self.md = MotorDriver()
@@ -167,6 +174,10 @@ class Nodelet(Node):
 
     def timer_callback(self):
         self.loopcnt += 1
+        if (self.command_timeout > 0.0 and not self.JOY_CONTROL and not self.firstloop
+                and time.monotonic() - self.last_velocity_command > self.command_timeout):
+            self.target_pos1 = self.md.pos1
+            self.target_pos2 = self.md.pos2
 
         # self.md.version_check()
         # self.md.recv_read_this()
@@ -547,10 +558,19 @@ class Nodelet(Node):
 
 
     def cmd_vel_callback(self, msg):
+        now = time.monotonic()
+        elapsed = min(0.1, max(0.0, now - self.last_velocity_command))
+        self.last_velocity_command = now
         if not self.JOY_CONTROL:
             linear_velocity = msg.linear.x
             angular_velocity = msg.angular.z
             control_dt = 0.05
+            if self.command_timeout > 0.0:
+                control_dt = elapsed
+            if self.reset_on_stop and abs(linear_velocity) < 1e-9 and abs(angular_velocity) < 1e-9:
+                self.target_pos1 = self.md.pos1
+                self.target_pos2 = self.md.pos2
+                return
             alpha = 0.9
             beta = 0.9
 
@@ -690,6 +710,9 @@ class Nodelet(Node):
    ###############################################################################
    
 
+    def publish_control_mode(self):
+        self.manual_control_pub.publish(Bool(data=self.JOY_CONTROL))
+
     def joy_callback(self, msg):
         self.joy_fb = msg.axes[1]
         self.joy_lr = msg.axes[2]
@@ -775,6 +798,8 @@ class Nodelet(Node):
             self.vel_input2 = 0.0
 
             self.JOY_CONTROL = not self.JOY_CONTROL
+            self.last_velocity_command = time.monotonic()
+            self.publish_control_mode()
             self.get_logger().info(f"{'!!!!!!!!!!!Joystick_control!!!!!!!!!!!!' if self.JOY_CONTROL else '!!!!!!!!!!!!AUTO!!!!!!!!!!!!'}")
 
         elif self.joy_r2 == 1 and self.joy_l2 == 1:

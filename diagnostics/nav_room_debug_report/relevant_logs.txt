@@ -1,0 +1,35 @@
+/home/moonshot/.ros/log/controller_server_24132_1791890471934.log
+[ERROR] [1791891934.381855536] [controller_server]: Failed to make progress
+[WARN] [1791891934.382372694] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791891934.636317491] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791891944.637715270] [controller_server]: Failed to make progress
+[WARN] [1791891944.638126179] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791891944.659817195] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791891954.767008795] [controller_server]: Failed to make progress
+[WARN] [1791891954.768319065] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791891969.858693671] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791891979.861949155] [controller_server]: Failed to make progress
+[WARN] [1791891979.862315260] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791891979.879808675] [controller_server]: Received a goal, begin computing control effort.
+[ERROR] [1791891989.980537273] [controller_server]: Failed to make progress
+[WARN] [1791891989.980959318] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[INFO] [1791891998.648093617] [controller_server]: Received a goal, begin computing control effort.
+[INFO] [1791892000.568774388] [controller_server]: Reached the goal!
+/home/moonshot/.ros/log/behavior_server_24138_1791890471939.log
+[INFO] [1791891934.395523548] [behavior_server]: Running backup
+[WARN] [1791891934.396489219] [behavior_server]: Collision Ahead - Exiting DriveOnHeading
+[WARN] [1791891934.396564296] [behavior_server]: backup failed
+[WARN] [1791891934.396592490] [behavior_server]: [backup] [ActionServer] Aborting handle.
+[INFO] [1791891954.785880774] [behavior_server]: Running spin
+[INFO] [1791891954.788127464] [behavior_server]: Turning 1.57 for spin behavior.
+[WARN] [1791891964.789793424] [behavior_server]: Exceeded time allowance before reaching the Spin goal - Exiting Spin
+[WARN] [1791891964.789942683] [behavior_server]: spin failed
+[WARN] [1791891964.789998655] [behavior_server]: [spin] [ActionServer] Aborting handle.
+[INFO] [1791891964.805601684] [behavior_server]: Running wait
+[INFO] [1791891969.805958711] [behavior_server]: wait completed successfully
+[INFO] [1791891989.995568201] [behavior_server]: Running backup
+[WARN] [1791891998.398249521] [behavior_server]: Collision Ahead - Exiting DriveOnHeading
+[WARN] [1791891998.398384058] [behavior_server]: backup failed
+[WARN] [1791891998.398420796] [behavior_server]: [backup] [ActionServer] Aborting handle.
+/home/moonshot/.ros/log/bt_navigator_24140_1791890471990.log
+[INFO] [1791892000.604748240] [bt_navigator]: Goal succeeded
