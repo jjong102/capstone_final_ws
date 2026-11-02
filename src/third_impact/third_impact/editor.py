@@ -15,12 +15,14 @@ def orientation(pose, angle):
 
 
 class RectangleEditor:
-    def __init__(self, node):
-        self.server = InteractiveMarkerServer(node, 'third_impact/rectangle')
+    def __init__(self, node, namespace='third_impact/rectangle', color=(1., .4, .1), size=1.):
+        self.server = InteractiveMarkerServer(node, namespace)
+        self.color = color
+        self.default_size = size
         self.rect = None
 
     def reset(self, pose, rectangle=None):
-        self.rect = list(rectangle) if rectangle else [*pose, 1., 1.]
+        self.rect = list(rectangle) if rectangle else [*pose, self.default_size, self.default_size]
         self.render()
 
     def render(self):
@@ -38,7 +40,8 @@ class RectangleEditor:
         box = Marker(); box.type = Marker.CUBE
         box.pose.orientation.w = 1.; box.pose.position.z = .025
         box.scale.x, box.scale.y, box.scale.z = width, height, .05
-        box.color.r, box.color.g, box.color.a = 1., .5, .35
+        box.color.r, box.color.g, box.color.b = self.color
+        box.color.a = .25
         visual.markers.append(box)
         visual.name = 'move'; visual.interaction_mode = InteractiveMarkerControl.MOVE_PLANE
         visual.orientation.w = math.sqrt(.5); visual.orientation.y = math.sqrt(.5)

@@ -55,7 +55,7 @@ def test_changed_scene_rejects_even_previously_confident_result():
 
 
 def test_mission_gate_rejects_missing_stale_or_unverified_localization():
-    n=NS(p={'require_localization_ready':True}, localization_stamp=0.,localization_info={'ready':True})
+    n=NS(odom_stamp=0.,manual_stamp=0.,p={'require_localization_ready':True}, localization_stamp=0.,localization_info={'ready':True})
     assert not ImpactNode.healthy(n)
     n.localization_stamp=time.monotonic(); n.localization_info={'ready':False}
     assert not ImpactNode.healthy(n)

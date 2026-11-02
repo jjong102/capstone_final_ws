@@ -6,6 +6,8 @@
 #include <sensor_msgs/msg/point_cloud2.hpp>
 #include <sensor_msgs/point_cloud2_iterator.hpp>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <tf2_ros/buffer.h>
+#include <tf2_ros/transform_listener.h>
 
 #include <cmath>
 #include <string>
@@ -20,6 +22,8 @@ public:
   {
     initialize_params();
     refresh_params();
+    tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
+    tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
 
     laser1_ = std::make_shared<sensor_msgs::msg::LaserScan>();
     laser2_ = std::make_shared<sensor_msgs::msg::LaserScan>();
@@ -72,6 +76,25 @@ private:
   void update_point_cloud_rgb()
   {
     refresh_params();
+    tf2::Transform sensor1_to_cloud, sensor2_to_cloud;
+    if (use_tf_transforms_) {
+      try {
+        if (show1_ && !laser1_->ranges.empty()) {
+          tf2::fromMsg(tf_buffer_->lookupTransform(
+              cloudFrameId_, laser1_->header.frame_id, tf2::TimePointZero).transform,
+              sensor1_to_cloud);
+        }
+        if (show2_ && !laser2_->ranges.empty()) {
+          tf2::fromMsg(tf_buffer_->lookupTransform(
+              cloudFrameId_, laser2_->header.frame_id, tf2::TimePointZero).transform,
+              sensor2_to_cloud);
+        }
+      } catch (const tf2::TransformException & error) {
+        RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 5000,
+                            "Waiting for URDF sensor transforms: %s", error.what());
+        return;
+      }
+    }
     pcl::PointCloud<pcl::PointXYZRGB> cloud_;
     std::vector<pcl::PointXYZRGB> points;
     std::vector<std::array<float, 2>> scan_data;
@@ -94,7 +117,7 @@ private:
         pcl::PointXYZRGB pt;
         pt = pcl::PointXYZRGB(laser1R_, laser1G_, laser1B_);
         int used_count_ = count;
-        if (flip1_)
+        if (flip1_ && !use_tf_transforms_)
         {
           used_count_ = (int)laser1_->ranges.size() - 1 - count;
         }
@@ -105,6 +128,10 @@ private:
         pt.y =
             temp_x * std::sin(laser1Alpha_ * M_PI / 180) + temp_y * std::cos(laser1Alpha_ * M_PI / 180) + laser1YOff_;
         pt.z = laser1ZOff_;
+        if (use_tf_transforms_) {
+          const auto point = sensor1_to_cloud * tf2::Vector3(temp_x, temp_y, 0.0);
+          pt.x = point.x(); pt.y = point.y(); pt.z = point.z();
+        }
         if ((i < (laser1AngleMin_ * M_PI / 180)) || (i > (laser1AngleMax_ * M_PI / 180)))
         {
           if (inverse1_)
@@ -169,7 +196,7 @@ private:
         pt = pcl::PointXYZRGB(laser2R_, laser2G_, laser2B_);
 
         int used_count_ = count;
-        if (flip2_)
+        if (flip2_ && !use_tf_transforms_)
         {
           used_count_ = (int)laser2_->ranges.size() - 1 - count;
         }
@@ -181,6 +208,10 @@ private:
         pt.y =
             temp_x * std::sin(laser2Alpha_ * M_PI / 180) + temp_y * std::cos(laser2Alpha_ * M_PI / 180) + laser2YOff_;
         pt.z = laser2ZOff_;
+        if (use_tf_transforms_) {
+          const auto point = sensor2_to_cloud * tf2::Vector3(temp_x, temp_y, 0.0);
+          pt.x = point.x(); pt.y = point.y(); pt.z = point.z();
+        }
         if ((i < (laser2AngleMin_ * M_PI / 180)) || (i > (laser2AngleMax_ * M_PI / 180)))
         {
           if (inverse2_)
@@ -327,6 +358,7 @@ private:
   }
   void initialize_params()
   {
+    this->declare_parameter("use_tf_transforms", true);
     this->declare_parameter("pointCloudTopic", "base/custom_cloud");
     this->declare_parameter("pointCloutFrameId", "laser");
 
@@ -360,6 +392,7 @@ private:
   }
   void refresh_params()
   {
+    this->get_parameter("use_tf_transforms", use_tf_transforms_);
     this->get_parameter_or<std::string>("pointCloudTopic", cloudTopic_, "pointCloud");
     this->get_parameter_or<std::string>("pointCloutFrameId", cloudFrameId_, "laser");
     this->get_parameter_or<std::string>("scanTopic1", topic1_, "lidar_front_right/scan");
@@ -391,6 +424,9 @@ private:
     this->get_parameter_or<bool>("inverse2", inverse2_, false);
   }
   
+  std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener_;
+  bool use_tf_transforms_ = true;
   std::string topic1_, topic2_, cloudTopic_, cloudFrameId_;
   bool show1_, show2_, flip1_, flip2_, inverse1_, inverse2_, is_lifted_ = false;
   float laser1XOff_, laser1YOff_, laser1ZOff_, laser1Alpha_, laser1AngleMin_, laser1AngleMax_;

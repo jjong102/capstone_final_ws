@@ -31,6 +31,22 @@ def inside_rectangle(point, rect):
     return abs(local[0]) <= rect[3]/2 and abs(local[1]) <= rect[4]/2
 
 
+def inside_patrol_region(point, rect, margin=0.):
+    """Contain a disk in a rotated allowed region (also safe during rotation)."""
+    local = relative(rect[:3], [point[0], point[1], 0.])
+    return (np.isfinite(local).all() and math.isfinite(margin) and margin >= 0.
+            and abs(local[0])+margin <= rect[3]/2
+            and abs(local[1])+margin <= rect[4]/2)
+
+
+def patrol_motion_allowed(pose, rect, vx, vy, half_length, half_width,
+                          margin=.05, horizon=1.):
+    # Any curved trajectory at this speed travels at most speed*horizon.
+    # A circumscribed disk covers all body headings, including recovery spins.
+    radius = math.hypot(half_length, half_width)+margin
+    return inside_patrol_region(pose, rect, radius+math.hypot(vx, vy)*horizon)
+
+
 def map_fingerprint(path):
     path = Path(path).expanduser().resolve()
     config = yaml.safe_load(path.read_text())
@@ -136,7 +152,7 @@ def alignment_command(error, xy_tolerance, yaw_tolerance, max_v=.035, max_w=.12)
     return v, w
 
 
-def swept_clear(points, v, w, half_length=.31, half_width=.24, margin=.04, horizon=1.):
+def swept_clear(points, v, w, half_length=.35, half_width=.22, margin=.04, horizon=1.):
     """Check swept rectangular footprint against measured obstacle returns."""
     if len(points) == 0:
         return False
@@ -157,3 +173,78 @@ def accepts_return(intent):
 
 def accepts_patrol(intent):
     return intent not in ('return',)
+
+
+def outside_exclusion(point, rect, margin=0.):
+    local = relative(rect[:3], [point[0], point[1], 0.])
+    distance = np.maximum(np.abs(local[:2])-np.asarray(rect[3:])/2, 0.)
+    return bool(np.isfinite(local).all() and math.isfinite(margin)
+                and np.linalg.norm(distance) > margin)
+
+
+def travel_allowed(pose, boundary, exclusion, vx, vy, half_length, half_width,
+                   horizon=1., angular=0.):
+    """Check the commanded curved trajectory, not a speed-expanded disk in all directions."""
+    if boundary is None or not np.isfinite([*pose, vx, vy, angular, horizon]).all() or horizon < 0:
+        return False
+    speed = math.hypot(vx, vy)
+    steps = max(1, math.ceil(speed*horizon/.02))
+    # Disk covers every body heading. Added half-step distance bounds the
+    # continuous center trajectory between samples, including curved segments.
+    radius = math.hypot(half_length, half_width)+.05+speed*horizon/(2*steps)
+    for t in np.linspace(0., horizon, steps+1):
+        if abs(angular) < 1e-8:
+            xy = [vx*t, vy*t]
+        else:
+            a = angular*t
+            xy = [(vx*math.sin(a)+vy*(math.cos(a)-1))/angular,
+                  (vx*(1-math.cos(a))+vy*math.sin(a))/angular]
+        point = transform(np.asarray([xy]), pose)[0]
+        if not inside_patrol_region(point, boundary, radius):
+            return False
+        if exclusion is not None and not outside_exclusion(point, exclusion, radius):
+            return False
+    return True
+
+
+def region_map(cells, resolution, origin, boundary, exclusion=None, extra_margin=0., start=None):
+    """Navigation-only virtual obstacles; never change the localization map."""
+    result = np.array(cells, copy=True)
+    if boundary is None:
+        result[:] = 100
+        return result
+    rows, cols = np.indices(result.shape)
+    points = transform(np.column_stack(((cols.ravel()+.5)*resolution,
+                                       (rows.ravel()+.5)*resolution)), origin)
+    def local(rect):
+        c, s = math.cos(rect[2]), math.sin(rect[2])
+        return (points-np.asarray(rect[:2])) @ np.array([[c,-s],[s,c]])
+    # Mark any cell touching a boundary conservatively.
+    if start is not None:
+        # Relax only the *additional planning* margin near a stopped start.
+        # Original occupied/unknown cells and the original zone stay blocked.
+        extra_margin = extra_margin*np.minimum(1., np.linalg.norm(points-np.asarray(start[:2]), axis=1)/.8)[:, None]
+    padding = resolution/math.sqrt(2)+extra_margin
+    allowed = np.all(np.abs(local(boundary))+padding <= np.asarray(boundary[3:])/2, axis=1)
+    if exclusion is not None:
+        allowed &= np.any(np.abs(local(exclusion)) > np.asarray(exclusion[3:])/2+padding, axis=1)
+    result.reshape(-1)[~allowed] = 100
+    return result
+
+
+def stationary_allowed_many(poses, boundary, exclusion, half_length, half_width):
+    """Vector equivalent of travel_allowed at zero velocity for each pose."""
+    poses = np.asarray(poses)
+    valid = np.isfinite(poses).all(axis=1)
+    radius = math.hypot(half_length, half_width)+.05
+    if boundary is None:
+        return np.zeros(len(poses), dtype=bool)
+    def local(rect):
+        c, s = math.cos(rect[2]), math.sin(rect[2])
+        return (poses[:,:2]-rect[:2]) @ np.array([[c,-s],[s,c]])
+    xy = local(boundary)
+    valid &= (np.abs(xy)+radius <= np.asarray(boundary[3:])/2).all(axis=1)
+    if exclusion is not None:
+        d = np.maximum(np.abs(local(exclusion))-np.asarray(exclusion[3:])/2,0.)
+        valid &= np.linalg.norm(d,axis=1)>radius
+    return valid

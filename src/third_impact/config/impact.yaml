@@ -1,11 +1,14 @@
 third_impact:
   ros__parameters:
     require_localization_ready: true  # stationary whole-map scan initialization before driving
-    xy_tolerance: 0.008  # estimated error; physical <1 cm requires field validation
+    xy_tolerance: 0.02  # estimated return-position error; physical accuracy requires field validation
     yaw_tolerance_deg: 5.0
     settle_seconds: 1.0
     capture_seconds: 2.0
-    align_radius: 0.4
+    return_max_speed: 0.6  # same limit for forward and reverse return
+    return_max_angular_speed: 0.35
+    return_obstacle_margin: 0.01  # footprint uncertainty allowance, not a wide wall clearance
+    align_radius: 0.4  # legacy; automatic return hands off within 6 cm
     patrol_tolerance: 0.05  # patrol only: ignore yaw and do not require settling
     max_align_v: 0.035
     max_align_w: 0.12
@@ -20,8 +23,8 @@ third_impact:
     odom_timeout: 0.3
     stopped_linear: 0.005
     stopped_angular: 0.01
-    footprint_half_length: 0.31
-    footprint_half_width: 0.24
+    footprint_half_length: 0.35
+    footprint_half_width: 0.22
     obstacle_margin: 0.04
     patrol_clearance: 0.45
     retry_seconds: 2.0

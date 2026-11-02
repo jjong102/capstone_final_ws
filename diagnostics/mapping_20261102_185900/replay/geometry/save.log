@@ -1,0 +1,166 @@
+1793614181.827376 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614181.827522 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614181.827536 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614181.827544 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614181.827551 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614181.827557 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614181.827562 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614181.827568 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614181.827575 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614181.827581 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614181.827587 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614181.827593 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614181.827599 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614181.827605 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614181.827611 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614181.827617 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614181.827624 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614181.827630 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614181.827636 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614181.827642 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614181.827648 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614181.827655 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614181.827661 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614181.827667 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614181.827673 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614181.827679 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614181.827686 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614181.827691 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614181.827698 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614181.827704 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614181.827710 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614181.827716 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614181.827724 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614181.827729 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614181.827736 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614181.827742 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614181.827749 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614181.827755 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614181.827762 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614181.827784 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614181.827792 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614181.827798 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614181.827805 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614181.827811 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614181.827817 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614181.827824 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614181.827830 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614181.827836 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614181.827843 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614181.827849 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614181.855264245] [map_saver]: 
+	map_saver lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1793614181.855617826] [map_saver]: Creating
+[INFO] [1793614181.856914961] [map_saver]: Configuring
+[INFO] [1793614181.861573657] [map_saver]: Saving map from 'map' topic to '/home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/geometry/map' file
+[WARN] [1793614181.862014216] [map_saver]: Free threshold unspecified. Setting it to default value: 0.250000
+[WARN] [1793614181.862061322] [map_saver]: Occupied threshold unspecified. Setting it to default value: 0.650000
+[WARN] [1793614181.867897244] [map_io]: Image format unspecified. Setting it to: pgm
+[INFO] [1793614181.868343180] [map_io]: Received a 354 X 429 map @ 0.03 m/pix
+1793614181.927445 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614181.927541 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614181.927555 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614181.927565 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614181.927573 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614181.927580 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614181.927587 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614181.927593 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614181.927600 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614181.927606 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614181.927611 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614181.927617 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614181.927624 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614181.927630 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614181.927636 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614181.927642 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614181.927649 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614181.927655 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614181.927661 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614181.927667 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614181.927707 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614181.927714 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614181.927721 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614181.927727 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614181.927734 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614181.927740 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614181.927747 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614181.927753 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614181.927759 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614181.927766 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614181.927772 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614181.927778 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614181.927786 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614181.927792 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614181.927798 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614181.927804 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614181.927811 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614181.927817 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614181.927823 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614181.927830 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614181.927837 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614181.927843 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614181.927850 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614181.927856 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614181.927863 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614181.927869 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614181.927875 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614181.927881 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614181.927887 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614181.927894 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614181.953897717] [map_io]: Writing map occupancy data to /home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/geometry/map.pgm
+[INFO] [1793614181.955734135] [map_io]: Writing map metadata to /home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/geometry/map.yaml
+[INFO] [1793614181.956003937] [map_io]: Map saved
+[INFO] [1793614181.956033090] [map_saver]: Map saved successfully
+[INFO] [1793614181.957907878] [map_saver]: Destroying
+1793614182.234770 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614182.234875 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614182.234895 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614182.234909 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614182.234961 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614182.234976 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614182.234990 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614182.235002 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614182.235015 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614182.235028 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614182.235040 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614182.235053 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614182.235065 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614182.235078 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614182.235090 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614182.235103 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614182.235116 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614182.235136 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614182.235148 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614182.235162 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614182.235175 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614182.235189 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614182.235204 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614182.235216 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614182.235229 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614182.235242 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614182.235254 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614182.235267 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614182.235279 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614182.235291 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614182.235304 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614182.235316 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614182.235331 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614182.235346 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614182.235358 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614182.235370 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614182.235383 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614182.235395 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614182.235407 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614182.235420 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614182.235432 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614182.235445 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614182.235474 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614182.235487 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614182.235500 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614182.235512 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614182.235526 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614182.235539 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614182.235552 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614182.235566 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3

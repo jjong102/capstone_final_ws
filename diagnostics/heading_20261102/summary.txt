@@ -1,0 +1,22 @@
+counts {'/third_impact/localization': 43, '/tf': 584, '/rplidar2/scan_filtered': 84, '/rplidar1/scan_filtered': 83, '/tf_static': 1, '/robot_description': 1, '/odom': 416, '/joy': 320, '/rplidar1/scan': 83, '/map': 1, '/imu/data': 831, '/amcl_pose': 37}
+/third_impact/localization {"state": "READY", "ready": true, "reason": "\ucd08\uae30 \uc704\uce58 \ud655\uc778 \uc644\ub8cc \u00b7 AMCL\uc774 \ud604\uc7ac \uc704\uce58\ub97c \ucd94\uc801\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.", "quality": {"valid": false, "overlap": 0.7679671457905544, "score": 0.028330360314466313}, "search": {"confident": true, "reason": "unique_match", "score": 0.00024590163384793234, "overlap": 0.951276102088167, "runner_score": null, "candidates": 1, "alternatives": [{"pose": [1.2674009794096839, -1.5174928661592793, -2.7218091996894915], "score": 0.00024590163384793234, "overlap": 0.951276102088167}], "elapsed": 1.365583618000528}}
+URDF exact match True
+static imu_link geometry_msgs.msg.Transform(translation=geometry_msgs.msg.Vector3(x=-0.0365, y=0.0, z=0.318), rotation=geometry_msgs.msg.Quaternion(x=1.0, y=0.0, z=0.0, w=-1.0341155355510722e-13))
+static lidar1_link geometry_msgs.msg.Transform(translation=geometry_msgs.msg.Vector3(x=0.311, y=0.0, z=0.0465), rotation=geometry_msgs.msg.Quaternion(x=0.0, y=0.9999996829318346, z=0.0, w=0.0007963267107332633))
+static lidar2_link geometry_msgs.msg.Transform(translation=geometry_msgs.msg.Vector3(x=-0.311, y=0.0, z=0.0465), rotation=geometry_msgs.msg.Quaternion(x=0.9999993658637698, y=-0.0007963264582434141, z=-0.0007963264582434141, w=-6.341362302272584e-07))
+/odom angular range -0.7060390700035823 0.6307710458018988
+/imu/data angular range -0.7230899091012507 0.6635741816082441
+/rplidar1/scan points 295 inside footprint 0
+pose [ 2.88099008  1.12973286 -1.49307505] best fixedXY yaw correction deg -1.0 score before/best 0.0 0.0
+/rplidar1/scan_filtered points 239 inside footprint 0
+pose [ 2.88099008  1.12973286 -1.49307505] best fixedXY yaw correction deg 0.25 score before/best 0.00014778324792831402 0.0
+/rplidar2/scan_filtered points 303 inside footprint 0
+pose [ 2.88099    1.1297347 -1.4930751] best fixedXY yaw correction deg 0.25 score before/best 0.0547497400331299 0.053927008268586284
+amcl covariance 0.0006773802390131311
+yaw offset -15 occupied endpoints fraction 0.424 mean capped occupied distance 0.152 mean capped boundary distance 0.1972
+yaw offset -10 occupied endpoints fraction 0.485 mean capped occupied distance 0.1074 mean capped boundary distance 0.171
+yaw offset -5 occupied endpoints fraction 0.651 mean capped occupied distance 0.0495 mean capped boundary distance 0.1244
+yaw offset 0 occupied endpoints fraction 0.858 mean capped occupied distance 0.0189 mean capped boundary distance 0.1101
+yaw offset 5 occupied endpoints fraction 0.8 mean capped occupied distance 0.0445 mean capped boundary distance 0.1922
+yaw offset 10 occupied endpoints fraction 0.736 mean capped occupied distance 0.0617 mean capped boundary distance 0.2395
+yaw offset 15 occupied endpoints fraction 0.712 mean capped occupied distance 0.0698 mean capped boundary distance 0.259

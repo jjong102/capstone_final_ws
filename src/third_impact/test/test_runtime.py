@@ -49,6 +49,8 @@ def test_teaching_and_arrival(tmp_path, monkeypatch):
         node.capture()
         assert node.data is not None
         assert node.data['rectangle'] is None
+        node.boundary_editor.rect = [0.,0.,0.,10.,10.]
+        node.on_boundary(Empty())
         node.editor.rect = [1., 2., .5, 3., 4.]
         node.on_region(Empty())
         assert node.data['rectangle'] == [1., 2., .5, 3., 4.]

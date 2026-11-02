@@ -1,0 +1,83 @@
+분석 대상: src/amr_navigator/debug_log/20261102_185900_195315
+분석일: 2026-11-02 (Asia/Seoul)
+원본 bag과 설정 스냅샷은 수정하지 않음.
+
+확인한 증거
+- 52.56초, 총 41,111 메시지. LiDAR 약 10 Hz, IMU 약 100 Hz, EKF 약 50 Hz.
+- 기록 당시 /robot_description은 사용자가 지정한 URDF와 바이트 단위로 일치.
+  정적 LiDAR/IMU TF도 해당 URDF와 일치. /tf 발행 노드는 robot_state_publisher,
+  EKF, Cartographer이며 각각 바퀴, odom->base_link, map->odom 담당.
+- 사용자가 URDF 치수(바퀴 직경 0.13 m, 중심 간격 0.392 m)를 실측값으로 확인.
+  구동 코드는 0.17 m / 0.272 m를 사용하므로 불일치.
+- 휠 odometry 누적 yaw -2113.125도, EKF -1106.462도.
+  URDF 치수로 휠 회전량을 환산하면 -1121.25도.
+- 앞 LiDAR 연속 스캔 간 robust ICP 추정 누적 yaw -1115.424도.
+  이 값은 별도 추정이며 지상 진실/실측 기준은 아님.
+- 전진 구간(첫 EKF 기준 약 32.5~35.3초)의 EKF/scan-ICP 전진 속도 비율
+  중앙값 약 1.406. 직경을 13/17로 환산하면 약 1.075.
+  비교 시 scan 중간 시각을 근사 적용했으며 남은 오차는 미확정.
+- 제자리 회전 구간은 약 -38도/초, 스캔 한 주기 약 0.10초 동안 약 3.8도 회전.
+  한 점에서 여러 바퀴 회전한 후 전진하고 다시 회전한 사용자의 설명과 일치.
+- IMU 앞 4개 값의 norm: 0.999933~1.000070. 사용자가 출력 순서를 z,y,x,w로 확인.
+  기존 코드는 앞 3개를 degree Euler로 해석해 잘못된 orientation을 발행.
+  gyro 인덱스 4,5,6은 이번 데이터에 맞음. gyro Z 적분은 +1106.46도이며
+  URDF의 roll=pi를 적용한 EKF 회전 부호/크기는 LiDAR와 대체로 일치.
+  현재 EKF는 각속도만 사용하고 orientation/가속도는 융합하지 않으므로
+  orientation 파싱 오류를 이번 겹벽의 직접 원인이라고 할 수는 없음.
+- EKF frequency 경고는 초기 약 3.4초까지. 지속적인 고부하/디스크 부족이나
+  매핑 중 TF 유실이 주원인이라는 근거는 확인하지 못함.
+- LiDAR receipt-header 약 0.10초는 scan_time과 비슷함. 이를 곧바로 통신 지연
+  오류로 해석하면 안 됨. 스캔 시간 순서/장착의 추가 보정 필요 여부는 미확정.
+
+판단
+확정된 직접 입력 문제는 바퀴 치수 불일치로 인한 odometry 이동 스케일 오류.
+회전 중 잔여 정합 오차도 남아 있다. gyro와 scan-ICP 누적각 차이 약 9도,
+제한된 반쪽 LiDAR 시야, 빠른 반복 회전, 회전 prior 가중치 250과 correlative
+scan matching 비활성화가 추가 확인 대상이다. 이것들을 모두 원인으로 확정하거나
+치수/IMU 형식 수정만으로 완전 해결했다고 주장할 수는 없다.
+
+동일 bag 재생 비교
+replay/baseline: 기록 odom 및 기존 Cartographer 설정.
+replay/geometry: /odom의 x/y 및 전진속도와 odom->base_link x/y를 13/17로 환산.
+  EKF의 gyro 기반 yaw는 유지. 실제 EKF 전체를 재실행한 것은 아니므로 근사 비교.
+replay/geometry_scanmatch: 위 조건 + online correlative=true, rotation_weight=40.
+세 경우 모두 입력은 같은 실제 scan. 기존 map->odom TF는 제외하고 독립 ROS
+도메인 174에서 재생. 모터/실제 센서 노드를 실행하지 않았음.
+치수 보정 및 scan matching 시험으로 일부 벽이 더 얇아졌으나 잔여 이중벽 존재.
+운영 Cartographer 설정은 아직 변경하지 않음. 비교 맵은 진단용이며 주행용 아님.
+map_comparison.png / motion_comparison.png 참고.
+
+반영한 수정
+- serial_test의 실제 test_node_main: URDF에서 바퀴 직경/간격을 읽어 기본값 사용.
+  파라미터로 노출해 다음 로그에서 실효값 확인 가능. 별도 marker 동작의 중복
+  직경/간격 값도 같은 값을 사용. 과거/백업/미실행 드라이버는 변경하지 않음.
+- EBIMU: quaternion z,y,x,w -> ROS x,y,z,w로 변환, 정규화/유효성 검사.
+  orientation_format=euler를 명시하면 기존 Euler 출력 장치도 사용 가능.
+  gyro 융합 설정/부호와 gyro 인덱스는 유지.
+- third_impact Nav2 local/global footprint 및 자체 충돌 검사: 70x44 cm 통일.
+  기존 footprint_padding=0.01 등 별도 안전 여유는 유지.
+- URDF 왼쪽 바퀴 collision 반지름 0 -> visual과 같은 0.065 m, 오래된 IMU 위치
+  주석 수정. LiDAR/IMU의 실제 위치/회전 및 wheel joint 위치는 유지.
+- 별도 ros2_laser_scan_merger: URDF TF의 full pitch/roll/yaw를 기본 적용.
+  기존 수동 XY/yaw만 적용하던 경로는 뒤집힌 LiDAR의 pitch를 누락했음.
+  use_tf_transforms=false일 때만 기존 수동 offsets/Alpha/flip을 사용.
+  이 병합기는 이번 generate_map 경로에 없으므로 이번 맵의 직접 원인은 아님.
+- log 옵션: 이미 --all로 /joy 및 발행되는 /cmd_vel을 기록함.
+  이번 /joy 1152개, /cmd_vel은 bag에 없음(조이스틱 직접 구동 경로).
+  runtime snapshot에 /joy, /cmd_vel endpoint/QoS 및 joy_node 파라미터 추가.
+
+재검증
+수정 패키지를 빌드하고 source install/setup.bash 후 기존 mapping 명령 사용.
+먼저 정지 5초 -> 느린 90도/360도 회전 -> 직선 1 m -> 정지 순으로 기록 권장.
+첫 비교는 회전 0.1~0.2 rad/s, 전진 0.1~0.2 m/s 정도로 진행.
+다음 로그에서 wheel_diameter=0.13, wheel_separation=0.392,
+orientation_format=quaternion, quaternion_field_indices=2,1,0,3 확인.
+물리적인 바퀴 직경/간격은 이제 수정했으나 실제 로봇 주행 검증은 아직 하지 않음.
+
+검증 결과
+- 관련 Python 회귀 테스트 36개 통과.
+- amr, serial_test, ebimu_pkg, third_impact, all_in_one_package,
+  ros2_laser_scan_merger 빌드 성공 (--base-paths src 사용).
+- 독립 ROS 도메인 175에서 합성 LiDAR 두 개의 병합 좌표가 URDF pitch/yaw의
+  예상 좌표와 1e-5 m 이내 일치함을 확인. 실제 하드웨어는 실행하지 않음.
+- 기존 SciPy/NumPy 버전 경고 및 merger 기존 컴파일 경고가 있으나 검증은 통과.

@@ -29,7 +29,7 @@ class Recorder(Node):
                    '--qos-profile-overrides-path', str(qos), '-o', str(self.folder/'bag')]
         self.process = subprocess.Popen(command, stdout=self.output, stderr=subprocess.STDOUT, start_new_session=True)
         self.reported_exit = False
-        for topic in ('/third_impact/status', '/third_impact/events'):
+        for topic in ('/third_impact/status', '/third_impact/events', '/third_impact/oscillation', '/third_impact/drive_debug'):
             self.create_subscription(String, topic, lambda msg, t=topic: self.write(t, msg.data), 100)
         self.snapshot_stop = threading.Event()
         self.worker = threading.Thread(target=self.snapshot, daemon=True); self.worker.start()

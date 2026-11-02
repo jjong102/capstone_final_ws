@@ -1,0 +1,21 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1793616235.611012224] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1793616235.628985341] [rosbag2_storage]: Opened database 'diagnostics/heading_20261102/live_1793616235001520291/live_1793616235001520291_0.db3' for READ_WRITE.
+[INFO] [1793616235.633711435] [rosbag2_recorder]: Listening for topics...
+[INFO] [1793616235.640876482] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1793616235.644533904] [rosbag2_recorder]: Subscribed to topic '/third_impact/localization'
+[INFO] [1793616235.649940307] [rosbag2_recorder]: Subscribed to topic '/tf'
+[INFO] [1793616235.655013452] [rosbag2_recorder]: Subscribed to topic '/rplidar2/scan_filtered'
+[INFO] [1793616235.659759610] [rosbag2_recorder]: Subscribed to topic '/rplidar1/scan_filtered'
+[INFO] [1793616235.668585188] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+[INFO] [1793616235.674557208] [rosbag2_recorder]: Subscribed to topic '/robot_description'
+[INFO] [1793616235.679426250] [rosbag2_recorder]: Subscribed to topic '/odom'
+[INFO] [1793616235.683707179] [rosbag2_recorder]: Subscribed to topic '/joy'
+[INFO] [1793616235.689810338] [rosbag2_recorder]: Subscribed to topic '/rplidar1/scan'
+[INFO] [1793616235.695405963] [rosbag2_recorder]: Subscribed to topic '/map'
+[INFO] [1793616235.700986803] [rosbag2_recorder]: Subscribed to topic '/imu/data'
+[INFO] [1793616235.705418584] [rosbag2_recorder]: Subscribed to topic '/amcl_pose'
+[INFO] [1793616235.706346260] [rosbag2_recorder]: Recording...
+[INFO] [1793616235.717348287] [rosbag2_recorder]: All requested topics are subscribed. Stopping discovery...
+[INFO] [1793616244.010424163] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[INFO] [1793616244.013289337] [rosbag2_recorder]: Event publisher thread: Exiting
+[INFO] [1793616244.013713638] [rosbag2_recorder]: Recording stopped

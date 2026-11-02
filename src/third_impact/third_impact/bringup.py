@@ -63,7 +63,7 @@ def start(context, mode):
         RegisterEventHandler(OnProcessExit(target_action=supervisor,
             on_exit=[EmitEvent(event=Shutdown(reason='third_impact supervisor exited'))])),
         Node(package='serial_test', executable='test_node', name='test_node', output='screen',
-             parameters=[{'initial_manual': mode == 'teach', 'command_timeout': .3, 'reset_on_stop': True}]),
+             parameters=[{'initial_manual': mode == 'teach', 'command_timeout': .3, 'reset_on_stop': True, 'drive_debug': LaunchConfiguration('log', default='false').perform(context).lower() == 'true'}]),
         Node(package='joy', executable='joy_node', name='joy_node', output='screen'),
         Node(package='robot_state_publisher', executable='robot_state_publisher', parameters=[{'robot_description': urdf}]),
         Node(package='joint_state_publisher', executable='joint_state_publisher'),
@@ -78,6 +78,7 @@ def start(context, mode):
         supervisor,
     ]
     if mode == 'mission':
+        log_enabled = LaunchConfiguration('log', default='false').perform(context).lower() == 'true'
         specifications = [
             ('nav2_controller', 'controller_server', [('cmd_vel', '/third_impact/nav_raw_cmd_vel')]),
             ('nav2_smoother', 'smoother_server', []),
@@ -91,7 +92,8 @@ def start(context, mode):
         nav = [Node(package=pkg, executable=name, name=name, output='screen',
                     parameters=[values['params_file'], {'use_sim_time': False}]
                     + ([{'patrol_goal_checker.xy_goal_tolerance': patrol_tolerance,
-                         'PatrolFollowPath.xy_goal_tolerance': patrol_tolerance}]
+                         'PatrolFollowPath.xy_goal_tolerance': patrol_tolerance,
+                         'PatrolFollowPath.Oscillation.debug_logging': log_enabled}]
                        if name == 'controller_server' else []), remappings=remap)
                for pkg, name, remap in specifications]
         nav.append(Node(package='nav2_lifecycle_manager', executable='lifecycle_manager', name='lifecycle_manager_navigation',

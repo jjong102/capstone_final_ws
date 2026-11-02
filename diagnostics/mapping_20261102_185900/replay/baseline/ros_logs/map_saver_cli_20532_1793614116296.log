@@ -1,0 +1,16 @@
+[INFO] [1793614116.321616238] [map_saver]: 
+	map_saver lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1793614116.322171010] [map_saver]: Creating
+[INFO] [1793614116.322618611] [map_saver]: Configuring
+[INFO] [1793614116.326253400] [map_saver]: Saving map from 'map' topic to '/home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/baseline/map' file
+[WARN] [1793614116.326523554] [map_saver]: Free threshold unspecified. Setting it to default value: 0.250000
+[WARN] [1793614116.326649607] [map_saver]: Occupied threshold unspecified. Setting it to default value: 0.650000
+[WARN] [1793614116.331321938] [map_io]: Image format unspecified. Setting it to: pgm
+[INFO] [1793614116.331580731] [map_io]: Received a 361 X 429 map @ 0.03 m/pix
+[INFO] [1793614116.414932108] [map_io]: Writing map occupancy data to /home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/baseline/map.pgm
+[INFO] [1793614116.416764975] [map_io]: Writing map metadata to /home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/baseline/map.yaml
+[INFO] [1793614116.417039385] [map_io]: Map saved
+[INFO] [1793614116.417093371] [map_saver]: Map saved successfully
+[INFO] [1793614116.420464055] [map_saver]: Destroying

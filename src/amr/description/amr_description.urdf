@@ -84,7 +84,7 @@
       <collision name="wheel_left_collision">
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <cylinder radius="0" length="0.046"/>
+          <cylinder radius="0.065" length="0.046"/>
         </geometry>
       </collision>
       <visual name="wheel_left_visual">
@@ -122,10 +122,8 @@
     </joint>
 
     <!--
-      IMU mount (interpreted from the user's measurement):
-      x = +0.0045 m  : robot front direction
-      y = +0.0025 m  : robot left direction
-      z = +0.1350 m  : robot up direction
+      IMU mount relative to base_link (matches imu_joint below):
+      x = -0.0365 m, y = 0.0 m, z = +0.3180 m.
 
       IMU axis mounting (IMU flipped 180 deg about its own local X axis,
       X axis kept pointing at robot front):

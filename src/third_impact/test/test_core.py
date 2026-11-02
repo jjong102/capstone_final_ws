@@ -76,3 +76,55 @@ def test_atomic_save_and_map_identity(tmp_path):
     with pytest.raises(ValueError):
         atomic_save(path, {'bad': float('nan')})
     assert json.loads(path.read_text()) == {'rectangle': None}
+
+
+def test_allowed_region_handles_rotation_and_motion_margin():
+    from third_impact.core import inside_patrol_region, patrol_motion_allowed
+    rect=[3.,-2.,math.pi/3,4.,2.]
+    point=transform(np.array([[0.,.8]]),rect[:3])[0]
+    assert inside_patrol_region(point,rect,.1)
+    assert not inside_patrol_region(point,rect,.3)
+    assert patrol_motion_allowed(rect[:3],rect,.3,0.,.35,.22)
+    assert not patrol_motion_allowed(rect[:3],rect,.6,0.,.35,.22)
+    assert not patrol_motion_allowed(rect[:3],rect,0.,.6,.35,.22)
+    assert not patrol_motion_allowed(rect[:3],rect,float('nan'),0.,.35,.22)
+
+
+def test_two_zone_policy_patrol_excludes_goal_but_return_can_enter():
+    from third_impact.core import travel_allowed
+    boundary=[0,0,0,10,10]; exclusion=[0,0,math.pi/4,2,2]
+    assert not travel_allowed([0,0,0],boundary,exclusion,0,0,.35,.22)
+    assert travel_allowed([0,0,0],boundary,None,0,0,.35,.22)
+    assert travel_allowed([3,0,0],boundary,exclusion,0,0,.35,.22)
+    assert not travel_allowed([5,0,0],boundary,None,0,0,.35,.22)
+    assert not travel_allowed([2.,0,0],boundary,exclusion,-.2,0,.35,.22)
+
+
+def test_navigation_map_masks_both_regions_without_changing_original():
+    from third_impact.core import region_map
+    cells=np.zeros((100,100),dtype=np.int8);cells[20,20]=-1
+    boundary=[5,5,0,8,8]; exclusion=[5,5,math.pi/4,2,2]
+    patrol=region_map(cells,.1,[0,0,0],boundary,exclusion)
+    returning=region_map(cells,.1,[0,0,0],boundary)
+    assert patrol[50,50]==100 and returning[50,50]==0
+    assert patrol[0,0]==returning[0,0]==100
+    assert patrol[20,20]==returning[20,20]==-1
+    assert patrol[30,30]==0 and np.count_nonzero(cells==100)==0
+    assert np.all(region_map(cells,.1,[0,0,0],None)==100)
+
+
+def test_directional_zone_guard_allows_departure_but_blocks_approach():
+    from third_impact.core import travel_allowed
+    boundary=[0,0,0,10,10]; exclusion=[0,0,0,2,2]
+    assert travel_allowed([1.55,0,0],boundary,exclusion,.6,0,.35,.22)
+    assert not travel_allowed([1.55,0,0],boundary,exclusion,-.6,0,.35,.22)
+    assert travel_allowed([4.4,0,0],boundary,None,-.6,0,.35,.22)
+    assert not travel_allowed([4.4,0,0],boundary,None,.6,0,.35,.22)
+
+
+def test_directional_guard_checks_curve_and_full_segment():
+    from third_impact.core import travel_allowed
+    boundary=[0,0,0,10,10]; exclusion=[0,0,0,1,1]
+    assert not travel_allowed([-2,0,0],boundary,exclusion,4,0,.35,.22)
+    assert travel_allowed([1.1,0,0],boundary,exclusion,0,.5,.35,.22)
+    assert not travel_allowed([1.1,0,0],boundary,exclusion,0,.5,.35,.22,angular=2.)

@@ -1,0 +1,827 @@
+1793614186.541744 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614186.542501 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614186.542535 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614186.542547 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614186.542555 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614186.542563 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614186.542570 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614186.542577 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614186.542585 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614186.542592 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614186.542600 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614186.542606 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614186.542613 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614186.542622 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614186.542630 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614186.542636 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614186.542644 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614186.542650 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614186.542658 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614186.542665 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614186.542672 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614186.542679 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614186.542686 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614186.542693 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614186.542701 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614186.542709 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614186.542717 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614186.542725 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614186.542732 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614186.542739 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614186.542747 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614186.542754 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614186.542761 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614186.542768 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614186.542775 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614186.542782 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614186.542790 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614186.542796 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614186.542803 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614186.542836 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614186.542845 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614186.542852 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614186.542859 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614186.542865 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614186.542873 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614186.542880 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614186.542886 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614186.542894 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614186.542902 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614186.542909 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614186.565011641] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/geometry_scanmatch/amr.lua' for 'amr.lua'.
+[INFO] [1793614186.566582737] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/map_builder.lua' for 'map_builder.lua'.
+[INFO] [1793614186.566668276] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/map_builder.lua' for 'map_builder.lua'.
+[INFO] [1793614186.567019649] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/pose_graph.lua' for 'pose_graph.lua'.
+[INFO] [1793614186.567069987] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/pose_graph.lua' for 'pose_graph.lua'.
+[INFO] [1793614186.567669592] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder.lua' for 'trajectory_builder.lua'.
+[INFO] [1793614186.567730138] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder.lua' for 'trajectory_builder.lua'.
+[INFO] [1793614186.567817758] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_2d.lua' for 'trajectory_builder_2d.lua'.
+[INFO] [1793614186.567861727] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_2d.lua' for 'trajectory_builder_2d.lua'.
+[INFO] [1793614186.568060646] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_3d.lua' for 'trajectory_builder_3d.lua'.
+[INFO] [1793614186.568110760] [cartographer logger]: I1102 19:09:46.000000 21712 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_3d.lua' for 'trajectory_builder_3d.lua'.
+[INFO] [1793614186.590676052] [cartographer logger]: I1102 19:09:46.000000 21712 map_builder_bridge.cpp:136] Added trajectory with ID '0'.
+1793614186.638867 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614186.638941 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614186.638955 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614186.639002 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614186.639011 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614186.639018 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614186.639025 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614186.639033 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614186.639040 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614186.639047 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614186.639054 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614186.639063 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614186.639071 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614186.639078 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614186.639086 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614186.639094 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614186.639102 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614186.639109 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614186.639117 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614186.639125 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614186.639134 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614186.639143 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614186.639152 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614186.639159 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614186.639168 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614186.639176 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614186.639183 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614186.639191 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614186.639199 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614186.639206 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614186.639213 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614186.639222 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614186.639229 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614186.639237 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614186.639245 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614186.639252 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614186.639260 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614186.639268 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614186.639275 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614186.639283 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614186.639292 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614186.639309 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614186.639317 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614186.639325 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614186.639332 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614186.639340 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614186.639348 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614186.639355 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614186.639363 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614186.639371 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[WARN] [1793614191.043953610] [cartographer_node]: Detected jump back in time. Clearing TF buffer.
+1793614194.638931 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614194.639087 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614194.639114 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614194.639133 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614194.639151 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614194.639166 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614194.639180 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614194.639195 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614194.639209 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614194.639223 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614194.639237 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614194.639251 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614194.639266 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614194.639280 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614194.639294 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614194.639308 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614194.639324 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614194.639338 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614194.639352 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614194.639366 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614194.639381 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614194.639440 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614194.639464 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614194.639481 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614194.639497 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614194.639511 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614194.639525 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614194.639539 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614194.639553 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614194.639617 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614194.639633 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614194.639647 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614194.639662 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614194.639676 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614194.639690 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614194.639705 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614194.639719 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614194.639733 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614194.639748 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614194.639764 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614194.639779 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614194.639793 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614194.639807 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614194.639822 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614194.639836 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614194.639850 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614194.639865 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614194.639880 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614194.639894 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614194.639908 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614195.909571310] [cartographer logger]: I1102 19:09:55.000000 21712 ordered_multi_queue.cc:172] All sensor data for trajectory 0 is available starting at '639292103457706550'.
+[INFO] [1793614195.921383350] [cartographer logger]: I1102 19:09:55.000000 21712 local_trajectory_builder_2d.cc:312] Extrapolator not yet initialized.
+[INFO] [1793614195.921720290] [cartographer logger]: I1102 19:09:55.000000 21712 local_trajectory_builder_2d.cc:135] Extrapolator is still initializing.
+[INFO] [1793614195.986168042] [cartographer logger]: I1102 19:09:55.000000 21712 pose_graph_2d.cc:148] Inserted submap (0, 0).
+[INFO] [1793614201.608918978] [cartographer logger]: I1102 19:10:01.000000 21712 collated_trajectory_builder.cc:81] odom rate: 50.00 Hz 2.00e-02 s +/- 1.83e-03 s (pulsed at 98.81% real time)
+[INFO] [1793614201.609153963] [cartographer logger]: I1102 19:10:01.000000 21712 collated_trajectory_builder.cc:81] scan rate: 10.52 Hz 9.50e-02 s +/- 1.17e-02 s (pulsed at 100.13% real time)
+1793614202.639006 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614202.639089 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614202.639101 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614202.639109 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614202.639116 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614202.639123 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614202.639130 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614202.639137 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614202.639178 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614202.639185 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614202.639192 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614202.639198 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614202.639204 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614202.639210 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614202.639216 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614202.639222 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614202.639229 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614202.639235 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614202.639241 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614202.639247 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614202.639254 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614202.639260 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614202.639266 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614202.639272 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614202.639278 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614202.639284 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614202.639290 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614202.639296 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614202.639303 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614202.639309 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614202.639314 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614202.639320 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614202.639328 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614202.639333 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614202.639340 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614202.639345 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614202.639351 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614202.639357 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614202.639363 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614202.639369 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614202.639375 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614202.639381 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614202.639387 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614202.639393 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614202.639399 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614202.639405 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614202.639412 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614202.639425 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614202.639432 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614202.639438 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614202.739143235] [cartographer logger]: I1102 19:10:02.000000 21742 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614202.739388780] [cartographer logger]: I1102 19:10:02.000000 21742 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614202.739451758] [cartographer logger]: I1102 19:10:02.000000 21742 constraint_builder_2d.cc:292] Score histogram:
+Count: 0
+[WARN] [1793614202.742985069] [cartographer logger]: W1102 19:10:02.000000 21742 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614206.334438680] [cartographer logger]: I1102 19:10:06.000000 21744 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614206.334679840] [cartographer logger]: I1102 19:10:06.000000 21744 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614206.334752067] [cartographer logger]: I1102 19:10:06.000000 21744 constraint_builder_2d.cc:292] Score histogram:
+Count: 0
+[WARN] [1793614206.336701961] [cartographer logger]: W1102 19:10:06.000000 21744 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614208.238121302] [cartographer logger]: I1102 19:10:08.000000 21712 pose_graph_2d.cc:148] Inserted submap (0, 1).
+[INFO] [1793614209.936032761] [cartographer logger]: I1102 19:10:09.000000 21743 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614209.936263553] [cartographer logger]: I1102 19:10:09.000000 21743 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614209.936334308] [cartographer logger]: I1102 19:10:09.000000 21743 constraint_builder_2d.cc:292] Score histogram:
+Count: 0
+[WARN] [1793614209.939326447] [cartographer logger]: W1102 19:10:09.000000 21743 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+1793614210.639094 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614210.639209 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614210.639241 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614210.639267 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614210.639290 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614210.639309 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614210.639325 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614210.639340 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614210.639356 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614210.639371 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614210.639386 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614210.639401 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614210.639416 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614210.639432 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614210.639448 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614210.639522 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614210.639540 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614210.639555 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614210.639570 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614210.639585 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614210.639600 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614210.639614 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614210.639629 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614210.639644 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614210.639660 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614210.639675 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614210.639689 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614210.639704 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614210.639719 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614210.639733 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614210.639748 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614210.639763 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614210.639778 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614210.639793 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614210.639808 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614210.639823 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614210.639838 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614210.639853 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614210.639868 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614210.639883 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614210.639899 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614210.639915 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614210.639930 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614210.639945 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614210.639960 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614210.639974 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614210.639989 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614210.640004 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614210.640019 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614210.640033 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614213.537867468] [cartographer logger]: I1102 19:10:13.000000 21742 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614213.538885681] [cartographer logger]: I1102 19:10:13.000000 21742 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614213.539010581] [cartographer logger]: I1102 19:10:13.000000 21742 constraint_builder_2d.cc:292] Score histogram:
+Count: 0
+[WARN] [1793614213.542029473] [cartographer logger]: W1102 19:10:13.000000 21742 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614216.611887289] [cartographer logger]: I1102 19:10:16.000000 21712 collated_trajectory_builder.cc:81] odom rate: 49.99 Hz 2.00e-02 s +/- 2.68e-03 s (pulsed at 100.03% real time)
+[INFO] [1793614216.612312393] [cartographer logger]: I1102 19:10:16.000000 21712 collated_trajectory_builder.cc:81] scan rate: 10.01 Hz 9.99e-02 s +/- 3.52e-03 s (pulsed at 99.92% real time)
+[INFO] [1793614217.134490546] [cartographer logger]: I1102 19:10:17.000000 21743 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614217.135231853] [cartographer logger]: I1102 19:10:17.000000 21743 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614217.135298959] [cartographer logger]: I1102 19:10:17.000000 21743 constraint_builder_2d.cc:292] Score histogram:
+Count: 0
+[WARN] [1793614217.138511778] [cartographer logger]: W1102 19:10:17.000000 21743 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614217.236620078] [cartographer logger]: I1102 19:10:17.000000 21712 pose_graph_2d.cc:148] Inserted submap (0, 2).
+[INFO] [1793614217.277927824] [cartographer logger]: I1102 19:10:17.000000 21744 constraint_builder_2d.cc:275] Node (0, 180) with 212 points on submap (0, 0) differs by translation 0.01 rotation 0.005 with score 80.9%.
+[INFO] [1793614217.556722219] [cartographer logger]: I1102 19:10:17.000000 21743 constraint_builder_2d.cc:275] Node (0, 183) with 207 points on submap (0, 0) differs by translation 0.00 rotation 0.009 with score 78.0%.
+[INFO] [1793614217.832096972] [cartographer logger]: I1102 19:10:17.000000 21744 constraint_builder_2d.cc:275] Node (0, 186) with 203 points on submap (0, 0) differs by translation 0.00 rotation 0.007 with score 72.2%.
+[INFO] [1793614218.259332212] [cartographer logger]: I1102 19:10:18.000000 21743 constraint_builder_2d.cc:275] Node (0, 190) with 200 points on submap (0, 0) differs by translation 0.01 rotation 0.007 with score 70.5%.
+[INFO] [1793614218.541046549] [cartographer logger]: I1102 19:10:18.000000 21741 constraint_builder_2d.cc:275] Node (0, 193) with 200 points on submap (0, 0) differs by translation 0.02 rotation 0.113 with score 72.8%.
+1793614218.639163 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614218.639268 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614218.639299 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614218.639324 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614218.639349 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614218.639367 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614218.639384 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614218.639400 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614218.639414 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614218.639428 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614218.639442 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614218.639457 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614218.639472 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614218.639487 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614218.639549 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614218.639568 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614218.639583 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614218.639597 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614218.639612 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614218.639627 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614218.639641 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614218.639656 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614218.639670 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614218.639685 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614218.639700 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614218.639714 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614218.639729 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614218.639743 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614218.639758 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614218.639772 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614218.639787 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614218.639801 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614218.639819 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614218.639834 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614218.639848 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614218.639862 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614218.639876 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614218.639890 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614218.639905 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614218.639919 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614218.639934 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614218.639949 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614218.639963 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614218.639978 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614218.639992 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614218.640007 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614218.640021 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614218.640036 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614218.640051 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614218.640065 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614218.860951591] [cartographer logger]: I1102 19:10:18.000000 21743 constraint_builder_2d.cc:275] Node (0, 196) with 203 points on submap (0, 0) differs by translation 0.01 rotation 0.112 with score 75.5%.
+[INFO] [1793614219.260093666] [cartographer logger]: I1102 19:10:19.000000 21744 constraint_builder_2d.cc:275] Node (0, 200) with 214 points on submap (0, 0) differs by translation 0.01 rotation 0.007 with score 80.6%.
+[INFO] [1793614219.546458950] [cartographer logger]: I1102 19:10:19.000000 21743 constraint_builder_2d.cc:275] Node (0, 203) with 200 points on submap (0, 0) differs by translation 0.01 rotation 0.007 with score 81.8%.
+[INFO] [1793614219.828034783] [cartographer logger]: I1102 19:10:19.000000 21743 constraint_builder_2d.cc:275] Node (0, 206) with 200 points on submap (0, 0) differs by translation 0.01 rotation 0.007 with score 80.7%.
+[INFO] [1793614220.236700298] [cartographer logger]: I1102 19:10:20.000000 21744 constraint_builder_2d.cc:275] Node (0, 210) with 205 points on submap (0, 0) differs by translation 0.01 rotation 0.005 with score 83.4%.
+[INFO] [1793614220.537658004] [cartographer logger]: I1102 19:10:20.000000 21741 constraint_builder_2d.cc:275] Node (0, 213) with 201 points on submap (0, 0) differs by translation 0.01 rotation 0.011 with score 85.0%.
+[INFO] [1793614220.714997190] [cartographer logger]: I1102 19:10:20.000000 21742 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614220.716186288] [cartographer logger]: I1102 19:10:20.000000 21742 constraint_builder_2d.cc:290] 11 computations resulted in 11 additional constraints.
+[INFO] [1793614220.716373015] [cartographer logger]: I1102 19:10:20.000000 21742 constraint_builder_2d.cc:292] Score histogram:
+Count: 11  Min: 0.704753  Max: 0.849741  Mean: 0.782983
+[0.704753, 0.719252)	                  ##	Count: 1 (9.09091%)	Total: 1 (9.09091%)
+[0.719252, 0.733751)	                ####	Count: 2 (18.1818%)	Total: 3 (27.2727%)
+[0.733751, 0.748250)	                    	Count: 0 (0%)	Total: 3 (27.2727%)
+[0.748250, 0.762748)	                  ##	Count: 1 (9.09091%)	Total: 4 (36.3636%)
+[0.762748, 0.777247)	                    	Count: 0 (0%)	Total: 4 (36.3636%)
+[0.777247, 0.791746)	                  ##	Count: 1 (9.09091%)	Total: 5 (45.4545%)
+[0.791746, 0.806245)	                  ##	Count: 1 (9.09091%)	Total: 6 (54.5455%)
+[0.806245, 0.820744)	               #####	Count: 3 (27.2727%)	Total: 9 (81.8182%)
+[0.820744, 0.835243)	                  ##	Count: 1 (9.09091%)	Total: 10 (90.9091%)
+[0.835243, 0.849741]	                  ##	Count: 1 (9.09091%)	Total: 11 (100%)
+[WARN] [1793614220.719769136] [cartographer logger]: W1102 19:10:20.000000 21742 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614220.836978947] [cartographer logger]: I1102 19:10:20.000000 21744 constraint_builder_2d.cc:275] Node (0, 216) with 200 points on submap (0, 0) differs by translation 0.01 rotation 0.007 with score 81.3%.
+[INFO] [1793614221.236969781] [cartographer logger]: I1102 19:10:21.000000 21742 constraint_builder_2d.cc:275] Node (0, 220) with 207 points on submap (0, 0) differs by translation 0.01 rotation 0.007 with score 83.3%.
+[INFO] [1793614221.529130978] [cartographer logger]: I1102 19:10:21.000000 21743 constraint_builder_2d.cc:275] Node (0, 223) with 204 points on submap (0, 0) differs by translation 0.00 rotation 0.006 with score 82.8%.
+[INFO] [1793614221.835468521] [cartographer logger]: I1102 19:10:21.000000 21744 constraint_builder_2d.cc:275] Node (0, 226) with 200 points on submap (0, 0) differs by translation 0.00 rotation 0.008 with score 83.7%.
+[INFO] [1793614222.239557737] [cartographer logger]: I1102 19:10:22.000000 21744 constraint_builder_2d.cc:275] Node (0, 230) with 211 points on submap (0, 0) differs by translation 0.00 rotation 0.009 with score 83.1%.
+[INFO] [1793614222.543862949] [cartographer logger]: I1102 19:10:22.000000 21743 constraint_builder_2d.cc:275] Node (0, 233) with 202 points on submap (0, 0) differs by translation 0.00 rotation 0.009 with score 84.5%.
+[INFO] [1793614222.856003032] [cartographer logger]: I1102 19:10:22.000000 21742 constraint_builder_2d.cc:275] Node (0, 236) with 213 points on submap (0, 0) differs by translation 0.00 rotation 0.011 with score 85.0%.
+[INFO] [1793614223.233652551] [cartographer logger]: I1102 19:10:23.000000 21742 constraint_builder_2d.cc:275] Node (0, 240) with 207 points on submap (0, 0) differs by translation 0.00 rotation 0.014 with score 87.2%.
+[INFO] [1793614223.534175545] [cartographer logger]: I1102 19:10:23.000000 21742 constraint_builder_2d.cc:275] Node (0, 243) with 211 points on submap (0, 0) differs by translation 0.00 rotation 0.016 with score 87.4%.
+[INFO] [1793614223.840937705] [cartographer logger]: I1102 19:10:23.000000 21744 constraint_builder_2d.cc:275] Node (0, 246) with 206 points on submap (0, 0) differs by translation 0.01 rotation 0.014 with score 85.1%.
+[INFO] [1793614224.233949240] [cartographer logger]: I1102 19:10:24.000000 21744 constraint_builder_2d.cc:275] Node (0, 250) with 200 points on submap (0, 0) differs by translation 0.00 rotation 0.015 with score 85.6%.
+[INFO] [1793614224.318330421] [cartographer logger]: I1102 19:10:24.000000 21741 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614224.318559582] [cartographer logger]: I1102 19:10:24.000000 21741 constraint_builder_2d.cc:290] 11 computations resulted in 11 additional constraints.
+[INFO] [1793614224.318674626] [cartographer logger]: I1102 19:10:24.000000 21741 constraint_builder_2d.cc:292] Score histogram:
+Count: 22  Min: 0.704753  Max: 0.874084  Mean: 0.813732
+[0.704753, 0.721686)	                   #	Count: 1 (4.54545%)	Total: 1 (4.54545%)
+[0.721686, 0.738619)	                  ##	Count: 2 (9.09091%)	Total: 3 (13.6364%)
+[0.738619, 0.755552)	                   #	Count: 1 (4.54545%)	Total: 4 (18.1818%)
+[0.755552, 0.772485)	                    	Count: 0 (0%)	Total: 4 (18.1818%)
+[0.772485, 0.789419)	                   #	Count: 1 (4.54545%)	Total: 5 (22.7273%)
+[0.789419, 0.806352)	                   #	Count: 1 (4.54545%)	Total: 6 (27.2727%)
+[0.806352, 0.823285)	                ####	Count: 4 (18.1818%)	Total: 10 (45.4545%)
+[0.823285, 0.840218)	               #####	Count: 5 (22.7273%)	Total: 15 (68.1818%)
+[0.840218, 0.857151)	               #####	Count: 5 (22.7273%)	Total: 20 (90.9091%)
+[0.857151, 0.874084]	                  ##	Count: 2 (9.09091%)	Total: 22 (100%)
+[WARN] [1793614224.322623214] [cartographer logger]: W1102 19:10:24.000000 21741 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614224.534965433] [cartographer logger]: I1102 19:10:24.000000 21743 constraint_builder_2d.cc:275] Node (0, 253) with 210 points on submap (0, 0) differs by translation 0.01 rotation 0.012 with score 65.6%.
+[INFO] [1793614224.944659641] [cartographer logger]: I1102 19:10:24.000000 21741 constraint_builder_2d.cc:275] Node (0, 256) with 206 points on submap (0, 0) differs by translation 0.04 rotation 0.019 with score 66.0%.
+[INFO] [1793614225.321608679] [cartographer logger]: I1102 19:10:25.000000 21744 constraint_builder_2d.cc:275] Node (0, 260) with 200 points on submap (0, 0) differs by translation 0.04 rotation 0.020 with score 66.5%.
+[INFO] [1793614225.739957240] [cartographer logger]: I1102 19:10:25.000000 21741 constraint_builder_2d.cc:275] Node (0, 263) with 206 points on submap (0, 0) differs by translation 0.04 rotation 0.023 with score 67.1%.
+[INFO] [1793614226.132466511] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 266) with 203 points on submap (0, 0) differs by translation 0.03 rotation 0.011 with score 68.0%.
+[INFO] [1793614226.487403018] [cartographer logger]: I1102 19:10:26.000000 21744 constraint_builder_2d.cc:275] Node (0, 6) with 211 points on submap (0, 1) differs by translation 0.04 rotation 0.016 with score 66.7%.
+[INFO] [1793614226.487554799] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 10) with 207 points on submap (0, 1) differs by translation 0.01 rotation 0.046 with score 70.4%.
+[INFO] [1793614226.488301802] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 3) with 206 points on submap (0, 1) differs by translation 0.04 rotation 0.019 with score 66.4%.
+[INFO] [1793614226.499455223] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 0) with 202 points on submap (0, 1) differs by translation 0.04 rotation 0.022 with score 67.4%.
+[INFO] [1793614226.504136830] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 20) with 201 points on submap (0, 1) differs by translation 0.01 rotation 0.035 with score 80.7%.
+[INFO] [1793614226.504496522] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 16) with 202 points on submap (0, 1) differs by translation 0.02 rotation 0.042 with score 78.2%.
+[INFO] [1793614226.507208331] [cartographer logger]: I1102 19:10:26.000000 21744 constraint_builder_2d.cc:275] Node (0, 13) with 207 points on submap (0, 1) differs by translation 0.01 rotation 0.044 with score 75.7%.
+[INFO] [1793614226.511996789] [cartographer logger]: I1102 19:10:26.000000 21712 pose_graph_2d.cc:148] Inserted submap (0, 3).
+[INFO] [1793614226.517723681] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 30) with 206 points on submap (0, 1) differs by translation 0.00 rotation 0.031 with score 83.5%.
+[INFO] [1793614226.518806408] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 23) with 205 points on submap (0, 1) differs by translation 0.00 rotation 0.037 with score 84.6%.
+[INFO] [1793614226.518920652] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 26) with 201 points on submap (0, 1) differs by translation 0.01 rotation 0.033 with score 83.0%.
+[INFO] [1793614226.524348269] [cartographer logger]: I1102 19:10:26.000000 21744 constraint_builder_2d.cc:275] Node (0, 33) with 206 points on submap (0, 1) differs by translation 0.00 rotation 0.027 with score 84.8%.
+[INFO] [1793614226.531591567] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 36) with 208 points on submap (0, 1) differs by translation 0.00 rotation 0.024 with score 84.5%.
+[INFO] [1793614226.533793885] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 40) with 200 points on submap (0, 1) differs by translation 0.00 rotation 0.019 with score 83.6%.
+[INFO] [1793614226.533907105] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 43) with 202 points on submap (0, 1) differs by translation 0.02 rotation 0.020 with score 83.9%.
+[INFO] [1793614226.540540014] [cartographer logger]: I1102 19:10:26.000000 21744 constraint_builder_2d.cc:275] Node (0, 46) with 207 points on submap (0, 1) differs by translation 0.02 rotation 0.018 with score 84.8%.
+[INFO] [1793614226.546064402] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 50) with 211 points on submap (0, 1) differs by translation 0.02 rotation 0.018 with score 79.8%.
+[INFO] [1793614226.546537731] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 56) with 207 points on submap (0, 1) differs by translation 0.01 rotation 0.010 with score 78.3%.
+[INFO] [1793614226.547223996] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 53) with 211 points on submap (0, 1) differs by translation 0.02 rotation 0.013 with score 78.2%.
+[INFO] [1793614226.552326225] [cartographer logger]: I1102 19:10:26.000000 21744 constraint_builder_2d.cc:275] Node (0, 60) with 203 points on submap (0, 1) differs by translation 0.02 rotation 0.010 with score 78.7%.
+[INFO] [1793614226.556817777] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 63) with 209 points on submap (0, 1) differs by translation 0.01 rotation 0.006 with score 76.8%.
+[INFO] [1793614226.557343236] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 66) with 210 points on submap (0, 1) differs by translation 0.01 rotation 0.006 with score 76.5%.
+[INFO] [1793614226.558791959] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 70) with 204 points on submap (0, 1) differs by translation 0.01 rotation 0.001 with score 76.4%.
+[INFO] [1793614226.563880940] [cartographer logger]: I1102 19:10:26.000000 21744 constraint_builder_2d.cc:275] Node (0, 73) with 209 points on submap (0, 1) differs by translation 0.01 rotation 0.001 with score 76.2%.
+[INFO] [1793614226.567151041] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 80) with 200 points on submap (0, 1) differs by translation 0.01 rotation 0.009 with score 74.1%.
+[INFO] [1793614226.568653366] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 76) with 206 points on submap (0, 1) differs by translation 0.02 rotation 0.006 with score 72.5%.
+[INFO] [1793614226.569499380] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 83) with 208 points on submap (0, 1) differs by translation 0.00 rotation 0.012 with score 78.0%.
+[INFO] [1793614226.575749395] [cartographer logger]: I1102 19:10:26.000000 21744 constraint_builder_2d.cc:275] Node (0, 86) with 203 points on submap (0, 1) differs by translation 0.01 rotation 0.012 with score 75.3%.
+[INFO] [1793614226.577899232] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 270) with 207 points on submap (0, 1) differs by translation 0.00 rotation 0.005 with score 85.7%.
+[INFO] [1793614226.579625053] [cartographer logger]: I1102 19:10:26.000000 21741 constraint_builder_2d.cc:275] Node (0, 270) with 207 points on submap (0, 0) differs by translation 0.03 rotation 0.011 with score 73.1%.
+1793614226.639207 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614226.639292 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614226.639310 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614226.639323 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614226.639334 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614226.639345 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614226.639355 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614226.639365 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614226.639375 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614226.639384 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614226.639393 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614226.639403 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614226.639412 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614226.639422 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614226.639432 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614226.639442 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614226.639451 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614226.639461 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614226.639470 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614226.639480 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614226.639490 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614226.639499 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614226.639551 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614226.639562 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614226.639572 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614226.639581 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614226.639590 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614226.639600 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614226.639609 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614226.639619 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614226.639628 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614226.639638 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614226.639648 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614226.639658 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614226.639667 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614226.639677 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614226.639686 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614226.639696 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614226.639705 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614226.639714 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614226.639724 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614226.639733 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614226.639743 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614226.639752 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614226.639764 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614226.639774 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614226.639784 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614226.639793 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614226.639803 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614226.639812 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614226.827418610] [cartographer logger]: I1102 19:10:26.000000 21742 constraint_builder_2d.cc:275] Node (0, 273) with 205 points on submap (0, 1) differs by translation 0.01 rotation 0.007 with score 84.3%.
+[INFO] [1793614226.834541968] [cartographer logger]: I1102 19:10:26.000000 21743 constraint_builder_2d.cc:275] Node (0, 273) with 205 points on submap (0, 0) differs by translation 0.02 rotation 0.015 with score 74.4%.
+[INFO] [1793614227.115543010] [cartographer logger]: I1102 19:10:27.000000 21741 constraint_builder_2d.cc:275] Node (0, 276) with 201 points on submap (0, 0) differs by translation 0.18 rotation 0.128 with score 73.5%.
+[INFO] [1793614227.119394411] [cartographer logger]: I1102 19:10:27.000000 21744 constraint_builder_2d.cc:275] Node (0, 276) with 201 points on submap (0, 1) differs by translation 0.00 rotation 0.005 with score 86.5%.
+[INFO] [1793614227.638169354] [cartographer logger]: I1102 19:10:27.000000 21742 constraint_builder_2d.cc:275] Node (0, 280) with 204 points on submap (0, 1) differs by translation 0.19 rotation 0.015 with score 78.5%.
+[INFO] [1793614227.639398614] [cartographer logger]: I1102 19:10:27.000000 21743 constraint_builder_2d.cc:275] Node (0, 280) with 204 points on submap (0, 0) differs by translation 0.20 rotation 0.021 with score 77.6%.
+[INFO] [1793614227.936417185] [cartographer logger]: I1102 19:10:27.000000 21741 constraint_builder_2d.cc:275] Node (0, 283) with 202 points on submap (0, 1) differs by translation 0.19 rotation 0.012 with score 77.5%.
+[INFO] [1793614227.944094066] [cartographer logger]: I1102 19:10:27.000000 21744 constraint_builder_2d.cc:275] Node (0, 283) with 202 points on submap (0, 0) differs by translation 0.20 rotation 0.017 with score 74.5%.
+[INFO] [1793614228.236403475] [cartographer logger]: I1102 19:10:28.000000 21742 constraint_builder_2d.cc:275] Node (0, 286) with 201 points on submap (0, 1) differs by translation 0.06 rotation 0.007 with score 73.6%.
+[INFO] [1793614228.237107628] [cartographer logger]: I1102 19:10:28.000000 21743 constraint_builder_2d.cc:275] Node (0, 286) with 201 points on submap (0, 0) differs by translation 0.06 rotation 0.012 with score 68.9%.
+[INFO] [1793614228.313653968] [cartographer logger]: I1102 19:10:28.000000 21742 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614228.313943930] [cartographer logger]: I1102 19:10:28.000000 21742 constraint_builder_2d.cc:290] 44 computations resulted in 44 additional constraints.
+[INFO] [1793614228.314081183] [cartographer logger]: I1102 19:10:28.000000 21742 constraint_builder_2d.cc:292] Score histogram:
+Count: 66  Min: 0.655668  Max: 0.874084  Mean: 0.780381
+[0.655668, 0.677509)	                  ##	Count: 7 (10.6061%)	Total: 7 (10.6061%)
+[0.677509, 0.699351)	                   #	Count: 2 (3.0303%)	Total: 9 (13.6364%)
+[0.699351, 0.721193)	                   #	Count: 2 (3.0303%)	Total: 11 (16.6667%)
+[0.721193, 0.743034)	                  ##	Count: 7 (10.6061%)	Total: 18 (27.2727%)
+[0.743034, 0.764876)	                  ##	Count: 7 (10.6061%)	Total: 25 (37.8788%)
+[0.764876, 0.786718)	                 ###	Count: 11 (16.6667%)	Total: 36 (54.5455%)
+[0.786718, 0.808559)	                   #	Count: 4 (6.06061%)	Total: 40 (60.6061%)
+[0.808559, 0.830401)	                  ##	Count: 5 (7.57576%)	Total: 45 (68.1818%)
+[0.830401, 0.852242)	               #####	Count: 16 (24.2424%)	Total: 61 (92.4242%)
+[0.852242, 0.874084]	                  ##	Count: 5 (7.57576%)	Total: 66 (100%)
+[WARN] [1793614228.319974737] [cartographer logger]: W1102 19:10:28.000000 21742 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614228.632758698] [cartographer logger]: I1102 19:10:28.000000 21744 constraint_builder_2d.cc:275] Node (0, 290) with 203 points on submap (0, 1) differs by translation 0.05 rotation 0.013 with score 79.4%.
+[INFO] [1793614228.637050947] [cartographer logger]: I1102 19:10:28.000000 21742 constraint_builder_2d.cc:275] Node (0, 290) with 203 points on submap (0, 0) differs by translation 0.05 rotation 0.013 with score 75.4%.
+[INFO] [1793614228.938327074] [cartographer logger]: I1102 19:10:28.000000 21743 constraint_builder_2d.cc:275] Node (0, 293) with 201 points on submap (0, 1) differs by translation 0.03 rotation 0.017 with score 75.6%.
+[INFO] [1793614228.940981409] [cartographer logger]: I1102 19:10:28.000000 21741 constraint_builder_2d.cc:275] Node (0, 293) with 201 points on submap (0, 0) differs by translation 0.04 rotation 0.016 with score 73.2%.
+[INFO] [1793614229.229575579] [cartographer logger]: I1102 19:10:29.000000 21742 constraint_builder_2d.cc:275] Node (0, 296) with 200 points on submap (0, 1) differs by translation 0.04 rotation 0.016 with score 72.0%.
+[INFO] [1793614229.236459632] [cartographer logger]: I1102 19:10:29.000000 21744 constraint_builder_2d.cc:275] Node (0, 296) with 200 points on submap (0, 0) differs by translation 0.04 rotation 0.010 with score 73.3%.
+[INFO] [1793614229.637710002] [cartographer logger]: I1102 19:10:29.000000 21743 constraint_builder_2d.cc:275] Node (0, 300) with 204 points on submap (0, 0) differs by translation 0.04 rotation 0.013 with score 75.9%.
+[INFO] [1793614229.639463152] [cartographer logger]: I1102 19:10:29.000000 21741 constraint_builder_2d.cc:275] Node (0, 300) with 204 points on submap (0, 1) differs by translation 0.04 rotation 0.016 with score 69.6%.
+[INFO] [1793614229.934918046] [cartographer logger]: I1102 19:10:29.000000 21744 constraint_builder_2d.cc:275] Node (0, 303) with 203 points on submap (0, 0) differs by translation 0.04 rotation 0.010 with score 75.4%.
+[INFO] [1793614229.939262936] [cartographer logger]: I1102 19:10:29.000000 21742 constraint_builder_2d.cc:275] Node (0, 303) with 203 points on submap (0, 1) differs by translation 0.04 rotation 0.015 with score 66.1%.
+[INFO] [1793614230.240249225] [cartographer logger]: I1102 19:10:30.000000 21741 constraint_builder_2d.cc:275] Node (0, 306) with 208 points on submap (0, 0) differs by translation 0.03 rotation 0.018 with score 70.3%.
+[INFO] [1793614230.641178396] [cartographer logger]: I1102 19:10:30.000000 21743 constraint_builder_2d.cc:275] Node (0, 310) with 213 points on submap (0, 0) differs by translation 0.05 rotation 0.124 with score 68.2%.
+[INFO] [1793614230.948295974] [cartographer logger]: I1102 19:10:30.000000 21742 constraint_builder_2d.cc:275] Node (0, 313) with 202 points on submap (0, 0) differs by translation 0.05 rotation 0.114 with score 65.0%.
+[INFO] [1793614231.690956140] [cartographer logger]: I1102 19:10:31.000000 21712 collated_trajectory_builder.cc:81] odom rate: 50.00 Hz 2.00e-02 s +/- 2.54e-03 s (pulsed at 100.08% real time)
+[INFO] [1793614231.691159187] [cartographer logger]: I1102 19:10:31.000000 21712 collated_trajectory_builder.cc:81] scan rate: 10.01 Hz 9.99e-02 s +/- 3.52e-03 s (pulsed at 99.96% real time)
+[INFO] [1793614231.918114168] [cartographer logger]: I1102 19:10:31.000000 21743 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614231.944756812] [cartographer logger]: I1102 19:10:31.000000 21742 constraint_builder_2d.cc:290] 22 computations resulted in 13 additional constraints.
+[INFO] [1793614231.944992340] [cartographer logger]: I1102 19:10:31.000000 21742 constraint_builder_2d.cc:292] Score histogram:
+Count: 79  Min: 0.650029  Max: 0.874084  Mean: 0.770881
+[0.650029, 0.672435)	                  ##	Count: 8 (10.1266%)	Total: 8 (10.1266%)
+[0.672435, 0.694840)	                   #	Count: 4 (5.06329%)	Total: 12 (15.1899%)
+[0.694840, 0.717246)	                   #	Count: 4 (5.06329%)	Total: 16 (20.2532%)
+[0.717246, 0.739651)	                  ##	Count: 9 (11.3924%)	Total: 25 (31.6456%)
+[0.739651, 0.762057)	                 ###	Count: 11 (13.9241%)	Total: 36 (45.5696%)
+[0.762057, 0.784462)	                 ###	Count: 10 (12.6582%)	Total: 46 (58.2278%)
+[0.784462, 0.806868)	                  ##	Count: 6 (7.59494%)	Total: 52 (65.8228%)
+[0.806868, 0.829273)	                   #	Count: 5 (6.32911%)	Total: 57 (72.1519%)
+[0.829273, 0.851679)	                ####	Count: 17 (21.519%)	Total: 74 (93.6709%)
+[0.851679, 0.874084]	                   #	Count: 5 (6.32911%)	Total: 79 (100%)
+[WARN] [1793614231.950173932] [cartographer logger]: W1102 19:10:31.000000 21742 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614233.640047372] [cartographer logger]: I1102 19:10:33.000000 21742 constraint_builder_2d.cc:275] Node (0, 340) with 201 points on submap (0, 1) differs by translation 0.05 rotation 0.003 with score 68.7%.
+[INFO] [1793614233.641109362] [cartographer logger]: I1102 19:10:33.000000 21744 constraint_builder_2d.cc:275] Node (0, 340) with 201 points on submap (0, 0) differs by translation 0.06 rotation 0.004 with score 69.1%.
+1793614234.639298 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614234.639395 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614234.639426 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614234.639498 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614234.639522 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614234.639540 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614234.639556 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614234.639572 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614234.639589 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614234.639604 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614234.639619 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614234.639634 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614234.639707 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614234.639721 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614234.639735 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614234.639749 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614234.639764 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614234.639779 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614234.639794 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614234.639808 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614234.639824 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614234.639838 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614234.639853 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614234.639868 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614234.639883 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614234.639898 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614234.639912 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614234.639927 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614234.639942 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614234.639956 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614234.639971 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614234.639985 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614234.640000 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614234.640014 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614234.640029 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614234.640054 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614234.640069 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614234.640082 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614234.640096 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614234.640111 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614234.640125 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614234.640161 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614234.640176 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614234.640191 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614234.640206 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614234.640221 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614234.640235 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614234.640249 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614234.640264 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614234.640279 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614234.740125436] [cartographer logger]: I1102 19:10:34.000000 21743 constraint_builder_2d.cc:275] Node (0, 343) with 200 points on submap (0, 1) differs by translation 0.01 rotation 0.006 with score 67.6%.
+[INFO] [1793614234.741706516] [cartographer logger]: I1102 19:10:34.000000 21742 constraint_builder_2d.cc:275] Node (0, 343) with 200 points on submap (0, 0) differs by translation 0.01 rotation 0.004 with score 66.3%.
+[INFO] [1793614236.340529067] [cartographer logger]: I1102 19:10:36.000000 21742 constraint_builder_2d.cc:275] Node (0, 346) with 200 points on submap (0, 1) differs by translation 0.01 rotation 0.006 with score 68.3%.
+[INFO] [1793614236.343762877] [cartographer logger]: I1102 19:10:36.000000 21741 constraint_builder_2d.cc:275] Node (0, 346) with 200 points on submap (0, 0) differs by translation 0.01 rotation 0.006 with score 66.6%.
+[INFO] [1793614238.531000981] [cartographer logger]: I1102 19:10:38.000000 21743 constraint_builder_2d.cc:275] Node (0, 350) with 201 points on submap (0, 1) differs by translation 0.01 rotation 0.006 with score 68.9%.
+[INFO] [1793614238.536566106] [cartographer logger]: I1102 19:10:38.000000 21744 constraint_builder_2d.cc:275] Node (0, 350) with 201 points on submap (0, 0) differs by translation 0.01 rotation 0.005 with score 66.5%.
+[INFO] [1793614240.138463339] [cartographer logger]: I1102 19:10:40.000000 21744 constraint_builder_2d.cc:275] Node (0, 353) with 201 points on submap (0, 1) differs by translation 0.00 rotation 0.006 with score 69.3%.
+[INFO] [1793614240.141218796] [cartographer logger]: I1102 19:10:40.000000 21741 constraint_builder_2d.cc:275] Node (0, 353) with 201 points on submap (0, 0) differs by translation 0.01 rotation 0.005 with score 65.7%.
+[INFO] [1793614241.822592809] [cartographer logger]: I1102 19:10:41.000000 21744 constraint_builder_2d.cc:275] Node (0, 356) with 201 points on submap (0, 1) differs by translation 0.00 rotation 0.005 with score 68.9%.
+[INFO] [1793614241.824989406] [cartographer logger]: I1102 19:10:41.000000 21742 constraint_builder_2d.cc:275] Node (0, 356) with 201 points on submap (0, 0) differs by translation 0.01 rotation 0.005 with score 66.1%.
+1793614242.639367 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614242.639475 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614242.639494 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614242.639508 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614242.639523 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614242.639537 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614242.639550 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614242.639564 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614242.639575 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614242.639628 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614242.639641 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614242.639650 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614242.639659 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614242.639669 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614242.639677 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614242.639687 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614242.639696 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614242.639705 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614242.639716 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614242.639725 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614242.639734 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614242.639743 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614242.639751 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614242.639760 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614242.639770 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614242.639778 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614242.639788 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614242.639796 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614242.639806 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614242.639815 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614242.639823 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614242.639833 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614242.639843 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614242.639853 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614242.639861 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614242.639870 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614242.639881 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614242.639891 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614242.639900 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614242.639908 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614242.639919 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614242.639927 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614242.639936 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614242.639945 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614242.639954 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614242.639963 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614242.639971 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614242.639980 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614242.640002 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614242.640013 [174]        tev: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3
+[INFO] [1793614243.318882539] [cartographer logger]: I1102 19:10:43.000000 21742 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614243.356292154] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 0) with 202 points on submap (0, 2) differs by translation 0.03 rotation 0.048 with score 73.7%.
+[INFO] [1793614243.359513644] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 6) with 211 points on submap (0, 2) differs by translation 0.03 rotation 0.043 with score 71.3%.
+[INFO] [1793614243.366805198] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 13) with 207 points on submap (0, 2) differs by translation 0.03 rotation 0.017 with score 67.3%.
+[INFO] [1793614243.371859650] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 16) with 202 points on submap (0, 2) differs by translation 0.03 rotation 0.015 with score 65.9%.
+[INFO] [1793614243.377855990] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 20) with 201 points on submap (0, 2) differs by translation 0.01 rotation 0.011 with score 75.1%.
+[INFO] [1793614243.379368108] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 3) with 206 points on submap (0, 2) differs by translation 0.03 rotation 0.042 with score 70.0%.
+[INFO] [1793614243.385322207] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 23) with 205 points on submap (0, 2) differs by translation 0.01 rotation 0.009 with score 78.3%.
+[INFO] [1793614243.387637169] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 26) with 201 points on submap (0, 2) differs by translation 0.01 rotation 0.008 with score 76.0%.
+[INFO] [1793614243.396641936] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 30) with 206 points on submap (0, 2) differs by translation 0.01 rotation 0.003 with score 77.4%.
+[INFO] [1793614243.401439898] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 40) with 200 points on submap (0, 2) differs by translation 0.01 rotation 0.003 with score 79.2%.
+[INFO] [1793614243.402177108] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 36) with 208 points on submap (0, 2) differs by translation 0.00 rotation 0.001 with score 78.8%.
+[INFO] [1793614243.416849085] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 46) with 207 points on submap (0, 2) differs by translation 0.01 rotation 0.002 with score 80.8%.
+[INFO] [1793614243.417781086] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 43) with 202 points on submap (0, 2) differs by translation 0.02 rotation 0.001 with score 78.5%.
+[INFO] [1793614243.418297936] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 50) with 211 points on submap (0, 2) differs by translation 0.01 rotation 0.000 with score 77.5%.
+[INFO] [1793614243.428794020] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 60) with 203 points on submap (0, 2) differs by translation 0.01 rotation 0.005 with score 73.8%.
+[INFO] [1793614243.429165009] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 53) with 211 points on submap (0, 2) differs by translation 0.01 rotation 0.004 with score 74.1%.
+[INFO] [1793614243.430819948] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 33) with 206 points on submap (0, 2) differs by translation 0.01 rotation 0.003 with score 79.4%.
+[INFO] [1793614243.437287601] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 56) with 207 points on submap (0, 2) differs by translation 0.01 rotation 0.004 with score 73.4%.
+[INFO] [1793614243.439294232] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 66) with 210 points on submap (0, 2) differs by translation 0.02 rotation 0.000 with score 71.0%.
+[INFO] [1793614243.440882641] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 63) with 209 points on submap (0, 2) differs by translation 0.01 rotation 0.006 with score 72.4%.
+[INFO] [1793614243.444281705] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 70) with 204 points on submap (0, 2) differs by translation 0.02 rotation 0.008 with score 73.2%.
+[INFO] [1793614243.448986576] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 110) with 200 points on submap (0, 2) differs by translation 0.01 rotation 0.015 with score 73.9%.
+[INFO] [1793614243.452076253] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 113) with 205 points on submap (0, 2) differs by translation 0.01 rotation 0.015 with score 72.4%.
+[INFO] [1793614243.454378735] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 73) with 209 points on submap (0, 2) differs by translation 0.01 rotation 0.007 with score 70.3%.
+[INFO] [1793614243.458665383] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 116) with 210 points on submap (0, 2) differs by translation 0.02 rotation 0.012 with score 73.8%.
+[INFO] [1793614243.459465859] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 120) with 206 points on submap (0, 2) differs by translation 0.01 rotation 0.009 with score 74.6%.
+[INFO] [1793614243.462495919] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 123) with 200 points on submap (0, 2) differs by translation 0.01 rotation 0.008 with score 73.7%.
+[INFO] [1793614243.467986866] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 126) with 206 points on submap (0, 2) differs by translation 0.01 rotation 0.008 with score 79.5%.
+[INFO] [1793614243.469270655] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 130) with 206 points on submap (0, 2) differs by translation 0.00 rotation 0.006 with score 78.2%.
+[INFO] [1793614243.470943546] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 133) with 200 points on submap (0, 2) differs by translation 0.00 rotation 0.005 with score 79.3%.
+[INFO] [1793614243.475134927] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 136) with 201 points on submap (0, 2) differs by translation 0.01 rotation 0.004 with score 79.0%.
+[INFO] [1793614243.478852115] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 146) with 203 points on submap (0, 2) differs by translation 0.01 rotation 0.005 with score 80.8%.
+[INFO] [1793614243.482468595] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 143) with 209 points on submap (0, 2) differs by translation 0.01 rotation 0.001 with score 81.4%.
+[INFO] [1793614243.484499739] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 150) with 204 points on submap (0, 2) differs by translation 0.01 rotation 0.002 with score 77.4%.
+[INFO] [1793614243.485152370] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 140) with 211 points on submap (0, 2) differs by translation 0.00 rotation 0.002 with score 79.6%.
+[INFO] [1793614243.487460548] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 153) with 202 points on submap (0, 2) differs by translation 0.01 rotation 0.002 with score 78.8%.
+[INFO] [1793614243.492199724] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 156) with 204 points on submap (0, 2) differs by translation 0.02 rotation 0.006 with score 76.6%.
+[INFO] [1793614243.493528539] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 160) with 202 points on submap (0, 2) differs by translation 0.02 rotation 0.012 with score 75.5%.
+[INFO] [1793614243.497066776] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 163) with 214 points on submap (0, 2) differs by translation 0.02 rotation 0.013 with score 72.9%.
+[INFO] [1793614243.497862581] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 166) with 210 points on submap (0, 2) differs by translation 0.02 rotation 0.011 with score 69.6%.
+[INFO] [1793614243.526161408] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 93) with 205 points on submap (0, 2) differs by translation 0.01 rotation 0.030 with score 66.5%.
+[INFO] [1793614243.527672021] [cartographer logger]: I1102 19:10:43.000000 21742 constraint_builder_2d.cc:275] Node (0, 96) with 207 points on submap (0, 2) differs by translation 0.01 rotation 0.033 with score 72.4%.
+[INFO] [1793614243.535910170] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:275] Node (0, 103) with 204 points on submap (0, 2) differs by translation 0.01 rotation 0.027 with score 72.1%.
+[INFO] [1793614243.536106593] [cartographer logger]: I1102 19:10:43.000000 21743 constraint_builder_2d.cc:275] Node (0, 106) with 205 points on submap (0, 2) differs by translation 0.01 rotation 0.020 with score 73.8%.
+[INFO] [1793614243.536168931] [cartographer logger]: I1102 19:10:43.000000 21744 constraint_builder_2d.cc:275] Node (0, 100) with 210 points on submap (0, 2) differs by translation 0.02 rotation 0.038 with score 70.9%.
+[INFO] [1793614243.536319880] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:290] 74 computations resulted in 57 additional constraints.
+[INFO] [1793614243.536398475] [cartographer logger]: I1102 19:10:43.000000 21741 constraint_builder_2d.cc:292] Score histogram:
+Count: 136  Min: 0.650029  Max: 0.874084  Mean: 0.755312
+[0.650029, 0.672435)	                  ##	Count: 15 (11.0294%)	Total: 15 (11.0294%)
+[0.672435, 0.694840)	                  ##	Count: 12 (8.82353%)	Total: 27 (19.8529%)
+[0.694840, 0.717246)	                   #	Count: 10 (7.35294%)	Total: 37 (27.2059%)
+[0.717246, 0.739651)	                 ###	Count: 22 (16.1765%)	Total: 59 (43.3824%)
+[0.739651, 0.762057)	                  ##	Count: 16 (11.7647%)	Total: 75 (55.1471%)
+[0.762057, 0.784462)	                  ##	Count: 16 (11.7647%)	Total: 91 (66.9118%)
+[0.784462, 0.806868)	                  ##	Count: 15 (11.0294%)	Total: 106 (77.9412%)
+[0.806868, 0.829273)	                   #	Count: 8 (5.88235%)	Total: 114 (83.8235%)
+[0.829273, 0.851679)	                 ###	Count: 17 (12.5%)	Total: 131 (96.3235%)
+[0.851679, 0.874084]	                   #	Count: 5 (3.67647%)	Total: 136 (100%)
+[WARN] [1793614243.539176493] [cartographer logger]: W1102 19:10:43.000000 21741 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614247.857316766] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1793614247.860200164] [cartographer logger]: I1102 19:10:47.000000 21712 node.cpp:569] Shutdown the subscriber of [scan]
+[INFO] [1793614247.861287115] [cartographer logger]: I1102 19:10:47.000000 21712 node.cpp:569] Shutdown the subscriber of [odom]
+[INFO] [1793614247.861374286] [cartographer logger]: I1102 19:10:47.000000 21712 map_builder_bridge.cpp:152] Finishing trajectory with ID '0'...
+[INFO] [1793614247.861524435] [cartographer logger]: I1102 19:10:47.000000 21712 collated_trajectory_builder.cc:81] odom rate: 50.00 Hz 2.00e-02 s +/- 1.86e-03 s (pulsed at 71.34% real time)
+[INFO] [1793614247.861694297] [cartographer logger]: I1102 19:10:47.000000 21712 collated_trajectory_builder.cc:81] scan rate: 10.01 Hz 9.99e-02 s +/- 3.52e-03 s (pulsed at 100.05% real time)
+[INFO] [1793614247.861880352] [cartographer logger]: I1102 19:10:47.000000 21743 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[INFO] [1793614247.861975395] [cartographer logger]: I1102 19:10:47.000000 21743 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614247.862073063] [cartographer logger]: I1102 19:10:47.000000 21743 constraint_builder_2d.cc:292] Score histogram:
+Count: 136  Min: 0.650029  Max: 0.874084  Mean: 0.755312
+[0.650029, 0.672435)	                  ##	Count: 15 (11.0294%)	Total: 15 (11.0294%)
+[0.672435, 0.694840)	                  ##	Count: 12 (8.82353%)	Total: 27 (19.8529%)
+[0.694840, 0.717246)	                   #	Count: 10 (7.35294%)	Total: 37 (27.2059%)
+[0.717246, 0.739651)	                 ###	Count: 22 (16.1765%)	Total: 59 (43.3824%)
+[0.739651, 0.762057)	                  ##	Count: 16 (11.7647%)	Total: 75 (55.1471%)
+[0.762057, 0.784462)	                  ##	Count: 16 (11.7647%)	Total: 91 (66.9118%)
+[0.784462, 0.806868)	                  ##	Count: 15 (11.0294%)	Total: 106 (77.9412%)
+[0.806868, 0.829273)	                   #	Count: 8 (5.88235%)	Total: 114 (83.8235%)
+[0.829273, 0.851679)	                 ###	Count: 17 (12.5%)	Total: 131 (96.3235%)
+[0.851679, 0.874084]	                   #	Count: 5 (3.67647%)	Total: 136 (100%)
+[INFO] [1793614247.862406034] [cartographer logger]: I1102 19:10:47.000000 21712 map_builder_bridge.cpp:161] Running final trajectory optimization...
+[WARN] [1793614247.865634885] [cartographer logger]: W1102 19:10:47.000000 21743 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614247.875316028] [cartographer logger]: I1102 19:10:47.000000 21743 pose_graph_2d.cc:538] Remaining work items in queue: 1
+[INFO] [1793614247.875473249] [cartographer logger]: I1102 19:10:47.000000 21743 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614247.875876399] [cartographer logger]: I1102 19:10:47.000000 21743 constraint_builder_2d.cc:292] Score histogram:
+Count: 136  Min: 0.650029  Max: 0.874084  Mean: 0.755312
+[0.650029, 0.672435)	                  ##	Count: 15 (11.0294%)	Total: 15 (11.0294%)
+[0.672435, 0.694840)	                  ##	Count: 12 (8.82353%)	Total: 27 (19.8529%)
+[0.694840, 0.717246)	                   #	Count: 10 (7.35294%)	Total: 37 (27.2059%)
+[0.717246, 0.739651)	                 ###	Count: 22 (16.1765%)	Total: 59 (43.3824%)
+[0.739651, 0.762057)	                  ##	Count: 16 (11.7647%)	Total: 75 (55.1471%)
+[0.762057, 0.784462)	                  ##	Count: 16 (11.7647%)	Total: 91 (66.9118%)
+[0.784462, 0.806868)	                  ##	Count: 15 (11.0294%)	Total: 106 (77.9412%)
+[0.806868, 0.829273)	                   #	Count: 8 (5.88235%)	Total: 114 (83.8235%)
+[0.829273, 0.851679)	                 ###	Count: 17 (12.5%)	Total: 131 (96.3235%)
+[0.851679, 0.874084]	                   #	Count: 5 (3.67647%)	Total: 136 (100%)
+[WARN] [1793614247.879568146] [cartographer logger]: W1102 19:10:47.000000 21743 preprocessor.cc:62] Specified options.num_threads: 7 exceeds maximum available from the threading model Ceres was compiled with: 6.  Bounding to maximum number available.
+[INFO] [1793614247.885743821] [cartographer logger]: I1102 19:10:47.000000 21741 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614247.886034903] [cartographer logger]: I1102 19:10:47.000000 21741 constraint_builder_2d.cc:292] Score histogram:
+Count: 136  Min: 0.650029  Max: 0.874084  Mean: 0.755312
+[0.650029, 0.672435)	                  ##	Count: 15 (11.0294%)	Total: 15 (11.0294%)
+[0.672435, 0.694840)	                  ##	Count: 12 (8.82353%)	Total: 27 (19.8529%)
+[0.694840, 0.717246)	                   #	Count: 10 (7.35294%)	Total: 37 (27.2059%)
+[0.717246, 0.739651)	                 ###	Count: 22 (16.1765%)	Total: 59 (43.3824%)
+[0.739651, 0.762057)	                  ##	Count: 16 (11.7647%)	Total: 75 (55.1471%)
+[0.762057, 0.784462)	                  ##	Count: 16 (11.7647%)	Total: 91 (66.9118%)
+[0.784462, 0.806868)	                  ##	Count: 15 (11.0294%)	Total: 106 (77.9412%)
+[0.806868, 0.829273)	                   #	Count: 8 (5.88235%)	Total: 114 (83.8235%)
+[0.829273, 0.851679)	                 ###	Count: 17 (12.5%)	Total: 131 (96.3235%)
+[0.851679, 0.874084]	                   #	Count: 5 (3.67647%)	Total: 136 (100%)
+[KOptimizing: Done.     
+[INFO] [1793614247.897865658] [cartographer logger]: I1102 19:10:47.000000 21742 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[INFO] [1793614247.898021312] [cartographer logger]: I1102 19:10:47.000000 21742 constraint_builder_2d.cc:292] Score histogram:
+Count: 136  Min: 0.650029  Max: 0.874084  Mean: 0.755312
+[0.650029, 0.672435)	                  ##	Count: 15 (11.0294%)	Total: 15 (11.0294%)
+[0.672435, 0.694840)	                  ##	Count: 12 (8.82353%)	Total: 27 (19.8529%)
+[0.694840, 0.717246)	                   #	Count: 10 (7.35294%)	Total: 37 (27.2059%)
+[0.717246, 0.739651)	                 ###	Count: 22 (16.1765%)	Total: 59 (43.3824%)
+[0.739651, 0.762057)	                  ##	Count: 16 (11.7647%)	Total: 75 (55.1471%)
+[0.762057, 0.784462)	                  ##	Count: 16 (11.7647%)	Total: 91 (66.9118%)
+[0.784462, 0.806868)	                  ##	Count: 15 (11.0294%)	Total: 106 (77.9412%)
+[0.806868, 0.829273)	                   #	Count: 8 (5.88235%)	Total: 114 (83.8235%)
+[0.829273, 0.851679)	                 ###	Count: 17 (12.5%)	Total: 131 (96.3235%)
+[0.851679, 0.874084]	                   #	Count: 5 (3.67647%)	Total: 136 (100%)
+[KOptimizing: Done.     
+1793614248.061872 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50910 failed with retcode -3
+1793614248.061914 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50912 failed with retcode -3
+1793614248.061926 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50914 failed with retcode -3
+1793614248.061935 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50916 failed with retcode -3
+1793614248.061943 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50918 failed with retcode -3
+1793614248.061950 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50920 failed with retcode -3
+1793614248.061960 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50922 failed with retcode -3
+1793614248.061968 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50924 failed with retcode -3
+1793614248.061976 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50926 failed with retcode -3
+1793614248.061984 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50928 failed with retcode -3
+1793614248.061992 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50930 failed with retcode -3
+1793614248.062000 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50932 failed with retcode -3
+1793614248.062007 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50934 failed with retcode -3
+1793614248.062014 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50936 failed with retcode -3
+1793614248.062021 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50938 failed with retcode -3
+1793614248.062028 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50940 failed with retcode -3
+1793614248.062036 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50942 failed with retcode -3
+1793614248.062043 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50944 failed with retcode -3
+1793614248.062051 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50946 failed with retcode -3
+1793614248.062058 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50948 failed with retcode -3
+1793614248.062065 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50950 failed with retcode -3
+1793614248.062072 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50952 failed with retcode -3
+1793614248.062095 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50954 failed with retcode -3
+1793614248.062105 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50956 failed with retcode -3
+1793614248.062114 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50958 failed with retcode -3
+1793614248.062121 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50960 failed with retcode -3
+1793614248.062128 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50962 failed with retcode -3
+1793614248.062135 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50964 failed with retcode -3
+1793614248.062143 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50966 failed with retcode -3
+1793614248.062150 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50968 failed with retcode -3
+1793614248.062156 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50970 failed with retcode -3
+1793614248.062165 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50972 failed with retcode -3
+1793614248.062173 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50974 failed with retcode -3
+1793614248.062181 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50976 failed with retcode -3
+1793614248.062189 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50978 failed with retcode -3
+1793614248.062197 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50980 failed with retcode -3
+1793614248.062204 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50982 failed with retcode -3
+1793614248.062211 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50984 failed with retcode -3
+1793614248.062218 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50986 failed with retcode -3
+1793614248.062225 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50988 failed with retcode -3
+1793614248.062233 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50990 failed with retcode -3
+1793614248.062240 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50992 failed with retcode -3
+1793614248.062248 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50994 failed with retcode -3
+1793614248.062256 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50996 failed with retcode -3
+1793614248.062263 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:50998 failed with retcode -3
+1793614248.062270 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:51000 failed with retcode -3
+1793614248.062277 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:51002 failed with retcode -3
+1793614248.062284 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:51004 failed with retcode -3
+1793614248.062290 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:51006 failed with retcode -3
+1793614248.062297 [174] cartograph: ddsi_udp_conn_write to udp/10.96.147.234:51008 failed with retcode -3

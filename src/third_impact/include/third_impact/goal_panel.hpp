@@ -29,8 +29,8 @@ class GoalPanel : public rviz_common::Panel {
  private:
  rclcpp::Node::SharedPtr node_;
  rclcpp::executors::SingleThreadedExecutor executor_;
- rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr goal_, region_;
+ rclcpp::Publisher<std_msgs::msg::Empty>::SharedPtr goal_, region_, boundary_;
  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr status_;
- QLabel *label_; QPushButton *save_, *apply_; QTimer *timer_;
+ QLabel *label_; QPushButton *save_, *apply_, *boundary_save_; QTimer *timer_;
 };
 }

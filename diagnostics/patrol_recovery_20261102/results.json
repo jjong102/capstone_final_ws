@@ -1,0 +1,16 @@
+{
+  "source_log": "src/third_impact/debug_log/20261102_210423_905315",
+  "odom_samples": 6149,
+  "odom_interval_p50_seconds": 0.01999903,
+  "odom_receive_age_p95_seconds": 0.01194887,
+  "planner_replay": {
+    "hardware_nodes": false,
+    "live_obstacle_layer": false,
+    "ros_domain_id": 195,
+    "status": 4,
+    "path_points": 240,
+    "minimum_exclusion_center_distance_m": 0.48794875267049087,
+    "minimum_distance_after_30cm_from_start_m": 0.7304080097072638
+  },
+  "physical_robot_tested": false
+}

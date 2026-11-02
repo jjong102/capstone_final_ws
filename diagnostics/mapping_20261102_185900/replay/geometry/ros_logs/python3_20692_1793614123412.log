@@ -1,0 +1,10 @@
+[INFO] [1793614123.433443822] [rosbag2_storage]: Opened database '/home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/geometry/input/input_0.db3' for READ_ONLY.
+[INFO] [1793614123.433598995] [rosbag2_player]: Set rate to 1
+[INFO] [1793614123.437190807] [rosbag2_player]: Overriding QoS profile for topic /tf_static
+[INFO] [1793614123.442771203] [rosbag2_player]: Adding keyboard callbacks.
+[INFO] [1793614123.442891495] [rosbag2_player]: Press SPACE for Pause/Resume
+[INFO] [1793614123.442924809] [rosbag2_player]: Press CURSOR_RIGHT for Play Next Message
+[INFO] [1793614123.442949225] [rosbag2_player]: Press CURSOR_UP for Increase Rate 10%
+[INFO] [1793614123.442974538] [rosbag2_player]: Press CURSOR_DOWN for Decrease Rate 10%
+[INFO] [1793614123.443185810] [rosbag2_player]: Sleep 2000000000 ns
+[INFO] [1793614125.444036934] [rosbag2_storage]: Opened database '/home/moonshot/capstone_final_ws/diagnostics/mapping_20261102_185900/replay/geometry/input/input_0.db3' for READ_ONLY.

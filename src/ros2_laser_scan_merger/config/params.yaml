@@ -1,5 +1,8 @@
 /ros2_laser_scan_merger:
   ros__parameters:
+    # Use URDF TF including pitch/roll of the upside-down LiDARs.
+    # Manual laser* offsets/Alpha and flip* below apply only when this is false.
+    use_tf_transforms: true
     flip1: false
     flip2: false
     inverse1: false

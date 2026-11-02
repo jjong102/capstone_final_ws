@@ -109,7 +109,7 @@ class LocalizationBootstrap(Node):
         valid=np.isfinite(ranges)&(ranges>max(.1,msg.range_min))&(ranges<min(6.,msg.range_max))
         points=np.column_stack((ranges[valid]*np.cos(angles[valid]),ranges[valid]*np.sin(angles[valid])))
         t=tf.transform.translation; points=points@rotation.T+[t.x,t.y]
-        points=points[(abs(points[:,0])>.31)|(abs(points[:,1])>.24)]
+        points=points[(abs(points[:,0])>.35)|(abs(points[:,1])>.22)]
         self.scans[key]=(time.monotonic(),Time.from_msg(msg.header.stamp).nanoseconds,points)
 
     def cloud(self):

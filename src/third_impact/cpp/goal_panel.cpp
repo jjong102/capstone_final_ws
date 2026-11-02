@@ -89,7 +89,7 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
   QString title, explanation, color="#e0a020";
   if (obj["mode"].toString()=="teach") {
    title=state=="CAPTURE" ? "목표 저장 중" : "목표 설정 모드";
-   explanation=state=="CAPTURE" ? "로봇을 정지한 채 기다려 주세요." : "수동으로 주차한 뒤 목표와 정찰 제한 구역을 저장하세요.";
+   explanation=state=="CAPTURE" ? "로봇을 정지한 채 기다려 주세요." : "수동으로 주차한 뒤 목표, 한계 구간, 정찰 제한 구간을 저장하세요.";
   } else if (obj["manual"].isNull() || obj["manual"].isUndefined()) {
    title="준비 대기"; explanation="수동·자동 모드 정보를 기다리고 있습니다.";
   } else if (obj["manual"].toBool()) {
@@ -103,11 +103,26 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
     title=localizationName(localization["state"].toString());
     explanation=localization["reason"].toString();
    }
-  } else if (!obj["has_goal"].toBool() || !obj["has_rectangle"].toBool() || state=="WAIT") {
-   title="목표·구역 설정 대기"; explanation="저장된 목표와 정찰 제한 구역이 필요합니다.";
+  } else if (!obj["has_goal"].toBool() || !obj["has_rectangle"].toBool() || !obj["has_boundary"].toBool() || state=="WAIT") {
+   title="목표·구역 설정 대기"; explanation="저장된 목표, 한계 구간, 정찰 제한 구간이 필요합니다.";
+  } else if (state=="PATROL_APPROACH") {
+   title="정찰 목표 위치로 근접 이동"; explanation="최종 방향과 무관하게 목표 위치 5cm 이내로 접근합니다.";
+  } else if (state=="PATROL_BLOCKED") {
+   title="정찰 경로 차단 · 대기"; explanation="정찰 제어가 대기 중입니다. 상세 안내의 정체·시간 초과·장애물 사유를 확인하세요.";
+  } else if (state=="PATROL_RECOVERY") {
+   title="정찰 방향 정렬·경로 재시도"; explanation="같은 목표를 유지하며 안전한 방향과 우회 경로를 확인합니다.";
   } else if (state=="ALIGN") {
    title="목표 위치 정밀 정렬 중"; color="#42a5f5";
+   const auto phase=obj["alignment"].toObject()["phase"].toString();
+   if(phase.startsWith("COARSE_") && phase!="COARSE_DONE") title="목표 방향 먼저 정렬 중";
+   if(phase=="REVERIFY" || phase=="FINE_VERIFY") title="정밀 정합 재검증 중";
    explanation="위치·방향 보정 후 정지 유지 조건을 확인합니다.";
+  } else if (state=="RETURN_ROTATE") {
+   title="진입 전 방향 정렬 중"; explanation="회전 가능한 위치에서 저장 목표의 방향으로 맞춥니다.";
+  } else if (state=="RETURN_REVERSE") {
+   title="후진 복귀 중"; explanation="장애물이 있으면 우회 없이 정지하고 해소를 기다립니다.";
+  } else if (state=="RETURN_FORWARD") {
+   title="전진 복귀 중"; explanation="장애물 앞에서 정지하고 5초 후에도 막혀 있으면 우회합니다.";
   } else if (state=="RETURN") {
    title="목표로 복귀 중"; color="#42a5f5";
    explanation="저장된 goal로 이동하는 임무입니다.";
@@ -115,6 +130,11 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
    title="정찰 중"; color="#36b85a";
    explanation="랜덤 목적지를 선정해 이동하는 임무입니다.";
   } else { title="상태 확인 중"; explanation=state; }
+  if(obj["ready"].toBool() && !obj["manual"].toBool() &&
+     obj["intent"].toString()=="return" && obj["return"].toObject()["blocked_seconds"].toDouble()>0.) {
+   title="장애물 해소 대기 중"; color="#e89b00";
+   explanation=obj["return"].toObject()["waiting"].toString();
+  }
   state_->setText(title);
   state_->setStyleSheet(QString("font-size: 20px; font-weight: bold; color: %1;").arg(color));
   auto detail=readableDetail(obj["detail"].toString());
@@ -122,7 +142,12 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
       !obj["manual"].toBool() && (state=="PATROL" || state=="RETURN") &&
       (!obj.contains("ready") || obj["ready"].toBool())) {
    title=state=="PATROL" ? "정찰 요청 재시도 중" : "복귀 요청 재시도 중";
-   state_->setText(title);
+   if(obj["ready"].toBool() && !obj["manual"].toBool() &&
+     obj["intent"].toString()=="return" && obj["return"].toObject()["blocked_seconds"].toDouble()>0.) {
+   title="장애물 해소 대기 중"; color="#e89b00";
+   explanation=obj["return"].toObject()["waiting"].toString();
+  }
+  state_->setText(title);
    state_->setStyleSheet("font-size: 20px; font-weight: bold; color: #e0a020;");
   }
   const int scroll=table_->verticalScrollBar()->value();
@@ -163,6 +188,22 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
      .arg(1000.*std::hypot(pose[0].toDouble(),pose[1].toDouble()),0,'f',1)
      .arg(pose[2].toDouble()*180./std::acos(-1.),0,'f',2), "저장 goal 대비 최근 LiDAR 정합의 위치·방향 추정 오차입니다.");
   }
+  const auto alignment=obj["alignment"].toObject();
+  if(state=="ALIGN" && !alignment.isEmpty()) {
+   const auto phase=alignment["phase"].toString();
+   const auto stage=phase=="COARSE_WAIT" ? "회전 공간·진행 확인 대기" :
+     phase.startsWith("COARSE_") ? "큰 방향 정렬" :
+     phase=="FINE_ALIGN" ? "정밀 정렬" : "새 스캔으로 재검증";
+   row("정렬 단계",stage,"큰 방향 정렬 → 연속 정합 재검증 → 정밀 정렬");
+   if(alignment.contains("correction_m"))
+    row("위치 보정 검사",QString("%1 / %2 cm").arg(alignment["correction_m"].toDouble()*100.,0,'f',1).arg(alignment["correction_limit_m"].toDouble()*100.,0,'f',1),"AMCL/TF 대비 LiDAR 정합 보정량 / 허용 한계");
+   if(!alignment["rejection"].toString().isEmpty())
+    row("정렬 거부 사유","상세",alignment["rejection"].toString());
+  }
+  auto ret=obj["return"].toObject();
+  if(obj["intent"].toString()=="return") {
+   row("장애물 대기", QString::number(ret["blocked_seconds"].toDouble(), 'f', 1)+"초", ret["waiting"].toString());
+  }
   row("최근 안내", "상세", detail.isEmpty() ? "없음" : detail);
   table_->resizeRowsToContents();
   table_->verticalScrollBar()->setValue(scroll);
@@ -191,17 +232,22 @@ GoalPanel::GoalPanel(QWidget *parent): Panel(parent) {
  node_ = std::make_shared<rclcpp::Node>("third_impact_goal_panel");
  executor_.add_node(node_);
  goal_=node_->create_publisher<std_msgs::msg::Empty>("/save_goal",10);
+ boundary_=node_->create_publisher<std_msgs::msg::Empty>("/third_impact/save_boundary",10);
  region_=node_->create_publisher<std_msgs::msg::Empty>("/third_impact/save_region",10);
  auto *layout=new QVBoxLayout;
  label_=new QLabel("Jetson의 목표 설정 노드 연결 대기 중..."); label_->setWordWrap(true);
  label_->setTextFormat(Qt::PlainText);
  setMinimumHeight(180);
  save_=new QPushButton("Save Goal — 현재 위치·방향 저장");
- apply_=new QPushButton("Save Region — 정찰 제한 구역 저장");
- save_->setEnabled(false); apply_->setEnabled(false);
- layout->addWidget(label_); layout->addWidget(save_); layout->addWidget(apply_); setLayout(layout);
+ boundary_save_=new QPushButton("Save Boundary — 한계 구간 저장 (파랑)");
+ apply_=new QPushButton("Save Region — 정찰 제한 구간 저장 (주황)");
+ save_->setEnabled(false); apply_->setEnabled(false); boundary_save_->setEnabled(false);
+ layout->addWidget(label_); layout->addWidget(save_); layout->addWidget(boundary_save_); layout->addWidget(apply_); setLayout(layout);
  connect(save_, &QPushButton::clicked, this, [this](){
   if (rclcpp::ok(node_->get_node_base_interface()->get_context())) goal_->publish(std_msgs::msg::Empty());
+ });
+ connect(boundary_save_, &QPushButton::clicked, this, [this](){
+  if (rclcpp::ok(node_->get_node_base_interface()->get_context())) boundary_->publish(std_msgs::msg::Empty());
  });
  connect(apply_, &QPushButton::clicked, this, [this](){
   if (rclcpp::ok(node_->get_node_base_interface()->get_context())) region_->publish(std_msgs::msg::Empty());
@@ -212,27 +258,29 @@ GoalPanel::GoalPanel(QWidget *parent): Panel(parent) {
   bool teaching=obj["mode"].toString()=="teach";
   save_->setEnabled(teaching && obj["state"].toString()!="CAPTURE");
   apply_->setEnabled(teaching && obj["has_goal"].toBool() && obj["state"].toString()!="CAPTURE");
+  boundary_save_->setEnabled(teaching && obj["has_goal"].toBool() && obj["state"].toString()!="CAPTURE");
+  const bool boundary=obj["has_boundary"].toBool();
   const bool captured=obj["has_goal"].toBool();
   const bool region=obj["has_rectangle"].toBool();
   QString instruction;
   if (!teaching) instruction="임무 실행 중입니다. 목표 변경은 make_goal_launch에서 가능합니다.";
   else if (obj["state"].toString()=="CAPTURE") instruction="목표 관측 수집 중: 로봇을 움직이지 마세요.";
   else if (!captured) instruction="로봇을 주차하고 정지한 뒤 Save Goal을 누르세요.";
-  else if (!region) instruction="Interact: 면을 끌어 이동 · 고리로 회전 · 모서리 구로 크기 조절 후 Save Region을 누르세요.";
-  else instruction="목표와 구역 저장 완료. 목표 설정 launch 종료 후 임무를 시작하세요.";
-  label_->setText(QString("목표: %1 | 제한 구역: %2\n%3\n%4")
-    .arg(captured ? "저장됨" : "미저장").arg(region ? "저장됨" : "미저장")
+  else if (!boundary || !region) instruction="Interact: 면 이동 · 고리 회전 · 모서리 크기 조절. 파랑=이동 한계, 주황=정찰 제외. 각각 저장하세요.";
+  else instruction="목표와 두 구간 저장 완료. 목표 설정 launch 종료 후 임무를 시작하세요.";
+  label_->setText(QString("목표: %1 | 한계: %2 | 정찰 제한: %3\n%4\n%5")
+    .arg(captured ? "저장됨" : "미저장").arg(boundary ? "저장됨" : "미저장").arg(region ? "저장됨" : "미저장")
     .arg(instruction).arg(readableDetail(obj["detail"].toString())));
  });
  timer_=new QTimer(this); connect(timer_, &QTimer::timeout,this,[this](){
   if (!rclcpp::ok(node_->get_node_base_interface()->get_context())) {
-   timer_->stop(); save_->setEnabled(false); apply_->setEnabled(false); return;
+   timer_->stop(); save_->setEnabled(false); apply_->setEnabled(false); boundary_save_->setEnabled(false); return;
   }
   // Keep one executor: spin_some(node_) constructed a fresh executor/guard
   // condition on every Qt tick, including ticks after ROS SIGINT shutdown.
   try { executor_.spin_some(); }
   catch (const rclcpp::exceptions::RCLError &error) {
-   timer_->stop(); save_->setEnabled(false); apply_->setEnabled(false);
+   timer_->stop(); save_->setEnabled(false); apply_->setEnabled(false); boundary_save_->setEnabled(false);
    if (rclcpp::ok(node_->get_node_base_interface()->get_context()))
     label_->setText(QString("ROS 연결 오류: %1").arg(error.what()));
   }
