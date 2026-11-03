@@ -1,0 +1,69 @@
+Bag: src/third_impact/debug_log/20261103_212624_609744
+Read-only analysis of closed bag (no owner found by fuser). No playback onto robot.
+
+Recorded last localization quality:
+front overlap 97.697%, robust score 0.01605 m;
+rear overlap 47.039%, robust score 0.18654 m;
+combined score 0.09503 m, rejected (threshold 0.065 m).
+Score is capped at 0.4 m and trimmed to best 85%; it is NOT a uniform wall offset.
+AMCL uses /third_impact/amcl_scan (both sensors). Last pair skew 0.03284 s.
+Static TF: lidar1 x +0.311, lidar2 x -0.311, z 0.0465;
+quaternions match stated URDF pitch pi and rear yaw pi (3.14 approximation).
+
+Independent endpoints reconstructed with full sensor quaternion and interpolated
+map->odom->base_link at each scan header stamp. No within-scan deskew was applied.
+Final scan pair: front 21:32:00.738, rear 21:32:00.705 KST.
+Front nearest boundary median 1.97 cm, 97.70% within 12 cm.
+Rear median 41.11 cm, 44.70% within 12 cm. Different sample from last live quality.
+Last 30 s odometry reports effectively zero linear/angular speed.
+At start (21:26:26), rear overlap 99.4%; after 21:29:25 persistent rear failure.
+Overlay: several rear segments match top/bottom and left wall; a large rear
+segment lies inside mapped room, inconsistent with a single small rigid offset.
+Exploratory nearest-neighbor fit reaches translation search boundary and worsens
+12cm overlap: not a calibration result and must not be deployed as a correction.
+
+Interpretation: primary observed failure is sector-specific map/observation
+inconsistency, causing localization rejection and repeated global search.
+Physical cause remains unresolved: unmapped nearer surface/occlusion, map geometry
+error, optical false returns, or angle/range-dependent sensor error. Bag alone
+cannot establish that nearer returns are the same physical wall as mapped wall.
+Static extrinsic offset, yaw flip and timestamp skew are not supported as sole
+causes by these observations. Physical extrinsics still require measurement.
+
+Plan: add per-sector endpoint/raycast diagnostics (short return vs expected wall,
+long return through wall), inspect raw vs filtered points, compare same wall with
+both sensors at several poses/ranges while stationary. If nearer real obstacle:
+retain collision detection, separate localization inlier selection from obstacle
+clouds; never simply drop rear obstacle points. If false returns: isolate sensor
+cross-talk/material effects with single-sensor controlled captures. If map error:
+validate native mapping bag/map before edits; inspect duplicated wall boundaries.
+Only apply extrinsic/range calibration if consistent across multiple wall poses.
+Replay quality decisions isolated from robot; preserve 70x44cm envelope and region
+constraints, patrol 5cm/return 2cm; do not lower overlap/score thresholds as fix.
+
+Follow-up fusion/pose audit
+--------------------------
+User confirmed map is unedited dual-LiDAR mapping output. Actual mapping recording
+is unavailable: supplied 21:10 log ended before 21:20 map save and has a different
+map size. This mismatch is NOT evidence that the saved map is wrong.
+
+check_fusion.py sampled 125 published virtual scans across mission. Reconstructed
+candidate input pairs from recorded filtered scans, URDF-consistent static TF and
+interpolated planar odom TF. Every sample had identical finite-bin masks; mean
+range differences <8.72e-8 m (float serialization scale). Input pair selection is
+inferred from timestamps/best numerical match, not recorded input IDs.
+Motion compensation point displacement: sampled maximum 7.66 cm, p95 4.49 cm;
+last sample about 1e-15 m. Latest scan skew 32.84 ms, but robot stationary.
+Thus observed persistent final mismatch is not introduced by the fusion routine
+or pair-time compensation. This is output consistency validation, not proof of
+physical timing/extrinsic calibration or AMCL correctness.
+
+Exploratory local pose search: +/-0.30 m x/y, +/-10 deg, 9x9x9 grid seeds then
+Powell refinement with capped, 85%-trimmed nearest-boundary distance. At final
+sample: unchanged front overlap 97.71%, rear45.21%; jointly fitted pose yields
+front97.71%, rear45.54%. No correction resolving both was found in this local
+search; this is not a global optimality proof. No corrections were deployed.
+
+Next evidence needed: actual mapping run with raw scans, TF, odom, generated map
+and save timestamp. Compare per-point scan-time deskew and observation-to-wall
+consistency during mapping versus mission; retain URDF parameters unchanged.

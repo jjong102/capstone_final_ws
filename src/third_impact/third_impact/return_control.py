@@ -363,6 +363,6 @@ class ReturnControl:
         # Approach speed uses geometric endpoint distance, not only path length.
         # Leave the final 6 cm handoff to the existing position/yaw alignment.
         room = max(0., distance-.03)
-        approach_speed = min(.6, .7*room, math.sqrt(2*.5*room))
+        approach_speed = min(self.p['return_max_speed'], .7*room, math.sqrt(2*.5*room))
         v = math.copysign(min(abs(v),approach_speed),v)
         self.return_command(pose, v, w, reverse)

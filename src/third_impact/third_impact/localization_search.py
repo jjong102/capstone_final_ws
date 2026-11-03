@@ -20,8 +20,9 @@ class GridModel:
         self.free = self.cells == 0
         self.occupied = self.cells >= 65
         self.clearance = distance_transform_edt(np.pad(self.free, 1))[1:-1, 1:-1]*self.resolution
-        self.distance = distance_transform_edt(~self.occupied)*self.resolution
+
         boundary = self.occupied & binary_dilation(self.free)
+        self.distance = distance_transform_edt(~boundary)*self.resolution
         row, col = np.nonzero(boundary)
         self.reference = np.column_stack(((col+.5)*self.resolution, (row+.5)*self.resolution))
         self.fingerprint = hashlib.sha256(self.cells.tobytes()+repr((resolution, list(origin))).encode()).hexdigest()
@@ -52,29 +53,46 @@ class GridModel:
         return np.partition(distances, k-1, axis=1)[:, :k].mean(axis=1)
 
     def footprint_clear(self, pose):
-        x = np.linspace(-.33, .33, 7)
-        y = np.linspace(-.26, .26, 7)
-        boundary = np.vstack((np.column_stack((x, x*0-.26)), np.column_stack((x, x*0+.26)),
-                              np.column_stack((y*0-.33, y)), np.column_stack((y*0+.33, y)), [[0., 0.]]))
+        # Cover the full URDF envelope, including protrusions and interior cells.
+        x = np.linspace(-.35, .35, int(np.ceil(.70/(self.resolution*.5)))+1)
+        y = np.linspace(-.22, .22, int(np.ceil(.44/(self.resolution*.5)))+1)
+        xx, yy = np.meshgrid(x, y)
+        boundary = np.column_stack((xx.ravel(), yy.ravel()))
         row, col, good = self.indices(transform(boundary, pose))
         return bool(np.all(good & self.free[row, col]))
 
-    def rays_clear(self, points, pose):
+    def ray_fraction(self, points, pose, origin=None):
         # Wrong hypotheses often match endpoints through intervening walls.
-        samples = np.vstack([points*f for f in (.25, .5, .75)])
+        origin = np.zeros(2) if origin is None else np.asarray(origin)
+        samples = np.vstack([origin+(points-origin)*f for f in (.25, .5, .75)])
         row, col, good = self.indices(transform(samples, pose))
-        return float(np.mean(good & self.free[row, col])) >= .90
+        return float(np.mean(good & self.free[row, col])) if len(samples) else 0.
 
-    def verify(self, points, world_pose):
+    def rays_clear(self, points, pose):
+        return self.ray_fraction(points, pose) >= .90
+
+    def verify(self, points, world_pose, origin=None, min_overlap=.70):
         """Local geometric consistency, not a guarantee of global uniqueness."""
+        if len(points) == 0:
+            return {'valid': False, 'overlap': 0., 'score': .4,
+                    'footprint_clear': False, 'rays_free_fraction': 0.,
+                    'failures': ['유효 LiDAR 관측 없음'], 'reason': '유효 LiDAR 관측 없음'}
         pose = self.local_pose(world_pose)
         moved = transform(points, pose)
         row, col, good = self.indices(moved)
         distances = np.where(good, self.distance[row, col], 1.)
         overlap = float(np.mean(good & (self.cells[row, col]>=0) & (distances<.12)))
         score = float(self.scores(points, np.array([pose]))[0])
-        return {'valid': overlap>=.70 and score<=.065 and self.footprint_clear(pose) and self.rays_clear(points, pose),
-                'overlap': overlap, 'score': score}
+        footprint = self.footprint_clear(pose)
+        rays = self.ray_fraction(points, pose, origin)
+        failures = []
+        if overlap < min_overlap: failures.append(f'벽 경계 일치율 {overlap*100:.1f}% < {min_overlap*100:.0f}%')
+        if score > .065: failures.append(f'벽 경계 오차 {score*100:.1f}cm > 6.5cm')
+        if not footprint: failures.append('70×44cm 차체 외곽 공간 부족')
+        if rays < .90: failures.append(f'광선 자유 공간 {rays*100:.1f}% < 90%')
+        return {'valid': not failures, 'overlap': overlap, 'min_overlap': min_overlap, 'score': score,
+                'footprint_clear': footprint, 'rays_free_fraction': rays,
+                'failures': failures, 'reason': ' / '.join(failures) or '위치 검증 통과'}
 
 
 def distinct(poses, max_count, distance=.4, angle=math.radians(18)):
@@ -87,7 +105,7 @@ def distinct(poses, max_count, distance=.4, angle=math.radians(18)):
     return chosen
 
 
-def search_map(model, points, previous_pose=None, timeout=20., cancel=None):
+def search_map(model, points, previous_pose=None, timeout=20., cancel=None, verifier=None):
     started = time.monotonic()
     def interrupted():
         return (cancel is not None and cancel.is_set()) or time.monotonic()-started>timeout
@@ -134,7 +152,7 @@ def search_map(model, points, previous_pose=None, timeout=20., cancel=None):
             continue
         local = result['pose']
         world = model.world_pose(local)
-        verification = model.verify(current, world)
+        verification = verifier(world) if verifier is not None else model.verify(current, world)
         if not verification['valid']:
             continue
         if any(np.linalg.norm(local[:2]-r['local'][:2])<.25 and abs(wrap(local[2]-r['local'][2]))<math.radians(10) for r in refined):
@@ -153,3 +171,20 @@ def search_map(model, points, previous_pose=None, timeout=20., cancel=None):
             'runner_score':runner, 'candidates':len(refined),
             'alternatives':[{'pose':r['pose'].tolist(),'score':r['score'],'overlap':r['overlap']} for r in refined[:4]],
             'elapsed':time.monotonic()-started}
+
+
+def verify_sensors(model, cloud, sensors, origins, pose):
+    """Per-sensor overlap gates; retain combined cost, footprint and ray gates."""
+    quality = dict(model.verify(cloud, pose, min_overlap=0.))
+    failures = list(quality.get('failures', []))
+    if not quality['valid'] and not failures:
+        failures.append(quality['reason'])
+    quality['sensors'] = {}
+    for key, threshold in (('front', .70), ('rear', .70)):
+        result = model.verify(sensors[key], pose, origins[key], min_overlap=threshold)
+        quality['sensors'][key] = result
+        if result.get('overlap', 0.) < threshold:
+            failures.append(f"{key} 벽 경계 일치율 {result.get('overlap', 0.)*100:.1f}% < {threshold*100:.0f}%")
+    quality.update(valid=not failures, failures=failures,
+                   reason=' / '.join(failures) or '위치 검증 통과')
+    return quality

@@ -1,0 +1,514 @@
+{
+  "baseline": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.0564440140316497,
+          "overlap": 0.795121502209131,
+          "n": 104
+        },
+        "stopped": {
+          "median": 0.05301435216610313,
+          "overlap": 0.8396946564885496,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.0565612233528798,
+          "overlap": 0.793646346929628,
+          "n": 96
+        },
+        "last10": {
+          "median": 0.05413305639041879,
+          "overlap": 0.8024475524475525,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.06538109131762675,
+          "overlap": 0.7648134500230308,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.05550300726755791,
+          "overlap": 0.8302469135802469,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.06580955706507081,
+          "overlap": 0.7634730538922155,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.06894459686074582,
+          "overlap": 0.7570456540825286,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 3.883131494456685,
+        "p95_percent_one_core": 7.702050026143896,
+        "max_rss_mb": 24.09765625
+      },
+      "fusion": {
+        "mean_percent_one_core": 24.934544313914984,
+        "p95_percent_one_core": 27.878726529538472,
+        "max_rss_mb": 48.74609375
+      }
+    },
+    "poses": 178,
+    "scans": 533,
+    "max_replay_lag": 0.010317349173419643,
+    "pose_age_p95": 0.14570661783218383
+  },
+  "baseline_repeat": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.0564440140316497,
+          "overlap": 0.795121502209131,
+          "n": 104
+        },
+        "stopped": {
+          "median": 0.05301435216610313,
+          "overlap": 0.8396946564885496,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.0565612233528798,
+          "overlap": 0.793646346929628,
+          "n": 96
+        },
+        "last10": {
+          "median": 0.05413305639041879,
+          "overlap": 0.8024475524475525,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.06538109131762675,
+          "overlap": 0.7648134500230308,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.05550300726755791,
+          "overlap": 0.8302469135802469,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.06580955706507081,
+          "overlap": 0.7634730538922155,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.06894459686074582,
+          "overlap": 0.7570456540825286,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 3.9481612297428574,
+        "p95_percent_one_core": 7.729183973021787,
+        "max_rss_mb": 24.140625
+      },
+      "fusion": {
+        "mean_percent_one_core": 25.036984128986035,
+        "p95_percent_one_core": 27.98002739031843,
+        "max_rss_mb": 50.74609375
+      }
+    },
+    "poses": 178,
+    "scans": 533,
+    "max_replay_lag": 0.008249151336030991,
+    "pose_age_p95": 0.14570661783218383
+  },
+  "beams120": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.05430028809245747,
+          "overlap": 0.7989750799029149,
+          "n": 104
+        },
+        "stopped": {
+          "median": 0.052117511303922275,
+          "overlap": 0.851145038167939,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.0544208427535231,
+          "overlap": 0.795976422930748,
+          "n": 96
+        },
+        "last10": {
+          "median": 0.05406018072807004,
+          "overlap": 0.7972027972027973,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.06378536255673903,
+          "overlap": 0.773801509407221,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.05691386725682546,
+          "overlap": 0.8264705882352941,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.06407084851258474,
+          "overlap": 0.7724550898203593,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.07034107101800727,
+          "overlap": 0.7602773171181132,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 5.379566715150018,
+        "p95_percent_one_core": 9.999100289311075,
+        "max_rss_mb": 22.05859375
+      },
+      "fusion": {
+        "mean_percent_one_core": 24.6233421719427,
+        "p95_percent_one_core": 27.903894557104195,
+        "max_rss_mb": 52.7421875
+      }
+    },
+    "poses": 178,
+    "scans": 533,
+    "max_replay_lag": 0.008598612193964073,
+    "pose_age_p95": 0.14590264558792115
+  },
+  "beams120_repeat": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.05430028809245747,
+          "overlap": 0.7989750799029149,
+          "n": 104
+        },
+        "stopped": {
+          "median": 0.052117511303922275,
+          "overlap": 0.851145038167939,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.0544208427535231,
+          "overlap": 0.795976422930748,
+          "n": 96
+        },
+        "last10": {
+          "median": 0.05406018072807004,
+          "overlap": 0.7972027972027973,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.06378536255673903,
+          "overlap": 0.773801509407221,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.05691386725682546,
+          "overlap": 0.8264705882352941,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.06407084851258474,
+          "overlap": 0.7724550898203593,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.07034107101800727,
+          "overlap": 0.7602773171181132,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 5.482408439066796,
+        "p95_percent_one_core": 9.992982542207846,
+        "max_rss_mb": 20.36328125
+      },
+      "fusion": {
+        "mean_percent_one_core": 24.942072908309758,
+        "p95_percent_one_core": 27.922828085440422,
+        "max_rss_mb": 50.73828125
+      }
+    },
+    "poses": 178,
+    "scans": 534,
+    "max_replay_lag": 0.007804203334444537,
+    "pose_age_p95": 0.1475456476211548
+  },
+  "beams180": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.05366757474051197,
+          "overlap": 0.7947404707968089,
+          "n": 104
+        },
+        "stopped": {
+          "median": 0.049508664242236634,
+          "overlap": 0.857707509881423,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.05368332383877808,
+          "overlap": 0.7937062937062938,
+          "n": 96
+        },
+        "last10": {
+          "median": 0.05325654300035246,
+          "overlap": 0.7807780320366133,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.06457059765328275,
+          "overlap": 0.7742504409171076,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.06037653240420605,
+          "overlap": 0.8179012345679012,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.06467372407524943,
+          "overlap": 0.7738095238095238,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.06819566785387393,
+          "overlap": 0.7683036911252122,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 6.4763175165423785,
+        "p95_percent_one_core": 13.961919343787034,
+        "max_rss_mb": 22.0859375
+      },
+      "fusion": {
+        "mean_percent_one_core": 23.273544006249484,
+        "p95_percent_one_core": 28.3902779996218,
+        "max_rss_mb": 53.0
+      }
+    },
+    "poses": 176,
+    "scans": 528,
+    "max_replay_lag": 0.17829626391267084,
+    "pose_age_p95": 0.16505777835845947
+  },
+  "beams180_repeat": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.05368332383877808,
+          "overlap": 0.7947404707968089,
+          "n": 104
+        },
+        "stopped": {
+          "median": 0.049508664242236634,
+          "overlap": 0.857707509881423,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.05374187692933447,
+          "overlap": 0.7937062937062938,
+          "n": 96
+        },
+        "last10": {
+          "median": 0.05366757474051197,
+          "overlap": 0.7917806830850309,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.06457059765328275,
+          "overlap": 0.7742504409171076,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.06037653240420605,
+          "overlap": 0.8179012345679012,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.06467372407524943,
+          "overlap": 0.7738095238095238,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.06819566785387393,
+          "overlap": 0.7683036911252122,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 6.887191056456641,
+        "p95_percent_one_core": 13.979641261337525,
+        "max_rss_mb": 20.08203125
+      },
+      "fusion": {
+        "mean_percent_one_core": 24.756516933452843,
+        "p95_percent_one_core": 27.94788552076796,
+        "max_rss_mb": 52.99609375
+      }
+    },
+    "poses": 178,
+    "scans": 532,
+    "max_replay_lag": 0.010358966122112179,
+    "pose_age_p95": 0.1652951717376709
+  },
+  "model120": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.05493069365142388,
+          "overlap": 0.8020000442977696,
+          "n": 104
+        },
+        "stopped": {
+          "median": 0.04998579431064854,
+          "overlap": 0.857707509881423,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.055137274053907157,
+          "overlap": 0.8010058942673131,
+          "n": 96
+        },
+        "last10": {
+          "median": 0.05437649191798293,
+          "overlap": 0.8006993006993006,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.0661425838223436,
+          "overlap": 0.7737810102426296,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.05973645274059228,
+          "overlap": 0.8209876543209876,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.06614408050117598,
+          "overlap": 0.7728706624605678,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.07136581631659558,
+          "overlap": 0.7668200911609617,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 4.730809582766262,
+        "p95_percent_one_core": 9.981841285650834,
+        "max_rss_mb": 22.08984375
+      },
+      "fusion": {
+        "mean_percent_one_core": 22.93375577594669,
+        "p95_percent_one_core": 27.21220843871069,
+        "max_rss_mb": 50.96484375
+      }
+    },
+    "poses": 176,
+    "scans": 529,
+    "max_replay_lag": 0.062273175135715064,
+    "pose_age_p95": 0.15211576223373413
+  },
+  "updates120": {
+    "metrics": {
+      "/rplidar1/scan_filtered": {
+        "all": {
+          "median": 0.05470655455441399,
+          "overlap": 0.7985865724381626,
+          "n": 105
+        },
+        "stopped": {
+          "median": 0.052117511303922275,
+          "overlap": 0.851145038167939,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.055266839181433214,
+          "overlap": 0.7972027972027972,
+          "n": 97
+        },
+        "last10": {
+          "median": 0.052601626098476253,
+          "overlap": 0.7972027972027972,
+          "n": 30
+        }
+      },
+      "/rplidar2/scan_filtered": {
+        "all": {
+          "median": 0.06394063862180957,
+          "overlap": 0.7756708461446312,
+          "n": 112
+        },
+        "stopped": {
+          "median": 0.05691386725682546,
+          "overlap": 0.8264705882352941,
+          "n": 7
+        },
+        "rotating": {
+          "median": 0.0639448926192243,
+          "overlap": 0.7753164556962026,
+          "n": 105
+        },
+        "last10": {
+          "median": 0.07009507219831715,
+          "overlap": 0.7611538461538462,
+          "n": 38
+        }
+      }
+    },
+    "cpu": {
+      "amcl": {
+        "mean_percent_one_core": 7.936045258730691,
+        "p95_percent_one_core": 15.423246164663022,
+        "max_rss_mb": 22.328125
+      },
+      "fusion": {
+        "mean_percent_one_core": 24.669429233230087,
+        "p95_percent_one_core": 27.932109736341786,
+        "max_rss_mb": 52.76171875
+      }
+    },
+    "poses": 302,
+    "scans": 534,
+    "max_replay_lag": 0.011253987152713307,
+    "pose_age_p95": 0.14759353399276734
+  }
+}

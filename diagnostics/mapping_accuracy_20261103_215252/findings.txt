@@ -1,0 +1,40 @@
+Dataset: mapping 20261103_215252_874737; saved debug_map.pgm/yaml.
+Analysis uses URDF-derived recorded sensor TF. No extrinsic or footprint edits.
+Bag completed normally before read. Replay whitelist: filtered scans, odom,
+static TF and odom->base_link TF only. No hardware or motion command nodes.
+Replay domain218, localhost only, separate from operational domain3.
+
+Observed motion: odom XY extent 2.47/2.08 cm, yaw span21.82 rad;
+max angular velocity0.616 rad/s. Saved map327x428 at3cm; final bag map334x431
+(origin differs due continued mapping after save). Scores use the saved map,
+not an assumption that the last published map equals the saved map.
+Saved-map boundary overlap (within12cm), median across last10s samples:
+front93.8%, rear95.0%. In rotating samples: front78.8%, rear84.1%.
+These are self-consistency scores, NOT surveyed localization accuracy.
+The old mission's severe rear-only mismatch is not reproduced in this capture.
+
+Confirmed compensated-angle metadata defect:
+720 slots are allocated at 2 slots/degree but angle_max is fixed359 degrees.
+The SDK-slot geometry's final angle is359.5 degrees. The old publish_scan bound
+maps the reversed array to angle_min -179 rather than -179.5 degrees, giving up
+to0.5deg metadata discrepancy (~5.24cm at6m). Fixed compensated branch to derive
+last angle from (slot_count-1)/multiple. Uncompensated branch and time metadata
+unchanged. No arbitrary physical sensor offset introduced.
+Build: sllidar_ros2 passed (existing warnings). Numerical geometry checks for
+360/720/1080/1440 slots passed. Improvement in physical localization remains to
+be measured on a newly recorded run; old maps were built with old metadata.
+
+Timing experiment (one replay per condition):
+Baseline vs time_increment=0, unchanged geometry/config otherwise.
+Rotating sample median boundary distance to own replay-final map:
+front9.19cm ->18.89cm, rear8.70cm ->15.96cm. Disabling per-ray timing did not
+improve this metric and is NOT deployed. Replay baseline differs from live map
+(different asynchronous optimization), and neither result is ground truth.
+Do not use this experiment to infer an exact sensor latency or fix time sign.
+
+Next: record corrected driver with stationary / slow rotation / stationary
+segments; save under a new name (preserve current mission map/goals). Compare
+independent stationary wall observations before tuning AMCL or scan timing.
+If mapping time is suspected, capture sensor acquisition timestamps/order rather
+than fitting time offsets to the resulting map. Maintain URDF geometry, collision
+checks and localization thresholds. No reduction of rear threshold is applied.

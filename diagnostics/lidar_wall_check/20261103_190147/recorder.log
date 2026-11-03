@@ -1,0 +1,23 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1793700108.299563137] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1793700108.360704761] [rosbag2_storage]: Opened database '/home/moonshot/capstone_final_ws/diagnostics/lidar_wall_check/20261103_190147/bag/bag_0.db3' for READ_WRITE.
+[INFO] [1793700108.367272337] [rosbag2_recorder]: Listening for topics...
+[INFO] [1793700108.374121138] [rosbag2_recorder]: Subscribed to topic '/rosout'
+[INFO] [1793700108.377251242] [rosbag2_recorder]: Recording...
+[INFO] [1793700108.389947407] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1793700108.512603081] [rosbag2_recorder]: Subscribed to topic '/cmd_vel'
+[INFO] [1793700108.521904302] [rosbag2_recorder]: Subscribed to topic '/ebimu_data'
+[INFO] [1793700108.533967937] [rosbag2_recorder]: Subscribed to topic '/imu/data'
+[INFO] [1793700108.545643882] [rosbag2_recorder]: Subscribed to topic '/rplidar1/scan'
+[INFO] [1793700108.563325243] [rosbag2_recorder]: Subscribed to topic '/third_impact/status'
+[INFO] [1793700108.583296333] [rosbag2_recorder]: Subscribed to topic '/odom'
+[INFO] [1793700108.635637709] [rosbag2_recorder]: Subscribed to topic '/rplidar1/scan_filtered'
+[INFO] [1793700108.645840460] [rosbag2_recorder]: Subscribed to topic '/rplidar2/scan'
+[INFO] [1793700108.651950327] [rosbag2_recorder]: Subscribed to topic '/rplidar2/scan_filtered'
+[INFO] [1793700108.666322412] [rosbag2_recorder]: Subscribed to topic '/tf'
+[INFO] [1793700108.679704100] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+[INFO] [1793700109.245167586] [rosbag2_recorder]: Subscribed to topic '/third_impact/manual_control'
+[INFO] [1793700109.253982010] [rosbag2_recorder]: Subscribed to topic '/wheel/odometry'
+[INFO] [1793700109.255748876] [rosbag2_recorder]: All requested topics are subscribed. Stopping discovery...
+terminate called after throwing an instance of 'rosbag2_storage_plugins::SqliteException'
+  what():  Error when processing SQL statement. SQLite error (5): database is locked
+timeout: the monitored command dumped core

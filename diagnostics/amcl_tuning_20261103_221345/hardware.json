@@ -1,0 +1,12 @@
+{
+  "model": "NVIDIA Jetson Orin Nano Engineering Reference Developer Kit Super",
+  "cpus": "0-5",
+  "power": "NV Power Mode: MAXN_SUPER\n2\n",
+  "seed": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "duration": 57.18006777763367,
+  "note": "Real-time sequential AMCL+fusion only. Full navigation load is not included. CPU100%=one core."
+}

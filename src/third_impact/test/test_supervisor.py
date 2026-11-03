@@ -10,7 +10,9 @@ def stub(**values):
     defaults = dict(patrol_direction_stop=Mock(return_value=False), mode='mission', intent='patrol', state='PATROL', next_attempt=0.,
                     safe_patrol_command=Mock(return_value=True), init_patrol=Mock(), tick_patrol_near=Mock(return_value=False), tick_patrol_recovery=Mock(return_value=False), begin_patrol_recovery=Mock(), patrol_progress_pose=None, patrol_progress_time=time.monotonic(), publish_navigation_map=Mock(), motion_allowed=Mock(return_value=True), cancel_nav=Mock(), stop=Mock(), event=Mock(), settled_since=None, reset_return=Mock(), pause_return=Mock())
     defaults.update(values)
-    return NS(**defaults)
+    node = NS(**defaults)
+    node.patrol_readiness_pause = MethodType(ImpactNode.patrol_readiness_pause, node)
+    return node
 
 
 def test_hold_rejects_return_without_motion_or_duplicate_event():

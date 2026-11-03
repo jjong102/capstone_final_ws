@@ -1,0 +1,23 @@
+[INFO] [1793697015.426672351] [eval.original_front.amcl]: 
+	amcl lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1793697015.427471321] [eval.original_front.amcl]: Creating
+[INFO] [1793697015.807655518] [eval.original_front.amcl]: Configuring
+[INFO] [1793697015.807985576] [eval.original_front.amcl]: initTransforms
+[INFO] [1793697015.819924243] [eval.original_front.amcl]: initPubSub
+[INFO] [1793697015.825651632] [eval.original_front.amcl]: Subscribed to map topic.
+[INFO] [1793697015.838148076] [eval.original_front.amcl]: Received a 380 X 431 map @ 0.030 m/pix
+[INFO] [1793697015.853154651] [eval.original_front.amcl]: Activating
+[INFO] [1793697015.853478918] [eval.original_front.amcl]: Creating bond (amcl) to lifecycle manager.
+[INFO] [1793697016.387644606] [eval.original_front.amcl]: Received a 380 X 431 map @ 0.030 m/pix
+[INFO] [1793697016.754316095] [eval.original_front.amcl]: initialPoseReceived
+[INFO] [1793697016.755238429] [eval.original_front.amcl]: Setting pose (0.000000): -0.346 1.826 3.083
+[INFO] [1793697017.092050755] [eval.original_front.amcl]: createLaserObject
+[INFO] [1793697090.947273458] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1793697090.947456536] [eval.original_front.amcl]: Running Nav2 LifecycleNode rcl preshutdown (amcl)
+[INFO] [1793697090.947625181] [eval.original_front.amcl]: Deactivating
+[INFO] [1793697090.947678111] [eval.original_front.amcl]: Destroying bond (amcl) to lifecycle manager.
+[INFO] [1793697090.957901413] [eval.original_front.amcl]: Cleaning up
+[INFO] [1793697090.963597051] [eval.original_front.amcl]: Destroying bond (amcl) to lifecycle manager.
+[INFO] [1793697090.981388243] [eval.original_front.amcl]: Destroying

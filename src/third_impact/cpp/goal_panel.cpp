@@ -16,6 +16,8 @@ QString localizationName(const QString &state) {
  if(state=="INITIALIZING") return "AMCL 자동 초기화 중";
  if(state=="VERIFYING") return "위치 후보 검증 중";
  if(state=="AMBIGUOUS") return "위치 후보가 여러 개";
+ if(state=="LOCAL_RECHECK") return "정지 후 위치 재검증";
+ if(state=="DEGRADED") return "위치 품질 저하 확인 중";
  if(state=="SEARCH_FAILED") return "위치 탐색 재시도";
  if(state=="WAIT_STOP") return "정지 대기";
  if(state=="WAIT_AMCL") return "AMCL 시작 대기";
@@ -165,8 +167,19 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
   row("초기 위치",localization["fresh"].toBool() ? localizationName(localization["state"].toString()) : "노드 수신 대기",
       localization["fresh"].toBool() ? localization["reason"].toString() : "Jetson의 자동 위치 탐색 노드 정보를 기다립니다.");
   const auto quality=localization["quality"].toObject();
+  if(quality.contains("reason"))
+   row("위치 검증",quality["valid"].toBool() ? "통과" : "거부",quality["reason"].toString());
+  const auto sensors=quality["sensors"].toObject();
+  for(const auto &key : {QString("front"),QString("rear")}) {
+   const auto sensor=sensors[key].toObject();
+   if(!sensor.isEmpty())
+    row(key=="front" ? "전방 벽 일치" : "후방 벽 일치",
+        QString("%1 %").arg(sensor["overlap"].toDouble()*100.,0,'f',1),
+        QString("광선 자유 공간 %1% · %2").arg(sensor["rays_free_fraction"].toDouble()*100.,0,'f',1).arg(sensor["reason"].toString()));
+  }
+
   if(quality.contains("overlap"))
-   row("지도 일치율",QString("%1 %").arg(quality["overlap"].toDouble()*100.,0,'f',0),"최근 LiDAR 끝점 중 지도 장애물 가까이에 일치하는 비율입니다. 위치 정확도 확률은 아닙니다.");
+   row("지도 일치율",QString("%1 %").arg(quality["overlap"].toDouble()*100.,0,'f',0),"LiDAR 끝점이 지도 벽 경계 12cm 이내에 있는 비율입니다. 장애물 내부는 일치로 간주하지 않습니다.");
   const auto navigation=obj["navigation"].toObject();
   const auto phase=navigation["phase"].toString();
   row("이동 요청",phase=="executing" ? "수락됨" : phase=="requesting" ? "응답 대기" : phase=="cancel_requested" ? "취소 요청" : phase=="idle" ? "없음" : "정보 없음", "Nav2에 보낸 현재 이동 요청 상태입니다.");

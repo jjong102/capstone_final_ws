@@ -68,3 +68,42 @@ def test_confident_matches_at_other_positions_are_not_wrong_aliases():
             error=relative(model.world_pose(pose),result['pose'])
             assert np.linalg.norm(error[:2])<.15, result
             assert abs(error[2])<math.radians(5), result
+
+
+def test_solid_obstacle_interior_is_not_a_wall_match():
+    cells=np.zeros((100,100),dtype=np.int16); cells[:,60:]=100
+    model=GridModel(cells,.05,[0,0,0])
+    cloud=np.column_stack((np.full(100,3.),np.linspace(-.2,.2,100)))
+    result=model.verify(cloud,[1.,2.,0.])
+    assert result['overlap'] == 0.
+    assert not result['valid']
+    assert result['score'] > .065
+    assert '벽 경계' in result['reason']
+
+
+def test_footprint_includes_front_protrusion_and_correct_width():
+    cells=np.zeros((200,200),dtype=np.int16)
+    model=GridModel(cells,.01,[0,0,0])
+    model.free[100,134]=False
+    assert not model.footprint_clear([1.,1.,0.])
+    model.free[100,134]=True
+    model.free[125,100]=False
+    assert model.footprint_clear([1.,1.,0.])
+
+
+def test_empty_sensor_diagnostic_is_finite():
+    quality=room().verify(np.empty((0,2)),[1,1,0])
+    assert not quality['valid'] and quality['overlap']==0.
+
+
+def test_front_70_rear_70_overlap_gates():
+    from unittest.mock import Mock
+    from third_impact.localization_search import verify_sensors
+    for front,rear,expected in [(.70,.70,True),(.69,.90,False),(.90,.69,False),(.90,.50,False)]:
+        model=Mock()
+        model.verify.side_effect=[{'valid':True,'failures':[]},
+            {'valid':True,'overlap':front}, {'valid':True,'overlap':rear}]
+        result=verify_sensors(model,[],{'front':[], 'rear':[]}, {'front':None,'rear':None},[0,0,0])
+        assert result['valid'] == expected
+        assert model.verify.call_args_list[1].kwargs['min_overlap']==.70
+        assert model.verify.call_args_list[2].kwargs['min_overlap']==.70

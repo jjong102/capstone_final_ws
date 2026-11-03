@@ -1,0 +1,1102 @@
+[
+  {
+    "time": "18:40:30",
+    "state": "WAIT",
+    "pose": [
+      -1.4443113576192772,
+      1.6383296477194067,
+      2.0202907137690627
+    ],
+    "exclusion_distance": 2.195698032109955,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:32",
+    "state": "WAIT",
+    "pose": [
+      -1.427884814172419,
+      1.6347147037519942,
+      2.033444571828856
+    ],
+    "exclusion_distance": 2.1790958059279,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:33",
+    "state": "PATROL",
+    "pose": [
+      -1.429090049416189,
+      1.6288884632771778,
+      2.0294783506479397
+    ],
+    "exclusion_distance": 2.178068274809524,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:34",
+    "state": "PATROL",
+    "pose": [
+      -1.429090049416189,
+      1.6288884632771778,
+      2.0294783506479397
+    ],
+    "exclusion_distance": 2.178068274809524,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:35",
+    "state": "PATROL",
+    "pose": [
+      -1.4213157041119142,
+      1.6136879886192135,
+      2.025961046386665
+    ],
+    "exclusion_distance": 2.165237765853313,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:36",
+    "state": "PATROL",
+    "pose": [
+      -1.4208459928842911,
+      1.60123785261726,
+      2.0205709404142986
+    ],
+    "exclusion_distance": 2.1602113245019434,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:38",
+    "state": "PATROL",
+    "pose": [
+      -1.4208459928842911,
+      1.60123785261726,
+      2.0205709404142986
+    ],
+    "exclusion_distance": 2.1602113245019434,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:39",
+    "state": "PATROL",
+    "pose": [
+      -1.4176903732130282,
+      1.5963079262311937,
+      1.876060179309738
+    ],
+    "exclusion_distance": 2.1554605221924006,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:40",
+    "state": "PATROL",
+    "pose": [
+      -1.4213888249915134,
+      1.6002312519677182,
+      1.6963386459057266
+    ],
+    "exclusion_distance": 2.160344833697767,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:41",
+    "state": "PATROL",
+    "pose": [
+      -1.421970531730081,
+      1.6067751136865556,
+      1.6390006374843278
+    ],
+    "exclusion_distance": 2.163298000514532,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:42",
+    "state": "PATROL",
+    "pose": [
+      -1.421429297567683,
+      1.6067772085800829,
+      1.6438639343552737
+    ],
+    "exclusion_distance": 2.162795659928588,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:43",
+    "state": "PATROL",
+    "pose": [
+      -1.421429656008472,
+      1.606777707841839,
+      1.64386350787386
+    ],
+    "exclusion_distance": 2.1627961771786604,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:44",
+    "state": "PATROL",
+    "pose": [
+      -1.421859350996646,
+      1.6075550678919766,
+      1.648301819110404
+    ],
+    "exclusion_distance": 2.1634821852572568,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:45",
+    "state": "PATROL",
+    "pose": [
+      -1.4221319943403081,
+      1.611866960260599,
+      1.5141912516506397
+    ],
+    "exclusion_distance": 2.1653252289960663,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:46",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4221337149151747,
+      1.6119562588792862,
+      1.5155484103744694
+    ],
+    "exclusion_distance": 2.1653597488298866,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:48",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4221336577696206,
+      1.6119561003132106,
+      1.5155484118505345
+    ],
+    "exclusion_distance": 2.165359637253032,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:49",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.422133644637386,
+      1.6119560850295545,
+      1.5155484118505425
+    ],
+    "exclusion_distance": 2.165359619411346,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:50",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4221336502630622,
+      1.6119559292274113,
+      1.5155484118505425
+    ],
+    "exclusion_distance": 2.1653595672034336,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:51",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.422133652690327,
+      1.611955869123514,
+      1.5155484118505425
+    ],
+    "exclusion_distance": 2.1653595473020917,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:52",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4221336462399599,
+      1.6119559826116217,
+      1.5155484118505425
+    ],
+    "exclusion_distance": 2.1653595831440886,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:54",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222455997391765,
+      1.6126224336921102,
+      1.511104829518409
+    ],
+    "exclusion_distance": 2.1657093423095803,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:55",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222455996721968,
+      1.6126224346716151,
+      1.511104829518409
+    ],
+    "exclusion_distance": 2.1657093426084177,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:56",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222455999095789,
+      1.6126224306609869,
+      1.511104829518409
+    ],
+    "exclusion_distance": 2.16570934135054,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:57",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222455998876986,
+      1.6126224310154702,
+      1.511104829518409
+    ],
+    "exclusion_distance": 2.165709341460883,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:58",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222172368274684,
+      1.6130911932842107,
+      1.5092158135115885
+    ],
+    "exclusion_distance": 2.165855788012406,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:40:59",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.422217236854488,
+      1.6130911928453362,
+      1.5092158135115885
+    ],
+    "exclusion_distance": 2.1658557878757287,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:00",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222172368870747,
+      1.61309119231664,
+      1.5092158135115885
+    ],
+    "exclusion_distance": 2.1658557877111138,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:01",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.422217236875105,
+      1.6130911925107265,
+      1.5092158135115885
+    ],
+    "exclusion_distance": 2.165855787771538,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:02",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222172368817336,
+      1.6130911924032114,
+      1.5092158135115885
+    ],
+    "exclusion_distance": 2.1658557877380638,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:03",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222172368823134,
+      1.6130911923938045,
+      1.5092158135115885
+    ],
+    "exclusion_distance": 2.165855787735135,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:04",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4222172368829888,
+      1.6130911923828501,
+      1.5092158135115885
+    ],
+    "exclusion_distance": 2.165855787731724,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:05",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4223605110749131,
+      1.6133485545489548,
+      1.50705109557379
+    ],
+    "exclusion_distance": 2.1660838485832867,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:06",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4227117872798665,
+      1.6138328479003596,
+      1.505394733538321
+    ],
+    "exclusion_distance": 2.166588920513848,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:08",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4227117872795565,
+      1.6138328479050925,
+      1.505394733538321
+    ],
+    "exclusion_distance": 2.166588920515305,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:09",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4232814853127151,
+      1.6165937022859718,
+      1.5054281692335376
+    ],
+    "exclusion_distance": 2.168136297181687,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:10",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4232814853127855,
+      1.6165937022848957,
+      1.5054281692335376
+    ],
+    "exclusion_distance": 2.168136297181356,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:11",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4235467510596604,
+      1.618097378276562,
+      1.504838529399176
+    ],
+    "exclusion_distance": 2.1689372179473256,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:12",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4235467510596485,
+      1.6180973782767443,
+      1.504838529399176
+    ],
+    "exclusion_distance": 2.1689372179473816,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:13",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4235467510596491,
+      1.6180973782767343,
+      1.504838529399176
+    ],
+    "exclusion_distance": 2.1689372179473785,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:14",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4235467510596491,
+      1.618097378276733,
+      1.504838529399176
+    ],
+    "exclusion_distance": 2.168937217947378,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:15",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.4235467510596493,
+      1.6180973782767305,
+      1.504838529399176
+    ],
+    "exclusion_distance": 2.168937217947377,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:16",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455239,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.170087839020436,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:18",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455232,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.170087839020436,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:19",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.620361497945523,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.170087839020436,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:20",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455225,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:21",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455225,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:22",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455225,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:23",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:24",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:25",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:26",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:27",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:28",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:29",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  },
+  {
+    "time": "18:41:31",
+    "state": "PATROL_BLOCKED",
+    "pose": [
+      -1.423886630551757,
+      1.6203614979455223,
+      1.505808118040207
+    ],
+    "exclusion_distance": 2.1700878390204354,
+    "required_clearance": 0.4634005321718877,
+    "boundary_ok": true,
+    "exclusion_ok": true,
+    "map_clear": true,
+    "scan_rotation_ccw": true,
+    "scan_rotation_cw": true,
+    "map_rotation_ccw": true,
+    "first_bad_angle_ccw": null,
+    "map_rotation_cw": true,
+    "first_bad_angle_cw": null
+  }
+]

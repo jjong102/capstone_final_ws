@@ -1,0 +1,22 @@
+[INFO] [1793712036.773919252] [amcl]: 
+	amcl lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1793712036.776232492] [amcl]: Creating
+[INFO] [1793712036.996026244] [amcl]: Configuring
+[INFO] [1793712036.996396045] [amcl]: initTransforms
+[INFO] [1793712037.006989553] [amcl]: initPubSub
+[INFO] [1793712037.009873144] [amcl]: Subscribed to map topic.
+[INFO] [1793712037.016925701] [amcl]: Activating
+[INFO] [1793712037.017037000] [amcl]: Creating bond (amcl) to lifecycle manager.
+[INFO] [1793712037.037984074] [amcl]: Received a 310 X 416 map @ 0.030 m/pix
+[INFO] [1793712037.550587601] [amcl]: initialPoseReceived
+[INFO] [1793712037.550800982] [amcl]: Setting pose (0.000000): 0.000 0.000 0.000
+[INFO] [1793712041.679070810] [amcl]: createLaserObject
+[INFO] [1793712095.502087995] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1793712095.502286335] [amcl]: Running Nav2 LifecycleNode rcl preshutdown (amcl)
+[INFO] [1793712095.502461443] [amcl]: Deactivating
+[INFO] [1793712095.502509829] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[INFO] [1793712095.512839127] [amcl]: Cleaning up
+[INFO] [1793712095.518857284] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[INFO] [1793712095.528640522] [amcl]: Destroying

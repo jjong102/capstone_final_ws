@@ -1,0 +1,86 @@
+[
+  {
+    "variant": "baseline",
+    "sensor": "/rplidar1/scan_filtered",
+    "phase": "stopped",
+    "median_boundary_error_cm": 6.462342867719277,
+    "overlap_12cm_percent": 80.03322259136213
+  },
+  {
+    "variant": "baseline",
+    "sensor": "/rplidar1/scan_filtered",
+    "phase": "rotating",
+    "median_boundary_error_cm": 9.186696198079018,
+    "overlap_12cm_percent": 60.19736842105263
+  },
+  {
+    "variant": "baseline",
+    "sensor": "/rplidar1/scan_filtered",
+    "phase": "last10",
+    "median_boundary_error_cm": 8.639173392569132,
+    "overlap_12cm_percent": 67.66917293233082
+  },
+  {
+    "variant": "baseline",
+    "sensor": "/rplidar2/scan_filtered",
+    "phase": "stopped",
+    "median_boundary_error_cm": 8.616279584689826,
+    "overlap_12cm_percent": 67.38047159979156
+  },
+  {
+    "variant": "baseline",
+    "sensor": "/rplidar2/scan_filtered",
+    "phase": "rotating",
+    "median_boundary_error_cm": 8.69770295105139,
+    "overlap_12cm_percent": 61.755947993749814
+  },
+  {
+    "variant": "baseline",
+    "sensor": "/rplidar2/scan_filtered",
+    "phase": "last10",
+    "median_boundary_error_cm": 6.040547620516066,
+    "overlap_12cm_percent": 81.00873485488871
+  },
+  {
+    "variant": "instantaneous",
+    "sensor": "/rplidar1/scan_filtered",
+    "phase": "stopped",
+    "median_boundary_error_cm": 9.02957583873464,
+    "overlap_12cm_percent": 65.18109035455586
+  },
+  {
+    "variant": "instantaneous",
+    "sensor": "/rplidar1/scan_filtered",
+    "phase": "rotating",
+    "median_boundary_error_cm": 18.889576334738724,
+    "overlap_12cm_percent": 37.54152823920266
+  },
+  {
+    "variant": "instantaneous",
+    "sensor": "/rplidar1/scan_filtered",
+    "phase": "last10",
+    "median_boundary_error_cm": 9.73353709578087,
+    "overlap_12cm_percent": 60.76923076923077
+  },
+  {
+    "variant": "instantaneous",
+    "sensor": "/rplidar2/scan_filtered",
+    "phase": "stopped",
+    "median_boundary_error_cm": 13.253221929961159,
+    "overlap_12cm_percent": 44.60922372821686
+  },
+  {
+    "variant": "instantaneous",
+    "sensor": "/rplidar2/scan_filtered",
+    "phase": "rotating",
+    "median_boundary_error_cm": 15.964266968152764,
+    "overlap_12cm_percent": 39.724210955790205
+  },
+  {
+    "variant": "instantaneous",
+    "sensor": "/rplidar2/scan_filtered",
+    "phase": "last10",
+    "median_boundary_error_cm": 6.156345406917155,
+    "overlap_12cm_percent": 81.73879470405525
+  }
+]

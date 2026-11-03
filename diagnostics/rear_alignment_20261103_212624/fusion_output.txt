@@ -1,0 +1,102 @@
+audit matched 125 of sampled outputs
+{
+  "summary": {
+    "finite_bin_mismatches": {
+      "median": 0.0,
+      "p95": 0.0,
+      "max": 0.0
+    },
+    "mean_range_error_m": {
+      "median": 6.968829408565109e-08,
+      "p95": 8.236890302447866e-08,
+      "max": 8.715035470745797e-08
+    },
+    "motion_shift_max_m": {
+      "median": 3.87290199912726e-11,
+      "p95": 0.04487859556744668,
+      "max": 0.07656210411322173
+    },
+    "pair_skew_ms": {
+      "median": 39.994075,
+      "p95": 51.162390200000004,
+      "max": 62.398227
+    }
+  },
+  "last": {
+    "stamp": 1793709121.639674,
+    "pair_skew_ms": 32.841207,
+    "finite_bin_mismatches": 0,
+    "mean_range_error_m": 6.023141450502097e-08,
+    "uncompensated_compare": [
+      0,
+      6.023141450338527e-08
+    ],
+    "motion_shift_max_m": 1.2560739669470201e-15,
+    "motion_shift_mean_m": 3.3388617084671733e-16
+  },
+  "fits": {
+    "front": {
+      "delta": [
+        0.10784584861495192,
+        -0.10459194946375051,
+        -0.04768135313890605
+      ],
+      "front": {
+        "overlap12cm": 0.9836601307189542,
+        "median_m": 0.01820862324516074,
+        "trimmed_capped_score_m": 0.017195055341436605
+      },
+      "rear": {
+        "overlap12cm": 0.429042904290429,
+        "median_m": 0.4700284096722274,
+        "trimmed_capped_score_m": 0.2016475417825263
+      }
+    },
+    "rear": {
+      "delta": [
+        -0.02221749691462469,
+        0.016978149435775653,
+        -0.013667404814062938
+      ],
+      "front": {
+        "overlap12cm": 0.9771241830065359,
+        "median_m": 0.0206934348498646,
+        "trimmed_capped_score_m": 0.01870616227419643
+      },
+      "rear": {
+        "overlap12cm": 0.4521452145214521,
+        "median_m": 0.494542474383643,
+        "trimmed_capped_score_m": 0.19111332961882957
+      }
+    },
+    "both": {
+      "delta": [
+        -0.012089460699986676,
+        0.015001538252711371,
+        -0.009089523562925951
+      ],
+      "front": {
+        "overlap12cm": 0.9771241830065359,
+        "median_m": 0.017396700771049448,
+        "trimmed_capped_score_m": 0.015808250692975735
+      },
+      "rear": {
+        "overlap12cm": 0.45544554455445546,
+        "median_m": 0.4952678425806453,
+        "trimmed_capped_score_m": 0.19169478931725478
+      }
+    },
+    "unchanged": {
+      "front": {
+        "overlap12cm": 0.9771241830065359,
+        "median_m": 0.019743975319228772,
+        "trimmed_capped_score_m": 0.018376753238648645
+      },
+      "rear": {
+        "overlap12cm": 0.4521452145214521,
+        "median_m": 0.4583680795559951,
+        "trimmed_capped_score_m": 0.19728974739866292
+      }
+    }
+  }
+}

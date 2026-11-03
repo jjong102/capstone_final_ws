@@ -40,7 +40,7 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                         xy_tolerance=.02, yaw_tolerance_deg=5., settle_seconds=1.,
                         capture_seconds=2., align_radius=.4, scan_timeout=.45,
                         patrol_tolerance=.05,
-                        return_max_speed=.6, return_max_angular_speed=.35, return_obstacle_margin=.01,
+                        return_max_speed=.4, return_max_angular_speed=.35, return_obstacle_margin=.01,
                         require_localization_ready=True,
                         patrol_bt_file=str(Path(get_package_share_directory('third_impact'))/'config/patrol.xml'),
                         return_bt_file=str(Path(get_package_share_directory('third_impact'))/'config/return.xml'),
@@ -651,7 +651,10 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
             return
         if self.intent == 'hold':
             self.state = 'HOLD'; self.stop(); return
-        if self.manual or not self.healthy():
+        paused = self.manual or not self.healthy()
+        if self.intent == 'patrol':
+            self.patrol_readiness_pause(paused)
+        if paused:
             if self.intent == 'return':
                 self.pause_return()
             self.stop(); self.cancel_nav(); self.settled_since = None
@@ -751,7 +754,9 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                'patrol_control': {'near_phase': self.patrol_near['phase'] if self.patrol_near else None,
                                   'recovery_phase': self.patrol_recovery,
                                   'direction_stop_since': self.patrol_reversing_since,
-                                  'wait_reason': self.patrol_wait_reason},
+                                  'wait_reason': self.patrol_wait_reason,
+                                  'recovery_check': self.patrol_recovery_check,
+                                  'sensor_retries': self.patrol_sensor_retries},
                'has_boundary': bool(self.data and self.data.get('boundary')),
                'has_goal': self.data is not None, 'has_rectangle': bool(self.data and self.data.get('rectangle')),
                'detail': self.detail, 'match': result, 'alignment': self.alignment_diagnostics, 'time': time.time(),

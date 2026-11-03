@@ -1,4 +1,5 @@
 """Autonomous stationary localization bootstrap. Never publishes velocity commands."""
+from functools import partial
 import json
 import math
 from pathlib import Path
@@ -20,7 +21,8 @@ from std_srvs.srv import Empty
 from lifecycle_msgs.srv import GetState
 from .core import atomic_save, relative, voxel
 from .editor import orientation, yaw
-from .localization_search import GridModel, search_map
+from .localization_search import GridModel, search_map, verify_sensors
+from .amcl_scan import apply_transform
 
 
 class LocalizationBootstrap(Node):
@@ -39,6 +41,8 @@ class LocalizationBootstrap(Node):
         self.next_search = 0.; self.last_save = 0.; self.last_nomotion = 0.
         self.last_seed = None; self.seed_time = 0.; self.verify_since = None; self.verify_count = 0
         self.last_verified_key = None; self.last_quality = {}; self.last_search = {}; self.prior = None
+        self.bad_since = None; self.recheck_since = None; self.observation_stamp = None
+        self.sensor_clouds = {}; self.sensor_origins = {}
         self.bad_checks = 0; self.get_state_pending = False; self.nomotion_pending = False
         durable = QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL)
         self.status_pub = self.create_publisher(String, '/third_impact/localization', durable)
@@ -69,6 +73,7 @@ class LocalizationBootstrap(Node):
         model = GridModel(cells,msg.info.resolution,origin)
         if self.model is not None and self.model.fingerprint == model.fingerprint:
             return
+        self.recheck_since=None; self.bad_since=None; self.bad_checks=0
         self.cancel_search(); self.model = model; self.verify_since = None; self.verify_count = 0
         self.last_verified_key = None; self.prior = None; self.next_search = 0.
         self.set_state('WAIT_SENSORS','현재 지도에서 위치를 찾기 위해 LiDAR와 odometry를 기다립니다.')
@@ -90,6 +95,7 @@ class LocalizationBootstrap(Node):
         stamp=(msg.header.stamp.sec,msg.header.stamp.nanosec)
         if stamp==self.last_seed:
             return
+        self.recheck_since=None; self.bad_since=None; self.bad_checks=0
         self.cancel_search(); self.verify_since=None; self.verify_count=0; self.seed_time=time.monotonic()
         self.set_state('VERIFYING','사용자가 지정한 초기 위치를 LiDAR와 대조하고 있습니다.')
 
@@ -110,7 +116,7 @@ class LocalizationBootstrap(Node):
         points=np.column_stack((ranges[valid]*np.cos(angles[valid]),ranges[valid]*np.sin(angles[valid])))
         t=tf.transform.translation; points=points@rotation.T+[t.x,t.y]
         points=points[(abs(points[:,0])>.35)|(abs(points[:,1])>.22)]
-        self.scans[key]=(time.monotonic(),Time.from_msg(msg.header.stamp).nanoseconds,points)
+        self.scans[key]=(time.monotonic(),Time.from_msg(msg.header.stamp).nanoseconds,points, np.array([t.x,t.y]))
 
     def cloud(self):
         now=time.monotonic()
@@ -118,7 +124,18 @@ class LocalizationBootstrap(Node):
             return None
         if abs(self.scans['front'][1]-self.scans['rear'][1])*1e-9>.15:
             return None
-        cloud=voxel(np.vstack([self.scans[k][2] for k in ('front','rear')]),.025)
+        self.observation_stamp = Time(nanoseconds=max(self.scans[k][1] for k in ('front','rear')))
+        self.sensor_clouds = {}; self.sensor_origins = {}
+        try:
+            for key in ('front', 'rear'):
+                _, stamp, points, origin = self.scans[key]
+                motion = self.tf.lookup_transform_full('base_link', self.observation_stamp,
+                    'base_link', Time(nanoseconds=stamp), 'odom').transform
+                self.sensor_clouds[key] = apply_transform(np.c_[points, np.zeros(len(points))], motion)[:,:2]
+                self.sensor_origins[key] = apply_transform([[*origin, 0.]], motion)[0,:2]
+        except TransformException:
+            return None
+        cloud=voxel(np.vstack(list(self.sensor_clouds.values())),.025)
         return cloud if len(cloud)>=80 else None
 
     def odom_pose(self):
@@ -138,7 +155,7 @@ class LocalizationBootstrap(Node):
         if not np.isfinite(cov).all() or max(cov[0],cov[7])>.08 or cov[35]>.08:
             return None
         try:
-            tf=self.tf.lookup_transform('map','base_link',Time())
+            tf=self.tf.lookup_transform('map','base_link',self.observation_stamp or Time())
             if not 0. <= self.age(tf.header.stamp) <= 1.:
                 return None
             t=tf.transform.translation
@@ -152,7 +169,7 @@ class LocalizationBootstrap(Node):
         if not self.get_state_pending and self.lifecycle.service_is_ready():
             self.get_state_pending=True
             self.lifecycle.call_async(GetState.Request()).add_done_callback(self.amcl_state)
-        if (self.state in ('INITIALIZING','VERIFYING') and not self.nomotion_pending
+        if (self.state in ('INITIALIZING','VERIFYING','LOCAL_RECHECK') and self.stopped() and not self.nomotion_pending
                 and self.nomotion.service_is_ready() and time.monotonic()-self.last_nomotion>1.):
             self.last_nomotion=time.monotonic(); self.nomotion_pending=True
             self.nomotion.call_async(Empty.Request()).add_done_callback(self.nomotion_done)
@@ -192,19 +209,30 @@ class LocalizationBootstrap(Node):
             self.set_state('WAIT_AMCL','AMCL 노드가 활성화되기를 기다립니다.'); return
         pose=self.pose()
         key=(self.scans['front'][1],self.scans['rear'][1])
+        if pose is None:
+            self.last_quality = {'valid': False, 'reason': '관측 시각의 위치 TF 또는 AMCL 공분산 확인 실패'}
         if pose is not None:
-            if self.ready and not self.stopped():
-                self.set_state('READY','초기 위치 확인 완료 · AMCL이 현재 위치를 추적하고 있습니다.',True)
-                return
             if key != self.last_verified_key:
                 self.last_verified_key=key
-                quality=self.model.verify(cloud,pose); self.last_quality=quality
+                quality=verify_sensors(self.model, cloud, self.sensor_clouds, self.sensor_origins, pose)
+                quality['observation_age'] = self.age(self.observation_stamp.to_msg())
+                # Preserve the exact observation/pose pairing for offline audits.
+                quality['observation_stamp_ns'] = self.observation_stamp.nanoseconds
+                quality['sensor_stamp_ns'] = dict(zip(('front', 'rear'), key))
+                quality['pair_skew'] = abs(key[0]-key[1])*1e-9
+                quality['evaluated_pose'] = [float(value) for value in pose]
+                self.last_quality=quality
                 if quality['valid']:
-                    self.bad_checks=0
+                    self.bad_checks=0; self.bad_since=None
+                    if self.ready:
+                        self.recheck_since=None
+                        self.set_state('READY','시간 동기화된 전·후방 관측으로 위치 추적 중',True)
+                        return
                     self.verify_since=self.verify_since or now
                     self.verify_count+=1
                     if self.verify_count>=3 and now-self.verify_since>=1.:
                         self.cancel_search() if self.future is not None and not self.future.done() else None
+                        self.recheck_since=None
                         self.set_state('READY','현재 LiDAR와 지도 일치 확인 완료 · 주행 준비됨',True)
                         if now-self.last_save>5.:
                             try:
@@ -217,13 +245,24 @@ class LocalizationBootstrap(Node):
                     self.set_state('VERIFYING','현재 위치가 지도와 일치하는지 연속 관측으로 확인합니다.')
                     return
                 self.verify_since=None; self.verify_count=0; self.bad_checks+=1
-                if self.ready and self.bad_checks<3:
+                self.bad_since = self.bad_since or now
+                if self.ready and (self.bad_checks<3 or now-self.bad_since<.4):
+                    self.set_state('DEGRADED','일시적 위치 불일치 확인 중: '+quality['reason'],True)
                     return
             elif self.ready:
                 return
         self.ready=False
         if not self.stopped():
-            self.set_state('WAIT_STOP','자동 위치 탐색을 위해 로봇이 정지하기를 기다립니다.'); return
+            self.recheck_since=None
+            self.set_state('WAIT_STOP','위치 검증 실패 · 정지 대기: '+self.last_quality.get('reason','위치/TF 확인 필요')); return
+        # Bounded local AMCL observation updates before any global search.
+        # Never move or seed an unverified nearby hypothesis to recover readiness.
+        if self.future is None and self.recheck_since is None:
+            self.recheck_since=now
+        if self.future is None and now-self.recheck_since<6.:
+            self.set_state('LOCAL_RECHECK','정지 후 현재 위치 주변 AMCL 재검증: '+
+                           self.last_quality.get('reason','위치/TF 확인 필요'))
+            return
         if self.future is not None:
             if not self.future.done():
                 self.set_state('SEARCHING','현재 LiDAR를 지도 전체와 비교해 위치를 찾는 중입니다.'); return
@@ -239,7 +278,7 @@ class LocalizationBootstrap(Node):
                 self.get_logger().error('Global search failed: '+str(exc))
                 self.next_search=now+3.; self.set_state('SEARCH_FAILED','위치 탐색 처리 실패 · 다시 시도합니다.'); return
             self.last_search={k:v for k,v in result.items() if k!='pose'}
-            if result['confident'] and self.model.verify(cloud,result['pose'])['valid']:
+            if result['confident'] and verify_sensors(self.model,cloud,self.sensor_clouds,self.sensor_origins,result['pose'])['valid']:
                 self.seed(result['pose']); return
             reasons={'ambiguous':'비슷한 위치 후보가 여러 개입니다. 정지 관측으로 재시도하며, 필요하면 초기 위치를 지정해 주세요.',
                      'no_consistent_pose':'LiDAR와 충분히 일치하는 지도 위치를 찾지 못했습니다. 주변 환경과 지도를 확인하며 재시도합니다.',
@@ -254,7 +293,8 @@ class LocalizationBootstrap(Node):
         if now<self.next_search:
             return
         self.stop_search=threading.Event(); self.job_epoch=self.epoch; self.job_odom=self.odom_pose()
-        self.future=self.pool.submit(search_map,self.model,cloud,self.prior,self.search_timeout,self.stop_search)
+        self.future=self.pool.submit(search_map,self.model,cloud,self.prior,self.search_timeout,self.stop_search,
+            partial(verify_sensors,self.model,cloud,self.sensor_clouds.copy(),self.sensor_origins.copy()))
         self.set_state('SEARCHING','현재 LiDAR를 지도 전체와 비교해 위치를 찾는 중입니다.')
 
     def publish_status(self):

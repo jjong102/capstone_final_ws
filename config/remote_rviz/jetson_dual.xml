@@ -3,10 +3,16 @@
   <Domain id="any">
     <General>
       <Interfaces>
-        <NetworkInterface name="eno1" />
-        <NetworkInterface name="wlP1p1s0" presence_required="false" />
+        <NetworkInterface name="wlP1p1s0" presence_required="false" priority="10" />
+        <NetworkInterface name="eno1" presence_required="false" priority="0" />
       </Interfaces>
       <AllowMulticast>false</AllowMulticast>
+      <!-- Both peers are directly connected. Do not select an unreachable
+           advertised locator through a default gateway. -->
+      <DontRoute>true</DontRoute>
+      <RedundantNetworking>true</RedundantNetworking>
+      <MaxMessageSize>1400 B</MaxMessageSize>
+      <FragmentSize>1200 B</FragmentSize>
     </General>
     <Discovery>
       <ParticipantIndex>auto</ParticipantIndex>

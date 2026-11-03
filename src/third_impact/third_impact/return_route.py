@@ -87,7 +87,7 @@ def select_entry(points, goal, grid, current_yaw):
     return None
 
 
-def tracking_command(pose, path, index, reverse, max_v=.6, max_w=.35):
+def tracking_command(pose, path, index, reverse, max_v=.4, max_w=.35):
     """Monotone path progress with a short lookahead and symmetric speed limits."""
     # Project onto a short forward window. Lookahead can cut a corner, so
     # requiring arrival at every old sample would trap progress behind the robot.
@@ -104,9 +104,14 @@ def tracking_command(pose, path, index, reverse, max_v=.6, max_w=.35):
     error = wrap(math.atan2(target[1], target[0])-(math.pi if reverse else 0.))
     remaining = np.linalg.norm(path[index]-pose[:2])+np.linalg.norm(np.diff(path[index:], axis=0), axis=1).sum()
     v = min(max_v, math.sqrt(max(0., 2*.5*remaining)), remaining*1.5)
-    v *= max(0., math.cos(error))
-    if abs(error) > .3:
-        v = 0.
+    # Raised cosine: 100/75/25/0 percent at 0/15/30/45 degrees.
+    # Smooth value and slope at both ends; preserve the rotation controller.
+    if reverse:
+        # Keep the existing narrow-corridor reverse steering policy.
+        v *= max(0., math.cos(error)) if abs(error) <= .3 else 0.
+    else:
+        angle = min(abs(error), math.pi/4)
+        v *= .5*(1.+math.cos(4.*angle))
     return (-v if reverse else v), float(np.clip(error*1.5, -max_w, max_w)), index
 
 

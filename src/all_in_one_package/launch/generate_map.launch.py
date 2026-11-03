@@ -16,6 +16,29 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
 
+def setup_mapping_network(context):
+    network = LaunchConfiguration('network').perform(context)
+    profiles = {'wifi': 'jetson_wifi.xml', 'jetson': 'jetson_wired.xml'}
+    if network not in profiles:
+        raise RuntimeError('network must be wifi or jetson')
+    domain = LaunchConfiguration('domain_id').perform(context)
+    if not domain.isdecimal() or not 0 <= int(domain) <= 232:
+        raise RuntimeError('domain_id must be an integer from 0 to 232')
+    override = LaunchConfiguration('dds_config').perform(context).strip()
+    path = (Path(override) if override else
+            Path(get_package_share_directory('all_in_one_package')) / 'config' / profiles[network])
+    path = path.expanduser().resolve()
+    if not path.is_file():
+        raise RuntimeError(f'Mapping DDS configuration not found: {path}')
+    return [
+        SetEnvironmentVariable('ROS_DOMAIN_ID', domain),
+        SetEnvironmentVariable('ROS_LOCALHOST_ONLY', '0'),
+        SetEnvironmentVariable('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'),
+        SetEnvironmentVariable('CYCLONEDDS_URI', path.as_uri()),
+        LogInfo(msg=f'[mapping network] network={network}, override={bool(override)}, domain={domain}, DDS={path}'),
+    ]
+
+
 def setup_mapping_log(context):
     if not IfCondition(LaunchConfiguration('log')).evaluate(context):
         return []
@@ -29,7 +52,7 @@ def setup_mapping_log(context):
     snapshot_errors = []
     # Copy installed files: these are the files actually used by this launch.
     for package, subdirs in {
-        'all_in_one_package': ['launch'],
+        'all_in_one_package': ['launch', 'config'],
         'amr_cartographer': ['config', 'launch'],
         'ebimu_pkg': ['config', 'launch'],
         'sllidar_ros2': ['launch'],
@@ -80,7 +103,7 @@ def setup_mapping_log(context):
         'launch_arguments': dict(context.launch_configurations),
         'environment': {key: context.environment.get(key) for key in (
             'ROS_DISTRO', 'ROS_DOMAIN_ID', 'RMW_IMPLEMENTATION',
-            'ROS_LOCALHOST_ONLY', 'AMENT_PREFIX_PATH')},
+            'ROS_LOCALHOST_ONLY', 'CYCLONEDDS_URI', 'AMENT_PREFIX_PATH')},
         'bag_command': bag_command,
         'snapshot_errors': snapshot_errors,
     }, indent=2, default=str))
@@ -147,11 +170,19 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        DeclareLaunchArgument('use_rviz', default_value='true',
+                              description='Run mapping RViz on this machine'),
         DeclareLaunchArgument('log', default_value='false',
                               description='Record mapping bag, logs and configuration snapshots'),
         DeclareLaunchArgument('log_dir',
                               default_value='/home/moonshot/capstone_final_ws/src/amr_navigator/debug_log',
                               description='Parent directory for timestamped mapping recordings'),
+        DeclareLaunchArgument('domain_id', default_value='3'),
+        DeclareLaunchArgument('network', default_value='wifi', choices=['wifi', 'jetson'],
+                             description='wifi: laptop RViz; jetson: wired UI Jetson'),
+        DeclareLaunchArgument('dds_config', default_value='',
+            description='Optional explicit CycloneDDS XML; overrides the network profile'),
+        OpaqueFunction(function=setup_mapping_network),
         OpaqueFunction(function=setup_mapping_log),
         # 1. serial_test 내부에서 조이스틱 + 모터/휠 odom 관련 노드 실행
         IncludeLaunchDescription(
@@ -184,7 +215,10 @@ def generate_launch_description():
             period=5.0,
             actions=[
                 IncludeLaunchDescription(
-                    PythonLaunchDescriptionSource(cartographer_launch)
+                    PythonLaunchDescriptionSource(cartographer_launch),
+                    launch_arguments={
+                        'use_rviz': LaunchConfiguration('use_rviz'),
+                    }.items()
                 )
             ],
         ),

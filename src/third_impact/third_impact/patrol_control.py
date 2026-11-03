@@ -26,6 +26,11 @@ def escape_heading(points, pose, boundary, exclusion, half_length, half_width):
 
 class PatrolControl:
     def init_patrol(self):
+        self.patrol_pause_started = None
+        self.patrol_recovery_check = {}
+        self.patrol_sensor_wait_started = None
+        self.patrol_sensor_retries = 0
+        self.patrol_sensor_key = None
         self.patrol_near = None
         self.patrol_reversing_since = None
         self.patrol_wait_reason = ''
@@ -67,21 +72,51 @@ class PatrolControl:
         delta = np.asarray(self.patrol_retry_target[:2])-pose[:2]
         sign = 1 if wrap(math.atan2(delta[1], delta[0])-pose[2]) >= 0 else -1
         candidates = ([] if heading is None else [heading]) + [pose[2]+sign*math.pi/2, pose[2]-sign*math.pi/2]
+        # One immutable observation for the entire candidate evaluation. Recheck
+        # freshness afterwards; never interpret unavailable observations as walls.
+        cloud = self.cloud()
+        self.patrol_recovery_check = {'reason': 'sensor_unavailable', 'candidates': []}
+        if cloud is None:
+            return None
+        cloud = cloud.copy()
+        grid = self.return_grid()
+        selected = None
         for heading in candidates:
             error = wrap(heading-pose[2])
             if abs(error) < .08:
                 continue
-            # Check the complete rotation, then recheck live on every tick.
-            cloud = self.cloud()
-            if cloud is None or not swept_clear(cloud, 0., math.copysign(.25,error),
+            reason = 'clear'
+            if not swept_clear(cloud, 0., math.copysign(.25,error),
                     self.p['footprint_half_length'], self.p['footprint_half_width'],
                     self.p['obstacle_margin'], horizon=abs(error)/.25):
-                continue
-            if all(self.safe_patrol_command(np.array([pose[0],pose[1],pose[2]+a]),
-                                           0., math.copysign(.25,error))
-                   for a in np.linspace(0.,error,max(2,int(abs(error)/.05)+1))):
-                return heading
-        return None
+                reason = 'lidar_collision'
+            elif not self.motion_allowed(pose, 0., angular=math.copysign(.25,error)):
+                reason = 'region_boundary'
+            else:
+                poses = np.array([[pose[0],pose[1],pose[2]+a]
+                    for a in np.linspace(0.,error,max(2,int(abs(error)/.05)+1))])
+                clear = grid.clear_many(poses) if hasattr(grid,'clear_many') else [grid.clear(p) for p in poses]
+                if not all(clear):
+                    reason = 'map_collision'
+            self.patrol_recovery_check['candidates'].append({'heading':float(heading),'reason':reason})
+            if reason == 'clear':
+                selected = heading
+                break
+        if self.cloud() is None:
+            self.patrol_recovery_check['reason'] = 'sensor_unavailable'
+            return None
+        self.patrol_recovery_check['reason'] = 'clear' if selected is not None else 'collision'
+        return selected
+
+    def patrol_readiness_pause(self, paused):
+        now = time.monotonic()
+        started = getattr(self, 'patrol_pause_started', None)
+        if paused and started is None:
+            self.patrol_pause_started = now
+        elif not paused and started is not None:
+            # Preserve genuine active no-progress time; exclude only this pause.
+            self.patrol_progress_time += now-started
+            self.patrol_pause_started = None
 
     def on_patrol_path(self, msg):
         if self.intent != 'patrol' or self.nav_target is None or msg.header.frame_id != 'map':
@@ -95,9 +130,16 @@ class PatrolControl:
 
     def safe_patrol_command(self, pose, v, w):
         cloud = self.cloud()
-        if (cloud is None or not self.motion_allowed(pose, v, angular=w)
-                or not swept_clear(cloud, v, w, self.p['footprint_half_length'],
-                                   self.p['footprint_half_width'], self.p['obstacle_margin'])):
+        self.patrol_command_reason = 'clear'
+        if cloud is None:
+            self.patrol_command_reason = 'sensor_unavailable'
+            return False
+        if not self.motion_allowed(pose, v, angular=w):
+            self.patrol_command_reason = 'region_boundary'
+            return False
+        if not swept_clear(cloud, v, w, self.p['footprint_half_length'],
+                           self.p['footprint_half_width'], self.p['obstacle_margin']):
+            self.patrol_command_reason = 'lidar_collision'
             return False
         grid = self.return_grid()  # Physical map + boundary; exclusion checked above.
         for t in np.linspace(0., 1., 15):
@@ -105,7 +147,11 @@ class PatrolControl:
             xy = [v*t, 0.] if abs(w)<1e-8 else [v/w*math.sin(a),v/w*(1-math.cos(a))]
             xy = transform(np.asarray([xy]),pose)[0]
             if not grid.clear([*xy,pose[2]+a]):
+                self.patrol_command_reason = 'map_collision'
                 return False
+        if self.cloud() is None:
+            self.patrol_command_reason = 'sensor_unavailable'
+            return False
         return True
 
     def begin_patrol_recovery(self):
@@ -114,6 +160,9 @@ class PatrolControl:
         self.stop(); self.cancel_nav()
         self.planning_anchor = None
         self.patrol_recovery_count += 1
+        self.patrol_sensor_wait_started = None
+        self.patrol_sensor_retries = 0
+        self.patrol_sensor_key = None
         self.patrol_recovery_started = time.monotonic()
         self.patrol_rotation_deadline = None
         self.patrol_rotation_progress = self.patrol_recovery_started
@@ -136,6 +185,24 @@ class PatrolControl:
             self.stop(); self.cancel_nav()
             self.detail = '기존 정찰 이동 취소 완료를 기다립니다.'
             return True
+        if phase == 'SENSOR_WAIT':
+            self.stop()
+            now = time.monotonic()
+            if now-self.patrol_sensor_wait_started >= 5. or self.patrol_sensor_retries >= 3:
+                self.patrol_recovery = 'WAIT'
+                self.patrol_wait_reason = '복구 회전 센서 대기 한도 초과: 충돌 판정이 아닙니다. 센서 상태를 확인하세요.'
+                self.detail = self.patrol_wait_reason
+                return True
+            cloud = self.cloud()
+            key = self.scan_key() if cloud is not None else None
+            if key is None or (self.patrol_sensor_key is not None and
+                    any(a <= b for a,b in zip(key,self.patrol_sensor_key))):
+                self.detail = self.patrol_wait_reason
+                return True
+            self.patrol_sensor_key = key
+            self.patrol_sensor_retries += 1
+            self.patrol_recovery = 'STOP'
+            phase = 'STOP'
         if phase == 'WAIT':
             self.stop()
             self.detail = self.patrol_wait_reason
@@ -169,8 +236,15 @@ class PatrolControl:
                 return True
             self.patrol_heading = self.recovery_heading(pose)
             if self.patrol_heading is None:
-                self.patrol_recovery = 'WAIT'
-                self.patrol_wait_reason = '제자리 복구 회전 공간 부족: 장애물·구간 경계를 확인하세요.'
+                if self.patrol_recovery_check.get('reason') == 'sensor_unavailable':
+                    self.patrol_recovery = 'SENSOR_WAIT'
+                    self.patrol_sensor_wait_started = self.patrol_sensor_wait_started or now
+                    self.patrol_sensor_key = self.scan_key()
+                    self.patrol_wait_reason = '복구 회전 센서 대기: 새 전·후방 스캔 수신 후 재검사합니다.'
+                else:
+                    self.patrol_recovery = 'WAIT'
+                    reasons = sorted({c['reason'] for c in self.patrol_recovery_check.get('candidates',[])})
+                    self.patrol_wait_reason = '복구 회전 충돌 검사 거부: '+', '.join(reasons)
                 self.detail = self.patrol_wait_reason
                 return True
             self.patrol_recovery = 'ROTATE'
@@ -194,7 +268,15 @@ class PatrolControl:
         w = float(np.clip(error, -.25, .25))
         if not self.safe_patrol_command(pose, 0., w):
             self.stop()
-            self.detail = '방향 정렬 공간 부족: 정지 상태로 대기합니다.'
+            reason = getattr(self,'patrol_command_reason','collision')
+            if reason == 'sensor_unavailable':
+                self.patrol_recovery = 'SENSOR_WAIT'
+                self.patrol_sensor_wait_started = self.patrol_sensor_wait_started or now
+                self.patrol_sensor_key = self.scan_key()
+                self.patrol_wait_reason = '복구 회전 센서 대기: 새 전·후방 스캔 수신 후 재검사합니다.'
+                self.detail = self.patrol_wait_reason
+            else:
+                self.detail = '방향 정렬 충돌 검사 거부: '+reason
             return True
         command = Twist(); command.angular.z = w
         self.velocity_pub.publish(command)

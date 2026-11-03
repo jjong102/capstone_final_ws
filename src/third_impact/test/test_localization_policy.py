@@ -16,7 +16,9 @@ def completed_search(confident=True, moved=False, epoch=0):
          ready=False, stopped=lambda:True, future=future, job_epoch=0, epoch=epoch,
          job_odom=np.zeros(3), odom_pose=lambda:np.array([.2 if moved else 0.,0.,0.]),
          seed=Mock(), set_state=Mock(), next_search=0., last_search={})
-    n.model.verify.return_value={'valid':True}
+    n.sensor_clouds={'front':np.zeros((40,2)), 'rear':np.zeros((40,2))}
+    n.sensor_origins={'front':np.zeros(2), 'rear':np.zeros(2)}
+    n.model.verify.return_value={'valid':True,'overlap':1.}
     return n
 
 
@@ -24,7 +26,7 @@ def test_unique_current_observation_is_required_before_seed():
     n=completed_search()
     LocalizationBootstrap.tick(n)
     n.seed.assert_called_once()
-    n.model.verify.assert_called_once()  # Recheck current scan, not just the old snapshot.
+    assert n.model.verify.call_count == 3  # Recheck current scan, not just the old snapshot.
 
 
 def test_motion_during_global_search_rejects_stale_solution():
@@ -49,7 +51,7 @@ def test_ambiguous_scene_never_publishes_initialpose():
 
 def test_changed_scene_rejects_even_previously_confident_result():
     n=completed_search()
-    n.model.verify.return_value={'valid':False}
+    n.model.verify.return_value={'valid':False,'reason':'changed scene','overlap':0.}
     LocalizationBootstrap.tick(n)
     n.seed.assert_not_called()
 

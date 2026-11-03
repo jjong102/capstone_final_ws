@@ -1,0 +1,2463 @@
+[
+  {
+    "valid": true,
+    "overlap": 0.7518115942028986,
+    "score": 0.04876998092574118,
+    "time": "18:21:26",
+    "pose": [
+      -1.40016232226363,
+      1.6809421181157158,
+      2.652871488536255
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7119565217391305,
+    "occupied_fraction": 0.5235507246376812,
+    "state": "WAIT",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.005007458250511791,
+      0.019652521425377004,
+      0.002024546722695077
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7586206896551724,
+    "score": 0.04694656255642902,
+    "time": "18:21:27",
+    "pose": [
+      -1.400170564014729,
+      1.680968492260582,
+      2.652871488536255
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7168784029038112,
+    "occupied_fraction": 0.5353901996370236,
+    "state": "WAIT",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.005007458250511791,
+      0.019652521425377004,
+      0.002024546722695077
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7695099818511797,
+    "score": 0.03918735116350242,
+    "time": "18:21:29",
+    "pose": [
+      -1.3835752651919877,
+      1.6417977500491199,
+      2.669822905175095
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7549909255898367,
+    "occupied_fraction": 0.5916515426497277,
+    "state": "WAIT",
+    "ready": true,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0032570037569425456,
+      0.017758548944874008,
+      0.0018122692231723584
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7421150278293135,
+    "score": 0.050909940515795886,
+    "time": "18:21:30",
+    "pose": [
+      -1.3835763216982255,
+      1.641799702821956,
+      2.669822905175095
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.725417439703154,
+    "occupied_fraction": 0.5677179962894249,
+    "state": "WAIT",
+    "ready": true,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0032570037569425456,
+      0.017758548944874008,
+      0.0018122692231723584
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7710196779964222,
+    "score": 0.03805831125924328,
+    "time": "18:21:31",
+    "pose": [
+      -1.3835776812889486,
+      1.6418007031084723,
+      2.669822905175095
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7584973166368515,
+    "occupied_fraction": 0.5957066189624329,
+    "state": "WAIT",
+    "ready": true,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0032570037569425456,
+      0.017758548944874008,
+      0.0018122692231723584
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7365591397849462,
+    "score": 0.05424486774014767,
+    "time": "18:21:32",
+    "pose": [
+      -1.3835771274323294,
+      1.6418004894507086,
+      2.669822905175095
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7222222222222222,
+    "occupied_fraction": 0.5627240143369175,
+    "state": "WAIT",
+    "ready": true,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0032570037569425456,
+      0.017758548944874008,
+      0.0018122692231723584
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7335766423357665,
+    "score": 0.05393993797370104,
+    "time": "18:21:33",
+    "pose": [
+      -1.3835771387808395,
+      1.6418005087375187,
+      2.669822905175095
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7171532846715328,
+    "occupied_fraction": 0.5748175182481752,
+    "state": "WAIT",
+    "ready": true,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0032570037569425456,
+      0.017758548944874008,
+      0.0018122692231723584
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7631103074141049,
+    "score": 0.041114216171252035,
+    "time": "18:21:34",
+    "pose": [
+      -1.3835771347977648,
+      1.641800510501767,
+      2.669822905175095
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7486437613019892,
+    "occupied_fraction": 0.5858951175406871,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0032570037569425456,
+      0.017758548944874008,
+      0.0018122692231723584
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7693726937269373,
+    "score": 0.048374445762408354,
+    "time": "18:21:35",
+    "pose": [
+      -1.4352620933273834,
+      1.5724541452446126,
+      2.5710727912354105
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7601476014760148,
+    "occupied_fraction": 0.511070110701107,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0007383480110197261,
+      0.010313216428681432,
+      0.0007935668665221368
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7305502846299811,
+    "score": 0.05364557627630811,
+    "time": "18:21:36",
+    "pose": [
+      -1.5812476593522269,
+      1.8243328923276776,
+      2.1795525277712047
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.6755218216318786,
+    "occupied_fraction": 0.4857685009487666,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.00047484770493111704,
+      0.0029274428160499274,
+      0.0006409778687316595
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.6902485659655831,
+    "score": 0.06620646183631596,
+    "time": "18:21:38",
+    "pose": [
+      -1.745020382663766,
+      2.2133808261357424,
+      1.8032919298185377
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9923518164435946,
+    "boundary_overlap": 0.5315487571701721,
+    "occupied_fraction": 0.5372848948374761,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0005449935658649049,
+      0.0014394240465999723,
+      0.0008255021318310252
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7551020408163265,
+    "score": 0.043127562837799664,
+    "time": "18:21:39",
+    "pose": [
+      -1.788851916614703,
+      2.4857668873119647,
+      1.6223153088989064
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9938775510204082,
+    "boundary_overlap": 0.6081632653061224,
+    "occupied_fraction": 0.5346938775510204,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30: \uc774\ub3d9 \ucde8\uc18c",
+    "cov": [
+      0.00040004039799840485,
+      0.0020271329387870703,
+      0.0008265965100211023
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7494824016563147,
+    "score": 0.04700890885974283,
+    "time": "18:21:40",
+    "pose": [
+      -1.7907538633882845,
+      2.520883317705353,
+      1.6348130076037828
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9958592132505176,
+    "boundary_overlap": 0.6086956521739131,
+    "occupied_fraction": 0.5320910973084886,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ubaa9\ud45c \uc704\uce58\ub85c \uc800\uc18d \uc811\uadfc \uc911: \ub0a8\uc740 \uac70\ub9ac 28.4cm (\ucd5c\uc885 heading \ubb34\uad00)",
+    "cov": [
+      0.00040004039799840485,
+      0.0020271329387870703,
+      0.0008265965100211023
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8544698544698545,
+    "score": 0.016765828907494847,
+    "time": "18:21:41",
+    "pose": [
+      -1.7928803412735421,
+      2.6015093624786245,
+      1.6536673886401554
+    ],
+    "footprint": true,
+    "rays_fraction": 0.997920997920998,
+    "boundary_overlap": 0.8274428274428275,
+    "occupied_fraction": 0.553014553014553,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ubaa9\ud45c \uc704\uce58\ub85c \uc800\uc18d \uc811\uadfc \uc911: \ub0a8\uc740 \uac70\ub9ac 17.8cm (\ucd5c\uc885 heading \ubb34\uad00)",
+    "cov": [
+      0.0002641941084434524,
+      0.002190954947019812,
+      0.0006655648265736766
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8727678571428571,
+    "score": 0.013230035697986742,
+    "time": "18:21:42",
+    "pose": [
+      -1.7968744801754557,
+      2.666983274522374,
+      1.661818124441776
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9970238095238095,
+    "boundary_overlap": 0.8392857142857143,
+    "occupied_fraction": 0.5647321428571429,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ubaa9\ud45c \uc704\uce58\ub85c \uc774\ub3d9\ud558\uae30 \uc704\ud55c \ubc29\ud5a5 \uc804\ud658 \uc911 (\ucd5c\uc885 heading \ubb34\uad00)",
+    "cov": [
+      0.00022639032441828095,
+      0.001605480816940381,
+      0.0005218698715357151
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8422174840085288,
+    "score": 0.015501796384515123,
+    "time": "18:21:43",
+    "pose": [
+      -1.796252508549591,
+      2.6586639677207415,
+      1.6325172206603205
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9964463397299218,
+    "boundary_overlap": 0.8102345415778252,
+    "occupied_fraction": 0.5607675906183369,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ubaa9\ud45c \uc704\uce58\ub85c \uc774\ub3d9\ud558\uae30 \uc704\ud55c \ubc29\ud5a5 \uc804\ud658 \uc911 (\ucd5c\uc885 heading \ubb34\uad00)",
+    "cov": [
+      0.00022639032441828095,
+      0.001605480816940381,
+      0.0005218698715357151
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8771929824561403,
+    "score": 0.011750252575934112,
+    "time": "18:21:44",
+    "pose": [
+      -1.7952618685636934,
+      2.651944292981272,
+      1.5135284336061887
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9956140350877193,
+    "boundary_overlap": 0.8333333333333334,
+    "occupied_fraction": 0.5964912280701754,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ubaa9\ud45c \uc704\uce58\ub85c \uc774\ub3d9\ud558\uae30 \uc704\ud55c \ubc29\ud5a5 \uc804\ud658 \uc911 (\ucd5c\uc885 heading \ubb34\uad00)",
+    "cov": [
+      0.00018697978261755712,
+      0.0011471533798628468,
+      0.000464561122501506
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8962472406181016,
+    "score": 0.010522724224046258,
+    "time": "18:21:45",
+    "pose": [
+      -1.7938375178473986,
+      2.671333020692967,
+      1.4834545165292536
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9948491537895512,
+    "boundary_overlap": 0.8609271523178808,
+    "occupied_fraction": 0.609271523178808,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ubaa9\ud45c \uc704\uce58\ub85c \uc800\uc18d \uc811\uadfc \uc911: \ub0a8\uc740 \uac70\ub9ac 13.8cm (\ucd5c\uc885 heading \ubb34\uad00)",
+    "cov": [
+      0.00018697978261755712,
+      0.0011471533798628468,
+      0.000464561122501506
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8926174496644296,
+    "score": 0.012476063434494224,
+    "time": "18:21:46",
+    "pose": [
+      -1.7850174192839345,
+      2.7499014518049694,
+      1.4973177610530635
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9850857568978374,
+    "boundary_overlap": 0.825503355704698,
+    "occupied_fraction": 0.5548098434004475,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ubaa9\ud45c \uc704\uce58\ub85c \uc800\uc18d \uc811\uadfc \uc911: \ub0a8\uc740 \uac70\ub9ac 5.2cm (\ucd5c\uc885 heading \ubb34\uad00)",
+    "cov": [
+      0.00016682823644611868,
+      0.0009429357209758026,
+      0.0004970093856998992
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.898876404494382,
+    "score": 0.011333252911223588,
+    "time": "18:21:47",
+    "pose": [
+      -1.7846077536626561,
+      2.756746987489392,
+      1.5129883890228277
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9797752808988764,
+    "boundary_overlap": 0.8337078651685393,
+    "occupied_fraction": 0.5865168539325842,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.00016682823644611868,
+      0.0009429357209758026,
+      0.0004970093856998992
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8861607142857143,
+    "score": 0.010772829558370256,
+    "time": "18:21:49",
+    "pose": [
+      -1.784714049616932,
+      2.7557166068370202,
+      1.4492739112549757
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9836309523809523,
+    "boundary_overlap": 0.828125,
+    "occupied_fraction": 0.5982142857142857,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.00016682823644611868,
+      0.0009429357209758026,
+      0.0004970093856998992
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8910411622276029,
+    "score": 0.01598964773779081,
+    "time": "18:21:50",
+    "pose": [
+      -1.787554576081177,
+      2.7467003782442476,
+      1.0929616742884332
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9830508474576272,
+    "boundary_overlap": 0.7723970944309927,
+    "occupied_fraction": 0.5472154963680388,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.00019101327876254164,
+      0.0014891165326472405,
+      0.00037929258312472287
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8574660633484162,
+    "score": 0.01961621736529489,
+    "time": "18:21:51",
+    "pose": [
+      -1.787604794845321,
+      2.7457647491690262,
+      0.6825966559987329
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9969834087481146,
+    "boundary_overlap": 0.7352941176470589,
+    "occupied_fraction": 0.5339366515837104,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.00039090651615430094,
+      0.0011108541263030285,
+      0.0005171269570031736
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8264058679706602,
+    "score": 0.01879878738102713,
+    "time": "18:21:52",
+    "pose": [
+      -1.7683011300941733,
+      2.7556234167341174,
+      0.3322834590516188
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9975550122249389,
+    "boundary_overlap": 0.7457212713936431,
+    "occupied_fraction": 0.5990220048899756,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0007249746927425936,
+      0.0007944514965617007,
+      0.0005052675080142822
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8538011695906432,
+    "score": 0.01663828249494332,
+    "time": "18:21:53",
+    "pose": [
+      -1.755618789169693,
+      2.7566021066263584,
+      -0.0478241042924441
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9980506822612085,
+    "boundary_overlap": 0.7690058479532164,
+    "occupied_fraction": 0.5701754385964912,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0011454885795698002,
+      0.0005469097117658127,
+      0.0005183381805188984
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8632478632478633,
+    "score": 0.01421320026263351,
+    "time": "18:21:54",
+    "pose": [
+      -1.7538070674149209,
+      2.7467088564284987,
+      -0.396173544916971
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9981006647673314,
+    "boundary_overlap": 0.8319088319088319,
+    "occupied_fraction": 0.5982905982905983,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0010451110344130111,
+      0.0003123239049683193,
+      0.00045549985221022865
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.9112903225806451,
+    "score": 0.008833065995003176,
+    "time": "18:21:55",
+    "pose": [
+      -1.7013969802952622,
+      2.7197268190347357,
+      -0.526859038862588
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.8763440860215054,
+    "occupied_fraction": 0.6424731182795699,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.000959622947760129,
+      0.00037354278312377853,
+      0.00042825432450733613
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8743718592964824,
+    "score": 0.013782476509578664,
+    "time": "18:21:56",
+    "pose": [
+      -1.6905589380133292,
+      2.706246582461209,
+      -0.7131864390419804
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.8316582914572864,
+    "occupied_fraction": 0.6105527638190955,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0008385493237505466,
+      0.00037274818651008743,
+      0.00034554530377040163
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.9240780911062907,
+    "score": 0.00821291264714392,
+    "time": "18:21:58",
+    "pose": [
+      -1.444863431928602,
+      2.4023644931070147,
+      -0.9911925312919541
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.8915401301518439,
+    "occupied_fraction": 0.6399132321041214,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0007653453805256705,
+      0.0006667165095226748,
+      0.00046693929910286805
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8916349809885932,
+    "score": 0.018461964105392782,
+    "time": "18:21:59",
+    "pose": [
+      -1.2461055823352365,
+      2.0083100170294874,
+      -1.2199766501963496
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.779467680608365,
+    "occupied_fraction": 0.5076045627376425,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0007162807182532847,
+      0.0008963130483699552,
+      0.0007939645645797469
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8657243816254417,
+    "score": 0.019051432866292774,
+    "time": "18:22:00",
+    "pose": [
+      -1.1697774055635974,
+      1.6114652155167128,
+      4.787534787422779
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.7491166077738516,
+    "occupied_fraction": 0.5141342756183745,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "Navigation accepted: patrol",
+    "cov": [
+      0.0005918967510910156,
+      0.0013951585712953932,
+      0.000659510787772331
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.9130434782608695,
+    "score": 0.006313431302111372,
+    "time": "18:22:01",
+    "pose": [
+      -1.1567692835377092,
+      1.4354715617046527,
+      4.766592969165599
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9959420289855072,
+    "boundary_overlap": 0.8869565217391304,
+    "occupied_fraction": 0.6852173913043478,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0005014865777615821,
+      0.001262252147958736,
+      0.0006589902094815902
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8795180722891566,
+    "score": 0.011495640621978706,
+    "time": "18:22:02",
+    "pose": [
+      -1.1160486064747306,
+      1.096626903339332,
+      4.91447279069347
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9977051061388411,
+    "boundary_overlap": 0.8623063683304647,
+    "occupied_fraction": 0.6265060240963856,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.00039223709249468555,
+      0.0013649349438754055,
+      0.0006943666029993366
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8345070422535211,
+    "score": 0.009954158358662589,
+    "time": "18:22:03",
+    "pose": [
+      -1.0929562420842447,
+      0.9591270092812576,
+      4.951520937949363
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9982394366197183,
+    "boundary_overlap": 0.8151408450704225,
+    "occupied_fraction": 0.6795774647887324,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.00027345023370001177,
+      0.0013028965584508702,
+      0.0006657765455937535
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8310104529616724,
+    "score": 0.012484595987332483,
+    "time": "18:22:04",
+    "pose": [
+      -1.0280314500103107,
+      0.6338977514744919,
+      4.9154521008890315
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9988385598141696,
+    "boundary_overlap": 0.8101045296167247,
+    "occupied_fraction": 0.6480836236933798,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.00020249929661100025,
+      0.0010096926538676054,
+      0.0006467025041116366
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7864406779661017,
+    "score": 0.031305721063249504,
+    "time": "18:22:05",
+    "pose": [
+      -0.9391224187385457,
+      0.16040869485961418,
+      4.97249852041874
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9988700564971752,
+    "boundary_overlap": 0.7711864406779662,
+    "occupied_fraction": 0.5610169491525424,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.00037000417108094634,
+      0.0016180779080527735,
+      0.0007438494464540397
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7620689655172413,
+    "score": 0.03295720327880952,
+    "time": "18:22:06",
+    "pose": [
+      -0.8272931730679569,
+      -0.2268579635922663,
+      -1.1507879629178297
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9988505747126437,
+    "boundary_overlap": 0.7137931034482758,
+    "occupied_fraction": 0.5517241379310345,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.000297639315127933,
+      0.0011653690993600415,
+      0.0006336357499499937
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.782608695652174,
+    "score": 0.030639680846975118,
+    "time": "18:22:07",
+    "pose": [
+      -0.6253648357591666,
+      -0.5517187381883626,
+      -0.845419201440925
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9866666666666667,
+    "boundary_overlap": 0.648695652173913,
+    "occupied_fraction": 0.5652173913043478,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0005734568815713439,
+      0.001137311905722671,
+      0.0010057436064439284
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8031088082901554,
+    "score": 0.023505808086523697,
+    "time": "18:22:09",
+    "pose": [
+      -0.28315226705106333,
+      -0.8236120538920155,
+      -0.5182376608853725
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9884858952216465,
+    "boundary_overlap": 0.7236614853195165,
+    "occupied_fraction": 0.5094991364421416,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0008618485924378467,
+      0.0007519821505092591,
+      0.000784605572405611
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8449477351916377,
+    "score": 0.013419043188793849,
+    "time": "18:22:10",
+    "pose": [
+      0.14018979381470897,
+      -1.0163452266677444,
+      -0.32741441028721097
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9941927990708479,
+    "boundary_overlap": 0.8066202090592335,
+    "occupied_fraction": 0.60801393728223,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.001268800589069408,
+      0.0005519093892080026,
+      0.000669057878422405
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8461538461538461,
+    "score": 0.013758746909995834,
+    "time": "18:22:11",
+    "pose": [
+      0.23964260028562023,
+      -1.0568145451914175,
+      -0.3255400280595824
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9904591532498509,
+    "boundary_overlap": 0.8067978533094812,
+    "occupied_fraction": 0.6153846153846154,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0011976861882062283,
+      0.000369063483803238,
+      0.0005804150068575702
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8454706927175843,
+    "score": 0.013175456397385897,
+    "time": "18:22:12",
+    "pose": [
+      0.23964578417521532,
+      -1.056700006525292,
+      -0.3255408526262511
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9917110716400237,
+    "boundary_overlap": 0.8046181172291297,
+    "occupied_fraction": 0.6287744227353463,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0011976861882062283,
+      0.000369063483803238,
+      0.0005804150068575702
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8486486486486486,
+    "score": 0.013098119443428525,
+    "time": "18:22:13",
+    "pose": [
+      0.23964101520878955,
+      -1.0566750899543211,
+      -0.3255408526314345
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9921921921921922,
+    "boundary_overlap": 0.809009009009009,
+    "occupied_fraction": 0.6162162162162163,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0011976861882062283,
+      0.000369063483803238,
+      0.0005804150068575702
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8128249566724437,
+    "score": 0.016082283394573772,
+    "time": "18:22:14",
+    "pose": [
+      0.4187671274083844,
+      -1.118378535976058,
+      -0.32948133175831495
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9901790872328134,
+    "boundary_overlap": 0.7781629116117851,
+    "occupied_fraction": 0.6516464471403813,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.001188828252111314,
+      0.0003196065451562063,
+      0.0006814864910026125
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.7259528130671506,
+    "score": 0.05237746176206353,
+    "time": "18:22:15",
+    "pose": [
+      0.8007331587702935,
+      -1.257476377131089,
+      -0.3409562482125146
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9927404718693285,
+    "boundary_overlap": 0.7114337568058077,
+    "occupied_fraction": 0.5662431941923775,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0014092897502411216,
+      0.00031911874747877903,
+      0.0007720833154257177
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.6417112299465241,
+    "score": 0.08963592270731795,
+    "time": "18:22:16",
+    "pose": [
+      1.2433105168781005,
+      -1.4191247576105406,
+      -0.29634101334870855
+    ],
+    "footprint": true,
+    "rays_fraction": 1.0,
+    "boundary_overlap": 0.5472370766488414,
+    "occupied_fraction": 0.5418894830659536,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.001681541992631686,
+      0.00023400637987961662,
+      0.0014125235083643016
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.6410256410256411,
+    "score": 0.08562293511267499,
+    "time": "18:22:17",
+    "pose": [
+      1.6687374072384213,
+      -1.538132898401716,
+      -0.3093675183634621
+    ],
+    "footprint": true,
+    "rays_fraction": 0.997370151216305,
+    "boundary_overlap": 0.4714003944773176,
+    "occupied_fraction": 0.52465483234714,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.004303047017264483,
+      0.0006353993199119466,
+      0.0038558625931221125
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.6594911937377691,
+    "score": 0.07560057293596398,
+    "time": "18:22:19",
+    "pose": [
+      1.7579279516949424,
+      -1.6093831111864123,
+      -0.33367049001337934
+    ],
+    "footprint": true,
+    "rays_fraction": 0.994781474233529,
+    "boundary_overlap": 0.5753424657534246,
+    "occupied_fraction": 0.5225048923679061,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0033236215220396764,
+      0.0005496657265745256,
+      0.0016794781396251826
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.6359832635983264,
+    "score": 0.09229776058489611,
+    "time": "18:22:20",
+    "pose": [
+      2.066868112675347,
+      -1.7039889704029325,
+      -0.13558840662923988
+    ],
+    "footprint": true,
+    "rays_fraction": 0.99581589958159,
+    "boundary_overlap": 0.497907949790795,
+    "occupied_fraction": 0.5292887029288703,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.003054379219102505,
+      0.0003970738345492082,
+      0.0014170855693254121
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.644880174291939,
+    "score": 0.09235066438744763,
+    "time": "18:22:21",
+    "pose": [
+      2.5980612633424602,
+      -1.6511160065190094,
+      0.3798573059045198
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9629629629629629,
+    "boundary_overlap": 0.35076252723311546,
+    "occupied_fraction": 0.49455337690631807,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.004048086150680784,
+      0.0006046526608890862,
+      0.0023954003304973858
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.8879551820728291,
+    "score": 0.002540282542179901,
+    "time": "18:22:22",
+    "pose": [
+      2.9768108644490763,
+      -1.396658238842126,
+      0.8656129419375631
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9084967320261438,
+    "boundary_overlap": 0.32212885154061627,
+    "occupied_fraction": 0.7871148459383753,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0018132835258447464,
+      0.001645431717197394,
+      0.0015511766314143707
+    ]
+  },
+  {
+    "valid": true,
+    "overlap": 0.9090909090909091,
+    "score": 0.0039950118180649315,
+    "time": "18:22:23",
+    "pose": [
+      3.1590239681468986,
+      -1.1818303702013786,
+      1.1532497819843428
+    ],
+    "footprint": true,
+    "rays_fraction": 0.9178885630498533,
+    "boundary_overlap": 0.41348973607038125,
+    "occupied_fraction": 0.7536656891495601,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0014411971432755893,
+      0.001983938614681838,
+      0.0015175207402268005
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.8765060240963856,
+    "score": 0.005389959588220493,
+    "time": "18:22:24",
+    "pose": [
+      3.222052606265275,
+      -1.008172326680414,
+      1.5009670540769338
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8724899598393574,
+    "boundary_overlap": 0.37349397590361444,
+    "occupied_fraction": 0.7409638554216867,
+    "state": "PATROL",
+    "ready": true,
+    "detail": "\uc815\ucc30 \ud68c\uc804 \ubc29\ud5a5 \uc804\ud658: \uc804\uc9c4\u00b7\ud68c\uc804 \uc815\uc9c0 \ud655\uc778 \uc911",
+    "cov": [
+      0.0009444587015616706,
+      0.001728252583873586,
+      0.0012633101341056124
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9418960244648318,
+    "score": 0.0,
+    "time": "18:22:25",
+    "pose": [
+      3.2234009529585688,
+      -0.8635994002519548,
+      1.7872169381717224
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8634046890927625,
+    "boundary_overlap": 0.3761467889908257,
+    "occupied_fraction": 0.8715596330275229,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30: \uc774\ub3d9 \ucde8\uc18c",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9325153374233128,
+    "score": 0.0,
+    "time": "18:22:26",
+    "pose": [
+      3.224094903131963,
+      -0.866876119945451,
+      1.7815646752277976
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8650306748466258,
+    "boundary_overlap": 0.37423312883435583,
+    "occupied_fraction": 0.8650306748466258,
+    "state": "PATROL_APPROACH",
+    "ready": true,
+    "detail": "\uc815\ucc30: \uc774\ub3d9 \ucde8\uc18c",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9292307692307692,
+    "score": 0.0,
+    "time": "18:22:27",
+    "pose": [
+      3.2240321865045862,
+      -0.8668630104230942,
+      1.7815646566211614
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8584615384615385,
+    "boundary_overlap": 0.36615384615384616,
+    "occupied_fraction": 0.8584615384615385,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9323076923076923,
+    "score": 0.0,
+    "time": "18:22:28",
+    "pose": [
+      3.2240208857886836,
+      -0.8668662846848373,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8615384615384616,
+    "boundary_overlap": 0.3723076923076923,
+    "occupied_fraction": 0.8615384615384616,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9292307692307692,
+    "score": 0.0,
+    "time": "18:22:29",
+    "pose": [
+      3.2240185223204616,
+      -0.8668710259587252,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8594871794871795,
+    "boundary_overlap": 0.37846153846153846,
+    "occupied_fraction": 0.8553846153846154,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9329268292682927,
+    "score": 0.0,
+    "time": "18:22:30",
+    "pose": [
+      3.2240171632113217,
+      -0.8668694996829526,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8607723577235772,
+    "boundary_overlap": 0.38414634146341464,
+    "occupied_fraction": 0.8597560975609756,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9337349397590361,
+    "score": 0.0,
+    "time": "18:22:32",
+    "pose": [
+      3.224016903658555,
+      -0.8668693396776818,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8614457831325302,
+    "boundary_overlap": 0.3795180722891566,
+    "occupied_fraction": 0.8554216867469879,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9242902208201893,
+    "score": 0.0,
+    "time": "18:22:33",
+    "pose": [
+      3.2240170217441495,
+      -0.8668701207176065,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8548895899053628,
+    "boundary_overlap": 0.36908517350157727,
+    "occupied_fraction": 0.8517350157728707,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9320987654320988,
+    "score": 0.0,
+    "time": "18:22:34",
+    "pose": [
+      3.224017013493624,
+      -0.8668701321296063,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8631687242798354,
+    "boundary_overlap": 0.37962962962962965,
+    "occupied_fraction": 0.8549382716049383,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9318885448916409,
+    "score": 0.0,
+    "time": "18:22:35",
+    "pose": [
+      3.224017022777793,
+      -0.8668701864480982,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8596491228070176,
+    "boundary_overlap": 0.3746130030959752,
+    "occupied_fraction": 0.8575851393188855,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9287925696594427,
+    "score": 0.0,
+    "time": "18:22:36",
+    "pose": [
+      3.2240170327071658,
+      -0.8668702352368479,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8606811145510835,
+    "boundary_overlap": 0.37770897832817335,
+    "occupied_fraction": 0.8575851393188855,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9274924471299094,
+    "score": 0.0,
+    "time": "18:22:37",
+    "pose": [
+      3.224017035985746,
+      -0.8668702510390293,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.865055387713998,
+    "boundary_overlap": 0.3806646525679758,
+    "occupied_fraction": 0.851963746223565,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.933933933933934,
+    "score": 0.0,
+    "time": "18:22:39",
+    "pose": [
+      3.2240170381070614,
+      -0.8668702611002727,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8638638638638638,
+    "boundary_overlap": 0.37237237237237236,
+    "occupied_fraction": 0.8558558558558559,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9221183800623053,
+    "score": 0.0,
+    "time": "18:22:40",
+    "pose": [
+      3.2240170383772364,
+      -0.8668702623949577,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8546209761163032,
+    "boundary_overlap": 0.367601246105919,
+    "occupied_fraction": 0.8566978193146417,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.926984126984127,
+    "score": 0.0,
+    "time": "18:22:41",
+    "pose": [
+      3.2240170387957887,
+      -0.8668702643576832,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8539682539682539,
+    "boundary_overlap": 0.38095238095238093,
+    "occupied_fraction": 0.8476190476190476,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9359756097560976,
+    "score": 0.0,
+    "time": "18:22:42",
+    "pose": [
+      3.224017038961435,
+      -0.8668702651338714,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8577235772357723,
+    "boundary_overlap": 0.375,
+    "occupied_fraction": 0.8628048780487805,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9294478527607362,
+    "score": 0.0,
+    "time": "18:22:43",
+    "pose": [
+      3.2240170390915264,
+      -0.8668702657423689,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8619631901840491,
+    "boundary_overlap": 0.3773006134969325,
+    "occupied_fraction": 0.8588957055214724,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9341692789968652,
+    "score": 0.0,
+    "time": "18:22:44",
+    "pose": [
+      3.2240170390820193,
+      -0.8668702656980235,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8599791013584117,
+    "boundary_overlap": 0.3793103448275862,
+    "occupied_fraction": 0.8557993730407524,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9347826086956522,
+    "score": 0.0,
+    "time": "18:22:45",
+    "pose": [
+      3.2240170391013203,
+      -0.8668702657882673,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8633540372670807,
+    "boundary_overlap": 0.38819875776397517,
+    "occupied_fraction": 0.860248447204969,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.927710843373494,
+    "score": 0.00010638297634555939,
+    "time": "18:22:47",
+    "pose": [
+      3.2240170391049654,
+      -0.8668702658052955,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8634538152610441,
+    "boundary_overlap": 0.3704819277108434,
+    "occupied_fraction": 0.8463855421686747,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9310344827586207,
+    "score": 0.0,
+    "time": "18:22:48",
+    "pose": [
+      3.2240170391147593,
+      -0.8668702658510655,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8610240334378265,
+    "boundary_overlap": 0.3730407523510972,
+    "occupied_fraction": 0.8495297805642633,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9331306990881459,
+    "score": 0.0,
+    "time": "18:22:49",
+    "pose": [
+      3.224017039117193,
+      -0.8668702658624375,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8662613981762918,
+    "boundary_overlap": 0.3890577507598784,
+    "occupied_fraction": 0.851063829787234,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9270516717325228,
+    "score": 0.0,
+    "time": "18:22:50",
+    "pose": [
+      3.224017039116964,
+      -0.866870265861366,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8611955420466059,
+    "boundary_overlap": 0.3586626139817629,
+    "occupied_fraction": 0.8571428571428571,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9363636363636364,
+    "score": 0.0,
+    "time": "18:22:51",
+    "pose": [
+      3.224017039117956,
+      -0.8668702658660384,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8636363636363636,
+    "boundary_overlap": 0.3787878787878788,
+    "occupied_fraction": 0.8666666666666667,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9341692789968652,
+    "score": 0.0,
+    "time": "18:22:52",
+    "pose": [
+      3.2240170391182046,
+      -0.8668702658671995,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8589341692789969,
+    "boundary_overlap": 0.3761755485893417,
+    "occupied_fraction": 0.8620689655172413,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9290123456790124,
+    "score": 0.0002181818133050745,
+    "time": "18:22:53",
+    "pose": [
+      3.2240170391189693,
+      -0.8668702658707911,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8621399176954733,
+    "boundary_overlap": 0.39197530864197533,
+    "occupied_fraction": 0.8425925925925926,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9316770186335404,
+    "score": 0.0,
+    "time": "18:22:54",
+    "pose": [
+      3.224017039118425,
+      -0.8668702658682564,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8612836438923396,
+    "boundary_overlap": 0.38198757763975155,
+    "occupied_fraction": 0.8540372670807453,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9329268292682927,
+    "score": 0.0,
+    "time": "18:22:55",
+    "pose": [
+      3.2240170391184595,
+      -0.8668702658683977,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8567073170731707,
+    "boundary_overlap": 0.3719512195121951,
+    "occupied_fraction": 0.8719512195121951,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.934375,
+    "score": 0.0,
+    "time": "18:22:57",
+    "pose": [
+      3.22401703911848,
+      -0.8668702658684605,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8541666666666666,
+    "boundary_overlap": 0.378125,
+    "occupied_fraction": 0.85625,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.93125,
+    "score": 0.0,
+    "time": "18:22:58",
+    "pose": [
+      3.224017039118481,
+      -0.8668702658684694,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.859375,
+    "boundary_overlap": 0.36875,
+    "occupied_fraction": 0.853125,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9308176100628931,
+    "score": 0.0,
+    "time": "18:22:59",
+    "pose": [
+      3.2240170391184844,
+      -0.8668702658684938,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8553459119496856,
+    "boundary_overlap": 0.36477987421383645,
+    "occupied_fraction": 0.8584905660377359,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.930379746835443,
+    "score": 0.0,
+    "time": "18:23:00",
+    "pose": [
+      3.224017039118489,
+      -0.866870265868494,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.859704641350211,
+    "boundary_overlap": 0.3829113924050633,
+    "occupied_fraction": 0.8544303797468354,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9329268292682927,
+    "score": 0.00010791366665268974,
+    "time": "18:23:01",
+    "pose": [
+      3.2240170391184897,
+      -0.8668702658685169,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8607723577235772,
+    "boundary_overlap": 0.38414634146341464,
+    "occupied_fraction": 0.8445121951219512,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.922360248447205,
+    "score": 0.0,
+    "time": "18:23:02",
+    "pose": [
+      3.2240170391184924,
+      -0.866870265868494,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.855072463768116,
+    "boundary_overlap": 0.36335403726708076,
+    "occupied_fraction": 0.8571428571428571,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9339622641509434,
+    "score": 0.0,
+    "time": "18:23:03",
+    "pose": [
+      3.224017039118489,
+      -0.8668702658684703,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8532494758909853,
+    "boundary_overlap": 0.36163522012578614,
+    "occupied_fraction": 0.8616352201257862,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.926829268292683,
+    "score": 0.0,
+    "time": "18:23:04",
+    "pose": [
+      3.2240170391184853,
+      -0.8668702658684547,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8617886178861789,
+    "boundary_overlap": 0.3719512195121951,
+    "occupied_fraction": 0.8567073170731707,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9345794392523364,
+    "score": 0.0,
+    "time": "18:23:05",
+    "pose": [
+      3.2240170391184773,
+      -0.8668702658684376,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8639667705088265,
+    "boundary_overlap": 0.3925233644859813,
+    "occupied_fraction": 0.8504672897196262,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9337349397590361,
+    "score": 0.00010638297634555939,
+    "time": "18:23:07",
+    "pose": [
+      3.22401703911848,
+      -0.8668702658684341,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8694779116465864,
+    "boundary_overlap": 0.39457831325301207,
+    "occupied_fraction": 0.8463855421686747,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9320987654320988,
+    "score": 0.0,
+    "time": "18:23:08",
+    "pose": [
+      3.2240170391184773,
+      -0.8668702658683919,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8539094650205762,
+    "boundary_overlap": 0.38580246913580246,
+    "occupied_fraction": 0.8487654320987654,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.937888198757764,
+    "score": 0.0,
+    "time": "18:23:09",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8633540372670807,
+    "boundary_overlap": 0.38819875776397517,
+    "occupied_fraction": 0.8571428571428571,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9320987654320988,
+    "score": 0.0,
+    "time": "18:23:10",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8621399176954733,
+    "boundary_overlap": 0.3765432098765432,
+    "occupied_fraction": 0.8549382716049383,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9325153374233128,
+    "score": 0.0,
+    "time": "18:23:11",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8609406952965235,
+    "boundary_overlap": 0.37116564417177916,
+    "occupied_fraction": 0.8680981595092024,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9230769230769231,
+    "score": 0.0,
+    "time": "18:23:12",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8605128205128205,
+    "boundary_overlap": 0.38153846153846155,
+    "occupied_fraction": 0.8523076923076923,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9318885448916409,
+    "score": 0.0,
+    "time": "18:23:13",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8617131062951496,
+    "boundary_overlap": 0.37770897832817335,
+    "occupied_fraction": 0.8513931888544891,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.8976608187134503,
+    "score": 0.0009310344619483784,
+    "time": "18:23:14",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8713450292397661,
+    "boundary_overlap": 0.35964912280701755,
+    "occupied_fraction": 0.8216374269005848,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9003021148036254,
+    "score": 0.0007473309441499438,
+    "time": "18:23:15",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.865055387713998,
+    "boundary_overlap": 0.36253776435045315,
+    "occupied_fraction": 0.8277945619335347,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.8924418604651163,
+    "score": 0.0011301369610408397,
+    "time": "18:23:17",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8662790697674418,
+    "boundary_overlap": 0.36627906976744184,
+    "occupied_fraction": 0.8168604651162791,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9009009009009009,
+    "score": 0.000530035323841833,
+    "time": "18:23:18",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8658658658658659,
+    "boundary_overlap": 0.36936936936936937,
+    "occupied_fraction": 0.8348348348348348,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9361022364217252,
+    "score": 0.0,
+    "time": "18:23:19",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8615548455804047,
+    "boundary_overlap": 0.3801916932907348,
+    "occupied_fraction": 0.8562300319488818,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9376947040498442,
+    "score": 0.0,
+    "time": "18:23:20",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.857736240913811,
+    "boundary_overlap": 0.38317757009345793,
+    "occupied_fraction": 0.8566978193146417,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9318885448916409,
+    "score": 0.0,
+    "time": "18:23:21",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8596491228070176,
+    "boundary_overlap": 0.3653250773993808,
+    "occupied_fraction": 0.8606811145510835,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9305993690851735,
+    "score": 0.0,
+    "time": "18:23:22",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8601472134595163,
+    "boundary_overlap": 0.3659305993690852,
+    "occupied_fraction": 0.8643533123028391,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9294478527607362,
+    "score": 0.00010830324667670666,
+    "time": "18:23:23",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8629856850715747,
+    "boundary_overlap": 0.37423312883435583,
+    "occupied_fraction": 0.8466257668711656,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  },
+  {
+    "valid": false,
+    "overlap": 0.9327217125382263,
+    "score": 0.0,
+    "time": "18:23:25",
+    "pose": [
+      3.224017039118471,
+      -0.8668702658683812,
+      1.781564656621046
+    ],
+    "footprint": true,
+    "rays_fraction": 0.8603465851172273,
+    "boundary_overlap": 0.3853211009174312,
+    "occupied_fraction": 0.8593272171253823,
+    "state": "PATROL_APPROACH",
+    "ready": false,
+    "detail": "Paused: manual control or localization/sensor readiness",
+    "cov": [
+      0.0005040366587803111,
+      0.0018043849944882763,
+      0.001586878256368718
+    ]
+  }
+]

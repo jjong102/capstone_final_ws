@@ -1,0 +1,57 @@
+AMCL 비교 및 후방 임계값 변경 — 2026-11-03
+
+장비: NVIDIA Jetson Orin Nano Engineering Reference Developer Kit Super.
+6 CPU online, MAXN_SUPER mode 2. CPU 100%는 한 코어 기준이다.
+향후 CPU 검증도 Orin Nano의 전력 모드와 실제 실행 구성을 반드시 기록한다.
+
+입력: src/amr_navigator/debug_log/20261103_221345_526770/bag
+지도: src/amr_navigator/map/debug_map_corrected.yaml + pgm
+URDF 기준 센서 TF 그대로 사용. 로봇 외곽/장착 값 수정 없음.
+57.18초 실시간 재생. domain219, localhost DDS. 모터 명령 재생 없음.
+AMCL + 실제 amcl_scan만 실행; 전체 Nav2/센서 드라이버 부하 측정 아님.
+기록된 map->odom 제외. 최초 map/odom 위치는 동일 초기값 설정에만 사용.
+초기 xy sigma 5cm, yaw sigma 3deg. 나머지 위치 추정은 AMCL 출력이다.
+
+전체 스캔 경계거리: 각 스캔 점의 최근접 지도 경계거리 중앙값을 계산한 뒤,
+스캔별 중앙값의 중앙값을 취했다. 센서별 매 3번째 메시지 샘플링.
+AMCL pose 시각부터 scan 시각까지 odom으로 보정. 1초 이상 오래된 pose 제외.
+일치율은 12cm 이내 점 비율의 스캔별 중앙값. 런타임 승인 기준과 동일한
+검사가 아니며, 런타임의 6.5cm trimmed score와도 다른 지표다.
+동일 지도 생성에 사용된 bag이므로 지도 자기일관성 비교이며 물리 정확도,
+독립 검증 데이터 또는 안전 주행 검증으로 해석하면 안 된다.
+
+설정                  전방 거리/일치율    후방 거리/일치율  AMCL 평균CPU(한 코어)
+기본 60               5.64cm /79.5%       6.54cm /76.5%     3.88~3.95%
+120                   5.43cm /79.9%       6.38cm /77.4%     5.38~5.48%
+180                   5.37cm /79.5%       6.46cm /77.4%     반복 6.89%
+120 + sigma.15/.7/.3   5.49cm /80.2%       6.61cm /77.4%     4.73%
+120 + 갱신.02m/.035rad 5.47cm /79.9%       6.39cm /77.6%     7.94%
+
+60/120/180은 각 2회. 첫 180 실행 일부 구간에 오프라인 분석이 겹쳤으므로
+180의 자원 판단은 별도 반복 실행을 우선한다. 반복 실행 동안 분석/빌드 없음.
+스캔 통합 CPU 반복 평균 24.76~25.04%. 120 출력 pose age p95 약148ms.
+pose age는 스캔 시각부터 콜백 수신까지이며 AMCL 자체 계산시간이 아니다.
+각 후보 결과/실행 로그/CPU 샘플은 해당 하위 디렉터리 result.json 등에 보관.
+
+결론:
+120의 개선은 전방 약2.1mm, 후방 약1.6mm로 작다. 180은 추가 이점이 불명확.
+모델/갱신 변경도 뚜렷한 개선 없음. 운영 nav2.yaml은 변경하지 않았다.
+다음 독립 이동/복귀 bag 비교 후보는 120; 전체 Nav2 설정 복사본
+nav2_amcl_120_trial.yaml에 max_beams만120으로 준비했다(use_sim_time=false).
+이 파일은 운영 기본값이 아니며 params_file:=절대경로로 명시할 때만 사용한다.
+각 하위 폴더 amcl.yaml은 격리 재생 전용(use_sim_time=true)이므로 실기에 쓰지 않는다.
+
+반영한 코드:
+- verify_sensors: rear overlap .50 -> .70, front .70 유지.
+- localization quality: observation_stamp_ns, sensor_stamp_ns, pair_skew,
+  evaluated_pose 추가. /third_impact/localization 기록으로 관측/위치 시각 추적 가능.
+- URDF, 주행 속도, 정찰5cm/복귀2cm, 두 구간 제한, 다른 검증 조건 유지.
+- 관련 pytest27개 통과; third_impact colcon build 성공.
+- 기존 SciPy/NumPy 버전 경고 존재. 이번 작업에서 패키지 변경 없음.
+
+다음 검증:
+회전 중심 현재 bag은 병진 거리 update_min_d의 효과를 판단할 수 없다.
+새 지도의 별도 직선/회전/복귀 bag, 실측 정지 위치/방향으로 60 vs120 비교.
+전체 Nav2 실행 시 CPU/온도/지연을 Orin Nano에서 다시 측정한 뒤 기본값 채택.
+새 지도 사용 시 기존 지도용 목표/구역을 재사용하지 말고 새 지도에서 설정.
+실제 로봇은 이 작업에서 움직이지 않았으며 실기 정확도 향상은 아직 입증 안 됨.

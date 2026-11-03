@@ -1,0 +1,150 @@
+{
+  "diagnostics/amcl_compare_20261103/results.json": {
+    "front": {
+      "updates": 71,
+      "evaluated": 71,
+      "metrics": {
+        "front_overlap": 0.03481452186799162,
+        "rear_overlap": 0.05020914544435503,
+        "front_median_m": 0.6788969352063358,
+        "rear_median_m": 0.9323189115394317
+      },
+      "correction_step_p95_m_deg": [
+        0.08507805554484386,
+        2.8360987063034755
+      ],
+      "correction_step_max_m_deg": [
+        0.4245508407320799,
+        10.548476044099976
+      ]
+    },
+    "rear": {
+      "updates": 70,
+      "evaluated": 70,
+      "metrics": {
+        "front_overlap": 0.016954119401315044,
+        "rear_overlap": 0.1304232022737999,
+        "front_median_m": 1.5441257432524078,
+        "rear_median_m": 0.6812632972582465
+      },
+      "correction_step_p95_m_deg": [
+        0.17500469537382762,
+        2.5549667414581556
+      ],
+      "correction_step_max_m_deg": [
+        0.5340558401025942,
+        10.763032789071696
+      ]
+    },
+    "combined": {
+      "updates": 71,
+      "evaluated": 71,
+      "metrics": {
+        "front_overlap": 0.9392645150863715,
+        "rear_overlap": 0.6052817296662307,
+        "front_median_m": 0.03468692379685661,
+        "rear_median_m": 0.10685616756201514
+      },
+      "correction_step_p95_m_deg": [
+        0.017333825246560654,
+        0.9568716934126559
+      ],
+      "correction_step_max_m_deg": [
+        0.027918957433785335,
+        1.1279191233351893
+      ]
+    },
+    "original_front": {
+      "updates": 71,
+      "evaluated": 71,
+      "metrics": {
+        "front_overlap": 0.07088952924250876,
+        "rear_overlap": 0.1219551522337186,
+        "front_median_m": 1.0612255607002397,
+        "rear_median_m": 0.6927402402405157
+      },
+      "correction_step_p95_m_deg": [
+        0.08003343078492024,
+        3.5095689453689336
+      ],
+      "correction_step_max_m_deg": [
+        0.3483339861049106,
+        7.057402700784463
+      ]
+    }
+  },
+  "diagnostics/amcl_compare_20261103/repeat/results.json": {
+    "front": {
+      "updates": 71,
+      "evaluated": 71,
+      "metrics": {
+        "front_overlap": 0.03481452186799162,
+        "rear_overlap": 0.05020914544435503,
+        "front_median_m": 0.6788969352063358,
+        "rear_median_m": 0.9323189115394317
+      },
+      "correction_step_p95_m_deg": [
+        0.08507805554484386,
+        2.8360987063034755
+      ],
+      "correction_step_max_m_deg": [
+        0.4245508407320799,
+        10.548476044099976
+      ]
+    },
+    "rear": {
+      "updates": 70,
+      "evaluated": 70,
+      "metrics": {
+        "front_overlap": 0.016954119401315044,
+        "rear_overlap": 0.1304232022737999,
+        "front_median_m": 1.5441257432524078,
+        "rear_median_m": 0.6812632972582465
+      },
+      "correction_step_p95_m_deg": [
+        0.17500469537382762,
+        2.5549667414581556
+      ],
+      "correction_step_max_m_deg": [
+        0.5340558401025942,
+        10.763032789071696
+      ]
+    },
+    "combined": {
+      "updates": 71,
+      "evaluated": 71,
+      "metrics": {
+        "front_overlap": 0.9392645150863715,
+        "rear_overlap": 0.6052817296662307,
+        "front_median_m": 0.03468692379685661,
+        "rear_median_m": 0.10685616756201514
+      },
+      "correction_step_p95_m_deg": [
+        0.017333825246560654,
+        0.9568716934126559
+      ],
+      "correction_step_max_m_deg": [
+        0.027918957433785335,
+        1.1279191233351893
+      ]
+    },
+    "original_front": {
+      "updates": 71,
+      "evaluated": 71,
+      "metrics": {
+        "front_overlap": 0.07088952924250876,
+        "rear_overlap": 0.1219551522337186,
+        "front_median_m": 1.0612255607002397,
+        "rear_median_m": 0.6927402402405157
+      },
+      "correction_step_p95_m_deg": [
+        0.08003343078492024,
+        3.5095689453689336
+      ],
+      "correction_step_max_m_deg": [
+        0.3483339861049106,
+        7.057402700784463
+      ]
+    }
+  }
+}

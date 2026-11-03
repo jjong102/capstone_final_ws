@@ -1,0 +1,19 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1793700251.307339744] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1793700251.321660003] [rosbag2_storage]: Opened database '/home/moonshot/capstone_final_ws/diagnostics/lidar_wall_check/rear_20261103_190410/bag/bag_0.db3' for READ_WRITE.
+[INFO] [1793700251.323081842] [rosbag2_recorder]: Listening for topics...
+[INFO] [1793700251.323382307] [rosbag2_recorder]: Recording...
+[INFO] [1793700251.323109044] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1793700251.433646827] [rosbag2_recorder]: Subscribed to topic '/rplidar1/scan'
+[INFO] [1793700251.437372188] [rosbag2_recorder]: Subscribed to topic '/rplidar1/scan_filtered'
+[INFO] [1793700251.442115366] [rosbag2_recorder]: Subscribed to topic '/rplidar2/scan_filtered'
+[INFO] [1793700251.452521710] [rosbag2_recorder]: Subscribed to topic '/tf'
+[INFO] [1793700251.563733035] [rosbag2_recorder]: Subscribed to topic '/ebimu_data'
+[INFO] [1793700251.581923207] [rosbag2_recorder]: Subscribed to topic '/imu/data'
+[INFO] [1793700251.613636697] [rosbag2_recorder]: Subscribed to topic '/wheel/odometry'
+[INFO] [1793700251.625362507] [rosbag2_recorder]: Subscribed to topic '/odom'
+[INFO] [1793700251.631002471] [rosbag2_recorder]: Subscribed to topic '/rplidar2/scan'
+[INFO] [1793700251.641312426] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+[INFO] [1793700251.641791460] [rosbag2_recorder]: All requested topics are subscribed. Stopping discovery...
+[INFO] [1793700275.601756110] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[INFO] [1793700275.604816342] [rosbag2_recorder]: Event publisher thread: Exiting
+[INFO] [1793700275.605314802] [rosbag2_recorder]: Recording stopped

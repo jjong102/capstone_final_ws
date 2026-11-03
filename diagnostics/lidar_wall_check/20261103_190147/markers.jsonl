@@ -1,0 +1,2 @@
+{"time": 1793700178.4684129, "phase": "front_stationary_complete", "reported_duration_seconds": 15, "distance_from_front_outer_edge_m": 0.8, "source": "user_report", "note": "Receipt time; approximate preceding 15 seconds, verify odometry."}
+{"time": 1793700227.1936731, "phase": "rear_stationary_complete", "reported_duration_seconds": 15, "source": "user_report", "distance_from_rear_outer_edge_m": null, "note": "Receipt time; approximate preceding 15 seconds; verify odometry."}

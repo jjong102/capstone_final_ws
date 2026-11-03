@@ -302,7 +302,7 @@ Nav2 `ComputePathToPose`로 계산한 경로를 임무 노드가 직접 추종�
 - 전환 지점이 없으면 기존 경로를 재검사하며 정지합니다. 별도 우회는 만들지 않습니다.
 - 전진 경로가 LiDAR/지도 검사에서 막히면 정지하고 5초 뒤 재계획합니다.
   후진 및 진입 방향 정렬 중에는 시간 제한 없이 대기하며 우회하지 않습니다.
-- 후진은 전진과 같은 최대 속도 0.6 m/s, 최대 각속도 0.35 rad/s를 사용합니다.
+- 후진은 전진과 같은 최대 속도 0.4 m/s, 최대 각속도 0.35 rad/s를 사용합니다.
   가감속, 정지거리 검사, 곡선/목표 접근 감속은 유지합니다.
 - 목표 6cm 이내에서 최종 LiDAR 정밀 정렬로 넘깁니다. 도착 판정/알림/대기 정책은 동일합니다.
 - 수동 개입으로 후진 경로에서 크게 벗어나면 자동 탈출하지 않고 정지합니다.
@@ -328,3 +328,85 @@ Nav2 `ComputePathToPose`로 계산한 경로를 임무 노드가 직접 추종�
 복귀 정렬은 AMCL/TF 기준 제자리 큰 방향 정렬(실제 정지, 지도·LiDAR 전체 회전 외곽 검사, 각도 진행 감시) → 새 스캔 3회 연속 정합 확인 → 기존 정밀 위치/방향 정렬 순서입니다. 공간/진행 문제는 정지 상태로 표시하며 수동 개입 후 다시 확인합니다. 정합 보정 20cm·15도 한계는 유지하고, 거부가 5초 지속되면 2초 정지 후 새 관측으로 재검증합니다. 목표나 AMCL 위치를 자동으로 덮어쓰지 않습니다. `status.alignment`와 RViz 표에는 단계·위치 보정량/허용치·거부 이유를 표시합니다.
 
 20261102_231751 기록의 23:19:54 스캔 비교: 저장 기준 스캔의 지도 장애물까지 거리 중앙값 1.41cm, 10cm 내 비율 89.6%; 현재 스캔 AMCL 배치 1.61cm/83.2%; ICP 배치 1.72cm/86.7%. 초기값을 ±10cm 바꿔도 ICP는 기준 프레임 x≈25~26cm로 수렴했습니다. 둘 다 지도에 어느 정도 맞으므로 기준 스캔 손상 또는 AMCL 오차 중 하나로 확정할 수 없습니다. 작은 ICP 잔차만으로 22cm 보정을 허용하지 않으며, 큰 회전 후의 새 관측으로 실기 재검증해야 합니다.
+
+
+2026-11-03 속도 조정: 정찰 DWB/velocity_smoother와 복귀 최대 병진 속도를 0.4m/s로 통일했습니다. 복귀 전진의 방향 오차 감속은 raised cosine으로 0°/15°/30°/45°에서 100%/75%/25%/0%입니다. 기존 17°에서 갑자기 전진을 끊는 조건을 전진에서 제거했으며, 경로 lookahead·각속도/가감속 제한·후진 방향 정책·2cm 도착 기준은 유지합니다. 정찰 DWB의 경로 평가 방식은 그대로이며 최고 속도만 낮췄습니다.
+오프라인 검증 결과는 `diagnostics/speed_20261103/replay.py`와 `replay.json`에 저장했습니다. 20261102_234102 bag 복귀 187개 기록 위치에서 실제 odom 제동 거리, 지도·LiDAR·한계 구간 검사를 통과했고 최대 새 요청은 0.39999m/s였습니다. 전진 0 요청은 기존 122개, 새 경로 인덱스 재구성에서는 58개였습니다. 수정 후 폐루프 실기 궤적을 재현한 것은 아니며 정찰은 설정·회귀 테스트로 속도 상한을 검증했습니다.
+
+노트북 `laptop_rviz_launch.py`는 RViz 프로세스에 `ROS_DOMAIN_ID=3`, `ROS_LOCALHOST_ONLY=0`, `RMW_IMPLEMENTATION=rmw_cyclonedds_cpp`, `CYCLONEDDS_URI=file://$HOME/remote_rviz/laptop.xml`을 자동 적용합니다. 기존 동작하던 laptop.xml을 사용하며 IP/인터페이스는 변경하지 않습니다. `domain_id:=3 dds_config:=/absolute/path/laptop.xml`로 경로·도메인을 지정할 수 있습니다. 파일이 없으면 안내와 함께 실행을 중단합니다. RViz는 ROS CLI daemon을 사용하지 않으므로 launch에서 daemon을 종료하지 않습니다. 이 설정은 부모 셸이나 별도 ROS CLI 터미널을 바꾸지 않습니다. `ros2`와 패키지 검색을 위한 `/opt/ros/humble/setup.bash`, workspace `install/setup.bash` source는 launch 실행 전에 필요합니다.
+
+### 전·후방 통합 AMCL
+
+`impact_launch.py`와 `make_goal_launch.py`는 `amcl_scan` 노드를 함께 실행합니다.
+AMCL은 `/third_impact/amcl_scan`을 구독합니다. 입력은 기존 전·후방
+`/rplidar1/scan_filtered`, `/rplidar2/scan_filtered`입니다.
+
+센서 위치와 장착 방향은 `src/amr/description/amr_description.urdf`에서 발행한
+TF를 사용합니다. 센서 오프셋을 별도로 하드코딩하지 않으며 pitch/yaw를 포함한
+3차원 회전을 적용합니다. 두 관측 시점의 차이는 odom TF로 보정한 뒤 base_link
+중심의 720개 각도 구간으로 합칩니다. 이 보정은 스캔 간 시간차 보정이며,
+한 바퀴 스캔 내부의 개별 빔 시간차 보정은 아닙니다.
+
+입력 시간차 0.15초 초과, 관측 나이 0.45초 초과, TF 누락 또는 센서별 유효점
+10개 미만이면 통합 스캔을 발행하지 않습니다. 단일 센서로 자동 전환하지 않습니다.
+기존 70×44cm 외곽 안의 자기 반사점은 제외합니다. 통합 스캔은 AMCL 전용이며,
+장애물 감지·costmap·복귀 정밀 정합은 기존 센서별 입력을 유지합니다.
+
+`/third_impact/amcl_scan_status`에는 발행 여부, 대기/거부 사유, 각 센서의 나이,
+시간차와 유효점 수가 나옵니다. `ready`는 해당 타이머 회차에서 발행했는지를 뜻하며
+위치 추정 준비 상태를 뜻하지 않습니다. `log:=true`에서 bag과 diagnostics.jsonl에
+기록됩니다. 사용자 지정 Nav2 params 파일을 쓰면 AMCL의 `scan_topic`도
+`/third_impact/amcl_scan`으로 설정해야 합니다.
+
+### 주행 중 위치 검증과 정지 재검증
+
+지도 일치율은 장애물 내부가 아닌 벽 경계까지의 거리로 계산합니다.
+`localization.quality`에는 전체 및 `sensors.front/rear`별 벽 경계 일치율,
+경계 오차, 광선 자유 공간 비율과 실패 사유를 기록합니다. 센서별 광선 검사는
+실제 센서 원점에서 시작합니다. RViz Robot Status 패널에 검증 거부 사유와
+전·후방 진단이 표시되며 `log:=true`의 diagnostics.jsonl에도 기록됩니다.
+
+전·후방 관측은 odom TF로 같은 시각에 맞추고 해당 시각의 map->base_link로
+검증합니다. 주행 중에도 5Hz로 검사하며, 서로 다른 관측에서 3회 이상,
+0.4초 이상 연속 불일치가 지속되면 ready를 내리고 정지를 요청합니다.
+정지 후 최대 6초간 현재 AMCL 입자 분포에서 nomotion 관측 갱신을 요청합니다.
+3회 이상·1초 이상의 연속 검증 통과 후에만 READY로 복구합니다.
+실패가 계속되면 기존 전체 지도 탐색으로 넘어갑니다. 국소 재검증은 별도의
+임의 초기 위치 주입이나 로봇 회전을 수행하지 않습니다.
+
+차체 검증은 URDF 기준 70×44cm 외곽 전체를 샘플링합니다. 광선 자유 공간
+90%, 정찰 도착 5cm, 한계 구간 및 정찰 제한 구간은 유지됩니다.
+
+전·후방 벽 경계 일치율 통과 기준은 각각 **전방 70%, 후방 50%**입니다.
+전체 혼합 일치율 70%로 후방 완화를 다시 차단하지 않고, 센서별 기준을
+주행 검증 및 전체 탐색 후보의 최종 검증에 적용합니다. 기존 전체 경계 오차
+6.5cm, 광선 자유 공간 90%, 차체 외곽 조건은 그대로 유지합니다.
+
+### 복구 회전의 센서 대기
+
+복구 회전 후보는 한 관측 스냅샷으로 평가하고 종료 시 센서 유효성을 재확인합니다.
+센서가 없거나 오래된 경우 `SENSOR_WAIT`으로 정지하며, 전·후방 모두 새로운
+스캔이 도착한 경우에만 최대 3회·최초 대기부터 5초 이내에 재검사합니다.
+한도를 넘으면 센서 대기 한도 초과로 표시하며 충돌로 표시하지 않습니다.
+실제 후보 거부 사유는 `lidar_collision`, `map_collision`, `region_boundary`로
+`status.patrol_control.recovery_check`에 기록합니다. 차체와 구간 여유는 유지합니다.
+수동·위치·센서 준비 대기 시간은 정찰의 12초 진행 정체 타이머에서 제외하며,
+대기 이전에 누적된 실제 주행 정체 시간은 유지합니다.
+
+### Network selection
+
+`impact_launch.py` and `make_goal_launch.py` accept `network:=wifi` (default,
+robot Wi-Fi to laptop) or `network:=jetson` (robot eno1 to wired UI Jetson).
+These use the same single-interface profiles as mapping. Stop the existing
+launch before switching modes. All children inherit the selected DDS environment.
+A nonempty `dds_config:=/absolute/path.xml` overrides the selected profile;
+`domain_id` defaults to 3. The startup log prints the effective XML path.
+
+```bash
+ros2 launch third_impact impact_launch.py network:=wifi log:=true
+ros2 launch third_impact impact_launch.py network:=jetson log:=true
+ros2 launch third_impact make_goal_launch.py network:=wifi
+```
+
+The dual-interface XML is no longer selected by default. Receiver configurations
+and URDF are unchanged; remote reception must be checked on the target machine.

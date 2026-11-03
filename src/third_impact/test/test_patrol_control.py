@@ -140,3 +140,68 @@ def test_patrol_bt_delegates_recovery_without_changing_return():
     tree=ET.parse(Path(__file__).parents[1]/'config/patrol.xml')
     assert not tree.findall('.//Spin') and not tree.findall('.//BackUp')
     assert tree.find('.//FollowPath').attrib['controller_id']=='PatrolFollowPath'
+
+
+def test_stale_observation_waits_for_both_new_scans_then_recovers():
+    n=robot();key=[1,1];n.scan_key=lambda:tuple(key)
+    n.cloud=lambda:None
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.):
+        PatrolControl.begin_patrol_recovery(n)
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='SENSOR_WAIT'
+    assert n.patrol_recovery_check['reason']=='sensor_unavailable'
+    n.cloud=lambda:np.array([[10.,10.]])
+    with patch('third_impact.patrol_control.time.monotonic',return_value=101.):
+        key[0]=2
+        PatrolControl.tick_patrol_recovery(n,POSE)
+        assert n.patrol_recovery=='SENSOR_WAIT'
+        key[1]=2
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='ROTATE'
+    assert n.patrol_sensor_retries==1
+
+
+def test_sensor_wait_has_deadline_and_does_not_publish_motion():
+    n=robot();n.scan_key=lambda:(1,1);n.cloud=lambda:None
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.):
+        PatrolControl.begin_patrol_recovery(n)
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    with patch('third_impact.patrol_control.time.monotonic',return_value=105.1):
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='WAIT'
+    assert '충돌 판정이 아닙니다' in n.patrol_wait_reason
+    n.velocity_pub.publish.assert_not_called()
+
+
+def test_sensor_expiring_during_check_is_not_collision():
+    n=robot();n.cloud=Mock(side_effect=[np.array([[10.,10.]]),None])
+    n.patrol_retry_target=n.nav_target
+    assert n.recovery_heading(POSE) is None
+    assert n.patrol_recovery_check['reason']=='sensor_unavailable'
+    assert n.patrol_recovery_check['candidates'][-1]['reason']=='clear'
+
+
+def test_readiness_pause_preserves_only_active_progress_time():
+    n=robot();n.patrol_progress_time=90.
+    for t,paused in [(100.,True),(104.,True),(110.,False)]:
+        with patch('third_impact.patrol_control.time.monotonic',return_value=t):
+            PatrolControl.patrol_readiness_pause(n,paused)
+    assert n.patrol_progress_time==100.  # 10 active seconds, not 20.
+    assert n.patrol_pause_started is None
+
+
+def test_sensor_retry_budget_is_three_even_with_many_new_scans():
+    n=robot();key=[0,0];n.scan_key=lambda:tuple(key)
+    def unavailable(pose):
+        n.patrol_recovery_check={'reason':'sensor_unavailable'}
+        return None
+    n.recovery_heading=unavailable
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.):
+        PatrolControl.begin_patrol_recovery(n)
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    for i in range(1,5):
+        key[:]=[i,i]
+        with patch('third_impact.patrol_control.time.monotonic',return_value=100.+i*.2):
+            PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='WAIT' and n.patrol_sensor_retries==3
+    n.velocity_pub.publish.assert_not_called()

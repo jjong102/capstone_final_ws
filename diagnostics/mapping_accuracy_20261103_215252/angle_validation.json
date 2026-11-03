@@ -1,0 +1,22 @@
+[
+  {
+    "slots": 360,
+    "last_angle_deg": 359.0,
+    "max_geometric_error_rad": 4.440892098500626e-16
+  },
+  {
+    "slots": 720,
+    "last_angle_deg": 359.50000000000006,
+    "max_geometric_error_rad": 8.881784197001252e-16
+  },
+  {
+    "slots": 1080,
+    "last_angle_deg": 359.6666666666667,
+    "max_geometric_error_rad": 8.881784197001252e-16
+  },
+  {
+    "slots": 1440,
+    "last_angle_deg": 359.75,
+    "max_geometric_error_rad": 8.881784197001252e-16
+  }
+]

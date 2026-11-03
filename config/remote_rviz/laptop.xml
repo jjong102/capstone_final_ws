@@ -6,6 +6,9 @@
         <NetworkInterface name="wlp67s0" />
       </Interfaces>
       <AllowMulticast>false</AllowMulticast>
+      <DontRoute>true</DontRoute>
+      <MaxMessageSize>1400 B</MaxMessageSize>
+      <FragmentSize>1200 B</FragmentSize>
     </General>
     <Discovery>
       <ParticipantIndex>auto</ParticipantIndex>

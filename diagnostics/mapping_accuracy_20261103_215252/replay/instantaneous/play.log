@@ -1,0 +1,10 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1793711183.614206721] [rosbag2_storage]: Opened database '/home/moonshot/capstone_final_ws/diagnostics/mapping_accuracy_20261103_215252/replay/instantaneous/input/input_0.db3' for READ_ONLY.
+[INFO] [1793711183.614358598] [rosbag2_player]: Set rate to 1
+[INFO] [1793711183.618858835] [rosbag2_player]: Overriding QoS profile for topic /tf_static
+[INFO] [1793711183.623896661] [rosbag2_player]: Adding keyboard callbacks.
+[INFO] [1793711183.624025498] [rosbag2_player]: Press SPACE for Pause/Resume
+[INFO] [1793711183.624060635] [rosbag2_player]: Press CURSOR_RIGHT for Play Next Message
+[INFO] [1793711183.624085756] [rosbag2_player]: Press CURSOR_UP for Increase Rate 10%
+[INFO] [1793711183.624107485] [rosbag2_player]: Press CURSOR_DOWN for Decrease Rate 10%
+[INFO] [1793711183.624309477] [rosbag2_player]: Sleep 2000000000 ns
+[INFO] [1793711185.625178097] [rosbag2_storage]: Opened database '/home/moonshot/capstone_final_ws/diagnostics/mapping_accuracy_20261103_215252/replay/instantaneous/input/input_0.db3' for READ_ONLY.

@@ -44,7 +44,7 @@ def test_map_checks_interior_unknown_outside_and_rotated_origin():
 def test_forward_reverse_share_speed_and_reverse_does_not_turn_180():
     a=tracking_command(np.array([0,0,0]),np.array([[0,0],[2,0]]),0,False)
     b=tracking_command(np.array([0,0,0]),np.array([[0,0],[-2,0]]),0,True)
-    assert a[0] == -b[0] == .6
+    assert a[0] == -b[0] == .4
     assert abs(b[1]) < 1e-8
 
 
@@ -243,3 +243,24 @@ def test_batch_region_checks_match_scalar_body_envelope():
     for excluded in (None,exclusion):
         assert np.array_equal(stationary_allowed_many(poses,boundary,excluded,.35,.22),
             [travel_allowed(p,boundary,excluded,0.,0.,.35,.22) for p in poses])
+
+
+def test_heading_slowdown_is_continuous_and_speed_bounded():
+    for deg,expected in [(0,.4),(15,.3),(30,.1),(45,0),(90,0)]:
+        v,_,_=tracking_command(np.array([0.,0.,math.radians(deg)]),np.array([[0.,0.],[2.,0.]]),0,False)
+        assert abs(v-expected)<1e-9
+    velocities=[tracking_command(np.array([0.,0.,angle]),np.array([[0.,0.],[2.,0.]]),0,False)[0]
+                for angle in np.linspace(.29,.31,100)]
+    assert min(velocities)>0 and max(abs(np.diff(velocities)))<.001
+
+
+def test_patrol_and_return_speed_configuration():
+    import yaml
+    from pathlib import Path
+    root=Path(__file__).parents[1]
+    nav=yaml.safe_load((root/'config/nav2.yaml').read_text())
+    for controller in ('FollowPath','PatrolFollowPath'):
+        p=nav['controller_server']['ros__parameters'][controller]
+        assert p['max_vel_x']==p['max_speed_xy']==.4
+    assert nav['velocity_smoother']['ros__parameters']['max_velocity'][0]==.4
+    assert yaml.safe_load((root/'config/impact.yaml').read_text())['third_impact']['ros__parameters']['return_max_speed']==.4

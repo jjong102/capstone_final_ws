@@ -1,0 +1,4500 @@
+{
+  "summary": {
+    "samples": 187,
+    "max_new_request": 0.39998847985575064,
+    "old_zero": 122,
+    "new_zero": 58,
+    "blocked": 0,
+    "limitation": "Recorded-pose audit, not a changed closed-loop physical trajectory replay; path index reconstructed from recorded progress."
+  },
+  "samples": [
+    {
+      "time": 1793630568.5656843,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          1.5609813044733756e-12,
+          -1.2173400218583185e-149
+        ],
+        "remaining": 4.358041805198611,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.20830317705229393
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630568.7537074,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          1.3932859397882345e-12,
+          -2.014356224176005e-150
+        ],
+        "remaining": 4.35804180519861,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630568.952815,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.017905335995647018,
+          0.0005000955199108529
+        ],
+        "remaining": 4.3616726251622,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630569.150451,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.0035767214394910366,
+          0.048512365689967064
+        ],
+        "remaining": 4.361565596358793,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630569.3564851,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.03727908400731359,
+          0.14948767858253023
+        ],
+        "remaining": 4.354957408633107,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630569.5559118,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.02928355933168573,
+          0.26782436877071736
+        ],
+        "remaining": 4.3828798713938335,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630569.758281,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.005759984417056628,
+          0.39412064967937427
+        ],
+        "remaining": 4.398263612519412,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630569.9575777,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.0009360830447629703,
+          0.4038791439985482
+        ],
+        "remaining": 4.392410854949693,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630570.163641,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.013546287103029868,
+          0.34967249238539055
+        ],
+        "remaining": 4.36240239912386,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630570.356746,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.004891953623461417,
+          0.3037747150401422
+        ],
+        "remaining": 4.3447344791039715,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630570.5579426,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.0011035092267900454,
+          0.30729369813394486
+        ],
+        "remaining": 4.355667036748409,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630570.7607343,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.00030439790124246784,
+          0.33849573378198666
+        ],
+        "remaining": 4.3523329933599815,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630570.9988372,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.00011602312303967573,
+          0.3697112287877784
+        ],
+        "remaining": 4.347358286081142,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630571.157251,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          8.63453794993414e-05,
+          0.3419547376059215
+        ],
+        "remaining": 4.34289242241944,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630571.3542578,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          6.91032182244127e-05,
+          0.3176560501748186
+        ],
+        "remaining": 4.366796130178326,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630571.5572886,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.029101399388451663,
+          0.36282702017270546
+        ],
+        "remaining": 4.372954439281031,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630571.7623582,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.009284609857537108,
+          0.3814834707855088
+        ],
+        "remaining": 4.379560587142923,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630571.9555883,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.002266323811353797,
+          0.3497474343779536
+        ],
+        "remaining": 4.401851056948721,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630572.1653159,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.007344188640320803,
+          0.30339449361757825
+        ],
+        "remaining": 4.398655534971407,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630572.3591132,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.025174994469371575,
+          0.32629618432203783
+        ],
+        "remaining": 4.406229930923271,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630572.55925,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.0006847660214316456,
+          0.3608253047517879
+        ],
+        "remaining": 4.421878689179532,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630572.7561162,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.00956971332626436,
+          0.35969028961308797
+        ],
+        "remaining": 4.424635196023883,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630572.9531674,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.0041382372702554,
+          0.32153537600891785
+        ],
+        "remaining": 4.416044478730202,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630573.1670396,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.0007184293094969246,
+          0.3328648990960618
+        ],
+        "remaining": 4.416786092988789,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630573.352404,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.00017120159786248587,
+          0.36172219516945375
+        ],
+        "remaining": 4.423674205408941,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630573.5609305,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.0030878941999462886,
+          0.35057291077117203
+        ],
+        "remaining": 4.419994992809205,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630573.751824,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.009771306479699576,
+          0.3416782738206574
+        ],
+        "remaining": 4.415193675676786,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630573.95703,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.0036400817670058975,
+          0.3400139078628587
+        ],
+        "remaining": 4.413802862453343,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630574.1523147,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.0034122805186511946,
+          0.341116083302621
+        ],
+        "remaining": 4.405756098793873,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630574.380916,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.0070457747161309925,
+          0.3531649043429162
+        ],
+        "remaining": 4.394025555041778,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630574.5600274,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.00409205587657971,
+          0.3448369476665452
+        ],
+        "remaining": 4.377979663963067,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630574.7559798,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.007935013632840049,
+          0.351406794542022
+        ],
+        "remaining": 4.367337235470796,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630574.9533231,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.00156934896999233,
+          0.35597827560523027
+        ],
+        "remaining": 4.360526613553397,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630575.1586611,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.00025348849983698973,
+          0.31965974948524006
+        ],
+        "remaining": 4.351306884586988,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630575.3549085,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -3.6591598584650557e-06,
+          0.32868865498983385
+        ],
+        "remaining": 4.3555143591646495,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630575.5616345,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -5.6631298307478925e-05,
+          0.38012311877173754
+        ],
+        "remaining": 4.35424125309363,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630575.7605898,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -5.882780807778542e-05,
+          0.38827424169858743
+        ],
+        "remaining": 4.350309500230702,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630575.9606235,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.0008204581609775551,
+          0.36534177407985924
+        ],
+        "remaining": 4.346410967349996,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630576.155265,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.011460240083378415,
+          0.3287438803298718
+        ],
+        "remaining": 4.342950353751197,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630576.367267,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.005017765906374868,
+          0.31314253579262746
+        ],
+        "remaining": 4.336115457592949,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630576.5543363,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.00030813139937580446,
+          0.3467250326136081
+        ],
+        "remaining": 4.3271996025370845,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630576.7621577,
+      "old_request": 0.0,
+      "new_request": 0.0006579722092427743,
+      "diagnostic": {
+        "requested": [
+          0.0006579722092427743,
+          0.35
+        ],
+        "measured": [
+          -1.537840686304753e-05,
+          0.3661616163718265
+        ],
+        "remaining": 4.320695476812618,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0006579722092427743,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630576.9629934,
+      "old_request": 0.0,
+      "new_request": 0.008988082869281077,
+      "diagnostic": {
+        "requested": [
+          0.008988082869281077,
+          0.35
+        ],
+        "measured": [
+          2.795476893586363e-05,
+          0.35540854071580463
+        ],
+        "remaining": 4.315586932241826,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.008988082869281077,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630577.1561491,
+      "old_request": 0.0,
+      "new_request": 0.02287679620992771,
+      "diagnostic": {
+        "requested": [
+          0.02287679620992771,
+          0.35
+        ],
+        "measured": [
+          -0.0021035940092179865,
+          0.32676459580205935
+        ],
+        "remaining": 4.296412792167051,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.02287679620992771,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630577.3562982,
+      "old_request": 0.0,
+      "new_request": 0.046180873554063445,
+      "diagnostic": {
+        "requested": [
+          0.046180873554063445,
+          0.35
+        ],
+        "measured": [
+          -0.0032660327389655622,
+          0.32853802261196335
+        ],
+        "remaining": 4.293088737046253,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630577.552928,
+      "old_request": 0.0,
+      "new_request": 0.08400096348798583,
+      "diagnostic": {
+        "requested": [
+          0.08400096348798583,
+          0.35
+        ],
+        "measured": [
+          -0.0016540518568023425,
+          0.35452011712452625
+        ],
+        "remaining": 4.284655114787166,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630577.7552881,
+      "old_request": 0.0,
+      "new_request": 0.13845084080382816,
+      "diagnostic": {
+        "requested": [
+          0.13845084080382816,
+          0.35
+        ],
+        "measured": [
+          0.00729161024413896,
+          0.36260225460710904
+        ],
+        "remaining": 4.263776822161892,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630577.955647,
+      "old_request": 0.0,
+      "new_request": 0.20442697181919522,
+      "diagnostic": {
+        "requested": [
+          0.20442697181919522,
+          0.35
+        ],
+        "measured": [
+          0.01171433240205133,
+          0.3706706077585591
+        ],
+        "remaining": 4.253900015040062,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630578.1654527,
+      "old_request": 0.0,
+      "new_request": 0.2702170654239955,
+      "diagnostic": {
+        "requested": [
+          0.2702170654239955,
+          0.35
+        ],
+        "measured": [
+          0.0029455125136423357,
+          0.33893229315706036
+        ],
+        "remaining": 4.251034934214938,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630578.3555663,
+      "old_request": 0.5771290956285754,
+      "new_request": 0.3253314156098747,
+      "diagnostic": {
+        "requested": [
+          0.3253314156098747,
+          0.33507758494104994
+        ],
+        "measured": [
+          0.0021472818865207553,
+          0.2969544196421468
+        ],
+        "remaining": 4.252567462197482,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.09402380605533836,
+          0.33507758494104994
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630578.5683472,
+      "old_request": 0.5851661165087821,
+      "new_request": 0.364923420129782,
+      "diagnostic": {
+        "requested": [
+          0.364923420129782,
+          0.22547674911580426
+        ],
+        "measured": [
+          0.002788360352657901,
+          0.27836168043256254
+        ],
+        "remaining": 4.243452912462094,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.225907833006022,
+          0.29423887183432623
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630578.7594838,
+      "old_request": 0.5902736487229583,
+      "new_request": 0.38618430709144874,
+      "diagnostic": {
+        "requested": [
+          0.38618430709144874,
+          0.1402006136462768
+        ],
+        "measured": [
+          0.01272036465893773,
+          0.1714991749743113
+        ],
+        "remaining": 4.2299079622765134,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.35529719960504735,
+          0.23045443047048825
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630578.96818,
+      "old_request": 0.5933841174524408,
+      "new_request": 0.3971632159077514,
+      "diagnostic": {
+        "requested": [
+          0.3971632159077514,
+          0.06323522708156523
+        ],
+        "measured": [
+          0.08256079625944471,
+          0.14638985425530013
+        ],
+        "remaining": 4.214682685131678,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3971632159077514,
+          0.18295872374307384
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630579.1587539,
+      "old_request": 0.5987843667897307,
+      "new_request": 0.3983994766450749,
+      "diagnostic": {
+        "requested": [
+          0.3983994766450749,
+          -0.04747361744772953
+        ],
+        "measured": [
+          0.16505749043626358,
+          0.15109866237829522
+        ],
+        "remaining": 4.178833943094367,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3983994766450749,
+          0.06648355402751832
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630579.3586273,
+      "old_request": 0.5983183114705729,
+      "new_request": 0.35344142739773565,
+      "diagnostic": {
+        "requested": [
+          0.35344142739773565,
+          -0.2611203432771611
+        ],
+        "measured": [
+          0.2992390959276613,
+          0.13087636875010966
+        ],
+        "remaining": 4.125103311354202,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.09350035637150514
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630579.565949,
+      "old_request": 0.5887501017402297,
+      "new_request": 0.2001768520589713,
+      "diagnostic": {
+        "requested": [
+          0.2001768520589713,
+          -0.35
+        ],
+        "measured": [
+          0.3988022432905079,
+          0.06539800879265534
+        ],
+        "remaining": 4.045012577041121,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.2572065915720211
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630579.781889,
+      "old_request": 0.0,
+      "new_request": 0.05605372798303485,
+      "diagnostic": {
+        "requested": [
+          0.05605372798303485,
+          -0.35
+        ],
+        "measured": [
+          0.47282225024657765,
+          0.0203789429530441
+        ],
+        "remaining": 3.9484956804517077,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630579.956221,
+      "old_request": 0.0,
+      "new_request": 0.009604348387950835,
+      "diagnostic": {
+        "requested": [
+          0.009604348387950835,
+          -0.35
+        ],
+        "measured": [
+          0.4992807830487544,
+          -0.036696742189103904
+        ],
+        "remaining": 3.8802360640204077,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3494444502010841,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630580.1600695,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          0.497835148938698,
+          -0.0913644523378989
+        ],
+        "remaining": 3.7771652500170814,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.21779873600178995,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630580.3590298,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          0.45902084901509843,
+          -0.2027574474403993
+        ],
+        "remaining": 3.6922403559139423,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.08768769130336601,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630580.5612073,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          0.3740257854098972,
+          -0.2948314859217624
+        ],
+        "remaining": 3.6231680905617543,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630580.7534869,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          0.11713147049719623,
+          -0.10982502214807774
+        ],
+        "remaining": 3.6037799405531112,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630580.9567993,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          -0.08392397541759355,
+          -0.020882434096333388
+        ],
+        "remaining": 3.6241689121378036,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630581.1539655,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          -0.0684313255927297,
+          -0.08785667825761881
+        ],
+        "remaining": 3.6325657897783215,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630581.3535695,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          -0.04229554407016745,
+          -0.21547958170705306
+        ],
+        "remaining": 3.6360344455569242,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630581.5668461,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          -0.03995255813853634,
+          -0.3099145974147357
+        ],
+        "remaining": 3.6364219444304364,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630581.7574868,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          -0.35
+        ],
+        "measured": [
+          -0.031256107672578706,
+          -0.3268529195142819
+        ],
+        "remaining": 3.629717198847015,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630581.95751,
+      "old_request": 0.0,
+      "new_request": 0.0018489941708233594,
+      "diagnostic": {
+        "requested": [
+          0.0018489941708233594,
+          -0.35
+        ],
+        "measured": [
+          -0.017661657599750698,
+          -0.3285092116964051
+        ],
+        "remaining": 3.6312191916087837,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0018489941708233594,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630582.1530952,
+      "old_request": 0.0,
+      "new_request": 0.014488039654291508,
+      "diagnostic": {
+        "requested": [
+          0.014488039654291508,
+          -0.35
+        ],
+        "measured": [
+          -0.018236232630846408,
+          -0.3323812399582191
+        ],
+        "remaining": 3.631050840225354,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.014488039654291508,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630582.3590965,
+      "old_request": 0.0,
+      "new_request": 0.03998667559015612,
+      "diagnostic": {
+        "requested": [
+          0.03998667559015612,
+          -0.35
+        ],
+        "measured": [
+          -0.01640462771354203,
+          -0.33991921579257706
+        ],
+        "remaining": 3.63023633751527,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630582.5556488,
+      "old_request": 0.0,
+      "new_request": 0.07261677677795196,
+      "diagnostic": {
+        "requested": [
+          0.07261677677795196,
+          -0.35
+        ],
+        "measured": [
+          -0.013978885186510246,
+          -0.3406235882747891
+        ],
+        "remaining": 3.6287023074021136,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630582.7552185,
+      "old_request": 0.0,
+      "new_request": 0.0922239029929409,
+      "diagnostic": {
+        "requested": [
+          0.0922239029929409,
+          -0.35
+        ],
+        "measured": [
+          -0.01233016196666447,
+          -0.3505027061952295
+        ],
+        "remaining": 3.623389371100489,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630582.960141,
+      "old_request": 0.0,
+      "new_request": 0.14883380431719195,
+      "diagnostic": {
+        "requested": [
+          0.14883380431719195,
+          -0.35
+        ],
+        "measured": [
+          -0.011015481536930374,
+          -0.34486544192207935
+        ],
+        "remaining": 3.6218896486291765,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630583.1733801,
+      "old_request": 0.0,
+      "new_request": 0.2285859970575813,
+      "diagnostic": {
+        "requested": [
+          0.2285859970575813,
+          -0.35
+        ],
+        "measured": [
+          -0.013989548073562444,
+          -0.3292111697239967
+        ],
+        "remaining": 3.629007381549271,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630583.3564994,
+      "old_request": 0.0,
+      "new_request": 0.26494008739099084,
+      "diagnostic": {
+        "requested": [
+          0.26494008739099084,
+          -0.35
+        ],
+        "measured": [
+          0.0087375835679332,
+          -0.3298589674871949
+        ],
+        "remaining": 3.631021043645075,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630583.565846,
+      "old_request": 0.0,
+      "new_request": 0.32692095377666885,
+      "diagnostic": {
+        "requested": [
+          0.32692095377666885,
+          -0.3312372439691763
+        ],
+        "measured": [
+          -0.011474267335265414,
+          -0.3270292200503633
+        ],
+        "remaining": 3.6308552752336833,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.3312372439691763
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630583.7597718,
+      "old_request": 0.5837798366784251,
+      "new_request": 0.3605271029124628,
+      "diagnostic": {
+        "requested": [
+          0.3605271029124628,
+          -0.2396608618023757
+        ],
+        "measured": [
+          0.021908842601291004,
+          -0.3441077660200155
+        ],
+        "remaining": 3.622371520331324,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.09694406755461386,
+          -0.30957595660859816
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630583.957356,
+      "old_request": 0.5946745938184888,
+      "new_request": 0.38933807675938353,
+      "diagnostic": {
+        "requested": [
+          0.38933807675938353,
+          -0.12299785029290575
+        ],
+        "measured": [
+          0.019481437747307928,
+          -0.339477335440244
+        ],
+        "remaining": 3.6344450719677104,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.22499816060426384,
+          -0.17684509824762912
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630584.1610389,
+      "old_request": 0.5968772889759246,
+      "new_request": 0.39975161140770504,
+      "diagnostic": {
+        "requested": [
+          0.39975161140770504,
+          -0.01869140933465485
+        ],
+        "measured": [
+          0.012345318057267442,
+          -0.1235019739067588
+        ],
+        "remaining": 3.6472703365539028,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.35675630270579867,
+          -0.11310352008456256
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630584.3578014,
+      "old_request": 0.5974816732793953,
+      "new_request": 0.399690145075835,
+      "diagnostic": {
+        "requested": [
+          0.399690145075835,
+          -0.020876926148711783
+        ],
+        "measured": [
+          0.0726363289387482,
+          -0.013201891398459424
+        ],
+        "remaining": 3.6351888098248524,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.399690145075835,
+          -0.09747977355920856
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630584.5612671,
+      "old_request": 0.5996814631752299,
+      "new_request": 0.39998456956591427,
+      "diagnostic": {
+        "requested": [
+          0.39998456956591427,
+          -0.004658253638467525
+        ],
+        "measured": [
+          0.16610109858574942,
+          -0.055716322470787234
+        ],
+        "remaining": 3.6043117600444936,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.39998456956591427,
+          -0.017578844187518677
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630584.761649,
+      "old_request": 0.5995194661000625,
+      "new_request": 0.39544222919510186,
+      "diagnostic": {
+        "requested": [
+          0.39544222919510186,
+          0.08021133277418314
+        ],
+        "measured": [
+          0.2815242021718945,
+          -0.05371597220784853
+        ],
+        "remaining": 3.5613795651551032,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.39544222919510186,
+          0.08021133277418314
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630584.9618797,
+      "old_request": 0.5865194992137311,
+      "new_request": 0.3492864720282698,
+      "diagnostic": {
+        "requested": [
+          0.3492864720282698,
+          0.27304186657190965
+        ],
+        "measured": [
+          0.4058514179558693,
+          -0.023985049600100047
+        ],
+        "remaining": 3.484810506792514,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          0.26055678232398316
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630585.15627,
+      "old_request": 0.0,
+      "new_request": 0.21047161150568075,
+      "diagnostic": {
+        "requested": [
+          0.21047161150568075,
+          0.35
+        ],
+        "measured": [
+          0.46042798263363377,
+          0.01476478846095319
+        ],
+        "remaining": 3.413091644621376,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630585.3565822,
+      "old_request": 0.0,
+      "new_request": 0.08880719263580411,
+      "diagnostic": {
+        "requested": [
+          0.08880719263580411,
+          0.35
+        ],
+        "measured": [
+          0.4986878322949498,
+          0.07907605502860526
+        ],
+        "remaining": 3.336382281032912,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.32405306947750406,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630585.5564892,
+      "old_request": 0.0,
+      "new_request": 0.019018773881197104,
+      "diagnostic": {
+        "requested": [
+          0.019018773881197104,
+          0.35
+        ],
+        "measured": [
+          0.5370188701922944,
+          0.1215933364767385
+        ],
+        "remaining": 3.250430947489101,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.19353869977732724,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630585.8098629,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.43647168708759715,
+          0.23086239454845586
+        ],
+        "remaining": 3.143236787471138,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.02678892697715092,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630585.9540722,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.3116091613405865,
+          0.2916873758575208
+        ],
+        "remaining": 3.117022092235971,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630586.1531749,
+      "old_request": 0.0,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.03692870997593722,
+          0.13339775070506515
+        ],
+        "remaining": 3.104756997911334,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630586.3526628,
+      "old_request": 0.0,
+      "new_request": 0.0020038510750471695,
+      "diagnostic": {
+        "requested": [
+          0.0020038510750471695,
+          0.35
+        ],
+        "measured": [
+          -0.05628533699897606,
+          0.05798823486128758
+        ],
+        "remaining": 3.1181067725132072,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0020038510750471695,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630586.5541153,
+      "old_request": 0.0,
+      "new_request": 0.009969055694257479,
+      "diagnostic": {
+        "requested": [
+          0.009969055694257479,
+          0.35
+        ],
+        "measured": [
+          -0.05130952374722646,
+          0.11535067284727268
+        ],
+        "remaining": 3.1277275902883623,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.009969055694257479,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630586.7546995,
+      "old_request": 0.0,
+      "new_request": 0.024793378542226255,
+      "diagnostic": {
+        "requested": [
+          0.024793378542226255,
+          0.35
+        ],
+        "measured": [
+          -0.04164838889831267,
+          0.21550631772670828
+        ],
+        "remaining": 3.1350943770599287,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.024793378542226255,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630586.9600747,
+      "old_request": 0.0,
+      "new_request": 0.054518860153218565,
+      "diagnostic": {
+        "requested": [
+          0.054518860153218565,
+          0.35
+        ],
+        "measured": [
+          -0.029916879487131197,
+          0.27490439436667685
+        ],
+        "remaining": 3.1391081805580314,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630587.1543803,
+      "old_request": 0.0,
+      "new_request": 0.07281480685282737,
+      "diagnostic": {
+        "requested": [
+          0.07281480685282737,
+          0.35
+        ],
+        "measured": [
+          -0.013933150320314478,
+          0.2898287510470353
+        ],
+        "remaining": 3.125796364447663,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630587.358604,
+      "old_request": 0.0,
+      "new_request": 0.1265614199978094,
+      "diagnostic": {
+        "requested": [
+          0.1265614199978094,
+          0.35
+        ],
+        "measured": [
+          -0.012514971464214292,
+          0.33028553557692325
+        ],
+        "remaining": 3.117004205615767,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630587.5544844,
+      "old_request": 0.0,
+      "new_request": 0.1918384820025677,
+      "diagnostic": {
+        "requested": [
+          0.1918384820025677,
+          0.35
+        ],
+        "measured": [
+          -0.013857940544964602,
+          0.33928385892044055
+        ],
+        "remaining": 3.122995981857334,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630587.7554412,
+      "old_request": 0.0,
+      "new_request": 0.2476275875625767,
+      "diagnostic": {
+        "requested": [
+          0.2476275875625767,
+          0.35
+        ],
+        "measured": [
+          -0.014738084997412672,
+          0.3208033877496883
+        ],
+        "remaining": 3.1242044336950956,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630587.9548647,
+      "old_request": 0.0,
+      "new_request": 0.31556503263543667,
+      "diagnostic": {
+        "requested": [
+          0.31556503263543667,
+          0.35
+        ],
+        "measured": [
+          -0.01819242518542085,
+          0.3396838579421034
+        ],
+        "remaining": 3.1365668534186253,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630588.1588368,
+      "old_request": 0.5832346948947378,
+      "new_request": 0.35694730886489123,
+      "diagnostic": {
+        "requested": [
+          0.35694730886489123,
+          0.25069700985827037
+        ],
+        "measured": [
+          -0.022494448639363316,
+          0.3508720730829668
+        ],
+        "remaining": 3.1376643194657605,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.16264939230604797,
+          0.31000003814697263
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630588.3603032,
+      "old_request": 0.5921123831603223,
+      "new_request": 0.37754049973646736,
+      "diagnostic": {
+        "requested": [
+          0.37754049973646736,
+          0.17942454593741097
+        ],
+        "measured": [
+          0.012773743544854168,
+          0.22031836145164801
+        ],
+        "remaining": 3.1399826594039575,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.2937409379564997,
+          0.2034896603923524
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630588.5760815,
+      "old_request": 0.593448321073847,
+      "new_request": 0.37994326978316595,
+      "diagnostic": {
+        "requested": [
+          0.37994326978316595,
+          0.16937891830281518
+        ],
+        "measured": [
+          0.043391346688932526,
+          0.0922567576719689
+        ],
+        "remaining": 3.125093309373971,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.37994326978316595,
+          0.18187225203236673
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630588.7596657,
+      "old_request": 0.597246088670037,
+      "new_request": 0.3846587717703379,
+      "diagnostic": {
+        "requested": [
+          0.3846587717703379,
+          0.14783501414168432
+        ],
+        "measured": [
+          0.1481583979685379,
+          0.1376680597241424
+        ],
+        "remaining": 3.0986652922589992,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3846587717703379,
+          0.14783501414168432
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630588.959706,
+      "old_request": 0.5994528260683,
+      "new_request": 0.3999769169839662,
+      "diagnostic": {
+        "requested": [
+          0.3999769169839662,
+          0.005697465728006806
+        ],
+        "measured": [
+          0.2546350861321559,
+          0.1226939000074804
+        ],
+        "remaining": 3.0530164485443225,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3999769169839662,
+          0.024065851089977566
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630589.1637561,
+      "old_request": 0.5979084922300555,
+      "new_request": 0.3855314171531638,
+      "diagnostic": {
+        "requested": [
+          0.3855314171531638,
+          -0.14351519205142055
+        ],
+        "measured": [
+          0.3463986409426595,
+          0.07302918785629683
+        ],
+        "remaining": 2.9787481885531646,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3855314171531638,
+          -0.12573472214698547
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630589.364984,
+      "old_request": 0.5922615919803583,
+      "new_request": 0.34066095328346774,
+      "diagnostic": {
+        "requested": [
+          0.34066095328346774,
+          -0.2965352519010531
+        ],
+        "measured": [
+          0.4544571190149115,
+          0.043408280901759154
+        ],
+        "remaining": 2.8951699356886467,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.2668961068258894
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630589.5621192,
+      "old_request": 0.5803349575400826,
+      "new_request": 0.2811331050473382,
+      "diagnostic": {
+        "requested": [
+          0.2811331050473382,
+          -0.35
+        ],
+        "measured": [
+          0.5209580831704858,
+          0.0035465512401935528
+        ],
+        "remaining": 2.803103233848436,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630589.76083,
+      "old_request": 0.0,
+      "new_request": 0.26127853035141996,
+      "diagnostic": {
+        "requested": [
+          0.26127853035141996,
+          -0.35
+        ],
+        "measured": [
+          0.5123766120555578,
+          -0.0677064556617145
+        ],
+        "remaining": 2.724194982525755,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630589.959666,
+      "old_request": 0.0,
+      "new_request": 0.23095428749757085,
+      "diagnostic": {
+        "requested": [
+          0.23095428749757085,
+          -0.35
+        ],
+        "measured": [
+          0.5608490194164132,
+          -0.16227361474376953
+        ],
+        "remaining": 2.625464835644813,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3128027553533468,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630590.1589344,
+      "old_request": 0.0,
+      "new_request": 0.23417522579626,
+      "diagnostic": {
+        "requested": [
+          0.23417522579626,
+          -0.35
+        ],
+        "measured": [
+          0.5170714470915077,
+          -0.2086273771888178
+        ],
+        "remaining": 2.534033141299768,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.23417522579626,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630590.3572724,
+      "old_request": 0.0,
+      "new_request": 0.23712728666737354,
+      "diagnostic": {
+        "requested": [
+          0.23712728666737354,
+          -0.35
+        ],
+        "measured": [
+          0.48067597211525864,
+          -0.26614500007454556
+        ],
+        "remaining": 2.447029477730771,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.11834787306613745,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630590.5563428,
+      "old_request": 0.0,
+      "new_request": 0.25870405787027956,
+      "diagnostic": {
+        "requested": [
+          0.25870405787027956,
+          -0.35
+        ],
+        "measured": [
+          0.32082440497936726,
+          -0.28875968836376487
+        ],
+        "remaining": 2.3894855120482297,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630590.7509518,
+      "old_request": 0.0,
+      "new_request": 0.27640731610436364,
+      "diagnostic": {
+        "requested": [
+          0.27640731610436364,
+          -0.35
+        ],
+        "measured": [
+          0.03165576329074042,
+          -0.08099846849372123
+        ],
+        "remaining": 2.392103969540302,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630590.9577787,
+      "old_request": 0.0,
+      "new_request": 0.29360831652666614,
+      "diagnostic": {
+        "requested": [
+          0.29360831652666614,
+          -0.35
+        ],
+        "measured": [
+          -0.1033075487337765,
+          -0.036940277740940816
+        ],
+        "remaining": 2.413455826600488,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630591.1590288,
+      "old_request": 0.5775918443177537,
+      "new_request": 0.31151274879391844,
+      "diagnostic": {
+        "requested": [
+          0.31151274879391844,
+          -0.35
+        ],
+        "measured": [
+          -0.07622297434586654,
+          -0.10431843478065088
+        ],
+        "remaining": 2.4229454116443363,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.16050853085671407,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630591.3656144,
+      "old_request": 0.5823118433694163,
+      "new_request": 0.32199044944566146,
+      "diagnostic": {
+        "requested": [
+          0.32199044944566146,
+          -0.3430484991871077
+        ],
+        "measured": [
+          -0.012290787877403933,
+          -0.07587396146984113
+        ],
+        "remaining": 2.419212017835884,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.29383402120492974,
+          -0.3430484991871077
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630591.5607944,
+      "old_request": 0.5837187918780119,
+      "new_request": 0.3435897437459043,
+      "diagnostic": {
+        "requested": [
+          0.3435897437459043,
+          -0.2887295028022698
+        ],
+        "measured": [
+          0.0051542585582931575,
+          -0.16283308355910073
+        ],
+        "remaining": 2.422905256670164,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.35704008449520186,
+          -0.31000003814697263
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630591.7596555,
+      "old_request": 0.591473302020421,
+      "new_request": 0.3653604142119073,
+      "diagnostic": {
+        "requested": [
+          0.3653604142119073,
+          -0.22402421532081693
+        ],
+        "measured": [
+          0.12652685005387265,
+          -0.2837468039796262
+        ],
+        "remaining": 2.3951838370688985,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.22402421532081693
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630591.9736934,
+      "old_request": 0.5940214179230022,
+      "new_request": 0.39121098569968793,
+      "diagnostic": {
+        "requested": [
+          0.39121098569968793,
+          -0.11158472548115042
+        ],
+        "measured": [
+          0.24406943406618,
+          -0.25598104237977404
+        ],
+        "remaining": 2.343060774882453,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.39121098569968793,
+          -0.1719293414226527
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630592.1614628,
+      "old_request": 0.5968232383246866,
+      "new_request": 0.3994384911638633,
+      "diagnostic": {
+        "requested": [
+          0.3994384911638633,
+          0.028106788516413045
+        ],
+        "measured": [
+          0.3625435676287592,
+          -0.1696334578417922
+        ],
+        "remaining": 2.2822443287371756,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3994384911638633,
+          -0.1144240224047191
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630592.3613226,
+      "old_request": 0.5996797261693855,
+      "new_request": 0.38913404620647524,
+      "diagnostic": {
+        "requested": [
+          0.38913404620647524,
+          0.1241799092152519
+        ],
+        "measured": [
+          0.4312742313310809,
+          -0.14560715833367285
+        ],
+        "remaining": 2.2004914393240114,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.38913404620647524,
+          0.04610352319315081
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630592.5623062,
+      "old_request": 0.5931399156094627,
+      "new_request": 0.34380876665330046,
+      "diagnostic": {
+        "requested": [
+          0.34380876665330046,
+          0.2881390643538921
+        ],
+        "measured": [
+          0.5115252061340811,
+          -0.15740976329070083
+        ],
+        "remaining": 2.078497741017549,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          0.20569943119363399
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630592.7634563,
+      "old_request": 0.5822998365819586,
+      "new_request": 0.2869010474178572,
+      "diagnostic": {
+        "requested": [
+          0.2869010474178572,
+          0.35
+        ],
+        "measured": [
+          0.5308994434118738,
+          -0.09018512715790386
+        ],
+        "remaining": 1.9719004198598922,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630592.9574656,
+      "old_request": 0.0,
+      "new_request": 0.22733746211353945,
+      "diagnostic": {
+        "requested": [
+          0.22733746211353945,
+          0.35
+        ],
+        "measured": [
+          0.5898694654925971,
+          -0.01598366851225671
+        ],
+        "remaining": 1.8683173368018542,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630593.1561747,
+      "old_request": 0.0,
+      "new_request": 0.15792977509408485,
+      "diagnostic": {
+        "requested": [
+          0.15792977509408485,
+          0.35
+        ],
+        "measured": [
+          0.5596892739182362,
+          0.09255942829770424
+        ],
+        "remaining": 1.769191979210366,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3460523293688475,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630593.3550558,
+      "old_request": 0.0,
+      "new_request": 0.08481151792723679,
+      "diagnostic": {
+        "requested": [
+          0.08481151792723679,
+          0.35
+        ],
+        "measured": [
+          0.5518063165912197,
+          0.14898672970570895
+        ],
+        "remaining": 1.6625066970837046,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.21628936031794907,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630593.5553436,
+      "old_request": 0.0,
+      "new_request": 0.06869111824975682,
+      "diagnostic": {
+        "requested": [
+          0.06869111824975682,
+          0.35
+        ],
+        "measured": [
+          0.4643958622948229,
+          0.24662520729731519
+        ],
+        "remaining": 1.5829834323321543,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.08447216376754839,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630593.7550263,
+      "old_request": 0.0,
+      "new_request": 0.10327143829184521,
+      "diagnostic": {
+        "requested": [
+          0.10327143829184521,
+          0.35
+        ],
+        "measured": [
+          0.33998094000071893,
+          0.31937275256256054
+        ],
+        "remaining": 1.495364636719675,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630593.9556463,
+      "old_request": 0.0,
+      "new_request": 0.13344699645364275,
+      "diagnostic": {
+        "requested": [
+          0.13344699645364275,
+          0.35
+        ],
+        "measured": [
+          0.10268149270755413,
+          0.1529926627748587
+        ],
+        "remaining": 1.4699352705021869,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630594.1545298,
+      "old_request": 0.0,
+      "new_request": 0.1597135957174054,
+      "diagnostic": {
+        "requested": [
+          0.1597135957174054,
+          0.35
+        ],
+        "measured": [
+          -0.1008861207231144,
+          0.034444437380571326
+        ],
+        "remaining": 1.4953576262343828,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630594.3578837,
+      "old_request": 0.0,
+      "new_request": 0.1814433870644903,
+      "diagnostic": {
+        "requested": [
+          0.1814433870644903,
+          0.35
+        ],
+        "measured": [
+          -0.09825669642428919,
+          0.07066149870138709
+        ],
+        "remaining": 1.5076320254517181,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630594.5531769,
+      "old_request": 0.0,
+      "new_request": 0.21345828025438324,
+      "diagnostic": {
+        "requested": [
+          0.21345828025438324,
+          0.35
+        ],
+        "measured": [
+          -0.06009524719644636,
+          0.19088262255601407
+        ],
+        "remaining": 1.5111709332183338,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630594.7591097,
+      "old_request": 0.0,
+      "new_request": 0.26280704968951024,
+      "diagnostic": {
+        "requested": [
+          0.26280704968951024,
+          0.35
+        ],
+        "measured": [
+          -0.026146287533864394,
+          0.2932082759716847
+        ],
+        "remaining": 1.507241255444845,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630594.9582982,
+      "old_request": 0.5773698736197034,
+      "new_request": 0.299784536165378,
+      "diagnostic": {
+        "requested": [
+          0.299784536165378,
+          0.35
+        ],
+        "measured": [
+          -0.016957622860333924,
+          0.33475968441363035
+        ],
+        "remaining": 1.4995719796264522,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0971618299057809,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630595.1603549,
+      "old_request": 0.5863268872081339,
+      "new_request": 0.33808730801050446,
+      "diagnostic": {
+        "requested": [
+          0.33808730801050446,
+          0.30326399469594323
+        ],
+        "measured": [
+          -0.014797053371972001,
+          0.3021810704883101
+        ],
+        "remaining": 1.4949950331403785,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.22744446160686493,
+          0.30326399469594323
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630595.3601203,
+      "old_request": 0.5906159781019914,
+      "new_request": 0.3653691883097911,
+      "diagnostic": {
+        "requested": [
+          0.3653691883097911,
+          0.22399496628537177
+        ],
+        "measured": [
+          -0.013772900312856651,
+          0.15412611412696628
+        ],
+        "remaining": 1.50097394009412,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3579924259052859,
+          0.2256396272587574
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630595.5598614,
+      "old_request": 0.5917760024205667,
+      "new_request": 0.3697248150937429,
+      "diagnostic": {
+        "requested": [
+          0.3697248150937429,
+          0.2090315604269849
+        ],
+        "measured": [
+          0.07103653047227637,
+          0.10517850617328266
+        ],
+        "remaining": 1.483785032378717,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3697248150937429,
+          0.2090315604269849
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630595.7625756,
+      "old_request": 0.5947127595775918,
+      "new_request": 0.3895324940875859,
+      "diagnostic": {
+        "requested": [
+          0.3895324940875859,
+          0.12186120692805968
+        ],
+        "measured": [
+          0.1911531355190844,
+          0.15865554449118147
+        ],
+        "remaining": 1.4430380208553713,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3895324940875859,
+          0.15928044313274603
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630595.9625845,
+      "old_request": 0.599079894281215,
+      "new_request": 0.39963894402434624,
+      "diagnostic": {
+        "requested": [
+          0.39963894402434624,
+          0.022536366313924718
+        ],
+        "measured": [
+          0.3067674964726984,
+          0.1485764425854234
+        ],
+        "remaining": 1.3617084639472976,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.39963894402434624,
+          0.04308166879485313
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630596.1647544,
+      "old_request": 0.5973084144549384,
+      "new_request": 0.3618021937544116,
+      "diagnostic": {
+        "requested": [
+          0.3618021937544116,
+          -0.23562329325509068
+        ],
+        "measured": [
+          0.41903302808037335,
+          0.13368033338046395
+        ],
+        "remaining": 1.2835658373140173,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.10167876167842607
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630596.4118493,
+      "old_request": 0.5831728545012608,
+      "new_request": 0.2512047932697657,
+      "diagnostic": {
+        "requested": [
+          0.2512047932697657,
+          -0.35
+        ],
+        "measured": [
+          0.5051673622870205,
+          0.08445330129272847
+        ],
+        "remaining": 1.1711046581008275,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.30118169847855303
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630596.5639415,
+      "old_request": 0.5763593175787742,
+      "new_request": 0.18593699552028164,
+      "diagnostic": {
+        "requested": [
+          0.18593699552028164,
+          -0.35
+        ],
+        "measured": [
+          0.5024670165875046,
+          0.042800082854304686
+        ],
+        "remaining": 1.1061920165526822,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630596.7670772,
+      "old_request": 0.0,
+      "new_request": 0.10483463011805692,
+      "diagnostic": {
+        "requested": [
+          0.10483463011805692,
+          -0.35
+        ],
+        "measured": [
+          0.5376530551655585,
+          -0.04749596502205842
+        ],
+        "remaining": 0.9792865047180304,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3675000309944153,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630596.9546406,
+      "old_request": 0.0,
+      "new_request": 0.013403001746790877,
+      "diagnostic": {
+        "requested": [
+          0.013403001746790877,
+          -0.35
+        ],
+        "measured": [
+          0.5471571858543492,
+          -0.14639788127199188
+        ],
+        "remaining": 0.8845402677802346,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.28610907462543994,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630597.1560543,
+      "old_request": 0.0,
+      "new_request": 0.0006845722009634292,
+      "diagnostic": {
+        "requested": [
+          0.0006845722009634292,
+          -0.35
+        ],
+        "measured": [
+          0.4986424331249978,
+          -0.23589590499080848
+        ],
+        "remaining": 0.8067252524042146,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.1558472643743721,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630597.353194,
+      "old_request": 0.0,
+      "new_request": 0.005638843365740054,
+      "diagnostic": {
+        "requested": [
+          0.005638843365740054,
+          -0.35
+        ],
+        "measured": [
+          0.4539042711521381,
+          -0.3119091495848853
+        ],
+        "remaining": 0.7131622050803752,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.025371478024956068,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630597.5593333,
+      "old_request": 0.0,
+      "new_request": 0.013384029274579535,
+      "diagnostic": {
+        "requested": [
+          0.013384029274579535,
+          -0.35
+        ],
+        "measured": [
+          0.2336319427811442,
+          -0.18874759482723608
+        ],
+        "remaining": 0.6631112540639186,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.013384029274579535,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630597.7598784,
+      "old_request": 0.0,
+      "new_request": 0.0223106646679611,
+      "diagnostic": {
+        "requested": [
+          0.0223106646679611,
+          -0.35
+        ],
+        "measured": [
+          -0.026327714578171735,
+          -0.028190480976591378
+        ],
+        "remaining": 0.6738190643079338,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0223106646679611,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630597.9526224,
+      "old_request": 0.0,
+      "new_request": 0.039868424116130924,
+      "diagnostic": {
+        "requested": [
+          0.039868424116130924,
+          -0.35
+        ],
+        "measured": [
+          -0.08873951604678129,
+          -0.05385556334170787
+        ],
+        "remaining": 0.6905102463445234,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630598.153706,
+      "old_request": 0.0,
+      "new_request": 0.06490175337162983,
+      "diagnostic": {
+        "requested": [
+          0.06490175337162983,
+          -0.35
+        ],
+        "measured": [
+          -0.05796310471665887,
+          -0.17979306340245088
+        ],
+        "remaining": 0.6966252785927705,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630598.3551838,
+      "old_request": 0.0,
+      "new_request": 0.07662996317245548,
+      "diagnostic": {
+        "requested": [
+          0.07662996317245548,
+          -0.35
+        ],
+        "measured": [
+          -0.036140297555887935,
+          -0.24786566102480184
+        ],
+        "remaining": 0.6768156459254447,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630598.557207,
+      "old_request": 0.0,
+      "new_request": 0.12424495893929391,
+      "diagnostic": {
+        "requested": [
+          0.12424495893929391,
+          -0.35
+        ],
+        "measured": [
+          -0.04855441404205349,
+          -0.2953272905399569
+        ],
+        "remaining": 0.6819785269940982,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630598.758149,
+      "old_request": 0.0,
+      "new_request": 0.1717492098963837,
+      "diagnostic": {
+        "requested": [
+          0.1717492098963837,
+          -0.35
+        ],
+        "measured": [
+          0.019343170842659064,
+          -0.35078537442424246
+        ],
+        "remaining": 0.662725177277021,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630598.9540107,
+      "old_request": 0.0,
+      "new_request": 0.24152470875634538,
+      "diagnostic": {
+        "requested": [
+          0.24152470875634538,
+          -0.35
+        ],
+        "measured": [
+          -0.020498523907129935,
+          -0.36422778154991126
+        ],
+        "remaining": 0.668757263516874,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630599.1549673,
+      "old_request": 0.0,
+      "new_request": 0.2913873796761978,
+      "diagnostic": {
+        "requested": [
+          0.2913873796761978,
+          -0.35
+        ],
+        "measured": [
+          0.010004229838580828,
+          -0.3108723817030879
+        ],
+        "remaining": 0.6729065941255502,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          -0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630599.3580945,
+      "old_request": 0.4540101838628867,
+      "new_request": 0.337888534974757,
+      "diagnostic": {
+        "requested": [
+          0.337888534974757,
+          -0.3037788677114223
+        ],
+        "measured": [
+          -0.010381174891313606,
+          -0.2872827406132574
+        ],
+        "remaining": 0.6821662708240342,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0983169514052861,
+          -0.31000003814697263
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630599.5581398,
+      "old_request": 0.4545191012545907,
+      "new_request": 0.3832102854025419,
+      "diagnostic": {
+        "requested": [
+          0.3832102854025419,
+          -0.15475297150602108
+        ],
+        "measured": [
+          -0.013769447850531493,
+          -0.2987381276775245
+        ],
+        "remaining": 0.6997640216342155,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.2286605297062124,
+          -0.2662993336857337
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630599.7555714,
+      "old_request": 0.44471312042500843,
+      "new_request": 0.3991759421197707,
+      "diagnostic": {
+        "requested": [
+          0.3991759421197707,
+          -0.03405331197377331
+        ],
+        "measured": [
+          0.00165918386572054,
+          -0.14137182641091917
+        ],
+        "remaining": 0.7158223882217741,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.35770567060571923,
+          -0.20988277337574346
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630599.9584944,
+      "old_request": 0.43848177946720346,
+      "new_request": 0.39998847985575064,
+      "diagnostic": {
+        "requested": [
+          0.39998847985575064,
+          -0.004024966878995307
+        ],
+        "measured": [
+          0.05940446546423683,
+          -0.11817371937818529
+        ],
+        "remaining": 0.701813412947876,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.39998847985575064,
+          -0.13881190267025817
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630600.1567078,
+      "old_request": 0.42206874597355387,
+      "new_request": 0.3984949838089149,
+      "diagnostic": {
+        "requested": [
+          0.3984949838089149,
+          0.046033561033610226
+        ],
+        "measured": [
+          0.1609012030417836,
+          -0.15874202209337204
+        ],
+        "remaining": 0.6683988877001732,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3984949838089149,
+          -0.05636782746258079
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630600.356781,
+      "old_request": 0.3915433746156029,
+      "new_request": 0.3755706486820974,
+      "diagnostic": {
+        "requested": [
+          0.3755706486820974,
+          0.18728816714212837
+        ],
+        "measured": [
+          0.283217463606108,
+          -0.14296440420593115
+        ],
+        "remaining": 0.6223920638638443,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.3755706486820974,
+          0.09920869690999995
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630600.6414087,
+      "old_request": 0.35852317046170856,
+      "new_request": 0.24345699127291992,
+      "diagnostic": {
+        "requested": [
+          0.24345699127291992,
+          0.35
+        ],
+        "measured": [
+          0.35617592699465583,
+          -0.03405440225334403
+        ],
+        "remaining": 0.5343003411234378,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.32602320145612385,
+          0.32432614331069076
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630600.766269,
+      "old_request": 0.35453139690872776,
+      "new_request": 0.19927870573191253,
+      "diagnostic": {
+        "requested": [
+          0.19927870573191253,
+          0.35
+        ],
+        "measured": [
+          0.329800017248234,
+          0.0019764670924206284
+        ],
+        "remaining": 0.49667924700640953,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.32203142790314304,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630600.9549873,
+      "old_request": 0.0,
+      "new_request": 0.14640573996774806,
+      "diagnostic": {
+        "requested": [
+          0.14640573996774806,
+          0.35
+        ],
+        "measured": [
+          0.34656942883276637,
+          0.07451177202359448
+        ],
+        "remaining": 0.4411343404550555,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.19919032055260177,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630601.1638117,
+      "old_request": 0.0,
+      "new_request": 0.11146050058261035,
+      "diagnostic": {
+        "requested": [
+          0.11146050058261035,
+          0.35
+        ],
+        "measured": [
+          0.35459982275985347,
+          0.1628310393296402
+        ],
+        "remaining": 0.36361155634428594,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.11146050058261035,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630601.3572893,
+      "old_request": 0.0,
+      "new_request": 0.11132615246181095,
+      "diagnostic": {
+        "requested": [
+          0.11132615246181095,
+          0.35
+        ],
+        "measured": [
+          0.2692059309737844,
+          0.20123005803269767
+        ],
+        "remaining": 0.3299300561719959,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630601.5535288,
+      "old_request": 0.0,
+      "new_request": 0.1350811213957188,
+      "diagnostic": {
+        "requested": [
+          0.1350811213957188,
+          0.35
+        ],
+        "measured": [
+          0.04784093234253878,
+          0.09236418748291346
+        ],
+        "remaining": 0.3444282938817818,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630601.7530835,
+      "old_request": 0.0,
+      "new_request": 0.1617149804589071,
+      "diagnostic": {
+        "requested": [
+          0.1617149804589071,
+          0.35
+        ],
+        "measured": [
+          -0.08737613552669908,
+          0.05628457903924241
+        ],
+        "remaining": 0.3618566007719703,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630601.9535885,
+      "old_request": 0.0,
+      "new_request": 0.18604860208213014,
+      "diagnostic": {
+        "requested": [
+          0.18604860208213014,
+          0.35
+        ],
+        "measured": [
+          -0.0740831976649061,
+          0.11244924334112275
+        ],
+        "remaining": 0.3709530708935207,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630602.1539185,
+      "old_request": 0.0,
+      "new_request": 0.22398704409706102,
+      "diagnostic": {
+        "requested": [
+          0.22398704409706102,
+          0.35
+        ],
+        "measured": [
+          -0.04659979749634135,
+          0.2259768097851
+        ],
+        "remaining": 0.3774515266793986,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630602.3555293,
+      "old_request": 0.0,
+      "new_request": 0.24316113094716252,
+      "diagnostic": {
+        "requested": [
+          0.24316113094716252,
+          0.35
+        ],
+        "measured": [
+          -0.019745267533435563,
+          0.30421838767613335
+        ],
+        "remaining": 0.3773730442102322,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.03249996900558472,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630602.5660887,
+      "old_request": 0.24049956953866103,
+      "new_request": 0.2391918112274373,
+      "diagnostic": {
+        "requested": [
+          0.2391918112274373,
+          0.35
+        ],
+        "measured": [
+          -0.009841961525635079,
+          0.3393130767191655
+        ],
+        "remaining": 0.37170258746776763,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.13703149870580092,
+          0.35
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630602.7539508,
+      "old_request": 0.24056724898260712,
+      "new_request": 0.2413455773641124,
+      "diagnostic": {
+        "requested": [
+          0.2413455773641124,
+          0.28116002963418263
+        ],
+        "measured": [
+          -0.03285213058517194,
+          0.2691548631362624
+        ],
+        "remaining": 0.3747793962344463,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.2413455773641124,
+          0.28116002963418263
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630602.9557335,
+      "old_request": 0.24090408440573235,
+      "new_request": 0.23626729015378325,
+      "diagnostic": {
+        "requested": [
+          0.23626729015378325,
+          0.26358910633996513
+        ],
+        "measured": [
+          0.018582029874661867,
+          0.1086330012362397
+        ],
+        "remaining": 0.36752470021969036,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.23626729015378325,
+          0.26358910633996513
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630603.1543856,
+      "old_request": 0.23107571621818532,
+      "new_request": 0.22443092034598383,
+      "diagnostic": {
+        "requested": [
+          0.22443092034598383,
+          0.24789650102359406
+        ],
+        "measured": [
+          0.07603876461032112,
+          0.09830430101789407
+        ],
+        "remaining": 0.3506156004942626,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.22443092034598383,
+          0.24789650102359406
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630603.3561246,
+      "old_request": 0.21056900520239089,
+      "new_request": 0.20354993429043727,
+      "diagnostic": {
+        "requested": [
+          0.20354993429043727,
+          0.2382692723787323
+        ],
+        "measured": [
+          0.14017124974426656,
+          0.12915021169131147
+        ],
+        "remaining": 0.32078562041491043,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.20354993429043727,
+          0.2382692723787323
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630603.5518007,
+      "old_request": 0.18095697789901122,
+      "new_request": 0.17624538149330882,
+      "diagnostic": {
+        "requested": [
+          0.17624538149330882,
+          0.22144774461822664
+        ],
+        "measured": [
+          0.17900933344038825,
+          0.1470153532783393
+        ],
+        "remaining": 0.2817791164190126,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.17624538149330882,
+          0.22144774461822664
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630603.7527456,
+      "old_request": 0.15889024939998034,
+      "new_request": 0.15053200892195082,
+      "diagnostic": {
+        "requested": [
+          0.15053200892195082,
+          0.20013936605874788
+        ],
+        "measured": [
+          0.18754849811631907,
+          0.1478432736516706
+        ],
+        "remaining": 0.24504572703135832,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.15053200892195082,
+          0.20013936605874788
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630603.9573834,
+      "old_request": 0.12872011050971258,
+      "new_request": 0.12354300568179169,
+      "diagnostic": {
+        "requested": [
+          0.12354300568179169,
+          0.18365189922909186
+        ],
+        "measured": [
+          0.20592293790179514,
+          0.1680957312520282
+        ],
+        "remaining": 0.20649000811684529,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.12354300568179169,
+          0.18365189922909186
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630604.154959,
+      "old_request": 0.10353346923329035,
+      "new_request": 0.10272252684026505,
+      "diagnostic": {
+        "requested": [
+          0.10272252684026505,
+          0.17954986223468733
+        ],
+        "measured": [
+          0.17267202233838008,
+          0.16179971340346355
+        ],
+        "remaining": 0.17674646691466436,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.10272252684026505,
+          0.17954986223468733
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630604.3496242,
+      "old_request": 0.08496516732718669,
+      "new_request": 0.08171244955374622,
+      "diagnostic": {
+        "requested": [
+          0.08171244955374622,
+          0.16532844918383227
+        ],
+        "measured": [
+          0.14836212566394047,
+          0.15765786007279736
+        ],
+        "remaining": 0.14673207079106604,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.08171244955374622,
+          0.16532844918383227
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630604.5514624,
+      "old_request": 0.06389676442895945,
+      "new_request": 0.05792145556039939,
+      "diagnostic": {
+        "requested": [
+          0.05792145556039939,
+          0.2083785063791756
+        ],
+        "measured": [
+          0.12544845074821626,
+          0.16024982223804538
+        ],
+        "remaining": 0.11274493651485627,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.05792145556039939,
+          0.17975837245224516
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630604.7514746,
+      "old_request": 0.047449434527415575,
+      "new_request": 0.041487537231517935,
+      "diagnostic": {
+        "requested": [
+          0.041487537231517935,
+          0.21517045793485684
+        ],
+        "measured": [
+          0.11555007629133475,
+          0.14623634729285595
+        ],
+        "remaining": 0.08926791033073991,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.041487537231517935,
+          0.14904882308787698
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630604.9510453,
+      "old_request": 0.03590699236170651,
+      "new_request": 0.02302390204811398,
+      "diagnostic": {
+        "requested": [
+          0.02302390204811398,
+          0.35
+        ],
+        "measured": [
+          0.10295326977558335,
+          0.14236949108413996
+        ],
+        "remaining": 0.06289128864016283,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.02302390204811398,
+          0.13249961621503586
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630605.154333,
+      "old_request": 0.02272970775395868,
+      "new_request": 0.014064006590964328,
+      "diagnostic": {
+        "requested": [
+          0.014064006590964328,
+          0.35
+        ],
+        "measured": [
+          0.06332087263769684,
+          0.15163938782459283
+        ],
+        "remaining": 0.0500914379870919,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.014064006590964328,
+          0.1508792959035878
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630605.343351,
+      "old_request": 0.02272970775395868,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.054479094329260076,
+          0.1449282777322162
+        ],
+        "remaining": 0.035488628504582086,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.1508792959035878
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630605.545863,
+      "old_request": 0.02272970775395868,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          0.01881843607182368,
+          0.06266213414811092
+        ],
+        "remaining": 0.03624008121560316,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.1508792959035878
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    },
+    {
+      "time": 1793630605.7483296,
+      "old_request": 0.02272970775395868,
+      "new_request": 0.0,
+      "diagnostic": {
+        "requested": [
+          0.0,
+          0.35
+        ],
+        "measured": [
+          -0.0023372209330035166,
+          0.0013688492812453411
+        ],
+        "remaining": 0.036212325967455515,
+        "reason": "clear",
+        "rejected": [],
+        "selected": [
+          0.0,
+          0.1508792959035878
+        ],
+        "scale": 1.0
+      },
+      "published": true
+    }
+  ]
+}

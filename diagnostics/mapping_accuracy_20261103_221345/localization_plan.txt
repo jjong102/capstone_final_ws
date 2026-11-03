@@ -1,0 +1,36 @@
+Input: mapping bag20261103_221345_526770 and debug_map_corrected.yaml/pgm.
+Map saved22:14:43; mapping stopped22:14:45. Read closed bag only.
+Observed scan metadata: angle_min=-3.13286614418, increment=.00872664619237,
+720bins for both sensors. Corrected driver geometry is active.
+URDF extrinsics and physical footprint remain authoritative and unchanged.
+
+Saved-map self consistency (median across every-third-message samples):
+stationary: front80.60% within12cm, median nearest-boundary distance6.05cm;
+rear79.12%,5.52cm. Rotating: front67.55%,7.67cm;rear68.06%,7.85cm.
+Last10s: front81.63%,6.03cm; rear69.00%,8.14cm.
+Stationary definition |odom angular z|<.02rad/s and |linear x|<.01m/s.
+Metrics evaluate scans using Cartographer TF against the saved grid and are NOT
+independent physical localization accuracy. New/old runs have different headings,
+speed, optimizer histories and maps; cannot isolate effect of angle fix from them.
+No large accuracy gain established. This is mapping, not AMCL mission validation.
+
+Plan (no deployment or parameter changes in this turn):
+1. Isolated AMCL baseline using corrected map and bag, URDF static TF, odom,
+filtered scans and actual virtual-scan node. Exclude recorded map->odom and motor
+commands. Use same initial hypotheses and repeated runs for randomness; compare
+held-out scan sectors, per-sensor boundary errors, pose jitter and CPU/TF delay.
+Cartographer trajectory is only a consistency reference, not ground truth.
+2. max_beams60 vs120, then180 if CPU margin allows. Record actual selected valid
+front/rear beam counts, not simply configured count. Keep particles500..2000 first.
+3. Separately compare sigma_hit .20/.15/.10, z_hit/z_rand .5/.5 vs .7/.3;
+these are experimental candidates, not proven target settings. Avoid overconfidence
+with current5-8cm residuals and incomplete geometry. Keep do_beamskip false first.
+4. update_min_d .05 vs .02; update_min_a .05 vs .035rad; measure latency/jitter.
+No transform_tolerance adjustment as an accuracy hack; it is future TF validity.
+5. Improve validator diagnostics/sampling: per-sector errors and actual timestamps;
+local recheck before global search, preserve rear50% and front70% thresholds and
+6.5cm score criterion until independent validation justifies any policy change.
+6. Only promote winning candidate after separate translational return run and
+physical position/heading checks. Re-teach goals/boundaries with new map identity.
+Maintain patrol5cm/return2cm and URDF70x44cm envelope; these are control acceptance
+thresholds, not proof of achieved localization accuracy.

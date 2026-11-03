@@ -1,0 +1,82 @@
+{
+  "counts": {
+    "rplidar1_pairs": 3362,
+    "rplidar2_pairs": 3068,
+    "rplidar2_unpaired": 292
+  },
+  "filter_mismatches": {},
+  "metadata": {
+    "rplidar1": {
+      "angle_min": -3.1241390705108643,
+      "angle_max": 3.1415927410125732,
+      "angle_increment": 0.008714509196579456,
+      "time_increment": 0.00013040796329732984,
+      "scan_time": 0.0937633290886879,
+      "range_min": 0.15000000596046448,
+      "range_max": 40.0,
+      "frame": "lidar1_link",
+      "n": 720
+    },
+    "rplidar2": {
+      "angle_min": -3.1241390705108643,
+      "angle_max": 3.1415927410125732,
+      "angle_increment": 0.008714509196579456,
+      "time_increment": 0.00012939368025399745,
+      "scan_time": 0.0930340513586998,
+      "range_min": 0.15000000596046448,
+      "range_max": 40.0,
+      "frame": "lidar2_link",
+      "n": 720
+    }
+  },
+  "urdf_tf": {
+    "rplidar1": {
+      "translation_error_m": 0.0,
+      "rotation_matrix_max_error": 0.0,
+      "urdf_xyz": [
+        0.311,
+        0.0,
+        0.0465
+      ],
+      "urdf_rpy": [
+        0.0,
+        3.14,
+        0.0
+      ]
+    },
+    "rplidar2": {
+      "translation_error_m": 0.0,
+      "rotation_matrix_max_error": 0.0,
+      "urdf_xyz": [
+        -0.311,
+        0.0,
+        0.0465
+      ],
+      "urdf_rpy": [
+        0.0,
+        3.14,
+        3.14
+      ]
+    }
+  },
+  "filtered_halfplanes": {
+    "rplidar1": {
+      "positive_base_x_fraction": 1.0,
+      "negative_base_x_fraction": 0.0
+    },
+    "rplidar2": {
+      "positive_base_x_fraction": 0.0,
+      "negative_base_x_fraction": 1.0
+    }
+  },
+  "binning": {
+    "rplidar1": {
+      "maximum_angular_bin_error_deg": 0.5,
+      "endpoint_error_bound_at_6m_m": 0.05235971141695885
+    },
+    "rplidar2": {
+      "maximum_angular_bin_error_deg": 0.5,
+      "endpoint_error_bound_at_6m_m": 0.05235971141695885
+    }
+  }
+}
