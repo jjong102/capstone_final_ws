@@ -55,7 +55,7 @@ def test_obstacle_direction_policy():
 
 
 def command_node(reverse=False):
-    return NS(odom=NS(twist=NS(twist=NS(linear=NS(x=0.),angular=NS(z=0.)))), motion_allowed=Mock(return_value=True), return_last_tick=99.95,return_last_v=0.,return_last_w=0.,
+    return NS(return_alignment_wait=False,odom=NS(twist=NS(twist=NS(linear=NS(x=0.),angular=NS(z=0.)))), motion_allowed=Mock(return_value=True), return_last_tick=99.95,return_last_v=0.,return_last_w=0.,
         return_blocked=None,return_route=np.array([[0,0],[1,0]]),return_phase='REVERSE' if reverse else 'FORWARD',
         return_epoch=0,stop=Mock(),event=Mock(),velocity_pub=Mock(),show_return_path=Mock(),return_local_pub=Mock(),
         cloud=lambda:np.array([[-.5,0]]) if reverse else np.array([[.325,0]]),
@@ -101,10 +101,11 @@ def test_return_waits_for_previous_nav_cancel_result():
 
 def test_late_plan_after_manual_takeover_is_discarded():
     n=NS(return_epoch=2,intent='return',return_future=object())
+    current=n.return_future
     result=Mock()
     ReturnControl.return_path_done(n,result,1)
     result.result.assert_not_called()
-    assert n.return_future is None
+    assert n.return_future is current  # Stale result must not clear a newer request.
 
 
 def test_tracking_simulation_converges_at_corner_and_in_reverse():
@@ -121,7 +122,7 @@ def test_tracking_simulation_converges_at_corner_and_in_reverse():
 
 
 def test_no_entry_rechecks_same_path_without_requesting_detour():
-    n=NS(nav_pending=False,nav_handle=None,return_paused_pose=None,
+    n=NS(return_alignment_wait=False,nav_pending=False,nav_handle=None,return_paused_pose=None,
          data={'goal':np.zeros(3)},return_phase='NO_ENTRY',return_retry=0.,
          return_candidate=np.array([[.2,0],[0,0]]),return_grid=lambda:room(True),
          stop=Mock(),install_return_plan=Mock(),request_return_path=Mock())
@@ -246,7 +247,7 @@ def test_batch_region_checks_match_scalar_body_envelope():
 
 
 def test_heading_slowdown_is_continuous_and_speed_bounded():
-    for deg,expected in [(0,.4),(15,.3),(30,.1),(45,0),(90,0)]:
+    for deg,expected in [(0,.4),(15,.4*math.cos(math.pi/8)**2),(30,.2),(45,.4*math.cos(3*math.pi/8)**2),(90,0)]:
         v,_,_=tracking_command(np.array([0.,0.,math.radians(deg)]),np.array([[0.,0.],[2.,0.]]),0,False)
         assert abs(v-expected)<1e-9
     velocities=[tracking_command(np.array([0.,0.,angle]),np.array([[0.,0.],[2.,0.]]),0,False)[0]
@@ -264,3 +265,83 @@ def test_patrol_and_return_speed_configuration():
         assert p['max_vel_x']==p['max_speed_xy']==.4
     assert nav['velocity_smoother']['ros__parameters']['max_velocity'][0]==.4
     assert yaml.safe_load((root/'config/impact.yaml').read_text())['third_impact']['ros__parameters']['return_max_speed']==.4
+
+
+def test_docking_entries_have_goal_heading_and_checked_corridor():
+    from third_impact.return_route import docking_entries
+    goal=np.array([0.,0.,.7]);g=room()
+    entries=docking_entries(goal,g)
+    assert len(entries)==4
+    for entry,reverse in entries:
+        from third_impact.core import relative
+        local=relative(goal,entry)
+        assert abs(local[1])<1e-8 and abs(local[2])<1e-8
+        assert reverse==(local[0]>0) and g.corridor(entry,goal)
+    assert not entries[0][1] and entries[1][1]
+
+
+def test_docking_entries_never_cross_unknown_or_wall():
+    from third_impact.return_route import docking_entries
+    g=room();g.cells[:]=100
+    assert docking_entries(np.zeros(3),g)==[]
+
+
+def test_axis_forward_final_segment_reaches_alignment_without_goal_spin():
+    import types
+    g=room();pose=np.array([-.5,0.,0.]);command=[0.,0.]
+    n=command_node();n.nav_pending=False;n.nav_handle=None;n.return_paused_pose=None
+    n.data={'goal':np.zeros(3)};n.return_grid=lambda:g
+    n.p.update(return_max_speed=.4,return_max_angular_speed=.35)
+    n.return_path_pub=Mock();n.event=Mock();n.align=Mock()
+    n.cloud=lambda:np.array([[20.,20.]])
+    n.stop=lambda:command.__setitem__(slice(None),[0.,0.])
+    n.stopped=lambda:abs(command[0])<.005 and abs(command[1])<.01
+    n.velocity_pub.publish=lambda m:command.__setitem__(slice(None),[m.linear.x,m.angular.z])
+    n.return_command=types.MethodType(ReturnControl.return_command,n)
+    ReturnControl.install_return_plan(n,dict(path=np.array([[-.6,0.],[-.5,0.]]),
+        entry=np.array([-.5,0.,0.]),reverse=False,docking=True))
+    phases=set()
+    for i in range(600):
+        with patch('third_impact.return_control.time.monotonic',return_value=100.+i*.05):
+            ReturnControl.tick_return(n,pose)
+        phases.add(n.return_phase)
+        pose[0]+=command[0]*.05;pose[2]+=command[1]*.05
+        if n.return_phase=='ALIGN':break
+    assert {'ROTATE','FINAL','ALIGN'}<=phases
+    assert abs(pose[0])<.02 and abs(pose[2])<.01
+
+
+def test_docking_planner_targets_entry_not_goal_and_validates_rotation():
+    from concurrent.futures import Future
+    from geometry_msgs.msg import PoseStamped
+    from nav_msgs.msg import Path
+    import types
+    n=NS(return_future=None,return_retry=0.,return_alignment_wait=False,return_dock_attempt=0,
+         return_epoch=1,intent='return',data={'goal':np.zeros(3)},return_grid=lambda:room(),
+         return_planner=Mock(),pose_message=lambda p:PoseStamped(),manual=False,healthy=lambda:True,
+         pose=lambda:np.array([-1.,0.,0.]),install_return_plan=Mock())
+    poses=[]
+    def pose_message(p):
+        poses.append(np.array(p));m=PoseStamped();m.pose.position.x=float(p[0]);m.pose.position.y=float(p[1]);return m
+    n.pose_message=pose_message
+    n.return_path_done=types.MethodType(ReturnControl.return_path_done,n)
+    accepted=Future();result=Future();handle=Mock(accepted=True)
+    handle.get_result_async.return_value=result;n.return_planner.send_goal_async.return_value=accepted
+    ReturnControl.request_return_path(n,np.array([-1.,0.,0.]))
+    assert np.allclose(poses[0],[-.5,0.,0.])
+    accepted.set_result(handle)
+    path=Path();path.header.frame_id='map'
+    path.poses=[pose_message([-1.,0,0]),pose_message([-.5,0,0])]
+    result.set_result(NS(status=4,result=NS(path=path)))
+    plan=n.install_return_plan.call_args.args[0]
+    assert plan['docking'] and not plan['reverse'] and np.allclose(plan['entry'],[-.5,0.,0.])
+
+
+def test_docking_collision_uses_bounded_retry_instead_of_indefinite_wait():
+    n=command_node(True);n.return_docking=True;n.reapproach_return=Mock()
+    n.cloud=lambda:np.array([[-.32,0.]])
+    for now in (100.,106.):
+        with patch('third_impact.return_control.time.monotonic',return_value=now):
+            ReturnControl.return_command(n,np.zeros(3),-.1,0.,True)
+    n.reapproach_return.assert_called_once()
+    n.velocity_pub.publish.assert_not_called()

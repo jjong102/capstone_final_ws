@@ -7,6 +7,7 @@
 #include <QRegularExpression>
 #include <QScrollBar>
 #include <cmath>
+#include <algorithm>
 #include <pluginlib/class_list_macros.hpp>
 namespace third_impact {
 namespace {
@@ -109,15 +110,20 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
    title="목표·구역 설정 대기"; explanation="저장된 목표, 한계 구간, 정찰 제한 구간이 필요합니다.";
   } else if (state=="PATROL_APPROACH") {
    title="정찰 목표 위치로 근접 이동"; explanation="최종 방향과 무관하게 목표 위치 5cm 이내로 접근합니다.";
+  } else if (state=="PATROL_SEARCH") {
+   title="정찰 목표·경로 탐색 중"; explanation="현재 위치에서 도달 가능한 목표와 실제 경로를 확인합니다. 상세 사유를 확인하세요.";
   } else if (state=="PATROL_BLOCKED") {
    title="정찰 경로 차단 · 대기"; explanation="정찰 제어가 대기 중입니다. 상세 안내의 정체·시간 초과·장애물 사유를 확인하세요.";
   } else if (state=="PATROL_RECOVERY") {
    title="정찰 방향 정렬·경로 재시도"; explanation="같은 목표를 유지하며 안전한 방향과 우회 경로를 확인합니다.";
+  } else if (state=="RETURN_WAIT") {
+   title="복귀 재접근 대기"; explanation="재접근 한도 또는 안전한 진입 경로를 확인하세요. 도착 완료 상태가 아닙니다.";
   } else if (state=="ALIGN") {
    title="목표 위치 정밀 정렬 중"; color="#42a5f5";
    const auto phase=obj["alignment"].toObject()["phase"].toString();
    if(phase.startsWith("COARSE_") && phase!="COARSE_DONE") title="목표 방향 먼저 정렬 중";
    if(phase=="REVERIFY" || phase=="FINE_VERIFY") title="정밀 정합 재검증 중";
+   if(phase.startsWith("MICRO_")) title="목표 근처 짧은 위치 보정 중";
    explanation="위치·방향 보정 후 정지 유지 조건을 확인합니다.";
   } else if (state=="RETURN_ROTATE") {
    title="진입 전 방향 정렬 중"; explanation="회전 가능한 위치에서 저장 목표의 방향으로 맞춥니다.";
@@ -204,10 +210,19 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
   const auto alignment=obj["alignment"].toObject();
   if(state=="ALIGN" && !alignment.isEmpty()) {
    const auto phase=alignment["phase"].toString();
-   const auto stage=phase=="COARSE_WAIT" ? "회전 공간·진행 확인 대기" :
+   const auto stage=phase=="POSITION" ? "위치 우선 보정" : phase=="COARSE_WAIT" ? "회전 공간·진행 확인 대기" :
      phase.startsWith("COARSE_") ? "큰 방향 정렬" :
+     phase.startsWith("MICRO_SETTLE") ? "짧은 보정 후 정지 확인" :
+     phase=="MICRO_OUT" ? "짧은 보정 진입점으로 이동" :
+     phase=="MICRO_IN" ? "보정된 목표 위치로 접근" :
      phase=="FINE_ALIGN" ? "정밀 정렬" : "새 스캔으로 재검증";
-   row("정렬 단계",stage,"큰 방향 정렬 → 연속 정합 재검증 → 정밀 정렬");
+   row("정렬 단계",stage,"위치 보정 → 최종 방향 정렬 → 정밀 검증");
+   if(alignment.contains("longitudinal_m"))
+    row("종·횡 위치 오차",QString("%1 / %2 cm").arg(alignment["longitudinal_m"].toDouble()*100.,0,'f',1).arg(alignment["lateral_m"].toDouble()*100.,0,'f',1),"저장 목표 방향 기준 종방향 / 횡방향 오차");
+   if(alignment.contains("heading_error_deg"))
+    row("방향 오차",QString::number(alignment["heading_error_deg"].toDouble(),'f',1)+"°","현재 정렬 단계의 방향 오차");
+   if(alignment.contains("updated_at"))
+    row("정렬 정보 갱신",QString::number(std::max(0.,obj["time"].toDouble()-alignment["updated_at"].toDouble()),'f',1)+"초 전","지난 결과를 현재 검사로 오인하지 않도록 갱신 시각을 표시합니다.");
    if(alignment.contains("correction_m"))
     row("위치 보정 검사",QString("%1 / %2 cm").arg(alignment["correction_m"].toDouble()*100.,0,'f',1).arg(alignment["correction_limit_m"].toDouble()*100.,0,'f',1),"AMCL/TF 대비 LiDAR 정합 보정량 / 허용 한계");
    if(!alignment["rejection"].toString().isEmpty())

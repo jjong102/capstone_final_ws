@@ -40,25 +40,51 @@ class PatrolControl:
         self.patrol_recovery = None
         self.patrol_recovery_count = 0
         self.patrol_extra_clearance = 0.
+        self._progress_watch = None
+        self.patrol_sensor_output_wait = False
         self.patrol_progress_pose = None
         self.patrol_progress_time = time.monotonic()
 
-    def patrol_direction_stop(self, command):
-        """Stop actual motion before changing turn direction; patrol only."""
-        measured = self.odom.twist.twist.angular.z
-        reversing = command.angular.z * measured < 0 and abs(measured) > .04 and abs(command.angular.z) > .04
+    def publish_patrol_command(self, pose, command):
+        """Slew normal commands, but never slew a safety stop or an unsafe arc."""
         now = time.monotonic()
-        if reversing and self.patrol_reversing_since is None:
-            self.patrol_reversing_since = now
-            self.event('정찰 회전 방향 전환: 실제 정지 후 반대 회전 허용')
-        if self.patrol_reversing_since is None:
+        previous = getattr(self, 'patrol_output', (0., 0.))
+        stamp = getattr(self, 'patrol_output_stamp', now - .05)
+        dt = min(.1, max(0., now - stamp))
+        v, w = float(command.linear.x), float(command.angular.z)
+        # Nav2 owns the path all the way to arrival. Slow continuously without
+        # changing its curvature or switching to a stop/rotate/drive controller.
+        if self.nav_target is not None:
+            distance = float(np.linalg.norm(pose[:2] - np.asarray(self.nav_target[:2])))
+            cap = min(.4, .8 * max(0., distance - self.p['patrol_tolerance'] / 2))
+            if abs(v) > cap:
+                scale = cap / abs(v)
+                v *= scale
+                w *= scale
+        v = float(np.clip(v, 0., .4))
+        w = float(np.clip(w, -.35, .35))
+        limited_v = previous[0] + float(np.clip(v - previous[0], -.65 * dt, .65 * dt))
+        limited_w = previous[1] + float(np.clip(w - previous[1], -.8 * dt, .8 * dt))
+        # Both the requested and actual output arcs must be safe: smoothing
+        # changes curvature and must not carry an old command into an obstacle.
+        if (not self.safe_patrol_command(pose, v, w)
+                or not self.safe_patrol_command(pose, limited_v, limited_w)):
+            self.stop()
+            reason = getattr(self, 'patrol_command_reason', 'collision')
+            self.patrol_sensor_output_wait = reason == 'sensor_unavailable'
+            self.detail = '정찰 안전 정지: ' + {'lidar_collision': 'LiDAR 장애물 충돌 예상',
+                'map_collision': '지도상 차체 충돌 예상', 'region_boundary': '설정 구역 경계 침범 예상',
+                'sensor_unavailable': '센서 관측 준비 대기'}.get(reason, reason)
             return False
-        self.stop()
-        if self.stopped():
-            self.patrol_reversing_since = None
-        elif now-self.patrol_reversing_since > 4.:
-            self.begin_patrol_recovery()
-        self.detail = '정찰 회전 방향 전환: 전진·회전 정지 확인 중'
+        if (hasattr(self, '_nav_sample') and time.monotonic()-self.nav_velocity_stamp >= .2):
+            self.stop('nav_command_expired_during_check')
+            return False
+        output = Twist()
+        output.linear.x, output.angular.z = limited_v, limited_w
+        self.velocity_pub.publish(output)
+        self.patrol_sensor_output_wait = False
+        self.patrol_output = (limited_v, limited_w)
+        self.patrol_output_stamp = now
         return True
 
     def recovery_heading(self, pose):
@@ -111,6 +137,8 @@ class PatrolControl:
     def patrol_readiness_pause(self, paused):
         now = time.monotonic()
         started = getattr(self, 'patrol_pause_started', None)
+        if paused and getattr(self, '_progress_watch', None) is not None:
+            self._progress_watch.last_time = now
         if paused and started is None:
             self.patrol_pause_started = now
         elif not paused and started is not None:
@@ -281,107 +309,4 @@ class PatrolControl:
         command = Twist(); command.angular.z = w
         self.velocity_pub.publish(command)
         self.detail = '구간을 침범하지 않는 경로 방향으로 제자리 정렬 중입니다.'
-        return True
-
-
-    def tick_patrol_near(self, pose):
-        """Position-only final approach. Goal yaw is deliberately never read."""
-        busy = self.nav_pending or self.nav_handle is not None
-        near = self.patrol_near
-        if near is None:
-            if (not busy or self.nav_purpose != 'patrol' or self.cancel_requested
-                    or self.nav_target is None):
-                return False
-            distance = np.linalg.norm(pose[:2]-np.asarray(self.nav_target[:2]))
-            if distance > .40 or distance <= self.p['patrol_tolerance']:
-                return False
-            now = time.monotonic()
-            near = dict(goal=np.asarray(self.nav_target[:2]).copy(), phase='STOP',
-                        started=now, progress=now, best_distance=distance,
-                        turn_sign=0, turn_deadline=None, best_angle=math.inf, turn_progress=now)
-            self.patrol_near = near
-            self.patrol_recovery = None
-            self.stop(); self.cancel_nav()
-            self.event('정찰 목표 근접: Nav2 종료 후 위치만 기준으로 저속 접근합니다.')
-            return True
-        self.state = 'PATROL_APPROACH'
-        if self.patrol_recovery == 'WAIT':
-            self.state = 'PATROL_BLOCKED'; self.stop(); self.detail = self.patrol_wait_reason
-            return True
-        if busy:
-            self.stop(); self.cancel_nav()
-            self.detail = '정찰 근접 제어 전 기존 이동 취소 완료 대기'
-            return True
-        now = time.monotonic()
-        delta = near['goal']-pose[:2]
-        distance = float(np.linalg.norm(delta))
-        if distance <= self.p['patrol_tolerance']:
-            self.stop(); self.patrol_visits += 1
-            self.last_navigation_result = dict(purpose='patrol', status=5,
-                cancel_requested=True, patrol_arrived=True)
-            self.patrol_retry_target = None; self.nav_target = None
-            self.init_patrol(); self.next_attempt = now
-            self.event('정찰 목적지 도착: 위치 5cm 이내 확인, 다음 목적지를 선택합니다.')
-            return True
-        if distance > .65:
-            self.stop()
-            if self.stopped():
-                self.patrol_retry_target = [*near['goal'], 0.]
-                self.patrol_near = None; self.next_attempt = now+2.
-                self.patrol_progress_time = now
-            return True
-        if distance < near['best_distance']-.015:
-            near['best_distance'] = distance; near['progress'] = now
-        error = wrap(math.atan2(delta[1],delta[0])-pose[2])
-        def blocked(reason):
-            self.stop(); self.patrol_recovery = 'WAIT'
-            self.patrol_wait_reason = reason
-            self.detail = reason; self.state = 'PATROL_BLOCKED'
-        if now-near['started'] > 60.:
-            blocked('정찰 목표 근접 접근 시간 초과: 목표 위치와 주변 공간을 확인하세요.')
-            return True
-        if near['phase'] == 'STOP':
-            self.stop()
-            if not self.stopped():
-                if now-near['progress'] > 6.:
-                    blocked('정찰 근접 제어: 실제 정지 확인 실패')
-                return True
-            if abs(error) > .08:
-                near.update(phase='ROTATE', turn_sign=1 if error>0 else -1,
-                            turn_deadline=now+abs(error)/.25+6.,
-                            best_angle=abs(error), turn_progress=now)
-            else:
-                near.update(phase='DRIVE',progress=now)
-        if near['phase'] == 'ROTATE':
-            if abs(error) <= .08 or error*near['turn_sign'] < 0:
-                self.stop(); near.update(phase='STOP',progress=now)
-                return True
-            if abs(error) < near['best_angle']-.04:
-                near.update(best_angle=abs(error),turn_progress=now)
-            if now > near['turn_deadline'] or now-near['turn_progress'] > 4.:
-                blocked('정찰 근접 방향 전환 진행 정체 또는 시간 초과')
-                return True
-            w = float(np.clip(error,-.25,.25))
-            if not self.safe_patrol_command(pose,0.,w):
-                self.stop(); self.detail = '정찰 근접 방향 전환: 장애물 또는 구간 경계 확인 대기'
-                return True
-            command = Twist(); command.angular.z = w
-            self.velocity_pub.publish(command)
-            self.detail = '정찰 목표 위치로 이동하기 위한 방향 전환 중 (최종 heading 무관)'
-            return True
-        if abs(error) > .18:
-            self.stop(); near.update(phase='STOP',progress=now)
-            return True
-        if now-near['progress'] > 6.:
-            blocked('정찰 목표 근접 전진 정체: 장애물·실제 구동 상태를 확인하세요.')
-            return True
-        # Slow down for 5cm positional arrival, without a final yaw condition.
-        remaining = max(0.,distance-self.p['patrol_tolerance']/2)
-        v = min(.10, .8*remaining, math.sqrt(2*.2*remaining))
-        if not self.safe_patrol_command(pose,v,0.):
-            self.stop(); self.detail = '정찰 근접 전진: 장애물 또는 구간 경계 확인 대기'
-            return True
-        command = Twist(); command.linear.x = v
-        self.velocity_pub.publish(command)
-        self.detail = f'정찰 목표 위치로 저속 접근 중: 남은 거리 {distance*100:.1f}cm (최종 heading 무관)'
         return True

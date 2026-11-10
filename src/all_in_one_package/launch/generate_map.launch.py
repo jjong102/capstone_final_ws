@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import (DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription,
+from launch.actions import (DeclareLaunchArgument, ExecuteProcess, GroupAction, IncludeLaunchDescription,
                             LogInfo, OpaqueFunction, RegisterEventHandler,
                             SetEnvironmentVariable, TimerAction)
 from launch.conditions import IfCondition
@@ -185,9 +185,14 @@ def generate_launch_description():
         OpaqueFunction(function=setup_mapping_network),
         OpaqueFunction(function=setup_mapping_log),
         # 1. serial_test 내부에서 조이스틱 + 모터/휠 odom 관련 노드 실행
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(serial_launch)
-        ),
+        # Keep the mapping DDS profile; serial's standalone wifi mode unsets it.
+        # Scope its network argument so the parent's wifi/jetson choice survives.
+        GroupAction(scoped=True, actions=[
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(serial_launch),
+                launch_arguments={'network': 'default'}.items(),
+            ),
+        ]),
 
         # 2. IMU publisher + robot_localization EKF 실행
         #    EKF가 /wheel/odometry + /imu/data 를 받아 /odom 생성

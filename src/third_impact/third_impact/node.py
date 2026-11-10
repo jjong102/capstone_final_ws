@@ -1,4 +1,5 @@
 """Single-owner navigation supervisor. Runs without RViz or debug processes."""
+import inspect
 import json
 import copy
 import fcntl
@@ -19,7 +20,8 @@ from rclpy.time import Time
 from action_msgs.msg import GoalStatus
 from geometry_msgs.msg import Twist, PoseStamped, PoseWithCovarianceStamped
 from nav_msgs.msg import OccupancyGrid, Odometry, Path as NavPath
-from nav2_msgs.action import NavigateToPose
+from nav2_msgs.action import NavigateToPose, ComputePathToPose
+from nav2_msgs.msg import Costmap
 from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Empty, Bool, String
 from visualization_msgs.msg import Marker, MarkerArray
@@ -29,11 +31,22 @@ from .core import (wrap, relative, transform, voxel, register_scan, alignment_co
                    swept_clear, inside_patrol_region, outside_exclusion, travel_allowed, region_map, map_fingerprint, atomic_save,
                    accepts_return, accepts_patrol)
 from .editor import RectangleEditor, orientation, yaw
+from .scan_pairs import ScanPairs
+from .amcl_scan import apply_transform
+from .progress_watch import ProgressWatch
+from .pose_tracking import PoseBridge
 from .return_control import ReturnControl
 from .patrol_control import PatrolControl
+from .patrol_planning import PatrolPlanning, costmap_component
 
 
-class ImpactNode(PatrolControl, ReturnControl, Node):
+
+class _ZoneRect:
+    def __init__(self, rect):
+        self.rect = list(rect)
+
+
+class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
     def __init__(self):
         super().__init__('third_impact')
         defaults = dict(mode='mission', map_file='', state_file='~/.ros/third_impact/goal.json',
@@ -41,6 +54,7 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                         capture_seconds=2., align_radius=.4, scan_timeout=.45,
                         patrol_tolerance=.05,
                         return_max_speed=.4, return_max_angular_speed=.35, return_obstacle_margin=.01,
+                        return_linear_accel=.35, return_angular_accel=.4,
                         require_localization_ready=True,
                         patrol_bt_file=str(Path(get_package_share_directory('third_impact'))/'config/patrol.xml'),
                         return_bt_file=str(Path(get_package_share_directory('third_impact'))/'config/return.xml'),
@@ -75,6 +89,7 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         self.odom = None; self.odom_stamp = 0.
         self.amcl = None; self.amcl_stamp = 0.
         self.localization_info = {}; self.localization_stamp = 0.
+        self.scan_pairs = ScanPairs()
         self.scans = {}; self.grid = None; self.candidates = None
         self.nav_handle = None; self.nav_pending = False; self.cancel_requested = False
         self.nav_purpose = None; self.nav_target = None
@@ -86,7 +101,14 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         self.capture_start = 0.; self.capture_pose = None; self.capture_clouds = []
         self.capture_signature = None; self.match = None
         self.align_last_key = None; self.align_velocity = (0., 0.); self.align_valid_stamp = 0.
-        self.tf = Buffer(); self.listener = TransformListener(self.tf, self)
+        # TF reception must not wait behind collision checking in the mission executor.
+        self.tf_node = Node('third_impact_tf_listener', use_global_arguments=False,
+                            parameter_overrides=[rclpy.parameter.Parameter(
+                                'use_sim_time', value=self.get_parameter('use_sim_time').value)])
+        self.tf = Buffer(); self.listener = TransformListener(self.tf, self.tf_node, spin_thread=True)
+        self.pose_bridge = PoseBridge()
+        self.pose_diagnostics = {}
+        self._pose_snapshot_active = False
         durable = QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL,
                              reliability=ReliabilityPolicy.RELIABLE)
         self.velocity_pub = self.create_publisher(Twist, '/cmd_vel', 10)
@@ -106,15 +128,21 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         for key in ('front', 'rear'):
             self.create_subscription(LaserScan, self.p[key+'_scan'],
                                      lambda msg, k=key: self.on_scan(k, msg), latest_sensor)
-        self.create_subscription(Twist, '/third_impact/nav_cmd_vel', self.on_nav_velocity, 10)
+        self._nav_sample = None
+        self._nav_accept_after = 0.
+        self.tf_node.create_subscription(Twist, '/third_impact/nav_cmd_vel', self.on_nav_velocity, 1)
         self.create_subscription(Empty, '/go_to_goal', self.on_return, 10)
         self.create_subscription(Empty, '/go_around', self.on_patrol, 10)
         self.create_subscription(Empty, '/save_goal', self.on_save, 10)
         self.create_subscription(Empty, '/third_impact/save_region', self.on_region, 10)
         self.create_subscription(Empty, '/third_impact/save_boundary', self.on_boundary, 10)
+        self.create_subscription(String, '/third_impact/set_zone', self.on_set_zone, 10)
         self.nav = ActionClient(self, NavigateToPose, '/navigate_to_pose')
         self.init_return()
         self.init_patrol()
+        self.init_patrol_planning()
+        self.patrol_planner = ActionClient(self, ComputePathToPose, '/compute_path_to_pose')
+        self.create_subscription(Costmap, '/global_costmap/costmap_raw', self.on_patrol_costmap, 1)
         self.create_subscription(NavPath, '/plan', self.on_patrol_path, 10)
         self.editor = RectangleEditor(self) if self.mode == 'teach' else None
         self.boundary_editor = RectangleEditor(self, 'third_impact/boundary', (.1,.7,1.), 4.) if self.mode == 'teach' else None
@@ -180,6 +208,7 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
             pass
 
     def on_odom(self, msg):
+        self.odom_processing_age = self.message_age(msg.header.stamp)
         self.odom, self.odom_stamp = msg, time.monotonic()
 
     def on_manual(self, msg):
@@ -196,7 +225,7 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
             self.event('Manual control: mission paused' if self.manual else 'Automatic control: resume mission')
 
     def on_nav_velocity(self, msg):
-        self.nav_velocity, self.nav_velocity_stamp = msg, time.monotonic()
+        self._nav_sample = (msg, time.monotonic(), time.time())
 
     def message_age(self, stamp):
         return (self.get_clock().now().nanoseconds-Time.from_msg(stamp).nanoseconds)*1e-9
@@ -225,44 +254,130 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
             # Remove own chassis returns, but retain all external obstacles.
             points = points[(abs(points[:, 0]) > self.p['footprint_half_length']) |
                             (abs(points[:, 1]) > self.p['footprint_half_width'])]
-            self.scans[key] = (time.monotonic(), msg.header.stamp, points)
+            sample = (time.monotonic(), msg.header.stamp, points)
+            self.scans[key] = sample
+            self.scan_pairs.add(key, Time.from_msg(msg.header.stamp).nanoseconds*1e-9, sample)
         except TransformException as exc:
             entry['error'] = 'tf: '+str(exc)
 
     def pose(self):
+        if getattr(self, '_pose_snapshot_active', False):
+            return self._pose_snapshot
+        now_ns = self.get_clock().now().nanoseconds
+        now = now_ns*1e-9
+        self._pose_stamp_ns = None
+        diagnostic = dict(checked_at=time.time(), source='unavailable')
+        self.pose_diagnostics = diagnostic
         try:
             tf = self.tf.lookup_transform('map', 'base_link', Time())
-            if not 0. <= self.message_age(tf.header.stamp) <= self.p['pose_timeout']:
-                return None
-            t = tf.transform.translation
-            return np.array([t.x, t.y, yaw(tf.transform.rotation)])
-        except TransformException:
+            stamp_ns = Time.from_msg(tf.header.stamp).nanoseconds
+            stamp = stamp_ns*1e-9  # Display and bounded odometry bridge only; never reconstruct TF time.
+            age = (now_ns-stamp_ns)*1e-9
+            diagnostic.update(tf_age=age, tf_stamp=stamp, tf_stamp_ns=stamp_ns)
+            if not 0. <= age <= self.p['pose_timeout']:
+                diagnostic['error'] = 'tf_stamp_out_of_range'
+            else:
+                t = tf.transform.translation
+                pose = np.array([t.x, t.y, yaw(tf.transform.rotation)])
+                if not np.isfinite(pose).all():
+                    diagnostic['error'] = 'nonfinite_pose'
+                    return None
+                self._pose_stamp_ns = stamp_ns
+                diagnostic['source'] = 'tf'
+                # Anchor odometry at exactly the map pose timestamp, not reception time.
+                try:
+                    ot = self.tf.lookup_transform('odom', 'base_link', Time.from_msg(tf.header.stamp))
+                    o = ot.transform.translation
+                    self.pose_bridge.update(pose, [o.x,o.y,yaw(ot.transform.rotation)], stamp)
+                except TransformException as exc:
+                    diagnostic['anchor_error'] = str(exc)
+                return pose
+        except TransformException as exc:
+            diagnostic.update(error=type(exc).__name__, exception=str(exc))
+        odom = self.odom
+        if odom is None or odom.header.frame_id != 'odom' or odom.child_frame_id != 'base_link':
+            diagnostic['bridge_rejection'] = 'odom_missing_or_frame_mismatch'
             return None
+        # Only return transit can bridge; docking/arrival always require direct TF.
+        if self.intent != 'return' or self.return_phase != 'FORWARD' or self.manual:
+            diagnostic['bridge_rejection'] = 'not_return_transit'
+            return None
+        op = odom.pose.pose
+        stamp = Time.from_msg(odom.header.stamp).nanoseconds*1e-9
+        estimate, reason = self.pose_bridge.estimate(
+            [op.position.x,op.position.y,yaw(op.orientation)], stamp, now)
+        diagnostic['bridge_result'] = reason
+        if estimate is not None:
+            diagnostic['source'] = reason
+        return estimate
+
+    def selected_scans(self):
+        if getattr(self, '_pose_snapshot_active', False):
+            return self._scan_snapshot
+        return self.scan_pairs.select(self.get_clock().now().nanoseconds*1e-9, self.p['scan_timeout'])
 
     def cloud(self):
-        now = time.monotonic()
-        if any(k not in self.scans or now-self.scans[k][0] > self.p['scan_timeout'] for k in ('front', 'rear')):
+        def unavailable(reason):
+            self.scan_motion_error = reason
+            if getattr(self, '_pose_snapshot_active', False):
+                self._cycle_ready = False
+                self.health_diagnostics = dict(getattr(self, 'health_diagnostics', {}),
+                                               reason='scan_motion_tf_unavailable')
             return None
-        stamps = [Time.from_msg(self.scans[k][1]).nanoseconds for k in ('front', 'rear')]
-        if abs(stamps[0]-stamps[1])*1e-9 > .15:
-            return None
-        key = tuple(stamps)
-        if getattr(self, '_cloud_key', None) != key:
-            self._cloud_value = voxel(np.vstack([self.scans[k][2] for k in ('front', 'rear')]))
-            self._cloud_key = key
-        return self._cloud_value
+        scans = self.selected_scans()
+        if scans is None or any(not 0. <= self.message_age(scans[k][1]) <= self.p['scan_timeout'] for k in scans):
+            return unavailable('scan_pair_missing_or_expired')
+        if getattr(self, '_cycle_cloud_done', False) and self._pose_snapshot_active:
+            return self._cycle_cloud
+        if getattr(self, '_pose_snapshot_active', False):
+            self._cycle_cloud_done = True
+            self._cycle_cloud = None
+        try:
+            target = (Time(nanoseconds=self._pose_stamp_ns).to_msg()
+                      if getattr(self, '_pose_snapshot_active', False) and getattr(self, '_pose_stamp_ns', None) is not None
+                      else self.tf.lookup_transform('odom','base_link',Time()).header.stamp)
+            if not 0. <= self.message_age(target) <= self.p['odom_timeout']:
+                return unavailable('motion_target_expired')
+            key = (*[Time.from_msg(scans[k][1]).nanoseconds for k in ('front','rear')],
+                   Time.from_msg(target).nanoseconds)
+            if getattr(self, '_cloud_key', None) != key:
+                clouds = []
+                for k in ('front','rear'):
+                    motion = self.tf.lookup_transform_full('base_link', Time.from_msg(target),
+                        'base_link', Time.from_msg(scans[k][1]), 'odom').transform
+                    clouds.append(apply_transform(np.c_[scans[k][2], np.zeros(len(scans[k][2]))],motion)[:,:2])
+                self._cloud_value = voxel(np.vstack(clouds))
+                self._cloud_key = key
+            self.scan_motion_error = None
+            self._used_scan_key = key[:2]
+            self._cycle_cloud = self._cloud_value
+            return self._cloud_value
+        except TransformException as exc:
+            return unavailable(str(exc))
 
     def scan_key(self):
-        return tuple(Time.from_msg(self.scans[k][1]).nanoseconds for k in ('front', 'rear'))
+        scans = self.selected_scans()
+        if scans is None:
+            return (0, 0)
+        return tuple(Time.from_msg(scans[k][1]).nanoseconds for k in ('front','rear'))
 
     def healthy(self):
+        if getattr(self, '_pose_snapshot_active', False) and getattr(self, '_cycle_ready', None) is not None:
+            return self._cycle_ready
+        ready = ImpactNode._evaluate_health(self)
+        if getattr(self, '_pose_snapshot_active', False):
+            self._cycle_ready = ready
+        return ready
+
+    def _evaluate_health(self):
         now = time.monotonic()
         self.health_diagnostics = dict(reason='ready',
-            odom_age=now-self.odom_stamp, manual_age=now-self.manual_stamp,
+            odom_age=now-self.odom_stamp, odom_source_age=getattr(self, 'odom_processing_age', None), manual_age=now-self.manual_stamp,
             localization_age=now-self.localization_stamp,
             scans=getattr(self,'scan_diagnostics',{}))
         def fail(reason):
             self.health_diagnostics['reason'] = reason
+            self.health_diagnostics['pose'] = getattr(self, 'pose_diagnostics', {})
             return False
         if self.p['require_localization_ready'] and (
                 now-self.localization_stamp > 2. or not self.localization_info.get('ready', False)):
@@ -278,18 +393,13 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
             return fail('amcl_covariance')
         if self.pose() is None:
             return fail('pose_tf_unavailable_or_stale')
-        for k in ('front','rear'):
-            if k not in self.scans:
-                return fail(k+'_scan_missing')
-            age = now-self.scans[k][0]
-            self.health_diagnostics[k+'_accepted_age'] = age
-            if age > self.p['scan_timeout']:
-                return fail(k+'_scan_stale')
-        delta = abs(Time.from_msg(self.scans['front'][1]).nanoseconds-
-                    Time.from_msg(self.scans['rear'][1]).nanoseconds)*1e-9
-        self.health_diagnostics['scan_pair_delta'] = delta
-        if delta > .15:
-            return fail('scan_pair_skew')
+        scans = self.selected_scans()
+        if scans is None:
+            return fail('scan_pair_unavailable')
+        self.health_diagnostics['scan_pair_delta'] = abs(
+            Time.from_msg(scans['front'][1]).nanoseconds-Time.from_msg(scans['rear'][1]).nanoseconds)*1e-9
+        if self.cloud() is None:
+            return fail('scan_motion_tf_unavailable')
         if self.grid is None:
             return fail('map_missing')
         return True
@@ -297,8 +407,24 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
     def timed_tick(self):
         start = time.monotonic()
         try:
+            self._cycle_cloud_done = False
+            self._cycle_ready = None
+            sample = getattr(self, '_nav_sample', None)
+            if sample is not None and sample[1] > self._nav_accept_after:
+                self.nav_velocity, self.nav_velocity_stamp = sample[:2]
+            self._pose_snapshot = self.pose()
+            self._scan_snapshot = self.selected_scans()
+            self._pose_snapshot_active = True
             self.tick()
+            # Stationary modes still publish a current sensor assessment.
+            if self._cycle_ready is None and hasattr(self, 'healthy'):
+                self._cycle_ready = self.healthy()
         finally:
+            self.control_status = dict(ready=bool(getattr(self, '_cycle_ready', False)),
+                health=copy.deepcopy(getattr(self, 'health_diagnostics', {})),
+                pose=copy.deepcopy(getattr(self, 'pose_diagnostics', {})),
+                checked_at=time.time())
+            self._pose_snapshot_active = False
             self.last_tick_ms = (time.monotonic()-start)*1000.
             self.max_tick_ms = max(getattr(self,'max_tick_ms',0.), self.last_tick_ms)
 
@@ -365,6 +491,58 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         self.boundary_editor.reset(data['goal'])
         self.event('목표 저장 완료. 파란 한계 구간과 주황 정찰 제한 구간을 각각 편집·저장하세요.')
 
+
+    def on_set_zone(self, msg):
+        """UI에서 보낸 구역 좌표를 저장한다. 임무 모드에서도 받는다."""
+        try:
+            body = json.loads(getattr(msg, "data", "") or "{}")
+        except json.JSONDecodeError:
+            self.event("구역 형식이 잘못되었습니다.")
+            return
+        kind = str(body.get("kind") or "")
+        if kind in {"region", "rectangle", "exclusion"}:
+            key = "rectangle"
+        elif kind in {"boundary", "limit"}:
+            key = "boundary"
+        else:
+            self.event("구역 종류를 알 수 없습니다.")
+            return
+        try:
+            rect = [
+                float(body["x"]),
+                float(body["y"]),
+                float(body.get("yaw") or 0.0),
+                float(body["width"]),
+                float(body["height"]),
+            ]
+        except (KeyError, TypeError, ValueError):
+            self.event("구역 좌표가 잘못되었습니다.")
+            return
+        if self.mode == "teach" and self.state == "CAPTURE":
+            return
+        if not self.data or self.data.get("goal") is None:
+            self.event("목표를 먼저 저장하세요.")
+            return
+        if not np.isfinite(rect).all() or min(rect[3:]) <= 0.:
+            self.event("유효한 구간을 지정하세요.")
+            return
+        radius = math.hypot(self.p["footprint_half_length"], self.p["footprint_half_width"]) + .05
+        if key == "boundary" and not inside_patrol_region(self.data["goal"], rect, radius):
+            self.event("한계 구간 안에 복귀 목표와 로봇 몸체 여유를 포함해야 합니다.")
+            return
+        data = dict(self.data, **{key: list(rect)}, region_policy="boundary_and_exclusion")
+        try:
+            atomic_save(self.path, data)
+        except OSError as exc:
+            self.event("구간 저장 실패: " + str(exc))
+            return
+        self.data = data
+        editor = self.editor if key == "rectangle" else self.boundary_editor
+        if editor is not None:
+            editor.rect = list(rect)
+            editor.render()
+        self.event(("한계 구간" if key == "boundary" else "정찰 제한 구간") + " 저장 완료")
+
     def on_boundary(self, _):
         self.save_zone('boundary', self.boundary_editor)
 
@@ -392,14 +570,24 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         if self.grid is None:
             return
         boundary = self.data.get('boundary') if self.data else None
-        exclusion = self.data.get('rectangle') if self.data else None
+        saved_exclusion = self.data.get('rectangle') if self.data else None
+        exclusion = saved_exclusion
+        # Initial pose inside the patrol exclusion may drive out. The saved
+        # boundary still limits planning; only the exclusion paint is lifted.
+        if self.intent == 'patrol' and saved_exclusion is not None:
+            current = self.pose()
+            # Before the first patrol arrival, and while leaving an initial
+            # pose inside the exclusion, do not paint that zone as an obstacle.
+            if current is not None and self._patrol_exclusion(current) is None and (
+                    self.patrol_visits < 1 or getattr(self, '_initial_exclusion_exit', False)):
+                exclusion = None
         if getattr(self, 'planning_anchor', None) is None:
             current = self.pose()
             if current is not None:
                 self.planning_anchor = current.copy()
         anchor = getattr(self, 'planning_anchor', None)
         extra = getattr(self, 'patrol_extra_clearance', 0.) if self.intent == 'patrol' else 0.
-        key = (id(self.grid), repr(boundary), repr(exclusion), self.intent == 'return', extra, repr(anchor))
+        key = (id(self.grid), repr(boundary), repr(saved_exclusion), repr(exclusion), self.intent == 'return', extra, repr(anchor))
         if key == self.navigation_map_key:
             return
         msg = copy.deepcopy(self.grid)
@@ -408,7 +596,7 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         cells = np.asarray(msg.data).reshape(info.height, info.width)
         # Missing either saved zone blocks autonomous planning.
         cells = region_map(cells, info.resolution, origin,
-                           boundary if exclusion is not None else None,
+                           boundary if saved_exclusion is not None else None,
                            exclusion if self.intent != 'return' else None)
         msg.data = cells.astype(np.int8).ravel().tolist()
         msg.header.stamp = self.get_clock().now().to_msg()
@@ -419,14 +607,60 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         extra_margin = (math.hypot(self.p['footprint_half_length'], self.p['footprint_half_width'])
                         +.05+.10-min(self.p['footprint_half_length'], self.p['footprint_half_width'])+extra)
         planning.data = region_map(np.asarray(self.grid.data).reshape(info.height, info.width),
-            info.resolution, origin, boundary if exclusion is not None else None,
+            info.resolution, origin, boundary if saved_exclusion is not None else None,
             exclusion if self.intent != 'return' else None, extra_margin, anchor).astype(np.int8).ravel().tolist()
         self.planning_map_pub.publish(planning)
         self.navigation_map_key = key
 
+    def _patrol_exclusion(self, pose):
+        """Patrol exclusion. Lifted until the first patrol is completed,
+        and while leaving an initial pose that was set inside the zone.
+
+        The boundary limit is unchanged.
+        """
+        rect = self.data.get('rectangle')
+        if self.intent != 'patrol' or rect is None or pose is None:
+            return None
+        if self.patrol_visits < 1:
+            if not getattr(self, '_first_patrol_zone_noted', False):
+                self._first_patrol_zone_noted = True
+                self.event('첫 정찰을 완수하기 전에는 정찰 제한 구간 안에서도 정찰합니다.')
+            return None
+        info = self.localization_info or {}
+        if (info.get('state') == 'VERIFYING'
+                and '사용자가 지정한 초기 위치' in str(info.get('reason') or '')):
+            self._initial_exclusion_exit = None
+        radius = math.hypot(self.p['footprint_half_length'], self.p['footprint_half_width'])+.05
+        overlaps = not outside_exclusion(pose, rect, radius)
+        if info.get('ready') and getattr(self, '_initial_exclusion_exit', None) is None:
+            boundary = self.data.get('boundary')
+            in_bounds = boundary is not None and inside_patrol_region(pose, boundary, 0.)
+            self._initial_exclusion_exit = bool(overlaps and in_bounds)
+            if self._initial_exclusion_exit:
+                self.event('초기 위치가 정찰 제한 구간 안입니다. 구간 밖으로 이동을 허용합니다.')
+        if getattr(self, '_initial_exclusion_exit', False) and not overlaps:
+            self._initial_exclusion_exit = False
+            self.event('정찰 제한 구간을 벗어났습니다. 이후에는 구간 안으로 들어가지 않습니다.')
+        if getattr(self, '_initial_exclusion_exit', False):
+            return None
+        return rect
+
+    def _at_saved_goal(self, pose):
+        goal = np.asarray(self.data['goal'])
+        return (np.linalg.norm(pose[:2]-goal[:2]) <= .06
+                and abs(wrap(pose[2]-goal[2])) <= .15)
+
+    def _complete_arrival(self, reason):
+        self.intent = 'hold'
+        self.state = 'HOLD'
+        self.stop()
+        self.cancel_nav()
+        self.arrival_pub.publish(Empty())
+        self.event(reason)
+
     def motion_allowed(self, pose, vx=0., vy=0., horizon=1., angular=0.):
-        return travel_allowed(pose, self.data.get('boundary'),
-                              self.data.get('rectangle') if self.intent == 'patrol' else None,
+        exclusion = self._patrol_exclusion(pose) if self.intent == 'patrol' else None
+        return travel_allowed(pose, self.data.get('boundary'), exclusion,
                               vx, vy, self.p['footprint_half_length'],
                               self.p['footprint_half_width'], horizon, angular)
 
@@ -444,15 +678,35 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         if self.mode != 'mission' or not accepts_patrol(self.intent):
             return
         self.init_patrol()
+        self.patrol_visits = 0
+        self._first_patrol_zone_noted = False
         self.intent = 'patrol'; self.state = 'PATROL'; self.next_attempt = 0.
         self.event('Patrol requested')
 
-    def stop(self):
+    def stop(self, reason=None):
+        # Publish the safety command before diagnostics or serialization.
+        self.patrol_output = (0., 0.)
+        self.patrol_output_stamp = time.monotonic()
         self.velocity_pub.publish(Twist())
+        caller = inspect.currentframe().f_back
+        age = time.monotonic()-getattr(self, 'nav_velocity_stamp', 0.)
+        self.last_stop = dict(time=time.time(), reason=reason or caller.f_code.co_name,
+            line=caller.f_lineno, state=getattr(self,'state',None),
+            health=getattr(self,'health_diagnostics',{}).get('reason'),
+            nav_command_age=age, scan_error=getattr(self,'scan_motion_error',None),
+            scan_key=getattr(self,'_used_scan_key',None),
+            nav_received_at=(getattr(self,'_nav_sample',None) or (None,None,None))[2])
+        del caller
+        if hasattr(self, 'event_pub'):
+            self.event_pub.publish(String(data=json.dumps(dict(time=self.last_stop['time'],
+                state=self.last_stop['state'], message='Velocity stop: '+self.last_stop['reason'],
+                stop=self.last_stop))))
 
     def cancel_nav(self):
+        self.cancel_patrol_plan()
         self.cancel_requested = True
         self.nav_velocity_stamp = 0.
+        self._nav_accept_after = time.monotonic()
         if self.nav_handle is not None:
             # Result callback is the handoff barrier, not cancellation acceptance.
             if not getattr(self, 'cancel_sent', False):
@@ -519,7 +773,10 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         self.next_attempt = time.monotonic()+(0. if patrol_arrived or purpose != self.intent else self.p['retry_seconds'])
         if (purpose == 'patrol' and self.intent == 'patrol' and not cancelled and not patrol_arrived
                 and self.nav_target is not None):
-            self.begin_patrol_recovery()
+            if getattr(self, 'patrol_path', None) is None:
+                self.reject_patrol_target(self.nav_target, '이동 시작 전 Nav2 실패: 목표 재검사 필요')
+            else:
+                self.begin_patrol_recovery()
 
     def patrol_target(self):
         if self.candidates is None or not len(self.candidates):
@@ -529,14 +786,30 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         current = self.pose()
         if current is None:
             return None
+        costmap = self.patrol_costmap
+        if costmap is None or time.monotonic()-self.patrol_costmap_stamp > 2.:
+            self.detail = '최신 전역 비용 지도 대기: 도달 가능한 목표 확인 전 정지'
+            return None
+        connected = costmap_component(costmap, current)
+        info = costmap.metadata
+        cost_origin = [info.origin.position.x, info.origin.position.y, yaw(info.origin.orientation)]
+        now = time.monotonic()
+        self.patrol_rejected = [(p, end) for p, end in self.patrol_rejected if end > now]
         margin = math.hypot(self.p['footprint_half_length'], self.p['footprint_half_width'])+.05
         for index in np.random.permutation(len(self.candidates)):
             row, col = self.candidates[index]
             p = transform(np.array([[(col+.5)*self.grid.info.resolution, (row+.5)*self.grid.info.resolution]]), base)[0]
+            local = relative(cost_origin, [*p, 0.])
+            cx, cy = math.floor(local[0]/info.resolution), math.floor(local[1]/info.resolution)
+            if not (0 <= cx < info.size_x and 0 <= cy < info.size_y and connected[cy, cx]):
+                continue
+            if any(np.linalg.norm(p-np.asarray(rejected)) < .5 for rejected, _ in self.patrol_rejected):
+                continue
             if (inside_patrol_region(p, self.data['boundary'], margin)
                     and outside_exclusion(p, self.data['rectangle'], margin)
                     and np.linalg.norm(p-current[:2]) > .6):
                 return [*p, random.uniform(-math.pi, math.pi)]
+        self.detail = '이동 가능한 정찰 목표 없음: 비용 지도 갱신 후 재탐색'
         return None
 
     def match_ok(self, result):
@@ -549,10 +822,19 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         cloud = self.cloud(); pose = self.pose()
         if cloud is None or pose is None:
             self.stop(); self.settled_since = None; return
+        if self.tick_micro_adjustment(pose):
+            return
+        if self.position_return(pose):
+            return
         if self.coarse_align(pose):
             return
         key = self.scan_key()
         now = time.monotonic()
+        if self.fine_alignment_started is None:
+            self.fine_alignment_started = now
+        if now-self.fine_alignment_started > 15.:
+            self.reapproach_return('정밀 정렬 수렴 시간 초과 또는 기준 스캔 불일치')
+            return
         if now < self.alignment_recheck_until:
             self.stop()
             self.detail = '정렬 재검증 대기: ' + self.alignment_diagnostics.get('rejection','')
@@ -563,7 +845,10 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
             result = register_scan(cloud, self.data['reference'], initial)
             self.match = result
             reasons = []
-            diagnostic = dict(phase='FINE_VERIFY',initial=initial.tolist())
+            diagnostic = dict(phase='FINE_VERIFY',initial=initial.tolist(),
+                longitudinal_m=float(initial[0]), lateral_m=float(initial[1]),
+                heading_error_deg=math.degrees(initial[2]), updated_at=time.time(),
+                attempts=self.return_reapproaches)
             if result is None:
                 reasons.append('LiDAR 대응점 부족')
             else:
@@ -611,6 +896,8 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
             diagnostic['phase']='FINE_ALIGN'
             self.align_valid_stamp = now
             error = result['pose']
+            diagnostic.update(longitudinal_m=float(error[0]), lateral_m=float(error[1]),
+                              heading_error_deg=math.degrees(error[2]), reference='saved_scan')
             xy = np.linalg.norm(error[:2]); heading = abs(error[2])
             satisfied = xy < self.p['xy_tolerance'] and heading <= math.radians(self.p['yaw_tolerance_deg'])
             if satisfied:
@@ -626,21 +913,18 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                     self.settled_since = None
             else:
                 self.settled_since = None
+                if xy > self.p['xy_tolerance']:
+                    bearing = wrap(math.atan2(-error[1], -error[0])-error[2])
+                    if min(abs(bearing), math.pi-abs(bearing)) > .25:
+                        self.start_micro_adjustment(pose, error)
+                        return
                 self.align_velocity = alignment_command(error, self.p['xy_tolerance'],
                     math.radians(self.p['yaw_tolerance_deg']), self.p['max_align_v'], self.p['max_align_w'])
             self.detail = f'Alignment estimate: {xy*1000:.1f} mm, {math.degrees(error[2]):.2f} deg'
         if now-self.align_valid_stamp > .2:
             self.stop(); self.settled_since = None; return
         v, w = self.align_velocity
-        if (v or w) and not swept_clear(cloud, v, w, self.p['footprint_half_length'],
-                self.p['footprint_half_width'], self.p['obstacle_margin']):
-            self.stop(); self.settled_since = None
-            self.detail = 'Alignment blocked: waiting for clearance; retry remains active'
-            return
-        command = Twist(); command.linear.x = float(v); command.angular.z = float(w)
-        if not self.motion_allowed(pose, v, angular=w):
-            self.stop(); self.detail = '한계 구간 접근: 정렬 대기'; return
-        self.velocity_pub.publish(command)
+        self.return_command(pose, v, w, True)
 
     def tick(self):
         self.publish_navigation_map()
@@ -659,6 +943,9 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                 self.pause_return()
             self.stop(); self.cancel_nav(); self.settled_since = None
             self.detail = 'Paused: manual control or localization/sensor readiness'
+            self.last_readiness_stop = dict(time=time.time(), manual=self.manual,
+                health=copy.deepcopy(getattr(self, 'health_diagnostics', {})),
+                pose=copy.deepcopy(getattr(self, 'pose_diagnostics', {})))
             return
         if self.data is None or self.data.get('rectangle') is None or self.data.get('boundary') is None:
             self.state = 'WAIT'; self.stop()
@@ -670,25 +957,38 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                 self.pause_return()
             self.stop(); self.cancel_nav(); self.settled_since = None
             self.detail = 'Paused: manual control or localization/sensor readiness'
+            self.last_readiness_stop = dict(time=time.time(), manual=self.manual,
+                health=copy.deepcopy(getattr(self, 'health_diagnostics', {})),
+                pose=copy.deepcopy(getattr(self, 'pose_diagnostics', {})))
             return
         if not self.motion_allowed(current_pose):
             self.stop(); self.cancel_nav()
             self.detail = '현재 위치가 한계 구간 밖이거나 정찰 제한 구간 안입니다. 수동으로 이동해 주세요.'
             return
+        if getattr(self, '_initial_exclusion_exit', False):
+            self.detail = '초기 위치가 정찰 제한 구간 안입니다. 구간 밖으로 이동합니다.'
         busy = self.nav_pending or self.nav_handle is not None
         if self.intent == 'return':
             self.tick_return(current_pose)
             return
         else:
-            if self.tick_patrol_near(current_pose):
-                return
             if self.tick_patrol_recovery(current_pose):
                 return
-            self.state = 'PATROL'
+            self.state = 'PATROL' if busy else 'PATROL_SEARCH'
             if self.patrol_progress_pose is None or np.linalg.norm(current_pose[:2]-self.patrol_progress_pose[:2]) >= .20:
                 self.patrol_progress_pose = current_pose.copy()
                 self.patrol_progress_time = time.monotonic()
                 self.patrol_recovery_count = 0
+            if getattr(self, '_progress_watch', None) is None:
+                self._progress_watch = ProgressWatch()
+            nav_command = getattr(self, 'nav_velocity', None)
+            fresh = (nav_command is not None and time.monotonic()-getattr(self, 'nav_velocity_stamp',0.) < .2
+                     and not getattr(self, 'patrol_sensor_output_wait', False))
+            command = (nav_command.linear.x, nav_command.angular.z) if nav_command is not None else (0.,0.)
+            excluded, rotated = self._progress_watch.update(time.monotonic(), current_pose, command, fresh)
+            self.patrol_progress_time += excluded
+            if rotated:
+                self.patrol_progress_time = time.monotonic()
             if busy and not self.cancel_requested and time.monotonic()-self.patrol_progress_time > 12.:
                 self.begin_patrol_recovery(); return
             if (busy and self.nav_purpose == 'patrol' and self.nav_target is not None
@@ -700,20 +1000,20 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                 self.cancel_nav(); self.stop()
                 self.event(f"정찰 목적지 {self.p['patrol_tolerance']*100:g}cm 이내 도착: 이전 이동을 마무리하고 다음 목적지로 전환합니다.")
                 return
+            if not busy and self.patrol_plan_waiting():
+                self.stop(); return
             if not busy and time.monotonic() >= self.next_attempt:
                 target = getattr(self, 'patrol_retry_target', None)
                 if target is None:
                     target = self.patrol_target()
                 if target is not None:
-                    self.send_nav(target, 'patrol')
+                    self.request_patrol_plan(target)
                 else:
                     self.next_attempt = time.monotonic()+self.p['retry_seconds']
-                    self.detail = 'No valid patrol candidate; retrying'
+                    self.state = 'PATROL_SEARCH'
         if (self.nav_handle is not None and not self.cancel_requested and self.nav_purpose == self.intent
                 and time.monotonic()-self.nav_velocity_stamp < .2):
             command = copy.deepcopy(self.nav_velocity)
-            if self.patrol_direction_stop(command):
-                return
             # Reduce translation independently of steering. Do not replace the
             # patrol destination merely because one command approaches a zone.
             for scale in (1., .5, .25):
@@ -722,15 +1022,15 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
                 if (self.motion_allowed(current_pose, vx, vy, angular=w)
                         and (scale == 1. or self.safe_patrol_command(current_pose, vx, w))):
                     command.linear.x, command.linear.y, command.angular.z = vx, vy, w
-                    self.velocity_pub.publish(command)
-                    if scale < 1.:
+                    published = self.publish_patrol_command(current_pose, command)
+                    if published and scale < 1.:
                         self.detail = '구간 경계 접근: 현재 정찰 목표를 유지하고 감속합니다.'
                     break
             else:
                 self.begin_patrol_recovery()
 
         else:
-            self.stop()
+            self.stop('nav_command_unavailable')
 
     def pose_message(self, pose):
         msg = PoseStamped(); msg.header.frame_id = 'map'; msg.header.stamp = self.get_clock().now().to_msg()
@@ -743,12 +1043,16 @@ class ImpactNode(PatrolControl, ReturnControl, Node):
         busy = self.nav_pending or self.nav_handle is not None
         phase = ('cancel_requested' if busy and self.cancel_requested else
                  'requesting' if self.nav_pending else 'executing' if self.nav_handle is not None else 'idle')
-        pose = self.pose()
+        pose = getattr(self, '_pose_snapshot', None)
         distance = (float(np.linalg.norm(pose[:2]-np.asarray(self.nav_target[:2])))
                     if busy and pose is not None and self.nav_target is not None else None)
         msg = {'mode': self.mode, 'state': self.state, 'intent': self.intent, 'manual': self.manual,
-               'ready': self.healthy(),
-               'health': self.health_diagnostics,
+               'ready': getattr(self, 'control_status', {}).get('ready', False),
+               'health': getattr(self, 'control_status', {}).get('health', {}),
+               'pose_tracking': getattr(self, 'control_status', {}).get('pose', {}),
+               'control_checked_at': getattr(self, 'control_status', {}).get('checked_at'),
+               'last_stop': getattr(self, 'last_stop', None),
+               'last_readiness_stop': getattr(self, 'last_readiness_stop', None),
                'timing': {'tick_ms': getattr(self,'last_tick_ms',0.),
                           'max_tick_ms': getattr(self,'max_tick_ms',0.)},
                'patrol_control': {'near_phase': self.patrol_near['phase'] if self.patrol_near else None,
@@ -813,6 +1117,10 @@ def main(args=None):
     finally:
         if rclpy.ok():
             node.stop(); node.cancel_nav()
+        node.listener.executor.shutdown()
+        node.listener.dedicated_listener_thread.join()
+        node.listener.unregister()
+        node.tf_node.destroy_node()
         node.destroy_node()
         if rclpy.ok():
             rclpy.shutdown()

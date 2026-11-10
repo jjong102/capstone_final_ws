@@ -87,32 +87,45 @@ def select_entry(points, goal, grid, current_yaw):
     return None
 
 
-def tracking_command(pose, path, index, reverse, max_v=.4, max_w=.35):
-    """Monotone path progress with a short lookahead and symmetric speed limits."""
-    # Project onto a short forward window. Lookahead can cut a corner, so
-    # requiring arrival at every old sample would trap progress behind the robot.
+
+def docking_entries(goal, grid):
+    """Goal-axis staging poses; forward first, then reverse, no unsafe corridor."""
+    goal = np.asarray(goal)
+    entries = []
+    for distance in (-.5, .5, -.7, .7):
+        xy = transform(np.array([[distance, 0.]]), goal)[0]
+        entry = np.array([*xy, goal[2]])
+        if grid.clear(entry) and grid.corridor(entry, goal):
+            entries.append((entry, distance > 0))
+    return entries
+
+def tracking_command(pose, path, index, reverse, max_v=.4, max_w=.35, measured_speed=0.):
+    """Curvature tracking with speed-adaptive preview, symmetric in reverse."""
     end = min(len(path), index+12)
     index += int(np.argmin(np.linalg.norm(path[index:end]-pose[:2], axis=1)))
     while index < len(path)-1 and np.linalg.norm(path[index]-pose[:2]) < .08:
         index += 1
+    preview = float(np.clip(.45+1.5*abs(measured_speed), .45, .9))
     target_index = index
-    distance = 0.
-    while target_index < len(path)-1 and distance < .25:
+    distance = np.linalg.norm(path[index]-pose[:2])
+    while target_index < len(path)-1 and distance < preview:
         distance += np.linalg.norm(path[target_index+1]-path[target_index])
         target_index += 1
-    target = relative(pose, [*path[target_index], pose[2]])
-    error = wrap(math.atan2(target[1], target[0])-(math.pi if reverse else 0.))
-    remaining = np.linalg.norm(path[index]-pose[:2])+np.linalg.norm(np.diff(path[index:], axis=0), axis=1).sum()
-    v = min(max_v, math.sqrt(max(0., 2*.5*remaining)), remaining*1.5)
-    # Raised cosine: 100/75/25/0 percent at 0/15/30/45 degrees.
-    # Smooth value and slope at both ends; preserve the rotation controller.
-    if reverse:
-        # Keep the existing narrow-corridor reverse steering policy.
-        v *= max(0., math.cos(error)) if abs(error) <= .3 else 0.
-    else:
-        angle = min(abs(error), math.pi/4)
-        v *= .5*(1.+math.cos(4.*angle))
-    return (-v if reverse else v), float(np.clip(error*1.5, -max_w, max_w)), index
+    travel_pose = [pose[0], pose[1], pose[2]+(math.pi if reverse else 0.)]
+    target = relative(travel_pose, [*path[target_index], travel_pose[2]])
+    error = wrap(math.atan2(target[1], target[0]))
+    remaining = np.linalg.norm(path[index]-pose[:2])+np.linalg.norm(np.diff(path[index:],axis=0),axis=1).sum()
+    speed = min(max_v, math.sqrt(max(0.,2*.35*remaining)),remaining*1.2)
+    # Smoothly slow on bends. Large initial errors use low-gain in-place turning.
+    speed *= max(0., math.cos(1.5*min(abs(error),math.pi/3)))**2
+    if abs(error) > math.pi/3:
+        return 0., float(np.clip(.7*error,-max_w,max_w)), index
+    curvature = 2.*target[1]/max(float(target[0]**2+target[1]**2), .04**2)
+    if abs(curvature)>1e-9:
+        speed = min(speed,max_w/abs(curvature))
+    turn_blend = float(np.clip((abs(error)-math.pi/4)/(math.pi/12),0.,1.))
+    angular = (1.-turn_blend)*speed*curvature + turn_blend*.7*error
+    return (-speed if reverse else speed), float(np.clip(angular,-max_w,max_w)), index
 
 
 def obstacle_action(reverse, elapsed):

@@ -12,6 +12,42 @@ Visualization Manager:
     Background Color: 40; 40; 40
     Frame Rate: 20
   Displays:
+  - Class: rviz_default_plugins/LaserScan
+    Name: Front LiDAR (Blue)
+    Enabled: true
+    Topic:
+      Value: /rplidar1/scan_filtered
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 5
+    Color Transformer: FlatColor
+    Color: 0; 100; 255
+    Position Transformer: XYZ
+    Style: Flat Squares
+    Size (m): 0.1
+    Size (Pixels): 3
+    Alpha: 1
+    Decay Time: 0
+    Use Fixed Frame: true
+  - Class: rviz_default_plugins/LaserScan
+    Name: Rear LiDAR (Red)
+    Enabled: true
+    Topic:
+      Value: /rplidar2/scan_filtered
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 5
+    Color Transformer: FlatColor
+    Color: 255; 0; 0
+    Position Transformer: XYZ
+    Style: Flat Squares
+    Size (m): 0.1
+    Size (Pixels): 3
+    Alpha: 1
+    Decay Time: 0
+    Use Fixed Frame: true
   - Class: rviz_default_plugins/Map
     Name: Map
     Enabled: true

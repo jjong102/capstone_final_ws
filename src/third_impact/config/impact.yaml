@@ -7,6 +7,8 @@ third_impact:
     capture_seconds: 2.0
     return_max_speed: 0.4  # same limit for forward and reverse return
     return_max_angular_speed: 0.35
+    return_linear_accel: 0.35
+    return_angular_accel: 0.4
     return_obstacle_margin: 0.01  # footprint uncertainty allowance, not a wide wall clearance
     align_radius: 0.4  # legacy; automatic return hands off within 6 cm
     patrol_tolerance: 0.05  # patrol only: ignore yaw and do not require settling

@@ -7,30 +7,33 @@ from third_impact.node import ImpactNode
 
 
 def stub(**values):
-    defaults = dict(patrol_direction_stop=Mock(return_value=False), mode='mission', intent='patrol', state='PATROL', next_attempt=0.,
-                    safe_patrol_command=Mock(return_value=True), init_patrol=Mock(), tick_patrol_near=Mock(return_value=False), tick_patrol_recovery=Mock(return_value=False), begin_patrol_recovery=Mock(), patrol_progress_pose=None, patrol_progress_time=time.monotonic(), publish_navigation_map=Mock(), motion_allowed=Mock(return_value=True), cancel_nav=Mock(), stop=Mock(), event=Mock(), settled_since=None, reset_return=Mock(), pause_return=Mock())
+    defaults = dict(patrol_plan_waiting=Mock(return_value=False), reject_patrol_target=Mock(), mode='mission', intent='patrol', state='PATROL', next_attempt=0.,
+                    safe_patrol_command=Mock(return_value=True), init_patrol=Mock(), tick_patrol_recovery=Mock(return_value=False), begin_patrol_recovery=Mock(), patrol_progress_pose=None, patrol_progress_time=time.monotonic(), publish_navigation_map=Mock(), motion_allowed=Mock(return_value=True), cancel_nav=Mock(), stop=Mock(), event=Mock(), settled_since=None, reset_return=Mock(), pause_return=Mock())
     defaults.update(values)
     node = NS(**defaults)
+    node.publish_patrol_command = MethodType(ImpactNode.publish_patrol_command, node)
     node.patrol_readiness_pause = MethodType(ImpactNode.patrol_readiness_pause, node)
     return node
 
 
 def test_hold_rejects_return_without_motion_or_duplicate_event():
-    n = stub(intent='hold', state='HOLD')
+    n = stub(intent='hold', state='HOLD', patrol_visits=2, _first_patrol_zone_noted=True)
     ImpactNode.on_return(n, None)
     assert n.intent == 'hold' and n.state == 'HOLD'
     n.cancel_nav.assert_not_called(); n.event.assert_not_called()
     ImpactNode.on_patrol(n, None)
     assert n.intent == 'patrol'
+    assert n.patrol_visits == 0 and not n._first_patrol_zone_noted
 
 
 def test_return_preempts_patrol_and_ignores_go_around():
-    n = stub()
+    n = stub(patrol_visits=2)
     ImpactNode.on_return(n, None)
     assert n.intent == 'return' and n.state == 'RETURN'
     n.cancel_nav.assert_called_once(); n.stop.assert_called_once()
     ImpactNode.on_patrol(n, None)
     assert n.intent == 'return'
+    assert n.patrol_visits == 2
 
 
 def test_pending_action_is_cancelled_if_acceptance_arrives_after_manual_takeover():
@@ -89,6 +92,7 @@ def patrol_stub(distance):
     def cancel():
         n.cancel_requested=True
     n.cancel_nav=Mock(side_effect=cancel)
+    n._patrol_exclusion=lambda pose:n.data['rectangle']
     n.motion_allowed=MethodType(ImpactNode.motion_allowed,n)
     return n
 
@@ -193,6 +197,13 @@ def test_patrol_target_is_inside_allowed_region_with_body_clearance():
          pose=lambda:np.array([0.,0.,0.]),
          data={'boundary':[2.,2.,0.,2.,2.], 'rectangle':[10,10,0,1,1]},
          p={'footprint_half_length':.35,'footprint_half_width':.22})
+    from nav2_msgs.msg import Costmap
+    n.patrol_costmap=Costmap()
+    n.patrol_costmap.metadata.size_x=n.patrol_costmap.metadata.size_y=4
+    n.patrol_costmap.metadata.resolution=1.
+    n.patrol_costmap.metadata.origin=origin
+    n.patrol_costmap.data=[0]*16
+    n.patrol_costmap_stamp=time.monotonic(); n.patrol_rejected=[]
     for _ in range(20):
         p=ImpactNode.patrol_target(n)
         assert p is not None and 1.47 < p[0] < 2.53 and 1.47 < p[1] < 2.53
@@ -278,31 +289,52 @@ def test_cancelled_patrol_retains_retry_delay():
     assert n.next_attempt==102.
 
 
-def test_first_planning_failure_enters_supervised_recovery():
+def test_failure_before_any_path_selects_another_target_without_rotation():
     n=stub(nav_purpose='patrol', cancel_requested=False, patrol_reached=False,
            patrol_retry_target=None,nav_target=[1.,2.,0.],nav_handle=object(),
            p={'retry_seconds':2.})
     future=Mock();future.result.return_value=NS(status=6)
     ImpactNode.nav_finished(n,future)
-    n.begin_patrol_recovery.assert_called_once()
+    n.begin_patrol_recovery.assert_not_called()
+    n.reject_patrol_target.assert_called_once()
     assert n.nav_target==[1.,2.,0.]
 
 
-def test_health_distinguishes_pair_skew_and_stale_sensor():
+def test_health_rejects_unpaired_or_expired_observation():
+    from third_impact.scan_pairs import ScanPairs
     from builtin_interfaces.msg import Time
     from unittest.mock import patch
-    n=NS(p={'require_localization_ready':True,'odom_timeout':.3,'scan_timeout':.45,
+    pairs=ScanPairs()
+    sample=lambda stamp:(100.,Time(sec=int(stamp),nanosec=int((stamp%1)*1e9)),np.zeros((2,2)))
+    pairs.add('front',10.,sample(10.));pairs.add('rear',10.2,sample(10.2))
+    clock=[10.2]
+    n=NS(p={'require_localization_ready':True,'odom_timeout':.3,
             'amcl_max_xy_variance':.08,'amcl_max_yaw_variance':.08},
          localization_stamp=100.,localization_info={'ready':True},manual=False,
          manual_stamp=100.,odom=object(),odom_stamp=100.,grid=object(),
          amcl=NS(pose=NS(covariance=[0.]*36)),pose=lambda:np.zeros(3),
-         scans={'front':(100.,Time(sec=10),np.zeros((2,2))),
-                'rear':(100.,Time(sec=10,nanosec=200000000),np.zeros((2,2)))})
+         selected_scans=lambda:pairs.select(clock[0],.45),cloud=lambda:np.zeros((2,2)))
     with patch('third_impact.node.time.monotonic',return_value=100.):
         assert not ImpactNode.healthy(n)
-        assert n.health_diagnostics['reason']=='scan_pair_skew'
-        n.scans['rear']=(100.,Time(sec=10,nanosec=50000000),np.zeros((2,2)))
+        assert n.health_diagnostics['reason']=='scan_pair_unavailable'
+        pairs.add('rear',10.05,sample(10.05))
         assert ImpactNode.healthy(n)
-        n.scans['front']=(99.,Time(sec=10),np.zeros((2,2)))
+        clock[0]=10.6
         assert not ImpactNode.healthy(n)
-        assert n.health_diagnostics['reason']=='front_scan_stale'
+        assert n.health_diagnostics['reason']=='scan_pair_unavailable'
+
+
+def test_forty_cm_handoff_removed_nav2_keeps_ownership():
+    n=patrol_stub(.3)
+    ImpactNode.tick(n)
+    n.cancel_nav.assert_not_called()
+    n.stop.assert_not_called()
+    assert n.velocity_pub.publish.call_args.args[0].linear.x>0
+
+
+def test_stale_navigation_command_still_stops_immediately():
+    n=patrol_stub(1.)
+    n.nav_velocity_stamp=time.monotonic()-1.
+    ImpactNode.tick(n)
+    n.stop.assert_called_once()
+    n.velocity_pub.publish.assert_not_called()

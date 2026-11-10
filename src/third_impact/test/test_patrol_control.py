@@ -121,19 +121,6 @@ def test_configuration_uses_measured_velocity_and_separate_planning_map():
         assert cfg[costmap][costmap]['ros__parameters']['static_layer']['map_topic']==topic
 
 
-def test_opposite_turn_waits_for_measured_stop():
-    from geometry_msgs.msg import Twist
-    n=robot(); n.event=Mock()
-    n.odom=NS(twist=NS(twist=NS(angular=NS(z=.16))))
-    n.stopped=lambda:False
-    command=Twist();command.angular.z=-.35;command.linear.x=.6
-    assert PatrolControl.patrol_direction_stop(n,command)
-    n.stop.assert_called()
-    n.odom.twist.twist.angular.z=0.;n.stopped=lambda:True
-    assert PatrolControl.patrol_direction_stop(n,command)
-    assert not PatrolControl.patrol_direction_stop(n,command)
-
-
 def test_patrol_bt_delegates_recovery_without_changing_return():
     from pathlib import Path
     import xml.etree.ElementTree as ET
