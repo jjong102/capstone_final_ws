@@ -23,6 +23,7 @@ class GridModel:
 
         boundary = self.occupied & binary_dilation(self.free)
         self.distance = distance_transform_edt(~boundary)*self.resolution
+        self.distance_gradient = np.gradient(self.distance, self.resolution)
         row, col = np.nonzero(boundary)
         self.reference = np.column_stack(((col+.5)*self.resolution, (row+.5)*self.resolution))
         self.fingerprint = hashlib.sha256(self.cells.tobytes()+repr((resolution, list(origin))).encode()).hexdigest()
@@ -188,3 +189,75 @@ def verify_sensors(model, cloud, sensors, origins, pose):
     quality.update(valid=not failures, failures=failures,
                    reason=' / '.join(failures) or '위치 검증 통과')
     return quality
+
+
+def verify_tracking(model, sensors, origins, pose):
+    """Occlusion-aware verification of an already established pose only.
+
+    No scan is changed: these masks are private to localization, never collision
+    checking. Unknown space or a return behind a mapped wall is not occlusion.
+    """
+    local = model.local_pose(pose)
+    evidence = []; normals = []; details = {}; total = occluded = contradictions = 0
+    grad_y, grad_x = model.distance_gradient
+    for key, points in sensors.items():
+        points = voxel(np.asarray(points), .04)
+        origin = np.asarray(origins[key])
+        vectors = points-origin
+        lengths = np.linalg.norm(vectors, axis=1)
+        directions = vectors/np.maximum(lengths[:, None], 1e-6)
+        # Ray march to the first occupied/unknown cell, including the space
+        # before the measured endpoint. The scan's actual sensor origin matters.
+        steps = np.arange(0., 6.01, model.resolution*.5)
+        rays = origin+directions[:, None, :]*steps[None, :, None]
+        c, s = math.cos(local[2]), math.sin(local[2])
+        moved = np.stack((c*rays[..., 0]-s*rays[..., 1]+local[0],
+                          s*rays[..., 0]+c*rays[..., 1]+local[1]), axis=-1)
+        row, col, inside = model.indices(moved)
+        known_free = inside & model.free[row, col]
+        stops = ~known_free
+        first = np.argmax(stops, axis=1)
+        has_stop = stops.any(axis=1)
+        expected = steps[first]
+        idx = np.arange(len(points))
+        wall = has_stop & inside[idx, first] & model.occupied[row[idx, first], col[idx, first]]
+        endpoints = transform(points, local)
+        er, ec, good = model.indices(endpoints)
+        hit = good & (model.distance[er, ec] < .12) & wall & (np.abs(lengths-expected) < .18)
+        hidden = wall & (expected-lengths > .20) & good & model.free[er, ec] & ~hit
+        bad = ~(hit | hidden)
+        total += len(points); occluded += int(hidden.sum()); contradictions += int(bad.sum())
+        evidence.extend(endpoints[hit])
+        # Surface normals sampled just in front of the observed mapped wall.
+        probes = transform(points[hit]-directions[hit]*.10, local)
+        pr, pc, _ = model.indices(probes)
+        normals.extend(np.column_stack((grad_x[pr, pc], grad_y[pr, pc])))
+        details[key] = dict(returns=len(points), matched=int(hit.sum()),
+                            occluded=int(hidden.sum()), contradictory=int(bad.sum()),
+                            overlap=float(hit.mean()) if len(hit) else 0.)
+    evidence = np.asarray(evidence).reshape(-1, 2)
+    normals = np.asarray(normals).reshape(-1, 2)
+    information = 0.
+    if len(evidence) >= 40:
+        magnitude = np.linalg.norm(normals, axis=1)
+        usable = magnitude > .3
+        n = normals[usable]/magnitude[usable, None]
+        p = evidence[usable]-local[:2]
+        if len(p) >= 40:
+            jac = np.column_stack((n, -n[:, 0]*p[:, 1]+n[:, 1]*p[:, 0]))
+            # Scale rotation by scene extent so long rays cannot hide a weak
+            # translation axis. A single flat wall has rank < 3 and must stop.
+            jac[:, 2] /= max(1., float(np.sqrt(np.mean(np.sum(p*p, axis=1)))))
+            information = float(np.linalg.eigvalsh(jac.T@jac/len(jac))[0])
+    footprint = model.footprint_clear(local)
+    contradictory_fraction = contradictions/max(total, 1)
+    geometry = len(evidence) >= 40 and information >= .015
+    inconsistent = not footprint or contradictory_fraction > .20
+    valid = geometry and not inconsistent
+    reason = ('가림 제외 후 지도 구조로 위치 추적 중' if valid else
+              '관측과 지도 위치 모순' if inconsistent else '가림으로 위치 관측 부족 · 정지하여 관측 회복 대기')
+    return dict(valid=valid, reason=reason, sensors=details, matched=len(evidence),
+                occluded=occluded, contradictory_fraction=contradictory_fraction,
+                information=information, footprint_clear=footprint,
+                insufficient=not geometry and not inconsistent,
+                overlap=len(evidence)/max(total, 1), failures=[] if valid else [reason])

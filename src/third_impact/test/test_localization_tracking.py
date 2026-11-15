@@ -58,3 +58,42 @@ def test_stationary_recheck_requires_repeated_good_observations():
     tick(n,100.);assert not n.ready
     tick(n,100.5);assert not n.ready
     tick(n,101.1);assert n.ready
+
+
+def test_occlusion_hold_never_starts_global_search_and_recovers():
+    n=harness(); n.tracking_active=True; n.last_save=100.
+    n.pool=Mock();n.cancel_search=Mock()
+    n.tracking_quality=Mock(return_value={'valid':False,'insufficient':True,'reason':'occluded'})
+    for t in (100.,101.,110.,130.):
+        tick(n,t)
+        assert n.state=='OCCLUDED_HOLD' and not n.ready and n.tracking_active
+    n.pool.submit.assert_not_called()
+    # A repeated observation cannot initiate recovery either.
+    with patch('third_impact.localization.time.monotonic',return_value=130.1):
+        LocalizationBootstrap.tick(n)
+    assert n.state=='OCCLUDED_HOLD'
+    n.tracking_quality.return_value={'valid':True,'reason':'ok','occluded':80}
+    n.last_save=131.
+    tick(n,131.);assert not n.ready
+    tick(n,131.5);assert not n.ready
+    tick(n,132.1);assert n.ready
+    tick(n,132.3);assert n.state=='OCCLUDED_TRACKING' and n.ready
+    n.pool.submit.assert_not_called()
+
+
+def test_pose_unavailable_during_established_tracking_holds_without_seed():
+    n=harness();n.tracking_active=True;n.pose=lambda:None;n.pool=Mock()
+    tick(n,100.)
+    assert n.state=='TRACKING_HOLD' and not n.ready and n.tracking_active
+    n.pool.submit.assert_not_called()
+
+
+def test_tracking_rejects_amcl_jump_even_when_scan_verification_passes():
+    n=harness();n.tracking_anchor=(np.zeros(3),np.zeros(3))
+    n.model.verify.return_value={'valid':True,'reason':'ok','overlap':1.}
+    n.tf=Mock()
+    n.tf.lookup_transform.return_value=NS(transform=NS(
+        translation=NS(x=0.,y=0.), rotation=NS(x=0.,y=0.,z=0.,w=1.)))
+    quality=LocalizationBootstrap.tracking_quality(n,np.array([.6,0.,0.]))
+    assert not quality['valid'] and not quality['insufficient']
+    np.testing.assert_array_equal(n.tracking_anchor[0],np.zeros(3))

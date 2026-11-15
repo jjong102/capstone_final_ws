@@ -13,6 +13,9 @@ namespace third_impact {
 namespace {
 QString localizationName(const QString &state) {
  if(state=="READY") return "위치 확인됨";
+ if(state=="OCCLUDED_TRACKING") return "일부 가림 · 위치 추적 유지";
+ if(state=="OCCLUDED_HOLD") return "가림 관측 부족 · 정지 대기";
+ if(state=="TRACKING_HOLD") return "위치 추정 유지 · 주행 정지";
  if(state=="SEARCHING") return "자동 위치 탐색 중";
  if(state=="INITIALIZING") return "AMCL 자동 초기화 중";
  if(state=="VERIFYING") return "위치 후보 검증 중";
@@ -181,7 +184,9 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
    if(!sensor.isEmpty())
     row(key=="front" ? "전방 벽 일치" : "후방 벽 일치",
         QString("%1 %").arg(sensor["overlap"].toDouble()*100.,0,'f',1),
-        QString("광선 자유 공간 %1% · %2").arg(sensor["rays_free_fraction"].toDouble()*100.,0,'f',1).arg(sensor["reason"].toString()));
+        sensor.contains("occluded")
+          ? QString("벽 관측 %1 · 가림 후보 %2 · 불일치 %3").arg(sensor["matched"].toInt()).arg(sensor["occluded"].toInt()).arg(sensor["contradictory"].toInt())
+          : QString("광선 자유 공간 %1% · %2").arg(sensor["rays_free_fraction"].toDouble()*100.,0,'f',1).arg(sensor["reason"].toString()));
   }
 
   if(quality.contains("overlap"))

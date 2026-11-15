@@ -1,0 +1,14 @@
+{
+  "counts": {
+    "old_True_new_valid": 441,
+    "old_False_new_contradiction": 1,
+    "old_False_new_valid": 123
+  },
+  "latency_ms": [
+    3.3495910001875018,
+    18.141520200060764,
+    21.204870000019582
+  ],
+  "scope": "Offline verifier comparison at recorded poses and synchronized scans; not full AMCL replay or physical motion validation.",
+  "session": "src/third_impact/debug_log/20261115_183611_825157"
+}

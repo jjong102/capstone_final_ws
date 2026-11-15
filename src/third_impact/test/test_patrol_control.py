@@ -1,4 +1,5 @@
 import math
+import time
 from types import SimpleNamespace as NS, MethodType
 from unittest.mock import Mock, patch
 import numpy as np
@@ -18,6 +19,7 @@ def robot():
          data={'boundary':BOUNDARY,'rectangle':EXCLUSION},
          stop=Mock(),cancel_nav=Mock(),velocity_pub=Mock(),stopped=lambda:True,
          cloud=lambda:np.array([[10.,10.]]),
+         scan_key=lambda:(int(time.monotonic()*1e9),int(time.monotonic()*1e9)),
          p={'footprint_half_length':.35,'footprint_half_width':.22,'obstacle_margin':.04})
     PatrolControl.init_patrol(n)
     n.recovery_heading=MethodType(PatrolControl.recovery_heading,n)
@@ -191,4 +193,83 @@ def test_sensor_retry_budget_is_three_even_with_many_new_scans():
         with patch('third_impact.patrol_control.time.monotonic',return_value=100.+i*.2):
             PatrolControl.tick_patrol_recovery(n,POSE)
     assert n.patrol_recovery=='WAIT' and n.patrol_sensor_retries==3
+    n.velocity_pub.publish.assert_not_called()
+
+
+def obstacle_wait_robot():
+    n=robot();n.cloud=lambda:np.array([[.3,.25]])
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.):
+        PatrolControl.begin_patrol_recovery(n)
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='WAIT' and n.patrol_obstacle_wait
+    return n
+
+
+def test_obstacle_disappearing_releases_wait_to_same_goal_replan():
+    n=obstacle_wait_robot();target=list(n.patrol_retry_target)
+    for t in (101.,110.,150.):
+        with patch('third_impact.patrol_control.time.monotonic',return_value=t):
+            PatrolControl.tick_patrol_recovery(n,POSE)
+        assert n.patrol_recovery=='WAIT'
+    n.cloud=lambda:np.array([[10.,10.]])
+    for t in (151.,151.5,152.):
+        with patch('third_impact.patrol_control.time.monotonic',return_value=t):
+            PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery is None and n.state=='PATROL_SEARCH'
+    assert n.patrol_retry_target==target and n.next_attempt==152.
+    assert n.patrol_path is None and n.patrol_wait_reason==''
+    n.velocity_pub.publish.assert_not_called()
+
+
+def test_clear_wait_requires_both_fresh_scans_and_resets_on_obstacle():
+    n=obstacle_wait_robot();n.cloud=lambda:np.array([[10.,10.]])
+    key=[1,1];n.scan_key=lambda:tuple(key)
+    for t in (101.,101.5,102.):
+        key[0]+=1
+        with patch('third_impact.patrol_control.time.monotonic',return_value=t):
+            PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='WAIT' and n.patrol_obstacle_clear_count==0
+    key[:]=[10,10]
+    with patch('third_impact.patrol_control.time.monotonic',return_value=103.):
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_obstacle_clear_count==1
+    n.cloud=lambda:np.array([[.3,.25]]);key[:]=[11,11]
+    with patch('third_impact.patrol_control.time.monotonic',return_value=103.5):
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_obstacle_clear_count==0 and n.patrol_recovery=='WAIT'
+    n.velocity_pub.publish.assert_not_called()
+
+
+def test_obstacle_recheck_obeys_cancel_stop_map_and_region_barriers():
+    n=obstacle_wait_robot();n.cloud=lambda:np.array([[10.,10.]])
+    n.recovery_heading=Mock(return_value=0.)
+    n.nav_handle=object()
+    with patch('third_impact.patrol_control.time.monotonic',return_value=101.):
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    n.recovery_heading.assert_not_called()
+    n.nav_handle=None;n.stopped=lambda:False
+    with patch('third_impact.patrol_control.time.monotonic',return_value=102.):
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    n.recovery_heading.assert_not_called()
+    n.stopped=lambda:True
+    n.recovery_heading=MethodType(PatrolControl.recovery_heading,n)
+    n.return_grid=lambda:NS(clear=lambda pose:False)
+    for t in (103.,103.5,104.):
+        with patch('third_impact.patrol_control.time.monotonic',return_value=t):
+            PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='WAIT' and n.patrol_obstacle_clear_count==0
+    n.velocity_pub.publish.assert_not_called()
+
+
+def test_obstacle_during_rotation_enters_recheckable_wait():
+    n=robot()
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.):
+        PatrolControl.begin_patrol_recovery(n)
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='ROTATE'
+    n.velocity_pub.publish.reset_mock()
+    n.cloud=lambda:np.array([[.3,.25]])
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.1):
+        PatrolControl.tick_patrol_recovery(n,POSE)
+    assert n.patrol_recovery=='WAIT' and n.patrol_obstacle_wait
     n.velocity_pub.publish.assert_not_called()

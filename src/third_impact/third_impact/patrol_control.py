@@ -34,6 +34,11 @@ class PatrolControl:
         self.patrol_near = None
         self.patrol_reversing_since = None
         self.patrol_wait_reason = ''
+        self.patrol_obstacle_wait = False
+        self.patrol_obstacle_check_time = 0.
+        self.patrol_obstacle_clear_since = None
+        self.patrol_obstacle_clear_count = 0
+        self.patrol_obstacle_key = None
         self.planning_anchor = None
         self.patrol_path = None
         self.patrol_path_stamp = 0.
@@ -183,6 +188,11 @@ class PatrolControl:
         return True
 
     def begin_patrol_recovery(self):
+        self.patrol_obstacle_wait = False
+        self.patrol_obstacle_clear_since = None
+        self.patrol_obstacle_clear_count = 0
+        self.patrol_obstacle_key = None
+        self.patrol_obstacle_check_time = 0.
         self.patrol_reversing_since = None
         self.patrol_retry_target = list(self.nav_target)
         self.stop(); self.cancel_nav()
@@ -203,6 +213,53 @@ class PatrolControl:
         elif self.patrol_recovery_count >= 2:
             self.patrol_extra_clearance = .15
         self.detail = '구간 차단: 현재 목표를 유지하고 정지·방향 정렬을 준비합니다.'
+
+    def recheck_patrol_obstacle(self, pose):
+        """Replan after three fresh, safe checks; never publish motion here.
+
+        Called only after the mission readiness and cancellation barriers.
+        Static-map, retry-budget and actuator-progress failures stay latched.
+        """
+        now = time.monotonic()
+        if now-self.patrol_obstacle_check_time < .5:
+            return
+        gap = now-self.patrol_obstacle_check_time
+        self.patrol_obstacle_check_time = now
+        key = self.scan_key() if self.cloud() is not None else None
+        fresh = (key is not None and (self.patrol_obstacle_key is None or
+                 all(a>b for a,b in zip(key,self.patrol_obstacle_key))))
+        if gap > 1.5 or not fresh or not self.stopped():
+            self.patrol_obstacle_clear_since = None
+            self.patrol_obstacle_clear_count = 0
+        if not fresh or not self.stopped():
+            return
+        self.patrol_obstacle_key = key
+        # Reuse the full footprint, LiDAR, physical-map and region checks.
+        heading = self.recovery_heading(pose)
+        if heading is None:
+            self.patrol_obstacle_clear_since = None
+            self.patrol_obstacle_clear_count = 0
+            self.detail = '장애물 대기: 최신 관측으로 안전 공간을 재검사 중입니다.'
+            return
+        if self.patrol_obstacle_clear_since is None:
+            self.patrol_obstacle_clear_since = now
+        self.patrol_obstacle_clear_count += 1
+        if self.patrol_obstacle_clear_count < 3 or now-self.patrol_obstacle_clear_since < 1.:
+            self.detail = '장애물 해소 확인 중: 연속 관측 후 같은 목표로 경로를 재계산합니다.'
+            return
+        self.patrol_obstacle_wait = False
+        self.patrol_recovery = None
+        # A confirmed environmental change starts a new recovery episode.
+        self.patrol_recovery_count = 0
+        self.patrol_wait_reason = ''
+        self.planning_anchor = None
+        self.patrol_path = None
+        self.patrol_path_stamp = 0.
+        self.patrol_progress_time = now
+        self._progress_watch = None
+        self.next_attempt = now
+        self.state = 'PATROL_SEARCH'
+        self.detail = '장애물 해소 확인: 같은 정찰 목표로 새 경로를 요청합니다.'
 
     def tick_patrol_recovery(self, pose):
         phase = self.patrol_recovery
@@ -234,6 +291,8 @@ class PatrolControl:
         if phase == 'WAIT':
             self.stop()
             self.detail = self.patrol_wait_reason
+            if self.patrol_obstacle_wait:
+                PatrolControl.recheck_patrol_obstacle(self, pose)
             return True
         now = time.monotonic()
         if phase != 'ROTATE' and now-self.patrol_recovery_started > 15.:
@@ -272,6 +331,7 @@ class PatrolControl:
                 else:
                     self.patrol_recovery = 'WAIT'
                     reasons = sorted({c['reason'] for c in self.patrol_recovery_check.get('candidates',[])})
+                    self.patrol_obstacle_wait = 'lidar_collision' in reasons
                     self.patrol_wait_reason = '복구 회전 충돌 검사 거부: '+', '.join(reasons)
                 self.detail = self.patrol_wait_reason
                 return True
@@ -305,6 +365,14 @@ class PatrolControl:
                 self.detail = self.patrol_wait_reason
             else:
                 self.detail = '방향 정렬 충돌 검사 거부: '+reason
+                if reason == 'lidar_collision':
+                    self.patrol_recovery = 'WAIT'
+                    self.patrol_obstacle_wait = True
+                    self.patrol_obstacle_clear_since = None
+                    self.patrol_obstacle_clear_count = 0
+                    self.patrol_obstacle_key = None
+                    self.patrol_obstacle_check_time = now
+                    self.patrol_wait_reason = self.detail
             return True
         command = Twist(); command.angular.z = w
         self.velocity_pub.publish(command)

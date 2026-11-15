@@ -107,3 +107,46 @@ def test_front_70_rear_70_overlap_gates():
         assert result['valid'] == expected
         assert model.verify.call_args_list[1].kwargs['min_overlap']==.70
         assert model.verify.call_args_list[2].kwargs['min_overlap']==.70
+
+
+def tracking_scene():
+    model=room(); pose=np.array([1.4,2.1,1.1]); cloud=scan(model,pose)
+    sensors={'front':cloud[cloud[:,0]>=0], 'rear':cloud[cloud[:,0]<0]}
+    return model,model.world_pose(pose),sensors,{k:np.zeros(2) for k in sensors}
+
+
+def test_occluded_front_keeps_tracking_without_removing_collision_returns():
+    from third_impact.localization_search import verify_tracking
+    model,pose,sensors,origins=tracking_scene()
+    sensors['front']*=.35
+    original={k:v.copy() for k,v in sensors.items()}
+    result=verify_tracking(model,sensors,origins,pose)
+    assert result['valid'] and result['occluded']>40
+    assert result['sensors']['front']['matched']==0
+    for key in sensors: np.testing.assert_array_equal(sensors[key],original[key])
+
+
+def test_both_sides_occluded_hold_and_recover_without_new_pose():
+    from third_impact.localization_search import verify_tracking
+    model,pose,sensors,origins=tracking_scene()
+    blocked={k:v*.25 for k,v in sensors.items()}
+    result=verify_tracking(model,blocked,origins,pose)
+    assert not result['valid'] and result['insufficient']
+    assert verify_tracking(model,sensors,origins,pose)['valid']
+
+
+def test_wrong_pose_is_not_accepted_as_occlusion():
+    from third_impact.localization_search import verify_tracking
+    model,pose,sensors,origins=tracking_scene()
+    result=verify_tracking(model,sensors,origins,pose+[.6,.2,.4])
+    assert not result['valid'] and not result['insufficient']
+
+
+def test_one_flat_wall_cannot_constrain_translation_along_wall():
+    from third_impact.localization_search import verify_tracking
+    cells=np.zeros((120,120),dtype=np.int16);cells[:,100:]=100
+    model=GridModel(cells,.05,[0,0,0])
+    points=np.column_stack((np.full(150,3.),np.linspace(-1.,1.,150)))
+    sensors={'front':points,'rear':np.empty((0,2))}
+    result=verify_tracking(model,sensors,{k:np.zeros(2) for k in sensors},[2.,3.,0.])
+    assert not result['valid'] and result['insufficient']
