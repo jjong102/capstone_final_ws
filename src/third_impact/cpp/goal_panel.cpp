@@ -235,7 +235,16 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
   }
   auto ret=obj["return"].toObject();
   if(obj["intent"].toString()=="return") {
-   row("장애물 대기", QString::number(ret["blocked_seconds"].toDouble(), 'f', 1)+"초", ret["waiting"].toString());
+   if(ret["blocked_seconds"].toDouble()>0.)
+    row("주행 중 정지", QString::number(ret["blocked_seconds"].toDouble(), 'f', 1)+"초", ret["waiting"].toString());
+   const auto failure=ret["plan_failure"].toObject();
+   const auto first=ret["first_plan_failure"].toObject();
+   if(!failure.isEmpty())
+    row("복귀 경로 검사", failure["message"].toString(), "경로 계산 또는 차체 공간 검사 결과입니다.");
+   const auto blocked=first["pose"].toArray();
+   if(blocked.size()>=2 && ret["blocked_seconds"].toDouble()<=0.)
+    row("첫 실패 위치", QString("(%1, %2) m").arg(blocked[0].toDouble(),0,'f',2).arg(blocked[1].toDouble(),0,'f',2),
+        first["message"].toString()+" · 지도에 붉은 점으로 표시됩니다.");
   }
   row("최근 안내", "상세", detail.isEmpty() ? "없음" : detail);
   table_->resizeRowsToContents();

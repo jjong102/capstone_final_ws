@@ -14,6 +14,7 @@
       <ParticipantIndex>auto</ParticipantIndex>
       <MaxAutoParticipantIndex>50</MaxAutoParticipantIndex>
       <Peers>
+        <Peer Address="10.96.110.209" />
         <Peer Address="10.96.151.196" />
         <Peer Address="10.96.147.234" />
       </Peers>

@@ -12,6 +12,7 @@
       <MaxAutoParticipantIndex>50</MaxAutoParticipantIndex>
       <Peers>
         <!-- Update these addresses when the school Wi-Fi DHCP lease changes. -->
+        <Peer Address="10.96.110.209" />
         <Peer Address="10.96.151.196" />
         <Peer Address="10.96.147.234" />
       </Peers>

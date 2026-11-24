@@ -11,7 +11,8 @@ from nav2_msgs.action import ComputePathToPose
 from rclpy.action import ActionClient
 from action_msgs.msg import GoalStatus
 from .core import wrap, swept_clear, transform, region_map, stationary_allowed_many, relative, alignment_command
-from .return_route import FootprintMap, select_entry, docking_entries, dense_path, tracking_command, obstacle_action, braking_path
+from .return_route import (FootprintMap, select_entry, docking_entries, room_staging_entries,
+                           dense_path, tracking_command, obstacle_action, braking_path)
 from .editor import yaw
 
 
@@ -31,6 +32,9 @@ class ReturnControl:
     def reset_return(self):
         self.return_docking = False
         self.return_dock_attempt = 0
+        self.return_plan_grid = None
+        self.return_plan_diagnostic = None
+        self.return_first_failure = None
         self.return_reapproaches = 0
         self.return_reapproach_pending = False
         self.micro_adjustment = None
@@ -104,6 +108,8 @@ class ReturnControl:
                     self.return_plan_handle.cancel_goal_async()
                 self.return_future = None
                 self.return_plan_handle = None
+                ReturnControl.note_return_failure(self, 'transit_timeout', '문 통과 경로 계산 시간 초과',
+                                                  self.return_planned_entry)
                 self.return_dock_attempt += 1
                 self.return_retry = now+1.
                 self.detail = '복귀 경로 계산 시간 초과: 다른 진입점 검사'
@@ -114,15 +120,33 @@ class ReturnControl:
         if self.return_alignment_wait:
             self.detail = '복귀 재접근 한도 초과: 정지 유지, 목표·주변 공간 확인 필요'
             return
-        entries = docking_entries(self.data['goal'], self.return_grid())
-        if not entries or self.return_dock_attempt >= len(entries):
+        grid = self.return_grid()
+        if grid is not getattr(self, 'return_plan_grid', None):
+            rejected = []
+            self.return_plan_grid = grid
+            self.return_dock_attempt = 0
+            self.return_first_failure = None
+            self.return_plan_diagnostic = None
+            self.return_axis_entries = docking_entries(self.data['goal'], grid, rejected)
+            self.return_room_entries = None
+            if rejected:
+                ReturnControl.note_return_failure(self, 'axis_blocked', '목표 축 직선 진입 공간 부족', rejected[0])
+        entries = self.return_axis_entries
+        staging = self.return_dock_attempt >= len(entries)
+        if staging:
+            if self.return_room_entries is None:
+                self.return_room_entries = room_staging_entries(self.data['goal'], grid)
+            entries = entries+self.return_room_entries
+        if self.return_dock_attempt >= len(entries):
             self.return_alignment_wait = True
-            self.return_wait_reason = '목표 방향으로 진입 가능한 경로 없음: 정지 유지'
+            failure = self.return_plan_diagnostic
+            self.return_wait_reason = (failure['message'] if failure else '안전한 복귀 진입 후보 없음')+' · 정지 유지'
             self.detail = self.return_wait_reason
             return
         entry, reverse = entries[self.return_dock_attempt]
         self.return_planned_entry = entry
         self.return_planned_reverse = reverse
+        self.return_planned_staging = staging
         goal = ComputePathToPose.Goal()
         goal.goal = self.pose_message(entry)
         goal.start = self.pose_message(pose)
@@ -139,6 +163,7 @@ class ReturnControl:
                         handle.cancel_goal_async()
                     return
                 if not handle.accepted:
+                    ReturnControl.note_return_failure(self, 'planner_rejected', '복귀 경로 요청 거절', entry)
                     self.return_dock_attempt += 1
                     self.return_future = None
                     self.return_retry = time.monotonic()+2.
@@ -152,18 +177,27 @@ class ReturnControl:
                 self.return_dock_attempt += 1
                 self.return_future = None
                 self.return_retry = time.monotonic()+2.
+                ReturnControl.note_return_failure(self, 'planner_error', '복귀 경로 요청 실패', entry)
                 self.detail = '복귀 경로 요청 실패: '+str(exc)
         self.return_future.add_done_callback(accepted)
+
+    def note_return_failure(self, code, message, pose):
+        failure = dict(code=code, message=message, pose=np.asarray(pose).tolist())
+        self.return_plan_diagnostic = failure
+        if getattr(self, 'return_first_failure', None) is None:
+            self.return_first_failure = failure
 
     def return_path_done(self, future, epoch):
         if epoch != self.return_epoch or self.intent != 'return':
             return
         self.return_future = None
         self.return_plan_handle = None
+        entry = self.return_planned_entry
+        code, failure_pose = 'transit_unavailable', entry
         try:
             result = future.result()
             if result.status != GoalStatus.STATUS_SUCCEEDED:
-                raise ValueError('경로 계산 실패')
+                raise ValueError('중간 진입점까지 문 통과 경로를 찾지 못함')
             msg = result.result.path
             if msg.header.frame_id != 'map' or len(msg.poses) < 2:
                 raise ValueError('map 경로가 없거나 너무 짧음')
@@ -175,17 +209,39 @@ class ReturnControl:
                 raise ValueError('위치·센서 또는 조작 모드 확인 필요')
             if np.linalg.norm(points[0]-pose[:2]) > .15:
                 raise ValueError('경로 요청 이후 로봇 위치가 달라짐')
-            incoming = math.atan2(*(points[-1]-points[-2])[::-1])
-            entry = self.return_planned_entry
             grid = self.return_grid()
-            plan = (dict(reverse=self.return_planned_reverse, path=dense_path(points),
-                         entry=entry, docking=True)
-                    if grid.rotation(entry[:2], incoming, entry[2])
-                    and grid.corridor(entry, np.asarray(self.data['goal'])) else None)
-            if plan is None:
-                raise ValueError('진입점 회전 또는 마지막 직선 통로 부족')
-            self.install_return_plan(plan)
+            # Nav2 may return cell centers within tolerance. Replace nearby
+            # endpoints rather than introducing tiny backward turns.
+            if np.linalg.norm(points[0]-pose[:2]) <= grid.resolution:
+                points[0] = pose[:2]
+            else:
+                points = np.vstack((pose[:2], points))
+            if np.linalg.norm(points[-1]-entry[:2]) <= grid.resolution:
+                points[-1] = entry[:2]
+            else:
+                points = np.vstack((points, entry[:2]))
+            blocked, incoming = grid.transit_block(points, pose[2])
+            if blocked is not None:
+                code, failure_pose = 'transit_footprint', blocked
+                raise ValueError('문 통과 경로에 차체 또는 회전 공간 부족')
+            if not grid.rotation(entry[:2], incoming, entry[2]):
+                code = 'entry_rotation'
+                raise ValueError('방 안 진입점 회전 공간 부족')
+            goal = self.data['goal']
+            blocked = grid.corridor_block(entry, [*goal[:2], entry[2]])
+            if blocked is not None:
+                code, failure_pose = 'final_corridor', blocked
+                raise ValueError('방 안 마지막 진입 공간 부족')
+            if not grid.rotation(goal[:2], entry[2], goal[2]):
+                code, failure_pose = 'goal_rotation', goal
+                raise ValueError('저장 목표에서 방향 정렬 공간 부족')
+            self.install_return_plan(dict(reverse=self.return_planned_reverse, path=dense_path(points),
+                                          entry=entry, docking=True,
+                                          staging=self.return_planned_staging))
+            self.return_plan_diagnostic = None
+            self.return_first_failure = None
         except Exception as exc:
+            ReturnControl.note_return_failure(self, code, str(exc), failure_pose)
             self.return_dock_attempt += 1
             self.return_retry = time.monotonic()+2.
             self.return_failed = True
@@ -203,7 +259,8 @@ class ReturnControl:
         self.return_index = 0
         self.return_phase = 'FORWARD'
         self.return_blocked = None
-        self.event('목표 방향 진입 경로 준비: '+('진입점에서 정렬 후 후진' if self.return_reverse else '진입점에서 정렬 후 전진'))
+        prefix = '방 안 중간 자세 경로 준비' if plan.get('staging') else '목표 방향 진입 경로 준비'
+        self.event(prefix+': '+('진입점에서 정렬 후 후진' if self.return_reverse else '진입점에서 정렬 후 전진'))
 
     def show_return_path(self, publisher, points):
         msg = Path(); msg.header.frame_id = 'map'; msg.header.stamp = self.get_clock().now().to_msg()
@@ -586,7 +643,8 @@ class ReturnControl:
         self.show_return_path(self.return_path_pub, display_route)
         if self.return_phase == 'ROTATE':
             self.state = 'RETURN_ROTATE'
-            error = wrap(goal[2]-pose[2])
+            entry_yaw = self.return_entry[2]
+            error = wrap(entry_yaw-pose[2])
             now = time.monotonic()
             progress = getattr(self, 'entry_rotation_progress', None)
             if progress is None:
@@ -598,6 +656,13 @@ class ReturnControl:
                 self.reapproach_return('진입점 방향 정렬 진행 정체 또는 시간 초과')
                 return
             if abs(error) < .04 and self.stopped():
+                if self.return_docking:
+                    grid = self.return_grid()
+                    blocked = grid.corridor_block(pose, [*goal[:2], entry_yaw])
+                    if blocked is not None:
+                        ReturnControl.note_return_failure(self, 'final_corridor', '실제 진입 자세에서 마지막 통로 부족', blocked)
+                        self.reapproach_return('실제 진입 자세에서 마지막 통로 부족')
+                        return
                 self.return_route = dense_path([pose[:2], goal[:2]])
                 self.return_index = 0; self.return_phase = 'REVERSE' if self.return_reverse else 'FINAL'
                 self.event('방향 정렬 완료: '+('후진' if self.return_reverse else '전진')+' 진입 시작'); return
@@ -619,7 +684,7 @@ class ReturnControl:
                 self.return_phase = 'ALIGN'; self.align_last_key = None
             return
         # Lost tracking in a reverse corridor never causes an escape/replan.
-        if reverse and (abs(wrap(pose[2]-goal[2])) > .35 or
+        if reverse and (abs(wrap(pose[2]-self.return_entry[2])) > .35 or
                         np.min(np.linalg.norm(self.return_route-pose[:2], axis=1)) > .10):
             self.stop(); self.detail = '후진 경로 또는 방향 이탈: 우회 없이 정지'; return
         self.detail = '후진으로 목표 접근 중' if reverse else '기존 글로벌 경로를 따라 전진 중'

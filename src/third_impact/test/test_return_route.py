@@ -271,7 +271,9 @@ def test_docking_entries_have_goal_heading_and_checked_corridor():
     from third_impact.return_route import docking_entries
     goal=np.array([0.,0.,.7]);g=room()
     entries=docking_entries(goal,g)
-    assert len(entries)==4
+    assert len(entries)>4
+    assert math.isclose(np.linalg.norm(entries[0][0][:2]),.5)
+    assert math.isclose(np.linalg.norm(entries[-1][0][:2]),.15)
     for entry,reverse in entries:
         from third_impact.core import relative
         local=relative(goal,entry)
@@ -284,6 +286,35 @@ def test_docking_entries_never_cross_unknown_or_wall():
     from third_impact.return_route import docking_entries
     g=room();g.cells[:]=100
     assert docking_entries(np.zeros(3),g)==[]
+
+
+def test_short_staging_is_available_when_both_legacy_approaches_are_blocked():
+    from third_impact.return_route import docking_entries
+    g=room()
+    g.cells[:, 63]=100  # x=-.85, body first reaches it near x=-.45.
+    g.cells[:, 96]=100  # x=+.80, body first reaches it near x=+.45.
+    failures=[]
+    entries=docking_entries(np.zeros(3),g,failures)
+    assert len(failures)>=4 and entries
+    assert all(.15-1e-8 <= abs(entry[0]) <= .4+1e-8 for entry,_ in entries)
+    assert {reverse for _,reverse in entries}=={True,False}
+
+
+def test_off_axis_staging_checks_short_final_leg_and_turn_at_goal():
+    from third_impact.return_route import room_staging_entries
+    g=room()
+    # There is clear space south of the goal, but the corridor east is blocked.
+    g.cells[73:87,95:]=100
+    goal=np.zeros(3)
+    entries=room_staging_entries(goal,g)
+    entry,reverse=next((pose,reverse) for pose,reverse in entries
+                       if pose[1]<-.5 and not reverse)
+    assert abs(entry[1])>.5 and abs(entry[2])>1.
+    assert g.rotation(goal[:2],entry[2],goal[2])
+    assert g.corridor_block(entry,[0.,0.,entry[2]]) is None
+    # A point path fits around the wall tip but the vehicle footprint does not.
+    blocked,_=g.transit_block(np.array([[1.2,.5],[.8,.5],[.2,.5]]),math.pi)
+    assert blocked is not None and blocked[0]>.75
 
 
 def test_axis_forward_final_segment_reaches_alignment_without_goal_spin():

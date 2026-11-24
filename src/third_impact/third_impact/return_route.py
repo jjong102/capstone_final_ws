@@ -49,9 +49,32 @@ class FootprintMap:
                    for t in np.linspace(0, 1, max(2, math.ceil(abs(delta)/.025)+1)))
 
     def corridor(self, start, goal):
-        length = np.linalg.norm(np.asarray(start[:2])-goal[:2])
-        return all(self.clear([*(np.asarray(start[:2])*(1-t)+np.asarray(goal[:2])*t), goal[2]])
-                   for t in np.linspace(0, 1, max(2, math.ceil(length/(self.resolution/2))+1)))
+        return self.corridor_block(start, goal) is None
+
+    def corridor_block(self, start, end):
+        points = dense_path([start[:2], end[:2]], self.resolution/2)
+        poses = np.column_stack((points, np.full(len(points), end[2])))
+        blocked = np.flatnonzero(~self.clear_many(poses))
+        return poses[blocked[0]] if len(blocked) else None
+
+    def transit_block(self, points, start_yaw):
+        """Check the swept rectangle along the planner polyline and its turns."""
+        heading = start_yaw
+        poses = []
+        for a, b in zip(points[:-1], points[1:]):
+            delta = b-a
+            if np.linalg.norm(delta) < 1e-6:
+                continue
+            next_heading = math.atan2(delta[1], delta[0])
+            turn = wrap(next_heading-heading)
+            for dyaw in np.linspace(0., turn, math.ceil(abs(turn)/.05)+1):
+                poses.append([*a, heading+dyaw])
+            poses.extend([*p, next_heading] for p in dense_path([a,b], self.resolution/2))
+            heading = next_heading
+        if not poses:
+            return np.asarray([*points[0], start_yaw]), heading
+        blocked = np.flatnonzero(~self.clear_many(poses))
+        return (np.asarray(poses[blocked[0]]) if len(blocked) else None), heading
 
 
 def dense_path(points, spacing=.04):
@@ -88,15 +111,37 @@ def select_entry(points, goal, grid, current_yaw):
 
 
 
-def docking_entries(goal, grid):
-    """Goal-axis staging poses; forward first, then reverse, no unsafe corridor."""
+def docking_entries(goal, grid, rejected=None):
+    """Try the usual staging lengths, followed by shorter approaches."""
     goal = np.asarray(goal)
     entries = []
-    for distance in (-.5, .5, -.7, .7):
+    for distance in (-.5, .5, -.7, .7, -.4, .4, -.3, .3, -.2, .2, -.15, .15):
         xy = transform(np.array([[distance, 0.]]), goal)[0]
         entry = np.array([*xy, goal[2]])
-        if grid.clear(entry) and grid.corridor(entry, goal):
+        block = grid.corridor_block(goal, entry)
+        if block is None:
             entries.append((entry, distance > 0))
+        elif rejected is not None:
+            rejected.append(block)
+    return entries
+
+
+def room_staging_entries(goal, grid):
+    """Approach from an off-axis staging pose, then turn at the final position."""
+    goal = np.asarray(goal)
+    entries = []
+    for offset in np.radians((30, -30, 60, -60, 90, -90)):
+        heading = goal[2]+offset
+        if not grid.rotation(goal[:2], heading, goal[2]):
+            continue
+        axis = np.array([math.cos(heading), math.sin(heading)])
+        for sign in (-1, 1):
+            # Keep the farthest clear point for this heading and direction.
+            for distance in (.6, .4, .25, .15):
+                entry = np.array([*(goal[:2]+sign*distance*axis), heading])
+                if grid.corridor_block([*goal[:2], heading], entry) is None:
+                    entries.append((entry, sign > 0))
+                    break
     return entries
 
 def tracking_command(pose, path, index, reverse, max_v=.4, max_w=.35, measured_speed=0.):

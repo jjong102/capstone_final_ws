@@ -1069,6 +1069,8 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
                'return': {'phase': self.return_phase, 'reverse_entry': self.return_reverse,
                           'blocked_seconds': (time.monotonic()-self.return_blocked if self.return_blocked else 0.),
                           'waiting': self.return_wait_reason,
+                          'plan_failure': self.return_plan_diagnostic,
+                          'first_plan_failure': self.return_first_failure,
                           'collision_check': self.return_collision},
                'localization': dict(self.localization_info,
                                     fresh=time.monotonic()-self.localization_stamp <= 2.),
@@ -1082,7 +1084,7 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         clear = Marker(); clear.action = Marker.DELETEALL; markers.markers.append(clear)
         def add(pose, kind, ident, color, size):
             m = Marker(); m.header.frame_id = 'map'; m.header.stamp = self.get_clock().now().to_msg()
-            m.ns = 'robot' if ident < 2 else 'saved_goal' if ident < 4 else 'patrol_region' if ident == 4 else 'travel_boundary' if ident == 6 else 'return_entry'
+            m.ns = 'robot' if ident < 2 else 'saved_goal' if ident < 4 else 'patrol_region' if ident == 4 else 'travel_boundary' if ident == 6 else 'return_entry' if ident == 5 else 'return_block'
             m.id = ident; m.type = kind; m.action = Marker.ADD
             m.pose = self.pose_message(pose).pose; m.pose.position.z = .15
             m.scale.x, m.scale.y, m.scale.z = size
@@ -1104,8 +1106,14 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         if self.data and self.data.get('boundary'):
             rect = self.data['boundary']
             add(rect[:3], Marker.CUBE, 6, (.1,.7,1.,.15), (rect[3],rect[4],.02))
-        if self.intent == 'return' and self.return_reverse and self.return_entry is not None:
-            add(self.return_entry, Marker.ARROW, 5, (1., 0., 1., 1.), (.6, .08, .08))
+        if self.intent == 'return':
+            if self.return_entry is not None:
+                add(self.return_entry, Marker.ARROW, 5, (1., 0., 1., 1.), (.6, .08, .08))
+            failure = self.return_first_failure or {}
+            collision = self.return_collision or {}
+            blocked = collision.get('collision_pose') if self.return_blocked else failure.get('pose')
+            if blocked is not None:
+                add(blocked, Marker.SPHERE, 7, (1., .15, .05, 1.), (.20, .20, .20))
         self.marker_pub.publish(markers)
 
 
