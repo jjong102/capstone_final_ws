@@ -273,3 +273,94 @@ def test_obstacle_during_rotation_enters_recheckable_wait():
         PatrolControl.tick_patrol_recovery(n,POSE)
     assert n.patrol_recovery=='WAIT' and n.patrol_obstacle_wait
     n.velocity_pub.publish.assert_not_called()
+
+
+def rear_turn_robot(angle):
+    n=robot()
+    pose=np.array([1.0,1.0,0.])
+    heading=np.deg2rad(angle)
+    delta=np.array([math.cos(heading),math.sin(heading)])
+    n.nav_target=[*(pose[:2]+delta),0.]
+    n.nav_handle=object()
+    n.cancel_requested=False
+    n.nav_purpose='patrol'
+    n.patrol_path=np.array([pose[:2],n.nav_target[:2]])
+    n.patrol_path_stamp=100.
+    n.rear_turn_arc_clear=Mock(return_value=True)
+    n.safe_patrol_command=Mock(return_value=True)
+    return n,pose
+
+
+def rear_tick(n,pose,t):
+    with patch('third_impact.patrol_control.time.monotonic',return_value=t):
+        return PatrolControl.tick_patrol_rear_turn(n,pose)
+
+
+def test_rear_path_keeps_one_direction_across_wrap_and_plan_updates():
+    n,pose=rear_turn_robot(179)
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.):
+        assert PatrolControl.start_patrol_rear_turn(n,pose)
+    rear_tick(n,pose,100.1)
+    n.velocity_pub.publish.assert_not_called()
+    n.nav_handle=None
+    target=n.nav_target.copy()
+    signs=[]
+    for i in range(1,300):
+        n.velocity_pub.publish.reset_mock()
+        # Replanned path changes its first bearing after the turn was chosen.
+        n.patrol_path=np.array([pose[:2],pose[:2]+[.5,.5],target[:2]])
+        rear_tick(n,pose,100.1+i*.05)
+        if n.velocity_pub.publish.called:
+            cmd=n.velocity_pub.publish.call_args.args[0]
+            assert cmd.linear.x==0.
+            signs.append(math.copysign(1,cmd.angular.z))
+            pose[2]=math.remainder(pose[2]+cmd.angular.z*.05,math.tau)
+        if n.patrol_rear_turn is None:
+            break
+    assert signs and set(signs)=={-1}
+    assert n.patrol_rear_turn is None and n.patrol_retry_target==target
+    assert abs(math.remainder(np.deg2rad(179)-pose[2],math.tau))<=np.deg2rad(20)
+
+
+def test_blocked_preferred_turn_uses_opposite_only_if_clear():
+    n,pose=rear_turn_robot(-150)
+    with patch('third_impact.patrol_control.time.monotonic',return_value=100.):
+        assert PatrolControl.start_patrol_rear_turn(n,pose)
+    n.nav_handle=None
+    n.rear_turn_arc_clear.return_value=False
+    rear_tick(n,pose,100.1)
+    assert n.patrol_rear_turn['phase']=='BLOCKED'
+    n.velocity_pub.publish.assert_not_called()
+    n.rear_turn_arc_clear.side_effect=lambda pose,angle,cloud,grid:angle>0
+    rear_tick(n,pose,100.7)
+    assert n.patrol_rear_turn['sign']==1
+    assert n.patrol_rear_turn['remaining']>math.pi
+    assert n.velocity_pub.publish.call_args.args[0].angular.z>0
+    n.velocity_pub.publish.reset_mock()
+    n.safe_patrol_command.return_value=False
+    rear_tick(n,pose,100.75)
+    assert n.patrol_rear_turn['phase']=='BLOCKED'
+    n.velocity_pub.publish.assert_not_called()
+    stale=n.patrol_rear_turn['scan_key']
+    n.scan_key=lambda:stale
+    rear_tick(n,pose,101.3)
+    n.velocity_pub.publish.assert_not_called()
+
+
+def test_rear_turn_only_uses_recent_nearby_path():
+    n,pose=rear_turn_robot(-150)
+    with patch('third_impact.patrol_control.time.monotonic',return_value=102.):
+        assert not PatrolControl.start_patrol_rear_turn(n,pose)
+    n.patrol_path_stamp=102.
+    with patch('third_impact.patrol_control.time.monotonic',return_value=102.):
+        assert not PatrolControl.start_patrol_rear_turn(n,pose+np.array([0.,1.,0.]))
+
+
+def test_rear_turn_checks_intermediate_footprint_even_when_endpoints_fit():
+    n,pose=rear_turn_robot(-150)
+    n.data={'boundary':[1.,1.,0.,4.,4.]}
+    n._patrol_exclusion=lambda _:None
+    grid=NS(clear_many=lambda poses:np.ones(len(poses),dtype=bool))
+    # Clear at 0 and -150 degrees, yet inside the footprint at -90 degrees.
+    assert not PatrolControl.rear_turn_arc_clear(n,pose,np.deg2rad(-150),np.array([[0.,.37]]),grid)
+    assert PatrolControl.rear_turn_arc_clear(n,pose,np.deg2rad(-150),np.array([[0.,1.]]),grid)

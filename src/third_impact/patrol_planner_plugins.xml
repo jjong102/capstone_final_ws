@@ -1,0 +1,6 @@
+<library path="third_impact_patrol_planner">
+  <class name="third_impact/PatrolPlanner" type="third_impact::PatrolPlanner"
+         base_class_type="nav2_core::GlobalPlanner">
+    <description>Collision-checked straight segments for patrol routes.</description>
+  </class>
+</library>

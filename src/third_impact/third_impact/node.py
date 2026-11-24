@@ -941,6 +941,11 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         if paused:
             if self.intent == 'return':
                 self.pause_return()
+            elif getattr(self, 'patrol_rear_turn', None) is not None:
+                if self.manual:
+                    self.patrol_rear_turn = None
+                elif self.patrol_rear_turn['phase'] == 'ROTATE':
+                    self.patrol_rear_turn['phase'] = 'STOP'
             self.stop(); self.cancel_nav(); self.settled_since = None
             self.detail = 'Paused: manual control or localization/sensor readiness'
             self.last_readiness_stop = dict(time=time.time(), manual=self.manual,
@@ -955,6 +960,8 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         if current_pose is None:
             if self.intent == 'return':
                 self.pause_return()
+            elif getattr(self, 'patrol_rear_turn', None) is not None and self.patrol_rear_turn['phase'] == 'ROTATE':
+                self.patrol_rear_turn['phase'] = 'STOP'
             self.stop(); self.cancel_nav(); self.settled_since = None
             self.detail = 'Paused: manual control or localization/sensor readiness'
             self.last_readiness_stop = dict(time=time.time(), manual=self.manual,
@@ -973,6 +980,11 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
             return
         else:
             if self.tick_patrol_recovery(current_pose):
+                return
+            if getattr(self, 'patrol_rear_turn', None) is not None:
+                if self.tick_patrol_rear_turn(current_pose):
+                    return
+            if busy and PatrolControl.start_patrol_rear_turn(self, current_pose):
                 return
             self.state = 'PATROL' if busy else 'PATROL_SEARCH'
             if self.patrol_progress_pose is None or np.linalg.norm(current_pose[:2]-self.patrol_progress_pose[:2]) >= .20:
@@ -1062,7 +1074,8 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
                                   'recovery_check': self.patrol_recovery_check,
                                   'sensor_retries': self.patrol_sensor_retries,
                                   'obstacle_recheck': self.patrol_obstacle_wait,
-                                  'obstacle_clear_checks': self.patrol_obstacle_clear_count},
+                                  'obstacle_clear_checks': self.patrol_obstacle_clear_count,
+                                  'rear_turn': self.patrol_rear_turn},
                'has_boundary': bool(self.data and self.data.get('boundary')),
                'has_goal': self.data is not None, 'has_rectangle': bool(self.data and self.data.get('rectangle')),
                'detail': self.detail, 'match': result, 'alignment': self.alignment_diagnostics, 'time': time.time(),

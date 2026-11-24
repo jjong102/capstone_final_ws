@@ -3,7 +3,38 @@ import math
 import time
 import numpy as np
 from geometry_msgs.msg import Twist
-from .core import wrap, swept_clear, travel_allowed, transform
+from .core import wrap, swept_clear, travel_allowed, transform, stationary_allowed_many
+
+REAR_TURN_ENTER = math.radians(120)
+REAR_TURN_EXIT = math.radians(20)
+REAR_TURN_SPEED = .30
+
+
+def patrol_path_heading(points, pose):
+    """Look ahead 30 cm along the path from the nearest segment projection."""
+    if points is None or len(points) < 2:
+        return None
+    starts = points[:-1]
+    delta = np.diff(points, axis=0)
+    lengths = np.linalg.norm(delta, axis=1)
+    t = np.clip(np.sum((pose[:2]-starts)*delta, axis=1)/np.maximum(lengths**2, 1e-12), 0., 1.)
+    projected = starts+delta*t[:, None]
+    distances = np.linalg.norm(projected-pose[:2], axis=1)
+    distances[lengths < 1e-6] = np.inf
+    i = int(np.argmin(distances))
+    if distances[i] > .35:
+        return None
+    remaining = (1.-t[i])*lengths[i]
+    while remaining < .30 and i+1 < len(lengths):
+        i += 1
+        remaining += lengths[i]
+    if remaining < .15:
+        return None
+    ahead = points[i+1]-delta[i]*max(0.,remaining-.30)/max(lengths[i],1e-6)
+    bearing = ahead-pose[:2]
+    if np.linalg.norm(bearing) < .10:
+        return None
+    return math.atan2(bearing[1],bearing[0])
 
 
 def escape_heading(points, pose, boundary, exclusion, half_length, half_width):
@@ -26,6 +57,7 @@ def escape_heading(points, pose, boundary, exclusion, half_length, half_width):
 
 class PatrolControl:
     def init_patrol(self):
+        self.patrol_rear_turn = None
         self.patrol_pause_started = None
         self.patrol_recovery_check = {}
         self.patrol_sensor_wait_started = None
@@ -160,6 +192,121 @@ class PatrolControl:
             return
         self.patrol_path = points
         self.patrol_path_stamp = time.monotonic()
+
+    def start_patrol_rear_turn(self, pose):
+        if (self.nav_handle is None or self.cancel_requested or self.nav_purpose != 'patrol'
+                or self.nav_target is None or np.linalg.norm(pose[:2]-self.nav_target[:2]) <= .15
+                or time.monotonic()-getattr(self, 'patrol_path_stamp', 0.) > 1.5):
+            return False
+        heading = patrol_path_heading(self.patrol_path, pose)
+        if heading is None or abs(wrap(heading-pose[2])) < REAR_TURN_ENTER:
+            return False
+        self.patrol_retry_target = list(self.nav_target)
+        self.patrol_rear_turn = dict(phase='STOP', heading=heading, sign=None,
+                                     remaining=None, next_check=0., scan_key=None)
+        self.stop('patrol_rear_turn_start')
+        self.cancel_nav()
+        self.detail = '정찰 경로가 뒤쪽에 있어 제자리 방향 정렬을 준비합니다.'
+        return True
+
+    def rear_turn_arc_clear(self, pose, angle, cloud, grid):
+        offsets = np.linspace(0., angle, max(2, math.ceil(abs(angle)/.04)+1))
+        poses = np.column_stack((np.repeat([pose[:2]], len(offsets), axis=0), pose[2]+offsets))
+        half_length = self.p['footprint_half_length']
+        half_width = self.p['footprint_half_width']
+        if not stationary_allowed_many(poses, self.data['boundary'], self._patrol_exclusion(pose),
+                                       half_length, half_width).all():
+            return False
+        if not grid.clear_many(poses).all():
+            return False
+        # Account for the corners' motion between angular samples.
+        margin = self.p['obstacle_margin']+math.hypot(half_length,half_width)*.02
+        c, s = np.cos(offsets[:,None]), np.sin(offsets[:,None])
+        x, y = cloud[:,0], cloud[:,1]
+        return bool(len(cloud) and not np.any(
+            (abs(c*x+s*y) <= half_length+margin) & (abs(-s*x+c*y) <= half_width+margin)))
+
+    def tick_patrol_rear_turn(self, pose):
+        turn = self.patrol_rear_turn
+        if turn is None:
+            return False
+        now = time.monotonic()
+        self.state = 'PATROL_BLOCKED' if turn['phase'] in ('BLOCKED', 'STALLED') else 'PATROL_RECOVERY'
+        if self.nav_pending or self.nav_handle is not None:
+            self.stop(); self.cancel_nav()
+            self.detail = '뒤쪽 정찰 경로 정렬: 기존 이동 취소 완료 대기'
+            return True
+        if turn['phase'] == 'STALLED':
+            self.stop()
+            self.detail = '뒤쪽 정찰 경로 정렬 정체: 구동 상태 확인 또는 수동 조작 필요'
+            return True
+        if turn['phase'] != 'ROTATE':
+            self.stop()
+            if not self.stopped():
+                return True
+            difference = wrap(turn['heading']-pose[2])
+            if abs(difference) <= REAR_TURN_EXIT:
+                self.patrol_rear_turn = None
+                self.patrol_progress_time = self.next_attempt = now
+                self._progress_watch = None
+                self.detail = '뒤쪽 경로 방향 정렬 완료: 같은 정찰 목표로 이동을 재개합니다.'
+                return True
+            if now < turn['next_check']:
+                return True
+            turn['next_check'] = now+.5
+            cloud = self.cloud()
+            key = self.scan_key() if cloud is not None else None
+            if not key or not all(key) or (turn['scan_key'] is not None and
+                    any(a <= b for a,b in zip(key,turn['scan_key']))):
+                self.detail = '뒤쪽 경로 정렬: 새 전·후방 관측 대기'
+                return True
+            turn['scan_key'] = key
+            angles = {1: difference % math.tau, -1: -((-difference) % math.tau)}
+            # In a near tie prefer clockwise. After a stop, try the previously
+            # selected direction first unless the new observation blocks it.
+            preferred = turn['sign'] or (-1 if abs(difference) >= math.radians(175)
+                                         else (1 if difference > 0 else -1))
+            grid = self.return_grid()
+            angle = next((angles[s] for s in (preferred, -preferred)
+                          if self.rear_turn_arc_clear(pose,angles[s],cloud,grid)), None)
+            if angle is None or self.cloud() is None:
+                turn['phase'] = 'BLOCKED'
+                self.detail = '뒤쪽 경로 정렬 대기: 안전한 회전 공간 재검사 중'
+                return True
+            turn.update(phase='ROTATE', sign=1 if angle > 0 else -1, remaining=abs(angle),
+                        last_yaw=float(pose[2]), best=abs(angle), progress=now,
+                        deadline=now+abs(angle)/REAR_TURN_SPEED+5.)
+            self.state = 'PATROL_RECOVERY'
+
+        delta = wrap(pose[2]-turn['last_yaw'])
+        if abs(delta) > .35:
+            self.stop()
+            turn['phase'] = 'STOP'
+            return True
+        turn['last_yaw'] = float(pose[2])
+        turn['remaining'] -= turn['sign']*delta
+        if turn['remaining'] <= REAR_TURN_EXIT:
+            self.stop()
+            turn['phase'] = 'SETTLE'
+            return True
+        if turn['remaining'] < turn['best']-.04:
+            turn.update(best=turn['remaining'], progress=now)
+        if now > turn['deadline'] or now-turn['progress'] > 3.:
+            self.stop()
+            turn['phase'] = 'STALLED'
+            return True
+        w = turn['sign']*min(REAR_TURN_SPEED, .65*turn['remaining'])
+        if not self.safe_patrol_command(pose,0.,w):
+            self.stop()
+            turn['phase'] = 'BLOCKED'
+            turn['scan_key'] = self.scan_key()
+            self.detail = '뒤쪽 경로 정렬 정지: 새로운 관측으로 회전 공간을 다시 확인합니다.'
+            return True
+        command = Twist()
+        command.angular.z = w
+        self.velocity_pub.publish(command)
+        self.detail = ('시계' if w < 0 else '반시계')+' 방향으로 뒤쪽 정찰 경로에 정렬 중'
+        return True
 
     def safe_patrol_command(self, pose, v, w):
         cloud = self.cloud()

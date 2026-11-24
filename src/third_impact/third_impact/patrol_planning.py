@@ -92,7 +92,7 @@ class PatrolPlanning:
         self.patrol_plan_job = job
         request = ComputePathToPose.Goal()
         request.goal = self.pose_message(target)
-        request.planner_id = 'GridBased'
+        request.planner_id = 'PatrolGrid'
         request.use_start = False
         self.detail = '정찰 후보까지 실제 경로 생성 가능 여부 확인 중'
 

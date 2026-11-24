@@ -370,11 +370,17 @@ planner_server:
     use_sim_time: false
     planner_plugins:
     - GridBased
+    - PatrolGrid
     GridBased:
       plugin: nav2_navfn_planner/NavfnPlanner
       tolerance: 0.5
       use_astar: true
       allow_unknown: true
+    PatrolGrid:
+      plugin: third_impact/PatrolPlanner
+      tolerance: 0.5
+      use_astar: true
+      allow_unknown: false
 planner_server_rclcpp_node:
   ros__parameters:
     use_sim_time: false
