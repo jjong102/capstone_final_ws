@@ -70,6 +70,22 @@ def test_hold_stops_even_if_sensor_readiness_is_lost():
     n.stop.assert_called_once(); assert n.state=='HOLD'
 
 
+def test_go_around_inside_exclusion_starts_exit_before_random_patrol():
+    n=stub(intent='hold', manual=False, healthy=lambda:True,
+           pose=lambda:np.zeros(3), data={'rectangle':[0.,0.,0.,2.,2.],
+                                        'boundary':[0.,0.,0.,6.,6.]},
+           p={'footprint_half_length':.35,'footprint_half_width':.23},
+           tick_patrol_exit=Mock(), patrol_target=Mock())
+    ImpactNode.on_patrol(n,None)
+    ImpactNode.tick(n)
+    assert n._initial_exclusion_exit is True
+    n.tick_patrol_exit.assert_called_once()
+    n.patrol_target.assert_not_called()
+    assert ImpactNode._patrol_exclusion(n,n.pose()) is None
+    n._initial_exclusion_exit=False
+    assert ImpactNode._patrol_exclusion(n,n.pose())==n.data['rectangle']
+
+
 def test_navigation_acceptance_replaces_old_rejection_message():
     handle = Mock(accepted=True)
     future = Mock(); future.result.return_value = handle

@@ -364,3 +364,61 @@ def test_rear_turn_checks_intermediate_footprint_even_when_endpoints_fit():
     # Clear at 0 and -150 degrees, yet inside the footprint at -90 degrees.
     assert not PatrolControl.rear_turn_arc_clear(n,pose,np.deg2rad(-150),np.array([[0.,.37]]),grid)
     assert PatrolControl.rear_turn_arc_clear(n,pose,np.deg2rad(-150),np.array([[0.,1.]]),grid)
+
+
+def test_initial_exit_finds_the_open_side_of_three_walled_room():
+    from third_impact.patrol_exit import straight_exit_candidates, exit_line_clear
+    from third_impact.return_route import FootprintMap
+    cells=np.zeros((160,160),dtype=np.int8)
+    cells[60:103,60]=100
+    cells[60:103,100]=100
+    cells[102,60:101]=100
+    cells[90:93,90:93]=-1  # Keep unknown space away from the initial turn.
+    g=FootprintMap(cells,.05,[-4.,-4.,0.])
+    pose=np.array([-.1,0.,math.pi/2])
+    boundary=[0.,0.,0.,7.,7.]
+    exclusion=[0.,0.,0.,2.,2.]
+    candidates=straight_exit_candidates(pose,boundary,exclusion,g,.35,.23)
+    assert candidates
+    assert all(p['end'][1]<-1. for p in candidates)
+    planned=candidates[0]
+    heading=planned['heading']
+    midpoint=np.array([math.cos(heading),math.sin(heading)])*.8
+    cloud=transform_test_point(midpoint,pose[2])
+    assert not exit_line_clear(pose,planned,cloud,.35,.23)
+    assert exit_line_clear(pose,planned,np.array([[3.,3.]]),.35,.23)
+    cells[59,60:101]=100
+    assert not straight_exit_candidates(pose,boundary,exclusion,g,.35,.23)
+
+
+def transform_test_point(point, yaw):
+    c,s=math.cos(yaw),math.sin(yaw)
+    return np.array([[c*point[0]+s*point[1],-s*point[0]+c*point[1]]])
+
+
+def test_initial_exit_only_hands_off_after_full_clearance_and_stop():
+    from third_impact.patrol_exit import PatrolExit
+    n=robot()
+    grid=object()
+    n.return_grid=lambda:grid
+    n.data={'rectangle':[0.,0.,0.,2.,2.],'boundary':[0.,0.,0.,8.,8.]}
+    n._initial_exclusion_exit=True
+    n.patrol_exit_plan=dict(start=[0.,0.],heading=0.,length=1.7,phase='DRIVE',
+                            best=0.,progress_at=100.,check_grid=grid)
+    n.safe_patrol_command=Mock(return_value=True)
+    n.cloud=lambda:np.array([[.8,0.]])
+    n.event=Mock()
+    with patch('third_impact.patrol_exit.time.monotonic',return_value=100.):
+        PatrolExit.tick_patrol_exit(n,np.zeros(3))
+        n.velocity_pub.publish.assert_not_called()
+        n.cloud=lambda:np.array([[4.,4.]])
+        PatrolExit.tick_patrol_exit(n,np.array([1.35,0.,0.]))
+        assert n._initial_exclusion_exit
+        assert n.velocity_pub.publish.call_args.args[0].linear.x>0.
+        n.stopped=lambda:False
+        PatrolExit.tick_patrol_exit(n,np.array([1.6,0.,0.]))
+        assert n._initial_exclusion_exit
+        n.stopped=lambda:True
+        PatrolExit.tick_patrol_exit(n,np.array([1.6,0.,0.]))
+    assert n._initial_exclusion_exit is False and n.patrol_exit_plan is None
+    assert n.next_attempt==100.

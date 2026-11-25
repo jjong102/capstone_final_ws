@@ -5,7 +5,7 @@ from .core import transform, relative, wrap
 
 
 class FootprintMap:
-    def __init__(self, cells, resolution, origin, half_length=.35, half_width=.22):
+    def __init__(self, cells, resolution, origin, half_length=.35, half_width=.23):
         self.cells = np.asarray(cells)
         self.resolution = resolution
         self.origin = origin

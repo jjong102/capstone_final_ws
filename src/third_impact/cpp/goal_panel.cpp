@@ -113,6 +113,9 @@ StatusPanel::StatusPanel(QWidget *parent): Panel(parent) {
    title="목표·구역 설정 대기"; explanation="저장된 목표, 한계 구간, 정찰 제한 구간이 필요합니다.";
   } else if (state=="PATROL_APPROACH") {
    title="정찰 목표 위치로 근접 이동"; explanation="최종 방향과 무관하게 목표 위치 5cm 이내로 접근합니다.";
+  } else if (state=="PATROL_EXIT") {
+   title="제한 구역에서 출구로 이동";
+   explanation=readableDetail(obj["detail"].toString());
   } else if (state=="PATROL_SEARCH") {
    title="정찰 목표·경로 탐색 중"; explanation="현재 위치에서 도달 가능한 목표와 실제 경로를 확인합니다. 상세 사유를 확인하세요.";
   } else if (state=="PATROL_BLOCKED") {

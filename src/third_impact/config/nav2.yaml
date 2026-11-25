@@ -235,7 +235,7 @@ local_costmap:
       width: 5
       height: 5
       resolution: 0.05
-      footprint: '[[0.35, 0.22], [0.35, -0.22], [-0.35, -0.22], [-0.35, 0.22]]'
+      footprint: '[[0.35, 0.23], [0.35, -0.23], [-0.35, -0.23], [-0.35, 0.23]]'
       footprint_padding: 0.01
       plugins:
       - static_layer
@@ -301,7 +301,7 @@ global_costmap:
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: false
-      footprint: '[[0.35, 0.22], [0.35, -0.22], [-0.35, -0.22], [-0.35, 0.22]]'
+      footprint: '[[0.35, 0.23], [0.35, -0.23], [-0.35, -0.23], [-0.35, 0.23]]'
       footprint_padding: 0.01
       resolution: 0.05
       track_unknown_space: true

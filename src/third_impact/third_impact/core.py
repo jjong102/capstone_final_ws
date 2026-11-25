@@ -152,7 +152,7 @@ def alignment_command(error, xy_tolerance, yaw_tolerance, max_v=.035, max_w=.12)
     return v, w
 
 
-def swept_clear(points, v, w, half_length=.35, half_width=.22, margin=.04, horizon=1.):
+def swept_clear(points, v, w, half_length=.35, half_width=.23, margin=.04, horizon=1.):
     """Check swept rectangular footprint against measured obstacle returns."""
     if len(points) == 0:
         return False

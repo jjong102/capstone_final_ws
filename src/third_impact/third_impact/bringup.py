@@ -111,7 +111,7 @@ def start(context, mode):
              parameters=[{key: impact_config.get('third_impact', {}).get('ros__parameters', {}).get(key, default)
                           for key, default in dict(front_scan='/rplidar1/scan_filtered',
                               rear_scan='/rplidar2/scan_filtered',footprint_half_length=.35,
-                              footprint_half_width=.22).items()}]),
+                              footprint_half_width=.23).items()}]),
         include('amr_navigator', 'launch/nav2_bringup/localization_launch.py',
                 {'map': values['map'], 'params_file': values['params_file'], 'use_sim_time': 'false', 'autostart': 'true'}),
         Node(package='third_impact', executable='localization_bootstrap', output='screen',

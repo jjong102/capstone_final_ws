@@ -43,7 +43,7 @@ class AmclScan(Node):
         super().__init__('third_impact_amcl_scan')
         defaults=dict(front_scan='/rplidar1/scan_filtered',rear_scan='/rplidar2/scan_filtered',
             target_frame='base_link',fixed_frame='odom',max_pair_skew=.15,max_age=.45,
-            max_range=6.,bins=720,footprint_half_length=.35,footprint_half_width=.22)
+            max_range=6.,bins=720,footprint_half_length=.35,footprint_half_width=.23)
         self.p={k:self.declare_parameter(k,v).value for k,v in defaults.items()}
         if self.p['bins']<60 or self.p['max_age']<=0 or self.p['max_pair_skew']<0:
             raise ValueError('Invalid scan fusion limits')

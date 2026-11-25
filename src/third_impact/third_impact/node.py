@@ -37,6 +37,7 @@ from .progress_watch import ProgressWatch
 from .pose_tracking import PoseBridge
 from .return_control import ReturnControl
 from .patrol_control import PatrolControl
+from .patrol_exit import PatrolExit
 from .patrol_planning import PatrolPlanning, costmap_component
 
 
@@ -46,7 +47,7 @@ class _ZoneRect:
         self.rect = list(rect)
 
 
-class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
+class ImpactNode(PatrolPlanning, PatrolControl, PatrolExit, ReturnControl, Node):
     def __init__(self):
         super().__init__('third_impact')
         defaults = dict(mode='mission', map_file='', state_file='~/.ros/third_impact/goal.json',
@@ -64,7 +65,7 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
                         match_max_condition=500., match_max_correction=.20,
                         match_max_angle_deg=15., retry_seconds=2., patrol_clearance=.45,
                         amcl_max_xy_variance=.08, amcl_max_yaw_variance=.08,
-                        footprint_half_length=.35, footprint_half_width=.22,
+                        footprint_half_length=.35, footprint_half_width=.23,
                         obstacle_margin=.04, scan_max_range=6.,
                         front_scan='/rplidar1/scan_filtered', rear_scan='/rplidar2/scan_filtered')
         self.p = {k: self.declare_parameter(k, v).value for k, v in defaults.items()}
@@ -94,6 +95,10 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         self.nav_handle = None; self.nav_pending = False; self.cancel_requested = False
         self.nav_purpose = None; self.nav_target = None
         self.patrol_retry_target = None
+        self._initial_exclusion_exit = None
+        self.patrol_exit_plan = None
+        self.patrol_exit_candidates = None
+        self.patrol_exit_retry = 0.
         self.patrol_reached = False; self.patrol_visits = 0
         self.last_navigation_result = None
         self.nav_velocity = Twist(); self.nav_velocity_stamp = 0.
@@ -572,15 +577,6 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         boundary = self.data.get('boundary') if self.data else None
         saved_exclusion = self.data.get('rectangle') if self.data else None
         exclusion = saved_exclusion
-        # Initial pose inside the patrol exclusion may drive out. The saved
-        # boundary still limits planning; only the exclusion paint is lifted.
-        if self.intent == 'patrol' and saved_exclusion is not None:
-            current = self.pose()
-            # Before the first patrol arrival, and while leaving an initial
-            # pose inside the exclusion, do not paint that zone as an obstacle.
-            if current is not None and self._patrol_exclusion(current) is None and (
-                    self.patrol_visits < 1 or getattr(self, '_initial_exclusion_exit', False)):
-                exclusion = None
         if getattr(self, 'planning_anchor', None) is None:
             current = self.pose()
             if current is not None:
@@ -613,37 +609,10 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         self.navigation_map_key = key
 
     def _patrol_exclusion(self, pose):
-        """Patrol exclusion. Lifted until the first patrol is completed,
-        and while leaving an initial pose that was set inside the zone.
-
-        The boundary limit is unchanged.
-        """
-        rect = self.data.get('rectangle')
-        if self.intent != 'patrol' or rect is None or pose is None:
+        """Permit only the dedicated departure to cross the saved exclusion."""
+        if self.intent != 'patrol' or getattr(self, '_initial_exclusion_exit', False):
             return None
-        if self.patrol_visits < 1:
-            if not getattr(self, '_first_patrol_zone_noted', False):
-                self._first_patrol_zone_noted = True
-                self.event('첫 정찰을 완수하기 전에는 정찰 제한 구간 안에서도 정찰합니다.')
-            return None
-        info = self.localization_info or {}
-        if (info.get('state') == 'VERIFYING'
-                and '사용자가 지정한 초기 위치' in str(info.get('reason') or '')):
-            self._initial_exclusion_exit = None
-        radius = math.hypot(self.p['footprint_half_length'], self.p['footprint_half_width'])+.05
-        overlaps = not outside_exclusion(pose, rect, radius)
-        if info.get('ready') and getattr(self, '_initial_exclusion_exit', None) is None:
-            boundary = self.data.get('boundary')
-            in_bounds = boundary is not None and inside_patrol_region(pose, boundary, 0.)
-            self._initial_exclusion_exit = bool(overlaps and in_bounds)
-            if self._initial_exclusion_exit:
-                self.event('초기 위치가 정찰 제한 구간 안입니다. 구간 밖으로 이동을 허용합니다.')
-        if getattr(self, '_initial_exclusion_exit', False) and not overlaps:
-            self._initial_exclusion_exit = False
-            self.event('정찰 제한 구간을 벗어났습니다. 이후에는 구간 안으로 들어가지 않습니다.')
-        if getattr(self, '_initial_exclusion_exit', False):
-            return None
-        return rect
+        return self.data.get('rectangle')
 
     def _at_saved_goal(self, pose):
         goal = np.asarray(self.data['goal'])
@@ -675,11 +644,18 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         self.event('Return requested; patrol cancelled')
 
     def on_patrol(self, _):
-        if self.mode != 'mission' or not accepts_patrol(self.intent):
+        if (self.mode != 'mission' or not accepts_patrol(self.intent)
+                or (self.intent == 'patrol' and getattr(self, '_initial_exclusion_exit', False)
+                    and (self.patrol_exit_plan or {}).get('phase') != 'STALLED')):
             return
         self.init_patrol()
         self.patrol_visits = 0
         self._first_patrol_zone_noted = False
+        self._initial_exclusion_exit = None
+        self.patrol_exit_plan = None
+        self.patrol_exit_candidates = None
+        self.patrol_exit_retry = 0.
+        self.patrol_retry_target = None
         self.intent = 'patrol'; self.state = 'PATROL'; self.next_attempt = 0.
         self.event('Patrol requested')
 
@@ -939,6 +915,12 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         if self.intent == 'patrol':
             self.patrol_readiness_pause(paused)
         if paused:
+            if self.intent == 'patrol' and getattr(self, '_initial_exclusion_exit', False):
+                if self.manual:
+                    self.patrol_exit_plan = None
+                    self.patrol_exit_candidates = None
+                elif self.patrol_exit_plan is not None:
+                    self.patrol_exit_plan['progress_at'] = time.monotonic()
             if self.intent == 'return':
                 self.pause_return()
             elif getattr(self, 'patrol_rear_turn', None) is not None:
@@ -960,6 +942,8 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
         if current_pose is None:
             if self.intent == 'return':
                 self.pause_return()
+            elif getattr(self, 'patrol_exit_plan', None) is not None:
+                self.patrol_exit_plan['progress_at'] = time.monotonic()
             elif getattr(self, 'patrol_rear_turn', None) is not None and self.patrol_rear_turn['phase'] == 'ROTATE':
                 self.patrol_rear_turn['phase'] = 'STOP'
             self.stop(); self.cancel_nav(); self.settled_since = None
@@ -968,12 +952,16 @@ class ImpactNode(PatrolPlanning, PatrolControl, ReturnControl, Node):
                 health=copy.deepcopy(getattr(self, 'health_diagnostics', {})),
                 pose=copy.deepcopy(getattr(self, 'pose_diagnostics', {})))
             return
+        if self.intent == 'patrol' and getattr(self, '_initial_exclusion_exit', False) is None:
+            radius = math.hypot(self.p['footprint_half_length'],self.p['footprint_half_width'])+.05
+            self._initial_exclusion_exit = not outside_exclusion(current_pose,self.data['rectangle'],radius)
         if not self.motion_allowed(current_pose):
             self.stop(); self.cancel_nav()
             self.detail = '현재 위치가 한계 구간 밖이거나 정찰 제한 구간 안입니다. 수동으로 이동해 주세요.'
             return
-        if getattr(self, '_initial_exclusion_exit', False):
-            self.detail = '초기 위치가 정찰 제한 구간 안입니다. 구간 밖으로 이동합니다.'
+        if self.intent == 'patrol' and getattr(self, '_initial_exclusion_exit', False):
+            self.tick_patrol_exit(current_pose)
+            return
         busy = self.nav_pending or self.nav_handle is not None
         if self.intent == 'return':
             self.tick_return(current_pose)

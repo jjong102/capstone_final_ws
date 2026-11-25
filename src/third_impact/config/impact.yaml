@@ -26,7 +26,7 @@ third_impact:
     stopped_linear: 0.005
     stopped_angular: 0.01
     footprint_half_length: 0.35
-    footprint_half_width: 0.22
+    footprint_half_width: 0.23
     obstacle_margin: 0.04
     patrol_clearance: 0.45
     retry_seconds: 2.0

@@ -56,7 +56,7 @@ class GridModel:
     def footprint_clear(self, pose):
         # Cover the full URDF envelope, including protrusions and interior cells.
         x = np.linspace(-.35, .35, int(np.ceil(.70/(self.resolution*.5)))+1)
-        y = np.linspace(-.22, .22, int(np.ceil(.44/(self.resolution*.5)))+1)
+        y = np.linspace(-.23, .23, int(np.ceil(.46/(self.resolution*.5)))+1)
         xx, yy = np.meshgrid(x, y)
         boundary = np.column_stack((xx.ravel(), yy.ravel()))
         row, col, good = self.indices(transform(boundary, pose))
@@ -89,7 +89,7 @@ class GridModel:
         failures = []
         if overlap < min_overlap: failures.append(f'벽 경계 일치율 {overlap*100:.1f}% < {min_overlap*100:.0f}%')
         if score > .065: failures.append(f'벽 경계 오차 {score*100:.1f}cm > 6.5cm')
-        if not footprint: failures.append('70×44cm 차체 외곽 공간 부족')
+        if not footprint: failures.append('70×46cm 차체 외곽 공간 부족')
         if rays < .90: failures.append(f'광선 자유 공간 {rays*100:.1f}% < 90%')
         return {'valid': not failures, 'overlap': overlap, 'min_overlap': min_overlap, 'score': score,
                 'footprint_clear': footprint, 'rays_free_fraction': rays,
@@ -118,7 +118,7 @@ def search_map(model, points, previous_pose=None, timeout=20., cancel=None, veri
     sampled = points[np.linspace(0, len(points)-1, min(180, len(points))).astype(int)]
     step = max(1, round(.25/model.resolution))
     rows, cols = np.mgrid[0:model.height:step, 0:model.width:step]
-    valid = model.clearance[rows, cols] >= .22
+    valid = model.clearance[rows, cols] >= .23
     xy = np.column_stack(((cols[valid]+.5)*model.resolution, (rows[valid]+.5)*model.resolution))
     if not len(xy):
         return failure('no_free_candidates')
